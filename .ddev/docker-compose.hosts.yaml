@@ -1,0 +1,5 @@
+version: '3.6'
+services:
+  web:
+    extra_hosts:
+     - "${DDEV_SITENAME}.ddev.local:127.0.0.1"

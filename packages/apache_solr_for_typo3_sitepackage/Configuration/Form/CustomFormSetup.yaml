@@ -1,0 +1,6 @@
+TYPO3:
+  CMS:
+    Form:
+      persistenceManager:
+        allowedFileMounts:
+          100: 1:/apache_solr_for_typo3_sitepackage/form/

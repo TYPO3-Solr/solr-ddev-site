@@ -1,0 +1,18 @@
+{
+    "name": "dkd/apache-solr-for-typo3-sitepackage",
+    "type": "typo3-cms-extension",
+    "description": "Solr development site",
+    "homepage": "http://www.dkd.de/",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["TYPO3 CMS"],
+    "version": "1.0.0",
+    "require": {
+        "typo3/cms-core": "^9.5",
+        "typo3/cms-impexp": "^9.5",
+        "typo3/cms-rte-ckeditor": "^9.5",
+        "typo3/cms-form": "^9.5",
+        "typo3/cms-indexed-search": "^9.5",
+        "typo3/cms-felogin": "^9.5",
+        "bk2k/bootstrap-package": "^10.0"
+    }
+}

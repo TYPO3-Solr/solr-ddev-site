@@ -1,0 +1,7 @@
+#
+# PageTS for Apache Solr for TYPO3 Sitepackage
+#
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:apache_solr_for_typo3_sitepackage/Configuration/PageTS/RTE.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:apache_solr_for_typo3_sitepackage/Configuration/PageTS/TCEFORM.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:apache_solr_for_typo3_sitepackage/Configuration/PageTS/TCEMAIN.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:apache_solr_for_typo3_sitepackage/Configuration/PageTS/Mod/WebLayout/BackendLayouts.txt">

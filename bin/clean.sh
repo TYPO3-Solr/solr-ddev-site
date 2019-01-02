@@ -1,0 +1,17 @@
+ddev remove --remove-data
+
+rm -fR var/
+rm -fR vendor/
+rm -fR public/fileadmin
+rm -fR public/typo3
+rm -fR public/typo3temp
+rm -fR public/typo3conf/ext
+rm -fR public/typo3conf/l10n
+
+
+rm -fR public/typo3conf/LocalConfiguration.php
+rm -fR public/typo3conf/PackageStates.php
+rm public/index.php
+
+
+

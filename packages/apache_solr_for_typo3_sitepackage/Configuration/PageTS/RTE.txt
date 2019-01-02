@@ -1,0 +1,8 @@
+#############
+#### RTE ####
+#############
+RTE {
+    default {
+        preset = apache_solr_for_typo3_sitepackage
+    }
+}
