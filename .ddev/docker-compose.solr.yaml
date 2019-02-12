@@ -2,7 +2,7 @@ version: '3.6'
 
 services:
   solr:
-    image: typo3solr/ext-solr:latest
+    image: typo3solr/ext-solr:9.0.0
     restart: always
     ports:
       - 8983
