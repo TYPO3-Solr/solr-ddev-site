@@ -1,9 +1,10 @@
-APIVersion: v1.5.1
+APIVersion: v1.6.0
 name: solr-ddev-site
 type: typo3
 docroot: public
 php_version: "7.2"
 webserver_type: nginx-fpm
+#nfs_mount_enabled: true
 router_http_port: "80"
 router_https_port: "443"
 xdebug_enabled: false

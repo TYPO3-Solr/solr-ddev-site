@@ -8,21 +8,21 @@
     "packages": [
         {
             "name": "apache-solr-for-typo3/solr",
-            "version": "9.0.0",
+            "version": "9.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-Solr/ext-solr.git",
-                "reference": "6eec0e280457e743748d52cf694707e19cd618df"
+                "reference": "96bbc3329b331398ccb636ce4e023c6656b757e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-Solr/ext-solr/zipball/6eec0e280457e743748d52cf694707e19cd618df",
-                "reference": "6eec0e280457e743748d52cf694707e19cd618df",
+                "url": "https://api.github.com/repos/TYPO3-Solr/ext-solr/zipball/96bbc3329b331398ccb636ce4e023c6656b757e9",
+                "reference": "96bbc3329b331398ccb636ce4e023c6656b757e9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0.0",
-                "solarium/solarium": "^4.2.0",
+                "solarium/solarium": "~4.2.0",
                 "typo3/cms-backend": "^8.7.0 || ^9.5.0",
                 "typo3/cms-core": "^8.7.0 || ^9.5.0",
                 "typo3/cms-extbase": "^8.7.0 || ^9.5.0",
@@ -79,7 +79,7 @@
                 "solr",
                 "typo3"
             ],
-            "time": "2019-02-11T10:17:41+00:00"
+            "time": "2019-02-25T07:59:22+00:00"
         },
         {
             "name": "apache-solr-for-typo3/tika",
@@ -1553,20 +1553,21 @@
                 "idna",
                 "php"
             ],
+            "abandoned": "https://github.com/algo26-matthias/idna-convert",
             "time": "2016-06-19T18:08:43+00:00"
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.2.0",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "594bcae1fc0bccd3993d2f0d61a018e26ac2865a"
+                "reference": "5221f49a608808c1e4d436df32884cbc1b821ac0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/594bcae1fc0bccd3993d2f0d61a018e26ac2865a",
-                "reference": "594bcae1fc0bccd3993d2f0d61a018e26ac2865a",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/5221f49a608808c1e4d436df32884cbc1b821ac0",
+                "reference": "5221f49a608808c1e4d436df32884cbc1b821ac0",
                 "shasum": ""
             },
             "require": {
@@ -1604,7 +1605,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-01-12T16:31:37+00:00"
+            "time": "2019-02-16T20:54:15+00:00"
         },
         {
             "name": "psr/cache",

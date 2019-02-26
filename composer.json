@@ -44,16 +44,12 @@
     "scripts": {
         "typo3-cms-scripts": [
             "typo3cms install:fixfolderstructure",
-            "typo3cms install:generatepackagestates"
-        ],
-        "typo3-post-install": [
+            "typo3cms install:generatepackagestates",
+            "typo3cms cache:flush",
             "typo3cms solr:updateconnections"
         ],
         "post-autoload-dump": [
             "@typo3-cms-scripts"
-        ],
-        "post-install-cmd": [
-            "@typo3-post-install"
         ]
     }
 }
