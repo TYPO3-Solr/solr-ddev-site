@@ -20,13 +20,13 @@ ddev start
 After the startup you can access the TYPO3 site with the following url:
 
 ```
-http://solr-ddev-site.ddev.local/
+http://solr-ddev-site.ddev.site/
 ```
 
 The TYPO3 backend can be accessed with:
 
 ```
-http://solr-ddev-site.ddev.local/typo3/
+http://solr-ddev-site.ddev.site/typo3/
 ```
 
 Username: admin
