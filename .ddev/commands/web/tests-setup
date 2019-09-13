@@ -1,0 +1,18 @@
+#!/bin/bash
+
+## Description: bootstrap Test environment for EXT:solr
+
+echo "Purging previous .Test-Build state:"
+rm -Rf packages/.Test-Build/{bin,public,vendor,composer.lock}
+echo "done"
+
+cd packages/.Test-Build/
+
+# Install build tools
+#composer global require friendsofphp/php-cs-fixer:"$PHP_CS_FIXER_VERSION"
+#composer global require scrutinizer/ocular:"1.5.2"
+#composer global require namelesscoder/typo3-repository-client
+
+composer install --prefer-source
+
+echo bootstraping tests done! You can run the tests by 'ddev tests-unit|tests-integration'

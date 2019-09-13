@@ -8,3 +8,13 @@ nbproject
 /public/typo3conf/*
 /public/typo3conf/LocalConfiguration.php
 !/public/typo3conf/AdditionalConfiguration.php
+.ddev/solr/data
+
+# Testing Environment
+packages/.Test-Build/bin
+packages/.Test-Build/public
+packages/.Test-Build/vendor
+packages/.Test-Build/composer.lock
+packages/.Test-Build/var/log
+.ddev/solr/configsets/ext_solr_9_0_0/conf/_schema_analysis_stopwords_english.json
+
