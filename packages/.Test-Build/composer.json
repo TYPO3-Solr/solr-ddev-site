@@ -14,16 +14,18 @@
             "type": "composer",
             "url": "https://composer.typo3.org/"
         },
-        "ext-solr": {
+        "ext-solr-stack": {
             "type": "path",
-            "url": "../../public/typo3conf/ext/solr/",
+            "url": "../../packages/*",
             "options": {
               "symlink": true
             }
         }
     },
     "require": {
-        "apache-solr-for-typo3/solr":"@dev"
+        "apache-solr-for-typo3/solr":"@dev",
+        "apache-solr-for-typo3/solrfal": "@dev",
+        "typo3/cms-filemetadata": "^9.5"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.0",
@@ -40,6 +42,7 @@
     "autoload-dev": {
         "psr-4": {
             "ApacheSolrForTypo3\\Solr\\Tests\\": "public/typo3conf/ext/solr/Tests/",
+            "ApacheSolrForTypo3\\Solrfal\\Tests\\": "public/typo3conf/ext/solrfal/Tests/",
             "TYPO3\\CMS\\Core\\Tests\\": "public/typo3/sysext/core/Tests/"
         }
     }
