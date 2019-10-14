@@ -3,6 +3,8 @@
 nbproject
 /var
 /vendor
+/packages
+!/packages/apache_solr_for_typo3_sitepackage
 /public/*
 !/public/typo3conf
 /public/typo3conf/*

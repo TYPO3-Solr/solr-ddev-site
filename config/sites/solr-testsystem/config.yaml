@@ -1,0 +1,55 @@
+rootPageId: 1
+base: 'http://solr-ddev-site.ddev.site/'
+baseVariants: {  }
+languages:
+  -
+    title: English
+    enabled: true
+    languageId: '0'
+    base: /
+    typo3Language: default
+    locale: en_US.UTF-8
+    iso-639-1: en
+    navigationTitle: ''
+    hreflang: en-US
+    direction: ''
+    flag: us
+    solr_core_read: core_en
+  -
+    title: German
+    enabled: true
+    languageId: '2'
+    base: /de/
+    typo3Language: de
+    locale: de_DE.UTF-8
+    iso-639-1: de
+    navigationTitle: ''
+    hreflang: de-DE
+    direction: ltr
+    fallbackType: fallback
+    fallbacks: '0'
+    flag: de
+    solr_core_read: core_de
+  -
+    title: Dansk
+    enabled: true
+    languageId: '1'
+    base: /da/
+    typo3Language: da
+    locale: da_DA.UTF-8
+    iso-639-1: da
+    navigationTitle: ''
+    hreflang: da-DA
+    direction: ltr
+    fallbackType: fallback
+    fallbacks: '0'
+    flag: dk
+    solr_core_read: core_da
+errorHandling: {  }
+routes: {  }
+solr_enabled_read: true
+solr_scheme_read: http
+solr_host_read: solr
+solr_port_read: 8983
+solr_path_read: /solr/
+solr_use_write_connection: false

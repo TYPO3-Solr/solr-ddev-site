@@ -41,3 +41,19 @@ ddev stop
 ddev remove --remove-data
 ddev start
 ```
+
+## Running tests:
+
+The tests can be executed within the ddev docker containers.
+Note: Before running tests the testing environment must be set up:
+
+### setup tests
+    ddev tests-setup
+
+### run unit tests    
+    ddev tests-unit
+
+### run integration tests
+    ddev tests-integration
+
+[See more about running tests whithin ddev](.ddev/commands/web/README.md)
