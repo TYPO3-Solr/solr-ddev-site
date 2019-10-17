@@ -61,7 +61,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/ext-solr",
-                "reference": "824efc0e193758064dceb5a9782c4f6c23137ac6"
+                "reference": "5ff76afed9330c13e253707546782166815c37ce"
             },
             "require": {
                 "php": ">=7.2.0",
@@ -3019,27 +3019,23 @@
         },
         {
             "name": "typo3/cms-about",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/about.git",
-                "reference": "1b705f3c69db3aada522fb022e3b4bab8b2d887a"
+                "reference": "98c7efc7825be196eb7fd9f7c894464093f80136"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/about/zipball/1b705f3c69db3aada522fb022e3b4bab8b2d887a",
-                "reference": "1b705f3c69db3aada522fb022e3b4bab8b2d887a",
+                "url": "https://api.github.com/repos/TYPO3-CMS/about/zipball/98c7efc7825be196eb7fd9f7c894464093f80136",
+                "reference": "98c7efc7825be196eb7fd9f7c894464093f80136",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "about": "*",
-                "aboutmodules": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -3068,37 +3064,34 @@
             ],
             "description": "Shows info about TYPO3, installed extensions and a separate module for available modules.",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-adminpanel",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/adminpanel.git",
-                "reference": "3ce4d389c90c587469831c3134a0690968ac8afa"
+                "reference": "f492ba66596ca9a31c2424c9040a4dcacede8a4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/adminpanel/zipball/3ce4d389c90c587469831c3134a0690968ac8afa",
-                "reference": "3ce4d389c90c587469831c3134a0690968ac8afa",
+                "url": "https://api.github.com/repos/TYPO3-CMS/adminpanel/zipball/f492ba66596ca9a31c2424c9040a4dcacede8a4b",
+                "reference": "f492ba66596ca9a31c2424c9040a4dcacede8a4b",
                 "shasum": ""
             },
             "require": {
                 "psr/http-message": "~1.0",
                 "psr/http-server-handler": "^1.0",
                 "psr/http-server-middleware": "^1.0",
-                "typo3/cms-backend": "9.5.9",
-                "typo3/cms-core": "9.5.9",
-                "typo3/cms-fluid": "9.5.9",
-                "typo3/cms-frontend": "9.5.9",
-                "typo3fluid/fluid": "^2.6.1"
+                "typo3/cms-backend": "9.5.10",
+                "typo3/cms-core": "9.5.10",
+                "typo3/cms-fluid": "9.5.10",
+                "typo3/cms-frontend": "9.5.10",
+                "typo3fluid/fluid": "^2.6.4"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "adminpanel": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -3132,31 +3125,30 @@
             ],
             "description": "The TYPO3 admin panel provides a panel with additional functionality in the frontend (Debugging, Caching, Preview...)",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-backend",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/backend.git",
-                "reference": "111fe69b44ccbdbde60784f8f945c85572871d86"
+                "reference": "1aff743e3ed58fbf296449773b6041f4ca08ad99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/backend/zipball/111fe69b44ccbdbde60784f8f945c85572871d86",
-                "reference": "111fe69b44ccbdbde60784f8f945c85572871d86",
+                "url": "https://api.github.com/repos/TYPO3-CMS/backend/zipball/1aff743e3ed58fbf296449773b6041f4ca08ad99",
+                "reference": "1aff743e3ed58fbf296449773b6041f4ca08ad99",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9",
-                "typo3/cms-recordlist": "9.5.9"
+                "typo3/cms-core": "9.5.10",
+                "typo3/cms-recordlist": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
             },
             "replace": {
-                "backend": "*",
                 "typo3/cms-context-help": "*",
                 "typo3/cms-cshmanual": "*",
                 "typo3/cms-func-wizards": "*",
@@ -3197,30 +3189,27 @@
             ],
             "description": "Classes for the TYPO3 backend.",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-belog",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/belog.git",
-                "reference": "7d6bd8976feb4e1387cb1d131a05af8478687198"
+                "reference": "d6f180c4ab1c4ea886dfa9c6d575ff75bb133bca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/belog/zipball/7d6bd8976feb4e1387cb1d131a05af8478687198",
-                "reference": "7d6bd8976feb4e1387cb1d131a05af8478687198",
+                "url": "https://api.github.com/repos/TYPO3-CMS/belog/zipball/d6f180c4ab1c4ea886dfa9c6d575ff75bb133bca",
+                "reference": "d6f180c4ab1c4ea886dfa9c6d575ff75bb133bca",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "belog": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -3249,30 +3238,27 @@
             ],
             "description": "Displays backend log, both per page and system wide. Available as the module Tools>Log (system wide overview) and Web>Info/Log (page relative overview).",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-beuser",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/beuser.git",
-                "reference": "ee992e061cd7de4e52839b3583514b2fb7d3d157"
+                "reference": "f1548124c8353915b5f577f6c0aec80e39f3c57e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/beuser/zipball/ee992e061cd7de4e52839b3583514b2fb7d3d157",
-                "reference": "ee992e061cd7de4e52839b3583514b2fb7d3d157",
+                "url": "https://api.github.com/repos/TYPO3-CMS/beuser/zipball/f1548124c8353915b5f577f6c0aec80e39f3c57e",
+                "reference": "f1548124c8353915b5f577f6c0aec80e39f3c57e",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "beuser": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -3301,7 +3287,7 @@
             ],
             "description": "Backend user administration and overview. Allows you to compare the settings of users and verify their permissions and see who is online.",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-cli",
@@ -3401,16 +3387,16 @@
         },
         {
             "name": "typo3/cms-core",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/core.git",
-                "reference": "bd1efc03cb11b4a8c8249cc81d09ec87de87b8c7"
+                "reference": "c35002293c084e625bdd124eef4885e30ade235d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/core/zipball/bd1efc03cb11b4a8c8249cc81d09ec87de87b8c7",
-                "reference": "bd1efc03cb11b4a8c8249cc81d09ec87de87b8c7",
+                "url": "https://api.github.com/repos/TYPO3-CMS/core/zipball/c35002293c084e625bdd124eef4885e30ade235d",
+                "reference": "c35002293c084e625bdd124eef4885e30ade235d",
                 "shasum": ""
             },
             "require": {
@@ -3446,7 +3432,7 @@
                 "typo3/cms-cli": "^2.0",
                 "typo3/cms-composer-installers": "^2.0",
                 "typo3/phar-stream-wrapper": "^3.1.2",
-                "typo3fluid/fluid": "^2.6.1"
+                "typo3fluid/fluid": "^2.6.4"
             },
             "conflict": {
                 "symfony/cache": "< 2.8.50 >= 2.8.0 || < 3.4.26 >= 3.4.0 || < 4.1.12 >= 4.1.0 || < 4.2.7 >= 4.2.0",
@@ -3455,7 +3441,6 @@
                 "typo3/cms": "*"
             },
             "replace": {
-                "core": "*",
                 "typo3/cms-lang": "*",
                 "typo3/cms-saltedpasswords": "*",
                 "typo3/cms-sv": "*"
@@ -3463,7 +3448,7 @@
             "require-dev": {
                 "codeception/codeception": "^2.5.4",
                 "fiunchinho/phpunit-randomizer": "^4.0",
-                "friendsofphp/php-cs-fixer": "^2.12.2",
+                "friendsofphp/php-cs-fixer": "^2.15.2",
                 "typo3/cms-styleguide": "~9.2.2",
                 "typo3/testing-framework": "~4.12.0"
             },
@@ -3516,30 +3501,27 @@
             ],
             "description": "The core library of TYPO3.",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-extbase",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/extbase.git",
-                "reference": "a919ba5322016ebfae00ddd9fa48196ae1be9a71"
+                "reference": "2a0d95bf467d8d2f2066c00b43c194f6c6141efe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/extbase/zipball/a919ba5322016ebfae00ddd9fa48196ae1be9a71",
-                "reference": "a919ba5322016ebfae00ddd9fa48196ae1be9a71",
+                "url": "https://api.github.com/repos/TYPO3-CMS/extbase/zipball/2a0d95bf467d8d2f2066c00b43c194f6c6141efe",
+                "reference": "2a0d95bf467d8d2f2066c00b43c194f6c6141efe",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "extbase": "*"
             },
             "suggest": {
                 "typo3/cms-scheduler": "Additional scheduler tasks"
@@ -3578,30 +3560,27 @@
             ],
             "description": "A framework to build extensions for TYPO3 CMS.",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-extensionmanager",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/extensionmanager.git",
-                "reference": "3e0f4d066f390f5712d0f98225c095bc2ebaab82"
+                "reference": "c6d910cc0f467a7860acfca89ec408ea81e6347e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/extensionmanager/zipball/3e0f4d066f390f5712d0f98225c095bc2ebaab82",
-                "reference": "3e0f4d066f390f5712d0f98225c095bc2ebaab82",
+                "url": "https://api.github.com/repos/TYPO3-CMS/extensionmanager/zipball/c6d910cc0f467a7860acfca89ec408ea81e6347e",
+                "reference": "c6d910cc0f467a7860acfca89ec408ea81e6347e",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "extensionmanager": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -3632,30 +3611,27 @@
             ],
             "description": "TYPO3 Extension Manager",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-felogin",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/felogin.git",
-                "reference": "bd06a465cddc35d610eb86c06ff868f572909207"
+                "reference": "e93535593595a703ad027c0dda5e0fa9d6a8b07c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/felogin/zipball/bd06a465cddc35d610eb86c06ff868f572909207",
-                "reference": "bd06a465cddc35d610eb86c06ff868f572909207",
+                "url": "https://api.github.com/repos/TYPO3-CMS/felogin/zipball/e93535593595a703ad027c0dda5e0fa9d6a8b07c",
+                "reference": "e93535593595a703ad027c0dda5e0fa9d6a8b07c",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "felogin": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -3684,30 +3660,27 @@
             ],
             "description": "A template-based plugin to log in Website Users in the Frontend",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-filelist",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/filelist.git",
-                "reference": "45378374b86aac35f346470573d70525fe9b1315"
+                "reference": "75eff1dfbf07177b035f9cf73d8005eadcdb0197"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/filelist/zipball/45378374b86aac35f346470573d70525fe9b1315",
-                "reference": "45378374b86aac35f346470573d70525fe9b1315",
+                "url": "https://api.github.com/repos/TYPO3-CMS/filelist/zipball/75eff1dfbf07177b035f9cf73d8005eadcdb0197",
+                "reference": "75eff1dfbf07177b035f9cf73d8005eadcdb0197",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "filelist": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -3738,30 +3711,27 @@
             ],
             "description": "Listing of files in the directory",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-filemetadata",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/filemetadata.git",
-                "reference": "b057549dd8117c859fde12458823a3d34be352eb"
+                "reference": "ea9d3f467b28404a34f8939e79c8cbdf33f6aca1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/filemetadata/zipball/b057549dd8117c859fde12458823a3d34be352eb",
-                "reference": "b057549dd8117c859fde12458823a3d34be352eb",
+                "url": "https://api.github.com/repos/TYPO3-CMS/filemetadata/zipball/ea9d3f467b28404a34f8939e79c8cbdf33f6aca1",
+                "reference": "ea9d3f467b28404a34f8939e79c8cbdf33f6aca1",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "filemetadata": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -3782,32 +3752,29 @@
             ],
             "description": "Add advanced metadata to File.",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-fluid",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/fluid.git",
-                "reference": "6738a29b6a944003ecd2594a273374f23e4282a1"
+                "reference": "8a6b23d3ec0fe308974f630c7e63711ac95c9162"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/fluid/zipball/6738a29b6a944003ecd2594a273374f23e4282a1",
-                "reference": "6738a29b6a944003ecd2594a273374f23e4282a1",
+                "url": "https://api.github.com/repos/TYPO3-CMS/fluid/zipball/8a6b23d3ec0fe308974f630c7e63711ac95c9162",
+                "reference": "8a6b23d3ec0fe308974f630c7e63711ac95c9162",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9",
-                "typo3/cms-extbase": "9.5.9",
-                "typo3fluid/fluid": "^2.6.1"
+                "typo3/cms-core": "9.5.10",
+                "typo3/cms-extbase": "9.5.10",
+                "typo3fluid/fluid": "^2.6.4"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "fluid": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -3843,32 +3810,29 @@
             ],
             "description": "Fluid is a next-generation templating engine which makes the life of extension authors a lot easier!",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-fluid-styled-content",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/fluid_styled_content.git",
-                "reference": "327def20b191c486affa6ef284cd1c5a8c878056"
+                "reference": "215e1b57ecd13ea375ce192ef7f8bc8819fb15cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/fluid_styled_content/zipball/327def20b191c486affa6ef284cd1c5a8c878056",
-                "reference": "327def20b191c486affa6ef284cd1c5a8c878056",
+                "url": "https://api.github.com/repos/TYPO3-CMS/fluid_styled_content/zipball/215e1b57ecd13ea375ce192ef7f8bc8819fb15cb",
+                "reference": "215e1b57ecd13ea375ce192ef7f8bc8819fb15cb",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9",
-                "typo3/cms-fluid": "9.5.9",
-                "typo3/cms-frontend": "9.5.9"
+                "typo3/cms-core": "9.5.10",
+                "typo3/cms-fluid": "9.5.10",
+                "typo3/cms-frontend": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "fluid_styled_content": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -3897,32 +3861,29 @@
             ],
             "description": "A set of common content elements based on Fluid for Frontend output.",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-form",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/form.git",
-                "reference": "a857775db2b04a8d8d00366195166a583313efd1"
+                "reference": "60d72cd6e3e07c3d89cb9c1ea1f0a1f32f729112"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/form/zipball/a857775db2b04a8d8d00366195166a583313efd1",
-                "reference": "a857775db2b04a8d8d00366195166a583313efd1",
+                "url": "https://api.github.com/repos/TYPO3-CMS/form/zipball/60d72cd6e3e07c3d89cb9c1ea1f0a1f32f729112",
+                "reference": "60d72cd6e3e07c3d89cb9c1ea1f0a1f32f729112",
                 "shasum": ""
             },
             "require": {
                 "psr/http-message": "~1.0",
                 "symfony/expression-language": "^4.1",
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "form": "*"
             },
             "suggest": {
                 "typo3/cms-filelist": "Add context menu item for form files",
@@ -3955,30 +3916,27 @@
             ],
             "description": "Form Library, Plugin and Editor",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-frontend",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/frontend.git",
-                "reference": "a3b9f0039ff8d3021f6d93752ffbc8edef4231b8"
+                "reference": "833dc6077d9ecff68e8384fa51f188412e36604f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/frontend/zipball/a3b9f0039ff8d3021f6d93752ffbc8edef4231b8",
-                "reference": "a3b9f0039ff8d3021f6d93752ffbc8edef4231b8",
+                "url": "https://api.github.com/repos/TYPO3-CMS/frontend/zipball/833dc6077d9ecff68e8384fa51f188412e36604f",
+                "reference": "833dc6077d9ecff68e8384fa51f188412e36604f",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "frontend": "*"
             },
             "suggest": {
                 "typo3/cms-adminpanel": "Provides additional information and functionality for backend users in the frontend."
@@ -4012,30 +3970,27 @@
             ],
             "description": "Classes for the frontend of TYPO3.",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-impexp",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/impexp.git",
-                "reference": "5ff29a447c39b504df1741e105b560250cc2b548"
+                "reference": "e399a82bb2f01a33f7ad6f518890fc66c4122338"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/impexp/zipball/5ff29a447c39b504df1741e105b560250cc2b548",
-                "reference": "5ff29a447c39b504df1741e105b560250cc2b548",
+                "url": "https://api.github.com/repos/TYPO3-CMS/impexp/zipball/e399a82bb2f01a33f7ad6f518890fc66c4122338",
+                "reference": "e399a82bb2f01a33f7ad6f518890fc66c4122338",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "impexp": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -4064,30 +4019,27 @@
             ],
             "description": "Import and Export of records from TYPO3 in a custom serialized format (.T3D) for data exchange with other TYPO3 systems.",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-indexed-search",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/indexed_search.git",
-                "reference": "a3467db963a7c23202be46ecdbaae90103b13825"
+                "reference": "7f764da3fb8e4dba40d03912abfb9511b857b0f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/indexed_search/zipball/a3467db963a7c23202be46ecdbaae90103b13825",
-                "reference": "a3467db963a7c23202be46ecdbaae90103b13825",
+                "url": "https://api.github.com/repos/TYPO3-CMS/indexed_search/zipball/7f764da3fb8e4dba40d03912abfb9511b857b0f7",
+                "reference": "7f764da3fb8e4dba40d03912abfb9511b857b0f7",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "indexed_search": "*"
             },
             "suggest": {
                 "typo3/cms-scheduler": "For garbage collection of search statistics"
@@ -4116,30 +4068,29 @@
             ],
             "description": "Indexed Search Engine for TYPO3 pages, PDF-files, Word-files, HTML and text files. Provides a backend module for statistics of the indexer and a frontend plugin. Documentation can be found in the extension \"doc_indexed_search\".",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-info",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/info.git",
-                "reference": "a1f9d5af386a6dbf569d0a847d2c4351005a23f1"
+                "reference": "3e5684d88eee01d70bf0b0795f1afe0bb011f79d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/info/zipball/a1f9d5af386a6dbf569d0a847d2c4351005a23f1",
-                "reference": "a1f9d5af386a6dbf569d0a847d2c4351005a23f1",
+                "url": "https://api.github.com/repos/TYPO3-CMS/info/zipball/3e5684d88eee01d70bf0b0795f1afe0bb011f79d",
+                "reference": "3e5684d88eee01d70bf0b0795f1afe0bb011f79d",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
             },
             "replace": {
-                "info": "*",
                 "typo3/cms-info-pagetsconfig": "*"
             },
             "type": "typo3-cms-framework",
@@ -4175,34 +4126,31 @@
             ],
             "description": "Shows various infos",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-install",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/install.git",
-                "reference": "1160cc6a574c892f0d758546c1a4105daaf0e0f2"
+                "reference": "f40a46e9991bc6f021edd17f0455422217a835d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/install/zipball/1160cc6a574c892f0d758546c1a4105daaf0e0f2",
-                "reference": "1160cc6a574c892f0d758546c1a4105daaf0e0f2",
+                "url": "https://api.github.com/repos/TYPO3-CMS/install/zipball/f40a46e9991bc6f021edd17f0455422217a835d0",
+                "reference": "f40a46e9991bc6f021edd17f0455422217a835d0",
                 "shasum": ""
             },
             "require": {
                 "nikic/php-parser": "^4.2",
                 "symfony/finder": "^4.1",
-                "typo3/cms-core": "9.5.9",
-                "typo3/cms-extbase": "9.5.9",
-                "typo3/cms-fluid": "9.5.9"
+                "typo3/cms-core": "9.5.10",
+                "typo3/cms-extbase": "9.5.10",
+                "typo3/cms-fluid": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "install": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -4233,30 +4181,27 @@
             ],
             "description": "The Install Tool mounted as the module Tools>Install in TYPO3.",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-recordlist",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/recordlist.git",
-                "reference": "95af24c587f002ac34c9f980d7b682cd4b22f1b8"
+                "reference": "b843f95c58cee8ec6029f4b0a63a59d05b257387"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/recordlist/zipball/95af24c587f002ac34c9f980d7b682cd4b22f1b8",
-                "reference": "95af24c587f002ac34c9f980d7b682cd4b22f1b8",
+                "url": "https://api.github.com/repos/TYPO3-CMS/recordlist/zipball/b843f95c58cee8ec6029f4b0a63a59d05b257387",
+                "reference": "b843f95c58cee8ec6029f4b0a63a59d05b257387",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "recordlist": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -4292,32 +4237,29 @@
             ],
             "description": "List of database-records",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-redirects",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/redirects.git",
-                "reference": "abd4d34fdf0b986b8ade15f8a00493edc46f1d1c"
+                "reference": "e730a4594ea89d442a0bee8376c676f30dd439b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/redirects/zipball/abd4d34fdf0b986b8ade15f8a00493edc46f1d1c",
-                "reference": "abd4d34fdf0b986b8ade15f8a00493edc46f1d1c",
+                "url": "https://api.github.com/repos/TYPO3-CMS/redirects/zipball/e730a4594ea89d442a0bee8376c676f30dd439b5",
+                "reference": "e730a4594ea89d442a0bee8376c676f30dd439b5",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-backend": "9.5.9",
-                "typo3/cms-core": "9.5.9",
-                "typo3fluid/fluid": "^2.6.1"
+                "typo3/cms-backend": "9.5.10",
+                "typo3/cms-core": "9.5.10",
+                "typo3fluid/fluid": "^2.6.4"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "redirects": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -4346,30 +4288,27 @@
             ],
             "description": "Custom redirects in TYPO3.",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-reports",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/reports.git",
-                "reference": "2be538166b5e94540d31c4755355e229c510c655"
+                "reference": "2a17d0b69a31548645e652cc6478e9f6b5814986"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/reports/zipball/2be538166b5e94540d31c4755355e229c510c655",
-                "reference": "2be538166b5e94540d31c4755355e229c510c655",
+                "url": "https://api.github.com/repos/TYPO3-CMS/reports/zipball/2a17d0b69a31548645e652cc6478e9f6b5814986",
+                "reference": "2a17d0b69a31548645e652cc6478e9f6b5814986",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "reports": "*"
             },
             "suggest": {
                 "typo3/cms-scheduler": "Determine system's status and send it via email"
@@ -4406,30 +4345,27 @@
             ],
             "description": "The reports module groups several system reports.",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-rte-ckeditor",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/rte_ckeditor.git",
-                "reference": "d45c301af19899bc613f1bd550f2b953c788cdbf"
+                "reference": "9cff3aaa50a7e8b51cf283f9a5bf555e5951aa26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/rte_ckeditor/zipball/d45c301af19899bc613f1bd550f2b953c788cdbf",
-                "reference": "d45c301af19899bc613f1bd550f2b953c788cdbf",
+                "url": "https://api.github.com/repos/TYPO3-CMS/rte_ckeditor/zipball/9cff3aaa50a7e8b51cf283f9a5bf555e5951aa26",
+                "reference": "9cff3aaa50a7e8b51cf283f9a5bf555e5951aa26",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "rte_ckeditor": "*"
             },
             "suggest": {
                 "typo3/cms-setup": "*"
@@ -4461,30 +4397,27 @@
             ],
             "description": "Integration of CKEditor as Rich Text Editor.",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-scheduler",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/scheduler.git",
-                "reference": "171e37b7a7eafe881cce08d44b0f9e007295c015"
+                "reference": "88003b7e53ea26b09928925bdee66f13a03bfc08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/scheduler/zipball/171e37b7a7eafe881cce08d44b0f9e007295c015",
-                "reference": "171e37b7a7eafe881cce08d44b0f9e007295c015",
+                "url": "https://api.github.com/repos/TYPO3-CMS/scheduler/zipball/88003b7e53ea26b09928925bdee66f13a03bfc08",
+                "reference": "88003b7e53ea26b09928925bdee66f13a03bfc08",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "scheduler": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -4510,32 +4443,29 @@
             ],
             "description": "The TYPO3 Scheduler let's you register tasks to happen at a specific time",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-seo",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/seo.git",
-                "reference": "2bc0a9bc48b489559fd950092270e8d82a94527a"
+                "reference": "6ab45f03c77dabb7e6638b3f434d99eae30840c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/seo/zipball/2bc0a9bc48b489559fd950092270e8d82a94527a",
-                "reference": "2bc0a9bc48b489559fd950092270e8d82a94527a",
+                "url": "https://api.github.com/repos/TYPO3-CMS/seo/zipball/6ab45f03c77dabb7e6638b3f434d99eae30840c3",
+                "reference": "6ab45f03c77dabb7e6638b3f434d99eae30840c3",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9",
-                "typo3/cms-extbase": "9.5.9",
-                "typo3/cms-frontend": "9.5.9"
+                "typo3/cms-core": "9.5.10",
+                "typo3/cms-extbase": "9.5.10",
+                "typo3/cms-frontend": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "seo": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -4564,30 +4494,27 @@
             ],
             "description": "SEO features for TYPO3.",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-setup",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/setup.git",
-                "reference": "9ef5a3e29172797a3c4b1fe881302463b3a6c02f"
+                "reference": "d9ae206b7d31a00ce73f44b98e93dd68935a2aba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/setup/zipball/9ef5a3e29172797a3c4b1fe881302463b3a6c02f",
-                "reference": "9ef5a3e29172797a3c4b1fe881302463b3a6c02f",
+                "url": "https://api.github.com/repos/TYPO3-CMS/setup/zipball/d9ae206b7d31a00ce73f44b98e93dd68935a2aba",
+                "reference": "d9ae206b7d31a00ce73f44b98e93dd68935a2aba",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "setup": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -4616,30 +4543,27 @@
             ],
             "description": "Allows users to edit a limited set of options for their user profile, eg. preferred language and their name and email address.",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-sys-note",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/sys_note.git",
-                "reference": "cfa9ef50ef105be629853819948caafc781a11c8"
+                "reference": "0bbf44a3d4757c05d619bce50ada15fe49db70b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/sys_note/zipball/cfa9ef50ef105be629853819948caafc781a11c8",
-                "reference": "cfa9ef50ef105be629853819948caafc781a11c8",
+                "url": "https://api.github.com/repos/TYPO3-CMS/sys_note/zipball/0bbf44a3d4757c05d619bce50ada15fe49db70b2",
+                "reference": "0bbf44a3d4757c05d619bce50ada15fe49db70b2",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "sys_note": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -4668,30 +4592,27 @@
             ],
             "description": "Records with messages which can be placed on any page and contain instructions or other information related to a page or section.",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-t3editor",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/t3editor.git",
-                "reference": "798c7291257f60d1d1b7f9934d401e9b4fa40b26"
+                "reference": "54fd3f6d00a383028e01628e7d5402357a876df1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/t3editor/zipball/798c7291257f60d1d1b7f9934d401e9b4fa40b26",
-                "reference": "798c7291257f60d1d1b7f9934d401e9b4fa40b26",
+                "url": "https://api.github.com/repos/TYPO3-CMS/t3editor/zipball/54fd3f6d00a383028e01628e7d5402357a876df1",
+                "reference": "54fd3f6d00a383028e01628e7d5402357a876df1",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "t3editor": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -4725,30 +4646,27 @@
             ],
             "description": "JavaScript-driven editor with syntax highlighting and codecompletion. Based on CodeMirror.",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-tstemplate",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/tstemplate.git",
-                "reference": "a20f22c3ec1095e59c3c0113611f69c8b2a2713f"
+                "reference": "1a877413cd9539e0189c874c1a6bb94b884393e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/tstemplate/zipball/a20f22c3ec1095e59c3c0113611f69c8b2a2713f",
-                "reference": "a20f22c3ec1095e59c3c0113611f69c8b2a2713f",
+                "url": "https://api.github.com/repos/TYPO3-CMS/tstemplate/zipball/1a877413cd9539e0189c874c1a6bb94b884393e3",
+                "reference": "1a877413cd9539e0189c874c1a6bb94b884393e3",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "tstemplate": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -4777,30 +4695,27 @@
             ],
             "description": "Framework for management of TypoScript template records for the CMS frontend.",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/cms-viewpage",
-            "version": "v9.5.9",
+            "version": "v9.5.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/viewpage.git",
-                "reference": "7b6eb3905ec6cc5dde9cf450a48955c39f054349"
+                "reference": "d38e5b1e249d5f0231ccba1be2ec51f24c6db005"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/viewpage/zipball/7b6eb3905ec6cc5dde9cf450a48955c39f054349",
-                "reference": "7b6eb3905ec6cc5dde9cf450a48955c39f054349",
+                "url": "https://api.github.com/repos/TYPO3-CMS/viewpage/zipball/d38e5b1e249d5f0231ccba1be2ec51f24c6db005",
+                "reference": "d38e5b1e249d5f0231ccba1be2ec51f24c6db005",
                 "shasum": ""
             },
             "require": {
-                "typo3/cms-core": "9.5.9"
+                "typo3/cms-core": "9.5.10"
             },
             "conflict": {
                 "typo3/cms": "*"
-            },
-            "replace": {
-                "viewpage": "*"
             },
             "type": "typo3-cms-framework",
             "extra": {
@@ -4829,7 +4744,7 @@
             ],
             "description": "Shows the frontend webpage inside the backend frameset.",
             "homepage": "https://typo3.org",
-            "time": "2019-08-20T09:33:35+00:00"
+            "time": "2019-10-15T07:29:55+00:00"
         },
         {
             "name": "typo3/minimal",
