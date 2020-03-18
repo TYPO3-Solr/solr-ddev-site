@@ -51,9 +51,6 @@
             "typo3cms install:generatepackagestates",
             "typo3cms cache:flush"
         ],
-        "pre-autoload-dump": [
-            "[ -L public/typo3conf/ext/solr ] || ln -snvf ../../../packages/ext-solr public/typo3conf/ext/solr"
-        ],
         "post-autoload-dump": [
             "@typo3-cms-scripts"
         ]
@@ -61,7 +58,7 @@
     "extra": {
         "merge-plugin": {
             "require": [
-                "packages/ext-solr/composer.json"
+                "public/typo3conf/ext/solr/composer.json"
             ],
             "recurse": false,
             "replace": false,
