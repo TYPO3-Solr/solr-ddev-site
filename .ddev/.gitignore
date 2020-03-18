@@ -4,6 +4,7 @@
 /commands/*/*.example
 /commands/*/README.txt
 /commands/host/launch
+/commands/db/mysql
 /homeadditions/*.example
 /homeadditions/README.txt
 /.gitignore
