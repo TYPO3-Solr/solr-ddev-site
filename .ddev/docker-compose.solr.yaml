@@ -18,5 +18,3 @@ services:
   web:
     links:
       - solr:$DDEV_HOSTNAME
-    env_file:
-      - ../packages/.Test-Build/.env

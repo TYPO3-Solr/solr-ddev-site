@@ -1,7 +1,7 @@
 #!/bin/bash
 
-## Description: run mysqldump in web container
-## Usage: mysqldump [flags] [args]
-## Example: "ddev mysqldump db" or "ddev mysqldump otherdb" or "ddev mysqldump db | gzip >db.sql.gz"
+## Description: run mysqldump-root in web container
+## Usage: mysqldump-root [flags] [args]
+## Example: "ddev mysqldump-root db" or "ddev mysqldump-root otherdb" or "ddev mysqldump-root db | gzip >db.sql.gz"
 
 mysqldump -uroot -proot $@

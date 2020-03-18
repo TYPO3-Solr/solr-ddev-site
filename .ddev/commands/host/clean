@@ -15,7 +15,7 @@ rm -fR public/typo3conf/l10n
 
 rm -fR public/typo3conf/LocalConfiguration.php
 rm -fR public/typo3conf/PackageStates.php
-rm public/index.php
+rm -fR public/index.php
 
 
 

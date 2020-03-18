@@ -13,6 +13,6 @@
         "typo3/cms-form": "^9.5",
         "typo3/cms-indexed-search": "^9.5",
         "typo3/cms-felogin": "^9.5",
-        "bk2k/bootstrap-package": "^10.0"
+        "bk2k/bootstrap-package": "^11.0"
     }
 }

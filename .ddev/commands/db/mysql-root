@@ -2,8 +2,8 @@
 
 ## #ddev-generated
 ## Description: run mysql client in db container
-## Usage: mysql [flags] [args]
-## Example: "ddev mysql" or "ddev mysql -uroot -proot" or "echo 'SHOW TABLES;' | ddev mysql"
-## `ddev mysql --database=mysql -uroot -proot` gets you to the 'mysql' database with root privileges
+## Usage: mysql-root [flags] [args]
+## Example: "ddev mysql-root" or "echo 'SHOW TABLES;' | ddev mysql-root"
+## `ddev mysql-root --database=mysql` gets you to the 'mysql' database with root privileges
 
 mysql -uroot -proot $@
