@@ -12,11 +12,15 @@ additional_fqdns: []
 mariadb_version: "10.2"
 nfs_mount_enabled: false
 provider: default
+webimage_extra_packages: [cron]
 hooks:
-  post-start:
-  - exec: composer install --prefer-source --dev -d /var/www/html
   pre-start:
-  - exec-host: ./.ddev/commands/host/clone-ext-solr
+    - exec-host: ./.ddev/commands/host/clone-ext-solr
+  post-start:
+    - exec: composer install --prefer-source -d /var/www/html
+    - exec: sudo service cron start
+    - exec: echo '* * * * * TYPO3_CONTEXT=Development /usr/bin/php /var/www/html/vendor/bin/typo3cms scheduler:run' | crontab -
+
 use_dns_when_possible: true
 timezone: ""
 
