@@ -6,7 +6,7 @@ services:
       context:
         ../packages/ext-solr/
       dockerfile: Docker/SolrServer/Dockerfile
-    restart: always
+    restart: "no"
     ports:
       - 8983
     labels:
@@ -18,5 +18,3 @@ services:
   web:
     links:
       - solr:$DDEV_HOSTNAME
-    env_file:
-      - ../packages/.Test-Build/.env
