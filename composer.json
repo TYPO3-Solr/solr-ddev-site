@@ -14,7 +14,7 @@
         }
     },
     "require": {
-        "helhum/typo3-console": "^5.5.5",
+        "helhum/typo3-console": "5.8.4",
         "typo3/minimal": "^9.5",
         "typo3/cms-about": "^9.5",
         "typo3/cms-adminpanel": "^9.5",
@@ -25,6 +25,7 @@
         "typo3/cms-form": "^9.5",
         "typo3/cms-impexp": "^9.5",
         "typo3/cms-info": "^9.5",
+        "typo3/cms-lowlevel": "^9.5",
         "typo3/cms-redirects": "^9.5",
         "typo3/cms-reports": "^9.5",
         "typo3/cms-rte-ckeditor": "^9.5",
@@ -46,6 +47,10 @@
         }
     },
     "scripts": {
+        "pre-dependencies-solving": [
+            "[ -d /var/www/html/public/typo3conf/ext ] ||  mkdir /var/www/html/public/typo3conf/ext",
+            "ln -snf ../../../packages/ext-solr /var/www/html/public/typo3conf/ext/solr"
+        ],
         "typo3-cms-scripts": [
             "typo3cms install:fixfolderstructure",
             "typo3cms install:generatepackagestates",
@@ -58,7 +63,7 @@
     "extra": {
         "merge-plugin": {
             "require": [
-                "public/typo3conf/ext/solr/composer.json"
+                "packages/ext-solr/composer.json"
             ],
             "recurse": false,
             "replace": false,

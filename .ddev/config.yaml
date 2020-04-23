@@ -18,15 +18,11 @@ hooks:
     - exec-host: ./.ddev/commands/host/clone-ext-solr
   post-start:
     - exec: composer install --prefer-source -d /var/www/html
-    # wikimedia/composer-merge-plugin does not work together with typo3-composer-installers and require @dev(Symlinking)
-    - exec: ln -s ../../../packages/ext-solr /var/www/html/public/typo3conf/ext/solr
-    # Merge requere-dev from ext-solr/composer.json to be able to run tests
-    - exec: composer update -d /var/www/html --lock
     - exec: sudo service cron start
     - exec: echo '* * * * * TYPO3_CONTEXT=Development /usr/bin/php /var/www/html/vendor/bin/typo3cms scheduler:run' | crontab -
 
 use_dns_when_possible: true
-timezone: ""
+timezone: "UTC"
 
 
 # This config.yaml was created with ddev version v1.11.2
