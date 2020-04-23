@@ -1,0 +1,37 @@
+#!/bin/bash
+
+## Description: clones EXT:solrfal repository into packages/ folder and setups it for ddev
+
+evalTrueValse ()
+{
+  echo '$1 = '$1
+  if [[ "$1" == "true" ]]; then
+    echo "return 0"
+    return 0;
+  fi
+  echo "return 1"
+  return 1;
+}
+
+solrfalIsPresent ()
+{
+  if [ ! -d "packages/ext-solrfal" ]; then
+    return 0;
+  fi
+  return 1;
+}
+
+solrfalsComposerJsonIsIncluded ()
+{
+  local result=$(jq '.extra["merge-plugin"].require | contains(["packages/ext-solrfal/composer.json"])' composer.json)
+  evalTrueValse "$result"
+  return $?;
+}
+
+
+solrfalsComposerJsonIsIncluded
+if [ $? -eq 0 ]; then
+  echo "solrfal is loaded"
+else
+  echo "solrfal is not loaded"
+fi

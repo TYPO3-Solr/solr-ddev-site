@@ -1,8 +1,7 @@
 #!/bin/bash
 
 ## Description: cleanup all the things
-
-ddev remove --remove-data
+ddev delete --omit-snapshot --yes
 
 rm -fR var/
 rm -fR vendor/

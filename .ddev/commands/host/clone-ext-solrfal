@@ -1,0 +1,10 @@
+#!/bin/bash
+
+## Description: clones EXT:solrfal repository into packages/ folder.
+
+if [ ! -d "packages/ext-solrfal" ]; then
+  git clone git@github.com:TYPO3-Solr/ext-solrfal.git packages/ext-solrfal;
+else
+  echo "EXT:solrfal repo presents in packages/ext-solrfal."
+  echo "Skip cloning"
+fi
