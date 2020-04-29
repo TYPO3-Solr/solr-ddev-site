@@ -1,5 +1,5 @@
 rootPageId: 1
-base: 'http://solr-ddev-site.ddev.site/'
+base: 'https://solr-ddev-site.ddev.site/'
 baseVariants: {  }
 languages:
   -
