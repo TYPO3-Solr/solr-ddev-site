@@ -2,7 +2,7 @@
 
 ## Description: cleanup all the things
 
-ddev remove --remove-data
+ddev delete --omit-snapshot --yes
 
 rm -fR var/
 rm -fR vendor/
@@ -12,10 +12,11 @@ rm -fR public/typo3temp
 rm -fR public/typo3conf/ext
 rm -fR public/typo3conf/l10n
 
-
 rm -fR public/typo3conf/LocalConfiguration.php
 rm -fR public/typo3conf/PackageStates.php
 rm -fR public/index.php
 
+rm -fR ./.ddev/solr/site
+rm -fR ./.ddev/solr/tests
 
 

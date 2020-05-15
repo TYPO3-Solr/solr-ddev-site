@@ -7,7 +7,7 @@ if [ ! -d "packages/ext-solr" ];then
   git clone git@github.com:TYPO3-Solr/ext-solr.git packages/ext-solr;
 else
   echo "EXT:solr repo presents in packages/ext-solr."
-  echo "If needed, checkout the desired ext-solr branch and update composer by your self."
+  echo "If needed, checkout the desired ext-solr branch and update composer manually."
   exit 0; # Don't checkout something on ddev restarts
 fi
 
@@ -23,5 +23,5 @@ else
   echo "The branch $current_ddev_site_branch does not exist on ext-solr, leaving in $(git rev-parse --symbolic-full-name --abbrev-ref HEAD)"
 fi
 
-cd $previous_pwd
+cd "$previous_pwd"
 

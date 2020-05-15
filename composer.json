@@ -4,7 +4,7 @@
     "license": "GPL-2.0-or-later",
     "config": {
         "platform": {
-            "php": "7.2"
+            "php": "7.4"
         }
     },
     "repositories": {
@@ -14,7 +14,10 @@
         }
     },
     "require": {
-        "helhum/typo3-console": "dev-master as 5.8.5",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "helhum/typo3-console": "^6.3.0",
+        "typo3/cms-composer-installers": "^3.0.1",
         "typo3/minimal": "^10.4",
         "typo3/cms-about": "^10.4",
         "typo3/cms-adminpanel": "^10.4",
@@ -31,16 +34,16 @@
         "typo3/cms-rte-ckeditor": "^10.4",
         "typo3/cms-setup": "^10.4",
         "typo3/cms-seo": "^10.4",
+        "typo3/cms-scheduler": "^10.4",
         "typo3/cms-sys-note": "^10.4",
         "typo3/cms-t3editor": "^10.4",
         "typo3/cms-tstemplate": "^10.4",
         "typo3/cms-viewpage": "^10.4",
         "typo3/cms-filemetadata": "^10.4",
-        "typo3-console/composer-auto-commands": "^0.4",
-        "typo3-console/composer-typo3-auto-install": "^0.3",
+        "typo3-console/composer-auto-commands": "^0.4.2",
+        "typo3-console/composer-typo3-auto-install": "^0.4",
         "dkd/apache-solr-for-typo3-sitepackage": "@dev",
-        "wikimedia/composer-merge-plugin": "^1.4",
-        "typo3/cms-scheduler": "^10.4"
+        "wikimedia/composer-merge-plugin": "^1.4.1"
     },
     "autoload-dev": {
         "psr-4": {
@@ -49,8 +52,10 @@
     },
     "scripts": {
         "pre-dependencies-solving": [
-            "[ -d /var/www/html/public/typo3conf/ext ] ||  mkdir /var/www/html/public/typo3conf/ext",
-            "ln -snf ../../../packages/ext-solr /var/www/html/public/typo3conf/ext/solr"
+            "[ -d public/typo3conf/ext ] ||  mkdir -p public/typo3conf/ext",
+            "[ -L public/typo3conf/ext/solr ] ||  ln -snf ../../../packages/ext-solr public/typo3conf/ext/solr",
+            "[ -L public/typo3conf/ext/solrfal ] ||  ln -snf ../../../packages/ext-solrfal public/typo3conf/ext/solrfal",
+            "[ -L public/typo3conf/ext/tika ] ||  ln -snf ../../../packages/ext-tika public/typo3conf/ext/tika"
         ],
         "typo3-cms-scripts": [
             "typo3cms install:fixfolderstructure",
@@ -64,7 +69,9 @@
     "extra": {
         "merge-plugin": {
             "require": [
-                "packages/ext-solr/composer.json"
+                "packages/ext-solr/composer.json",
+                "packages/ext-solrfal/composer.json",
+                "packages/ext-tika/composer.json"
             ],
             "recurse": false,
             "replace": false,

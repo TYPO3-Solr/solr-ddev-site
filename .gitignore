@@ -10,3 +10,5 @@ nbproject
 /public/typo3conf/*
 /public/typo3conf/LocalConfiguration.php
 !/public/typo3conf/AdditionalConfiguration.php
+.ddev/solr/site
+.ddev/solr/tests
