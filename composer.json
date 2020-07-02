@@ -53,9 +53,7 @@
     "scripts": {
         "pre-dependencies-solving": [
             "[ -d public/typo3conf/ext ] ||  mkdir -p public/typo3conf/ext",
-            "[ -L public/typo3conf/ext/solr ] ||  ln -snf ../../../packages/ext-solr public/typo3conf/ext/solr",
-            "[ -L public/typo3conf/ext/solrfal ] ||  ln -snf ../../../packages/ext-solrfal public/typo3conf/ext/solrfal",
-            "[ -L public/typo3conf/ext/tika ] ||  ln -snf ../../../packages/ext-tika public/typo3conf/ext/tika"
+            "[ -L public/typo3conf/ext/solr ] ||  ln -snf ../../../packages/ext-solr public/typo3conf/ext/solr"
         ],
         "typo3-cms-scripts": [
             "typo3cms install:fixfolderstructure",
@@ -69,9 +67,7 @@
     "extra": {
         "merge-plugin": {
             "require": [
-                "packages/ext-solr/composer.json",
-                "packages/ext-solrfal/composer.json",
-                "packages/ext-tika/composer.json"
+                "packages/ext-solr/composer.json"
             ],
             "recurse": false,
             "replace": false,

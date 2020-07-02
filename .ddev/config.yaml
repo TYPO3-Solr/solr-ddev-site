@@ -20,8 +20,7 @@ hooks:
   - exec-host: '[ -d ./.ddev/tika-jars ] ||  mkdir -p .ddev/tika-jars'
   - exec-host: ./.ddev/commands/host/clone-ext-solr
   post-start:
-  # remove "TYPO3_IS_SET_UP=1" if typo3 composer auto installer works with TYPO3 10.4. See composer.json
-  - exec: TYPO3_IS_SET_UP=1 composer install --prefer-source -d /var/www/html
+  - exec: composer install --prefer-source -d /var/www/html
   - exec: sudo service cron start
   - exec: echo '* * * * * TYPO3_CONTEXT=Development /usr/bin/php /var/www/html/vendor/bin/typo3cms scheduler:run' | crontab -
 webimage_extra_packages: [cron, jq, openjdk-11-jre-headless]
