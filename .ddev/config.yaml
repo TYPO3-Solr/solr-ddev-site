@@ -16,7 +16,7 @@ hooks:
   post-start:
   - exec: composer install --prefer-source -d /var/www/html
   - exec: sudo service cron start
-  - exec: echo '* * * * * TYPO3_CONTEXT=Development /usr/bin/php /var/www/html/vendor/bin/typo3cms scheduler:run' | crontab -
+  - exec: echo '* * * * * PHP_IDE_CONFIG=serverName=solr-ddev-site.ddev.site XDEBUG_CONFIG=idekey=PHPSTORM TYPO3_CONTEXT=Development /usr/bin/php /var/www/html/vendor/bin/typo3cms scheduler:run' | crontab -
   pre-start:
   - exec-host: ./.ddev/commands/host/clone-ext-solr
 webimage_extra_packages: [cron]
