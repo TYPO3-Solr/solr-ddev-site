@@ -37,18 +37,15 @@ Password: password
 From time to time you might want to start again with a clean data base. To do that run:
 
 ```
-ddev stop
-ddev remove --remove-data
-ddev start
+ddev clean
 ```
+
+This will remove all the things and bring the system tu the initial state.
+
 
 ## Running tests:
 
 The tests can be executed within the ddev docker containers.
-Note: Before running tests the testing environment must be set up:
-
-### setup tests
-    ddev tests-setup
 
 ### run unit tests    
     ddev tests-unit
