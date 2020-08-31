@@ -57,12 +57,16 @@
             "[ -L public/typo3conf/ext/solr ] ||  ln -snf ../../../packages/ext-solr public/typo3conf/ext/solr"
         ],
         "typo3-cms-scripts": [
-            "typo3cms install:fixfolderstructure",
             "typo3cms install:generatepackagestates",
+            "typo3cms install:fixfolderstructure",
             "typo3cms cache:flush"
         ],
+        "import-not-exportable-by-impexp-once": [
+            "./packages/apache_solr_for_typo3_sitepackage/Initialisation/not_covered_by_impexp.sh"
+        ],
         "post-autoload-dump": [
-            "@typo3-cms-scripts"
+            "@typo3-cms-scripts",
+            "@import-not-exportable-by-impexp-once"
         ]
     },
     "extra": {
