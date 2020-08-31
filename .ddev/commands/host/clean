@@ -5,7 +5,7 @@
 ddev delete --omit-snapshot --yes
 
 # Remove following file to be able to import the not covered by impexp data as SQL again.
-rm -fr packages/apache_solr_for_typo3_sitepackage/Initialisation/not_covered_by_impexp.isImported
+rm -fr packages/*/Initialisation/not_covered_by_impexp.isImported
 
 rm -fR var/
 rm -fR vendor/

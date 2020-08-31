@@ -3,7 +3,6 @@
 ######################
 @import 'EXT:bootstrap_package/Configuration/TypoScript/constants.typoscript'
 @import 'EXT:bootstrap_package/Configuration/TypoScript/Bootstrap3/constants.typoscript'
-
 @import './Extensions/solr/constants.typoscript'
 
 

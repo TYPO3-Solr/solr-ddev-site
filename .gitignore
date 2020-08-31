@@ -3,10 +3,12 @@
 nbproject
 /var
 /vendor
-/packages
+/packages/*
 !/packages/apache_solr_for_typo3_sitepackage/*
 /packages/apache_solr_for_typo3_sitepackage/Initialisation/not_covered_by_impexp.isImported
+!/packages/news_introduction
 !/packages/news_introduction/*
+/packages/news_introduction/Initialisation/not_covered_by_impexp.isImported
 /public/*
 !/public/typo3conf
 /public/typo3conf/*
