@@ -1,0 +1,3 @@
+@import 'EXT:solr/Configuration/TypoScript/Solr/constants.txt'
+
+plugin.tx_solr.enabled = 1;

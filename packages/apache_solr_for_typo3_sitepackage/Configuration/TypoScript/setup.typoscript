@@ -1,30 +1,10 @@
 ######################
 #### DEPENDENCIES ####
 ######################
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/setup.typoscript">
+@import 'EXT:bootstrap_package/Configuration/TypoScript/setup.typoscript'
+@import 'EXT:bootstrap_package/Configuration/TypoScript/Bootstrap3/setup.typoscript'
+
+@import './Extensions/solr/setup.typoscript'
 
 
-##############
-#### PAGE ####
-##############
-page {
-    includeCSS {
-        theme = EXT:apache_solr_for_typo3_sitepackage/Resources/Public/Scss/Theme/theme.scss
-    }
 
-    includeJSLibs {
-
-    }
-
-    includeJS {
-
-    }
-
-    includeJSFooterlibs {
-
-    }
-
-    includeJSFooter {
-        apache_solr_for_typo3_sitepackage_scripts = EXT:apache_solr_for_typo3_sitepackage/Resources/Public/JavaScript/Dist/scripts.js
-    }
-}
