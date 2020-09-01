@@ -1,0 +1,10 @@
+######################
+#### DEPENDENCIES ####
+######################
+@import 'EXT:bootstrap_package/Configuration/TypoScript/setup.typoscript'
+@import 'EXT:bootstrap_package/Configuration/TypoScript/Bootstrap3/setup.typoscript'
+
+@import './Extensions/solr/setup.typoscript'
+
+
+

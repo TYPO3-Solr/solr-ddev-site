@@ -1,0 +1,62 @@
+######################
+#### DEPENDENCIES ####
+######################
+@import 'EXT:bootstrap_package/Configuration/TypoScript/constants.typoscript'
+@import 'EXT:bootstrap_package/Configuration/TypoScript/Bootstrap3/constants.typoscript'
+@import './Extensions/solr/constants.typoscript'
+
+
+############
+### PAGE ###
+############
+page {
+    logo {
+        file = EXT:apache_solr_for_typo3_sitepackage/Resources/Public/Images/logo.svg
+        fileInverted = EXT:apache_solr_for_typo3_sitepackage/Resources/Public/Images/logo-inverted.svg
+        height = 52
+        width = 192
+        alt = Apache Solr for TYPO3 Sitepackage
+        linktitle = Apache Solr for TYPO3 Sitepackage
+    }
+    favicon {
+        file = EXT:apache_solr_for_typo3_sitepackage/Resources/Public/Icons/favicon.ico
+    }
+    fluidtemplate {
+        layoutRootPath = EXT:apache_solr_for_typo3_sitepackage/Resources/Private/Layouts/Page/
+        partialRootPath = EXT:apache_solr_for_typo3_sitepackage/Resources/Private/Partials/Page/
+        templateRootPath = EXT:apache_solr_for_typo3_sitepackage/Resources/Private/Templates/Page/
+    }
+}
+
+
+##################
+### EXTENSIONS ###
+##################
+plugin.bootstrap_package {
+    view {
+        layoutRootPath = EXT:apache_solr_for_typo3_sitepackage/Resources/Private/Layouts/
+        partialRootPath = EXT:apache_solr_for_typo3_sitepackage/Resources/Private/Partials/
+        templateRootPath = EXT:apache_solr_for_typo3_sitepackage/Resources/Private/Templates/
+    }
+}
+
+
+########################
+### CONTENT ELEMENTS ###
+########################
+plugin.bootstrap_package_contentelements {
+    view {
+        layoutRootPath = EXT:apache_solr_for_typo3_sitepackage/Resources/Private/Layouts/ContentElements/
+        partialRootPath = EXT:apache_solr_for_typo3_sitepackage/Resources/Private/Partials/ContentElements/
+        templateRootPath = EXT:apache_solr_for_typo3_sitepackage/Resources/Private/Templates/ContentElements/
+    }
+}
+
+
+################################
+### BOOTSTRAP SCSS CONSTANTS ###
+################################
+plugin.bootstrap_package.settings.scss {
+    primary = #eb3e4a
+    secondary = #013859
+}
