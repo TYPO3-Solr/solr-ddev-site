@@ -5,4 +5,9 @@
 UNIT_BOOTSTRAP="vendor/nimut/testing-framework/res/Configuration/FunctionalTestsBootstrap.php"
 SOLR_UNIT_TESTS_PATH="public/typo3conf/ext/solr/Build/Test/IntegrationTests.xml"
 
-./vendor/bin/phpunit --colors -c $SOLR_UNIT_TESTS_PATH --bootstrap=$UNIT_BOOTSTRAP $@
+./vendor/bin/phpunit --colors -c $SOLR_UNIT_TESTS_PATH --bootstrap=$UNIT_BOOTSTRAP "$@"
+
+SOLR_UNIT_TESTS_PATH="public/typo3conf/ext/solr/Build/Test/IntegrationFrontendTests.xml"
+./vendor/bin/phpunit --colors -c $SOLR_UNIT_TESTS_PATH --bootstrap=$UNIT_BOOTSTRAP "$@"
+
+# todo: rewrite and reuse the same cibuild.sh scripts from EXT:Solr*
