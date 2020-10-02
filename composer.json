@@ -43,8 +43,7 @@
         "typo3-console/composer-auto-commands": "^0.4.2",
         "typo3-console/composer-typo3-auto-install": "^0.4",
         "dkd/apache-solr-for-typo3-sitepackage": "@dev",
-        "wikimedia/composer-merge-plugin": "^1.4.1",
-        "phpdocumentor/reflection-docblock": "5.1.*"
+        "wikimedia/composer-merge-plugin": "^1.4.1"
     },
     "autoload-dev": {
         "psr-4": {

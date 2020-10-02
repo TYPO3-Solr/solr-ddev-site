@@ -9,6 +9,7 @@
 /.ddev-docker-compose-full.yaml
 /.ddevlive-downloads
 /.global_commands
+/.homeadditions
 /.sshimageBuild
 /.webimageBuild
 /.webimageExtra
