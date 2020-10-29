@@ -2,12 +2,21 @@
 
 ## Description: run integration tests in web container (don't forget to run `ddev composer-update--lock` if ext-solr*'s composer.json changed)
 
-UNIT_BOOTSTRAP="vendor/nimut/testing-framework/res/Configuration/FunctionalTestsBootstrap.php"
-SOLR_UNIT_TESTS_PATH="public/typo3conf/ext/solr/Build/Test/IntegrationTests.xml"
+INTEGRATION_PHPUINT_BOOTSTRAP="vendor/nimut/testing-framework/res/Configuration/FunctionalTestsBootstrap.php"
 
-./vendor/bin/phpunit --colors -c $SOLR_UNIT_TESTS_PATH --bootstrap=$UNIT_BOOTSTRAP "$@"
+INTEGRATION_PHPUINT_CONFIGURATION="public/typo3conf/ext/solr/Build/Test/IntegrationTests.xml"
+./vendor/bin/phpunit \
+  --bootstrap=$INTEGRATION_PHPUINT_BOOTSTRAP \
+  --configuration=$INTEGRATION_PHPUINT_CONFIGURATION \
+  --colors "$@"
 
-SOLR_UNIT_TESTS_PATH="public/typo3conf/ext/solr/Build/Test/IntegrationFrontendTests.xml"
-./vendor/bin/phpunit --colors -c $SOLR_UNIT_TESTS_PATH --bootstrap=$UNIT_BOOTSTRAP "$@"
+
+echo "Frontend Integration Tests:"
+echo "-"
+INTEGRATION_PHPUINT_CONFIGURATION="public/typo3conf/ext/solr/Build/Test/IntegrationFrontendTests.xml"
+./vendor/bin/phpunit \
+  --bootstrap=$INTEGRATION_PHPUINT_BOOTSTRAP \
+  --configuration=$INTEGRATION_PHPUINT_CONFIGURATION \
+  --colors "$@"
 
 # todo: rewrite and reuse the same cibuild.sh scripts from EXT:Solr*
