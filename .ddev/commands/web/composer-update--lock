@@ -1,5 +1,0 @@
-#!/bin/bash
-
-## Description: runs `composer update --lock` for merging the ext-solr*'s composer.json into globale require-dev
-
-composer update -d /var/www/html --lock

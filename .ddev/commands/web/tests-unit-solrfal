@@ -5,4 +5,4 @@
 UNIT_BOOTSTRAP="vendor/nimut/testing-framework/res/Configuration/UnitTestsBootstrap.php"
 SOLR_UNIT_TESTS_PATH="public/typo3conf/ext/solrfal/Build/Test/UnitTests.xml"
 
-./vendor/bin/phpunit --colors -c $SOLR_UNIT_TESTS_PATH --bootstrap=$UNIT_BOOTSTRAP $@
+./vendor/bin/phpunit --colors -c $SOLR_UNIT_TESTS_PATH --bootstrap=$UNIT_BOOTSTRAP "$@"
