@@ -1,0 +1,42 @@
+#!/bin/bash
+
+## Description: Clones the plugin of TYPO3 Solr into packages/ folder and tries to activate it.
+
+EXT_SOLR_PLUGIN_NAME=$1
+
+if [[ -z "$EXT_SOLR_PLUGIN_NAME" ]]; then
+  EXT_SOLR_PLUGIN_NAME="solr"
+fi
+
+if [ ! -d "packages/ext-""$EXT_SOLR_PLUGIN_NAME" ];then
+  git clone git@github.com:TYPO3-Solr/ext-"$EXT_SOLR_PLUGIN_NAME".git packages/ext-"$EXT_SOLR_PLUGIN_NAME" \
+  || git clone https://github.com/TYPO3-Solr/ext-"$EXT_SOLR_PLUGIN_NAME".git packages/ext-"$EXT_SOLR_PLUGIN_NAME"
+else
+  echo "EXT:$EXT_SOLR_PLUGIN_NAME repo presents in packages/ext-$EXT_SOLR_PLUGIN_NAME."
+  echo "If needed, checkout the desired branch of ext-$EXT_SOLR_PLUGIN_NAME and update composer manually."
+  exit 0; # And don't checkout something on ddev restarts
+fi
+
+current_ddev_site_branch=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
+
+previous_pwd=$PWD
+if ! cd 'packages/ext-'"$EXT_SOLR_PLUGIN_NAME"
+then
+  echo "Something went wrong by cloning ext-$EXT_SOLR_PLUGIN_NAME repository to packages/ext-$EXT_SOLR_PLUGIN_NAME path. Please check the error output above."
+  exit 1
+fi
+
+if [ "$(git branch --list "$current_ddev_site_branch")" ] ; then
+   echo "Checking out ext-$EXT_SOLR_PLUGIN_NAME \"$current_ddev_site_branch\" as on solr-ddev-site repository."
+   echo "This makes it possible to provide the working TYPO3 instances with needed datasets(Pages, CEs, files, etc.)."
+   git checkout "$current_ddev_site_branch"
+else
+  echo "The branch $current_ddev_site_branch of current solr-ddev-site project does not exist on ext-$EXT_SOLR_PLUGIN_NAME,"
+  echo "leaving ext-$EXT_SOLR_PLUGIN_NAME in $(git rev-parse --symbolic-full-name --abbrev-ref HEAD) branch."
+fi
+
+if ! cd "$previous_pwd"; then >&2 echo "Something went wrong by switching to working directory \"$previous_pwd\"" exit 1; fi
+
+if ! [[ "$EXT_SOLR_PLUGIN_NAME" == "solr" ]]; then
+  ddev composer req "apache-solr-for-typo3/$EXT_SOLR_PLUGIN_NAME":"@dev"
+fi

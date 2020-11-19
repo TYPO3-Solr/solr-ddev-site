@@ -16,7 +16,7 @@ hooks:
   - exec-host: '[ -d ./.ddev/solr/site ] ||  mkdir -p .ddev/solr/site'
   - exec-host: '[ -d ./.ddev/solr/tests ] ||  mkdir -p .ddev/solr/tests'
   - exec-host: '[ -d ./.ddev/tika-jars ] ||  mkdir -p .ddev/tika-jars'
-  - exec-host: ./.ddev/commands/host/clone-ext-solr
+  - exec-host: ./.ddev/commands/host/clone solr
   post-start:
   - exec: composer install --prefer-source -d /var/www/html
   # setup system cron and run TYPO3 Scheduler tasks via system cron.
