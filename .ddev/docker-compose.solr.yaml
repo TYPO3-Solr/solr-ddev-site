@@ -1,20 +1,65 @@
 version: '3.6'
 
 services:
-  solr:
+  solr-site:
     build:
       context:
         ../packages/ext-solr/
       dockerfile: Docker/SolrServer/Dockerfile
+    user: root
+    entrypoint: docker-overrides-entrypoint.sh
+    command: solr-foreground
     restart: "no"
     ports:
       - 8983
+    volumes:
+      - solr-site:/var/solr
+      - ./solr/docker-overrides-entrypoint.sh:/opt/docker-solr/scripts/docker-overrides-entrypoint.sh
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
     environment:
+      - SOLR_OVERRIDE_UID=$DDEV_UID
+      - SOLR_OVERRIDE_GID=$DDEV_GID
       - VIRTUAL_HOST=$DDEV_HOSTNAME
       - HTTP_EXPOSE=8983
+
+  solr-tests:
+    build:
+      context:
+        ../packages/ext-solr/
+      dockerfile: Docker/SolrServer/Dockerfile
+    user: root
+    entrypoint: docker-overrides-entrypoint.sh
+    command: solr-foreground
+    restart: "no"
+    ports:
+      - 8985:8985
+    volumes:
+      - solr-tests:/var/solr
+      - ./solr/docker-overrides-entrypoint.sh:/opt/docker-solr/scripts/docker-overrides-entrypoint.sh
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+    environment:
+      - SOLR_OVERRIDE_UID=$DDEV_UID
+      - SOLR_OVERRIDE_GID=$DDEV_GID
+      - SOLR_PORT=8985
   web:
     links:
-      - solr:$DDEV_HOSTNAME
+      - solr-tests:$DDEV_HOSTNAME
+      - solr-site:$DDEV_HOSTNAME
+
+volumes:
+  solr-site:
+    driver: local
+    driver_opts:
+      type: none
+      device: $PWD/.ddev/solr/site
+      o: bind
+  solr-tests:
+    driver: local
+    driver_opts:
+      type: none
+      device: $PWD/.ddev/solr/tests
+      o: bind

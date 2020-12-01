@@ -1,0 +1,11 @@
+######################
+#### DEPENDENCIES ####
+######################
+@import 'EXT:news/Configuration/TypoScript/constants.txt'
+
+##############
+#### MODS ####
+##############
+
+plugin.tx_news.settings.detailPid=500
+

@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3RecordDocument>
+	<header type="array">
+		<XMLversion>1.0</XMLversion>
+		<meta type="array">
+			<title>Solr development site : News Introduction</title>
+			<description>Exports news records for news extension</description>
+			<notes></notes>
+			<packager_username>admin</packager_username>
+			<packager_name></packager_name>
+			<packager_email></packager_email>
+			<TYPO3_version>10.4.6</TYPO3_version>
+			<created>Tuesday  1. September 2020</created>
+		</meta>
+		<static_tables index="relStaticTables" type="array">
+			<tablename index="0">_ALL</tablename>
+		</static_tables>
+		<excludeMap type="array"></excludeMap>
+		<softrefCfg type="array"></softrefCfg>
+		<extensionDependencies type="array"></extensionDependencies>
+		<charset>utf-8</charset>
+		<pagetree type="array">
+			<node index="9" type="array">
+				<uid>9</uid>
+				<node index="subrow" type="array">
+					<node index="2" type="array">
+						<uid>2</uid>
+					</node>
+				</node>
+			</node>
+		</pagetree>
+		<records type="array">
+			<table index="pages" type="array">
+				<rec index="9" type="array">
+					<uid>9</uid>
+					<pid>1</pid>
+					<title>News</title>
+					<relations index="rels" type="array"></relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="2" type="array">
+					<uid>2</uid>
+					<pid>9</pid>
+					<title>News</title>
+					<relations index="rels" type="array"></relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+			</table>
+			<table index="tt_content" type="array">
+				<rec index="214" type="array">
+					<uid>214</uid>
+					<pid>9</pid>
+					<title>[No title]</title>
+					<relations index="rels" type="array"></relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+			</table>
+			<table index="tx_news_domain_model_news" type="array">
+				<rec index="1" type="array">
+					<uid>1</uid>
+					<pid>2</pid>
+					<title>News № 1</title>
+					<relations index="rels" type="array"></relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="2" type="array">
+					<uid>2</uid>
+					<pid>2</pid>
+					<title>News № 2</title>
+					<relations index="rels" type="array"></relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+				<rec index="3" type="array">
+					<uid>3</uid>
+					<pid>2</pid>
+					<title>News № 3</title>
+					<relations index="rels" type="array"></relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+			</table>
+		</records>
+		<pid_lookup type="array">
+			<page_contents index="1" type="array">
+				<table index="pages" type="array">
+					<item index="9">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="9" type="array">
+				<table index="tt_content" type="array">
+					<item index="214">1</item>
+				</table>
+				<table index="pages" type="array">
+					<item index="2">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="2" type="array">
+				<table index="tx_news_domain_model_news" type="array">
+					<item index="1">1</item>
+					<item index="2">1</item>
+					<item index="3">1</item>
+				</table>
+			</page_contents>
+		</pid_lookup>
+	</header>
+	<records type="array">
+		<tablerow index="pages:9" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">9</field>
+				<field index="pid" type="integer">1</field>
+				<field index="tstamp" type="integer">1598946323</field>
+				<field index="crdate" type="integer">1598945371</field>
+				<field index="cruser_id" type="integer">2</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="starttime" type="integer">0</field>
+				<field index="endtime" type="integer">0</field>
+				<field index="fe_group"></field>
+				<field index="sorting" type="integer">514</field>
+				<field index="rowDescription" type="NULL"></field>
+				<field index="editlock" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_state" type="NULL"></field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="l10n_diffsource">a:1:{s:6:&quot;hidden&quot;;N;}</field>
+				<field index="t3ver_oid" type="integer">0</field>
+				<field index="t3ver_wsid" type="integer">0</field>
+				<field index="t3ver_state" type="integer">0</field>
+				<field index="t3ver_stage" type="integer">0</field>
+				<field index="t3ver_count" type="integer">0</field>
+				<field index="t3ver_tstamp" type="integer">0</field>
+				<field index="t3ver_move_id" type="integer">0</field>
+				<field index="perms_userid" type="integer">2</field>
+				<field index="perms_groupid" type="integer">1</field>
+				<field index="perms_user" type="integer">31</field>
+				<field index="perms_group" type="integer">31</field>
+				<field index="perms_everybody" type="integer">0</field>
+				<field index="title">News</field>
+				<field index="slug">/news</field>
+				<field index="doktype" type="integer">1</field>
+				<field index="TSconfig" type="NULL"></field>
+				<field index="is_siteroot" type="integer">0</field>
+				<field index="php_tree_stop" type="integer">0</field>
+				<field index="url"></field>
+				<field index="shortcut" type="integer">0</field>
+				<field index="shortcut_mode" type="integer">0</field>
+				<field index="subtitle"></field>
+				<field index="layout" type="integer">0</field>
+				<field index="target"></field>
+				<field index="media" type="integer">0</field>
+				<field index="lastUpdated" type="integer">0</field>
+				<field index="keywords" type="NULL"></field>
+				<field index="cache_timeout" type="integer">0</field>
+				<field index="cache_tags"></field>
+				<field index="newUntil" type="integer">0</field>
+				<field index="description" type="NULL"></field>
+				<field index="no_search" type="integer">1</field>
+				<field index="SYS_LASTCHANGED" type="integer">1598946323</field>
+				<field index="abstract" type="NULL"></field>
+				<field index="module"></field>
+				<field index="extendToSubpages" type="integer">0</field>
+				<field index="author"></field>
+				<field index="author_email"></field>
+				<field index="nav_title"></field>
+				<field index="nav_hide" type="integer">0</field>
+				<field index="content_from_pid" type="integer">0</field>
+				<field index="mount_pid" type="integer">0</field>
+				<field index="mount_pid_ol" type="integer">0</field>
+				<field index="l18n_cfg" type="integer">0</field>
+				<field index="fe_login_mode" type="integer">0</field>
+				<field index="backend_layout"></field>
+				<field index="backend_layout_next_level"></field>
+				<field index="tsconfig_includes"></field>
+				<field index="legacy_overlay_uid" type="integer">0</field>
+				<field index="tx_impexp_origuid" type="integer">9</field>
+				<field index="seo_title"></field>
+				<field index="no_index" type="integer">1</field>
+				<field index="no_follow" type="integer">0</field>
+				<field index="og_title"></field>
+				<field index="og_description" type="NULL"></field>
+				<field index="og_image" type="integer">0</field>
+				<field index="twitter_title"></field>
+				<field index="twitter_description" type="NULL"></field>
+				<field index="twitter_image" type="integer">0</field>
+				<field index="twitter_card">summary</field>
+				<field index="canonical_link"></field>
+				<field index="sitemap_priority">0.5</field>
+				<field index="sitemap_changefreq"></field>
+				<field index="categories" type="integer">0</field>
+				<field index="nav_icon" type="integer">0</field>
+				<field index="thumbnail" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array"></related>
+		</tablerow>
+		<tablerow index="tt_content:214" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">214</field>
+				<field index="rowDescription"></field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1598946938</field>
+				<field index="crdate" type="integer">1598946359</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="starttime" type="integer">0</field>
+				<field index="endtime" type="integer">0</field>
+				<field index="fe_group"></field>
+				<field index="sorting" type="integer">256</field>
+				<field index="editlock" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_state" type="NULL"></field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="l18n_diffsource">a:27:{s:5:&quot;CType&quot;;N;s:6:&quot;colPos&quot;;N;s:6:&quot;header&quot;;N;s:13:&quot;header_layout&quot;;N;s:15:&quot;header_position&quot;;N;s:4:&quot;date&quot;;N;s:11:&quot;header_link&quot;;N;s:9:&quot;subheader&quot;;N;s:9:&quot;list_type&quot;;N;s:11:&quot;pi_flexform&quot;;N;s:6:&quot;layout&quot;;N;s:11:&quot;frame_class&quot;;N;s:18:&quot;space_before_class&quot;;N;s:17:&quot;space_after_class&quot;;N;s:22:&quot;background_color_class&quot;;N;s:16:&quot;background_image&quot;;N;s:24:&quot;background_image_options&quot;;N;s:12:&quot;sectionIndex&quot;;N;s:9:&quot;linkToTop&quot;;N;s:16:&quot;sys_language_uid&quot;;N;s:6:&quot;hidden&quot;;N;s:9:&quot;starttime&quot;;N;s:7:&quot;endtime&quot;;N;s:8:&quot;fe_group&quot;;N;s:8:&quot;editlock&quot;;N;s:10:&quot;categories&quot;;N;s:14:&quot;rowDescription&quot;;N;}</field>
+				<field index="t3ver_oid" type="integer">0</field>
+				<field index="t3ver_wsid" type="integer">0</field>
+				<field index="t3ver_state" type="integer">0</field>
+				<field index="t3ver_stage" type="integer">0</field>
+				<field index="t3ver_count" type="integer">0</field>
+				<field index="t3ver_tstamp" type="integer">0</field>
+				<field index="t3ver_move_id" type="integer">0</field>
+				<field index="CType">list</field>
+				<field index="header"></field>
+				<field index="header_position"></field>
+				<field index="bodytext" type="NULL"></field>
+				<field index="bullets_type" type="integer">0</field>
+				<field index="uploads_description" type="integer">0</field>
+				<field index="uploads_type" type="integer">0</field>
+				<field index="assets" type="integer">0</field>
+				<field index="image" type="integer">0</field>
+				<field index="imagewidth" type="integer">0</field>
+				<field index="imageorient" type="integer">0</field>
+				<field index="imagecols" type="integer">2</field>
+				<field index="imageborder" type="integer">0</field>
+				<field index="media" type="integer">0</field>
+				<field index="layout" type="integer">0</field>
+				<field index="frame_class">default</field>
+				<field index="cols" type="integer">0</field>
+				<field index="space_before_class"></field>
+				<field index="space_after_class"></field>
+				<field index="records" type="NULL"></field>
+				<field index="pages"></field>
+				<field index="colPos" type="integer">0</field>
+				<field index="subheader"></field>
+				<field index="header_link"></field>
+				<field index="image_zoom" type="integer">0</field>
+				<field index="header_layout">0</field>
+				<field index="list_type">news_pi1</field>
+				<field index="sectionIndex" type="integer">1</field>
+				<field index="linkToTop" type="integer">0</field>
+				<field index="file_collections" type="NULL"></field>
+				<field index="filelink_size" type="integer">0</field>
+				<field index="filelink_sorting"></field>
+				<field index="filelink_sorting_direction"></field>
+				<field index="target"></field>
+				<field index="date" type="integer">0</field>
+				<field index="recursive" type="integer">0</field>
+				<field index="imageheight" type="integer">0</field>
+				<field index="pi_flexform">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot; ?&gt;
+&lt;T3FlexForms&gt;
+    &lt;data&gt;
+        &lt;sheet index=&quot;sDEF&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;settings.orderBy&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.orderDirection&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.dateField&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.categoryConjunction&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.categories&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.includeSubCategories&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.archiveRestriction&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.timeRestriction&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.timeRestrictionHigh&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.topNewsRestriction&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.singleNews&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.previewHiddenRecords&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;2&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.startingpoint&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.recursive&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.selectedList&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;switchableControllerActions&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;News-&amp;gt;detail&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+        &lt;sheet index=&quot;additional&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;settings.detailPid&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.listPid&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.backPid&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.limit&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.offset&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.tags&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.hidePagination&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.list.paginate.itemsPerPage&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.topNewsFirst&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.excludeAlreadyDisplayedNews&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.disableOverrideDemand&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;1&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+        &lt;sheet index=&quot;template&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;settings.media.maxWidth&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.media.maxHeight&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.cropMaxCharacters&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.templateLayout&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+    &lt;/data&gt;
+&lt;/T3FlexForms&gt;</field>
+				<field index="accessibility_title"></field>
+				<field index="accessibility_bypass" type="integer">0</field>
+				<field index="accessibility_bypass_text"></field>
+				<field index="selected_categories" type="NULL"></field>
+				<field index="category_field"></field>
+				<field index="table_class"></field>
+				<field index="table_caption" type="NULL"></field>
+				<field index="table_delimiter" type="integer">124</field>
+				<field index="table_enclosure" type="integer">0</field>
+				<field index="table_header_position" type="integer">0</field>
+				<field index="table_tfoot" type="integer">0</field>
+				<field index="tx_impexp_origuid" type="integer">0</field>
+				<field index="categories" type="integer">0</field>
+				<field index="teaser" type="NULL"></field>
+				<field index="readmore_label"></field>
+				<field index="quote_source"></field>
+				<field index="quote_link"></field>
+				<field index="panel_class">default</field>
+				<field index="file_folder" type="NULL"></field>
+				<field index="icon"></field>
+				<field index="icon_set"></field>
+				<field index="icon_file" type="integer">0</field>
+				<field index="icon_position"></field>
+				<field index="icon_size">default</field>
+				<field index="icon_type">default</field>
+				<field index="icon_color">#FFFFFF</field>
+				<field index="icon_background">#333333</field>
+				<field index="external_media_source"></field>
+				<field index="external_media_ratio"></field>
+				<field index="tx_bootstrappackage_card_group_item" type="integer">0</field>
+				<field index="tx_bootstrappackage_carousel_item" type="integer">0</field>
+				<field index="tx_bootstrappackage_accordion_item" type="integer">0</field>
+				<field index="tx_bootstrappackage_icon_group_item" type="integer">0</field>
+				<field index="tx_bootstrappackage_tab_item" type="integer">0</field>
+				<field index="tx_bootstrappackage_timeline_item" type="integer">0</field>
+				<field index="background_color_class">none</field>
+				<field index="background_image" type="integer">0</field>
+				<field index="background_image_options">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot; ?&gt;
+&lt;T3FlexForms&gt;
+    &lt;data&gt;
+        &lt;sheet index=&quot;sDEF&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;parallax&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;fade&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;filter&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+    &lt;/data&gt;
+&lt;/T3FlexForms&gt;</field>
+				<field index="tx_news_related_news" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="pi_flexform" type="array">
+					<type>flex</type>
+					<flexform index="flexFormRels" type="array">
+						<db_relations index="db" type="array"></db_relations>
+						<softref_relations index="softrefs" type="array"></softref_relations>
+					</flexform>
+				</field>
+				<field index="background_image_options" type="array">
+					<type>flex</type>
+					<flexform index="flexFormRels" type="array">
+						<db_relations index="db" type="array"></db_relations>
+						<softref_relations index="softrefs" type="array"></softref_relations>
+					</flexform>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="pages:2" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">2</field>
+				<field index="pid" type="integer">9</field>
+				<field index="tstamp" type="integer">1598946319</field>
+				<field index="crdate" type="integer">1598945371</field>
+				<field index="cruser_id" type="integer">2</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="starttime" type="integer">0</field>
+				<field index="endtime" type="integer">0</field>
+				<field index="fe_group"></field>
+				<field index="sorting" type="integer">256</field>
+				<field index="rowDescription" type="NULL"></field>
+				<field index="editlock" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_state" type="NULL"></field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="l10n_diffsource">a:1:{s:6:&quot;hidden&quot;;N;}</field>
+				<field index="t3ver_oid" type="integer">0</field>
+				<field index="t3ver_wsid" type="integer">0</field>
+				<field index="t3ver_state" type="integer">0</field>
+				<field index="t3ver_stage" type="integer">0</field>
+				<field index="t3ver_count" type="integer">0</field>
+				<field index="t3ver_tstamp" type="integer">0</field>
+				<field index="t3ver_move_id" type="integer">0</field>
+				<field index="perms_userid" type="integer">2</field>
+				<field index="perms_groupid" type="integer">1</field>
+				<field index="perms_user" type="integer">31</field>
+				<field index="perms_group" type="integer">31</field>
+				<field index="perms_everybody" type="integer">0</field>
+				<field index="title">News Storage</field>
+				<field index="slug"></field>
+				<field index="doktype" type="integer">254</field>
+				<field index="TSconfig" type="NULL"></field>
+				<field index="is_siteroot" type="integer">0</field>
+				<field index="php_tree_stop" type="integer">0</field>
+				<field index="url"></field>
+				<field index="shortcut" type="integer">0</field>
+				<field index="shortcut_mode" type="integer">0</field>
+				<field index="subtitle"></field>
+				<field index="layout" type="integer">0</field>
+				<field index="target"></field>
+				<field index="media" type="integer">0</field>
+				<field index="lastUpdated" type="integer">0</field>
+				<field index="keywords" type="NULL"></field>
+				<field index="cache_timeout" type="integer">0</field>
+				<field index="cache_tags"></field>
+				<field index="newUntil" type="integer">0</field>
+				<field index="description" type="NULL"></field>
+				<field index="no_search" type="integer">1</field>
+				<field index="SYS_LASTCHANGED" type="integer">0</field>
+				<field index="abstract" type="NULL"></field>
+				<field index="module"></field>
+				<field index="extendToSubpages" type="integer">0</field>
+				<field index="author"></field>
+				<field index="author_email"></field>
+				<field index="nav_title"></field>
+				<field index="nav_hide" type="integer">0</field>
+				<field index="content_from_pid" type="integer">0</field>
+				<field index="mount_pid" type="integer">0</field>
+				<field index="mount_pid_ol" type="integer">0</field>
+				<field index="l18n_cfg" type="integer">0</field>
+				<field index="fe_login_mode" type="integer">0</field>
+				<field index="backend_layout"></field>
+				<field index="backend_layout_next_level"></field>
+				<field index="tsconfig_includes"></field>
+				<field index="legacy_overlay_uid" type="integer">0</field>
+				<field index="tx_impexp_origuid" type="integer">2</field>
+				<field index="seo_title"></field>
+				<field index="no_index" type="integer">1</field>
+				<field index="no_follow" type="integer">0</field>
+				<field index="og_title"></field>
+				<field index="og_description" type="NULL"></field>
+				<field index="og_image" type="integer">0</field>
+				<field index="twitter_title"></field>
+				<field index="twitter_description" type="NULL"></field>
+				<field index="twitter_image" type="integer">0</field>
+				<field index="twitter_card">summary</field>
+				<field index="canonical_link"></field>
+				<field index="sitemap_priority">0.5</field>
+				<field index="sitemap_changefreq"></field>
+				<field index="categories" type="integer">0</field>
+				<field index="nav_icon" type="integer">0</field>
+				<field index="thumbnail" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array"></related>
+		</tablerow>
+		<tablerow index="tx_news_domain_model_news:1" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">1</field>
+				<field index="pid" type="integer">2</field>
+				<field index="tstamp" type="integer">1598946654</field>
+				<field index="crdate" type="integer">1598946654</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="t3ver_oid" type="integer">0</field>
+				<field index="t3ver_wsid" type="integer">0</field>
+				<field index="t3ver_state" type="integer">0</field>
+				<field index="t3ver_stage" type="integer">0</field>
+				<field index="t3ver_count" type="integer">0</field>
+				<field index="t3ver_tstamp" type="integer">0</field>
+				<field index="t3ver_move_id" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="editlock" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="starttime" type="integer">0</field>
+				<field index="endtime" type="integer">0</field>
+				<field index="fe_group"></field>
+				<field index="notes"></field>
+				<field index="l10n_state" type="NULL"></field>
+				<field index="t3ver_id" type="integer">0</field>
+				<field index="t3ver_label"></field>
+				<field index="sorting" type="integer">0</field>
+				<field index="title">News № 1</field>
+				<field index="teaser">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</field>
+				<field index="bodytext">&lt;p&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.&lt;/p&gt;</field>
+				<field index="datetime" type="integer">1598946506</field>
+				<field index="archive" type="integer">0</field>
+				<field index="author"></field>
+				<field index="author_email"></field>
+				<field index="categories" type="integer">1</field>
+				<field index="related" type="integer">0</field>
+				<field index="related_from" type="integer">0</field>
+				<field index="related_files" type="NULL"></field>
+				<field index="fal_related_files" type="integer">0</field>
+				<field index="related_links" type="NULL"></field>
+				<field index="type">0</field>
+				<field index="keywords"></field>
+				<field index="description"></field>
+				<field index="tags" type="integer">0</field>
+				<field index="media" type="NULL"></field>
+				<field index="fal_media" type="integer">0</field>
+				<field index="internalurl" type="NULL"></field>
+				<field index="externalurl" type="NULL"></field>
+				<field index="istopnews" type="integer">0</field>
+				<field index="content_elements" type="integer">0</field>
+				<field index="path_segment">news-no-1</field>
+				<field index="alternative_title"></field>
+				<field index="sitemap_changefreq"></field>
+				<field index="sitemap_priority">0.0</field>
+				<field index="import_id"></field>
+				<field index="import_source"></field>
+			</fieldlist>
+			<related index="rels" type="array"></related>
+		</tablerow>
+		<tablerow index="tx_news_domain_model_news:2" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">2</field>
+				<field index="pid" type="integer">2</field>
+				<field index="tstamp" type="integer">1598946748</field>
+				<field index="crdate" type="integer">1598946694</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="t3ver_oid" type="integer">0</field>
+				<field index="t3ver_wsid" type="integer">0</field>
+				<field index="t3ver_state" type="integer">0</field>
+				<field index="t3ver_stage" type="integer">0</field>
+				<field index="t3ver_count" type="integer">0</field>
+				<field index="t3ver_tstamp" type="integer">0</field>
+				<field index="t3ver_move_id" type="integer">0</field>
+				<field index="t3_origuid" type="integer">1</field>
+				<field index="editlock" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_diffsource">a:1:{s:6:&quot;hidden&quot;;N;}</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="starttime" type="integer">0</field>
+				<field index="endtime" type="integer">0</field>
+				<field index="fe_group"></field>
+				<field index="notes"></field>
+				<field index="l10n_state" type="NULL"></field>
+				<field index="t3ver_id" type="integer">0</field>
+				<field index="t3ver_label"></field>
+				<field index="sorting" type="integer">0</field>
+				<field index="title">News № 2</field>
+				<field index="teaser">Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</field>
+				<field index="bodytext">&lt;p&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.&lt;/p&gt;</field>
+				<field index="datetime" type="integer">1598946506</field>
+				<field index="archive" type="integer">0</field>
+				<field index="author"></field>
+				<field index="author_email"></field>
+				<field index="categories" type="integer">1</field>
+				<field index="related" type="integer">0</field>
+				<field index="related_from" type="integer">0</field>
+				<field index="related_files" type="NULL"></field>
+				<field index="fal_related_files" type="integer">0</field>
+				<field index="related_links">0</field>
+				<field index="type">0</field>
+				<field index="keywords"></field>
+				<field index="description"></field>
+				<field index="tags" type="integer">0</field>
+				<field index="media" type="NULL"></field>
+				<field index="fal_media" type="integer">0</field>
+				<field index="internalurl" type="NULL"></field>
+				<field index="externalurl" type="NULL"></field>
+				<field index="istopnews" type="integer">0</field>
+				<field index="content_elements" type="integer">0</field>
+				<field index="path_segment">news-no-2</field>
+				<field index="alternative_title"></field>
+				<field index="sitemap_changefreq"></field>
+				<field index="sitemap_priority">0.0</field>
+				<field index="import_id"></field>
+				<field index="import_source"></field>
+			</fieldlist>
+			<related index="rels" type="array"></related>
+		</tablerow>
+		<tablerow index="tx_news_domain_model_news:3" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">3</field>
+				<field index="pid" type="integer">2</field>
+				<field index="tstamp" type="integer">1598946799</field>
+				<field index="crdate" type="integer">1598946755</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="t3ver_oid" type="integer">0</field>
+				<field index="t3ver_wsid" type="integer">0</field>
+				<field index="t3ver_state" type="integer">0</field>
+				<field index="t3ver_stage" type="integer">0</field>
+				<field index="t3ver_count" type="integer">0</field>
+				<field index="t3ver_tstamp" type="integer">0</field>
+				<field index="t3ver_move_id" type="integer">0</field>
+				<field index="t3_origuid" type="integer">1</field>
+				<field index="editlock" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_diffsource">a:1:{s:6:&quot;hidden&quot;;N;}</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="starttime" type="integer">0</field>
+				<field index="endtime" type="integer">0</field>
+				<field index="fe_group"></field>
+				<field index="notes"></field>
+				<field index="l10n_state" type="NULL"></field>
+				<field index="t3ver_id" type="integer">0</field>
+				<field index="t3ver_label"></field>
+				<field index="sorting" type="integer">0</field>
+				<field index="title">News № 3</field>
+				<field index="teaser">At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</field>
+				<field index="bodytext">&lt;p&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.&lt;/p&gt;</field>
+				<field index="datetime" type="integer">1598946506</field>
+				<field index="archive" type="integer">0</field>
+				<field index="author"></field>
+				<field index="author_email"></field>
+				<field index="categories" type="integer">1</field>
+				<field index="related" type="integer">0</field>
+				<field index="related_from" type="integer">0</field>
+				<field index="related_files" type="NULL"></field>
+				<field index="fal_related_files" type="integer">0</field>
+				<field index="related_links">0</field>
+				<field index="type">0</field>
+				<field index="keywords"></field>
+				<field index="description"></field>
+				<field index="tags" type="integer">0</field>
+				<field index="media" type="NULL"></field>
+				<field index="fal_media" type="integer">0</field>
+				<field index="internalurl" type="NULL"></field>
+				<field index="externalurl" type="NULL"></field>
+				<field index="istopnews" type="integer">0</field>
+				<field index="content_elements" type="integer">0</field>
+				<field index="path_segment">news-no-3</field>
+				<field index="alternative_title"></field>
+				<field index="sitemap_changefreq"></field>
+				<field index="sitemap_priority">0.0</field>
+				<field index="import_id"></field>
+				<field index="import_source"></field>
+			</fieldlist>
+			<related index="rels" type="array"></related>
+		</tablerow>
+	</records>
+</T3RecordDocument>
