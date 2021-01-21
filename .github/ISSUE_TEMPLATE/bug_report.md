@@ -23,7 +23,7 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Used versions (please complete the following information):**
- - solr-ddev-site Version: [e.g. 1.1.0]
+ - solr-ddev-site branch or commit: [e.g. master]
  - ddev Version: [e.g. 1.16.1]
  - Operating system: [e.g. mac, windows, linux]
  - Operating system version: [e.g. WIN 10]
