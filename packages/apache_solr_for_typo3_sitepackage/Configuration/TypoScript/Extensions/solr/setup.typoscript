@@ -4,5 +4,41 @@
 @import 'EXT:solr/Configuration/TypoScript/Examples/EverythingOn/setup.typoscript'
 @import 'EXT:solr/Configuration/TypoScript/Examples/Suggest/setup.typoscript'
 
-
 plugin.tx_solr.logging.debugOutput = 0
+
+#
+# Configure categories as facets in order to show the functionality of the route enhancer
+plugin.tx_solr {
+	index.queue {
+		pages {
+			fields {
+				sweets_stringM = SOLR_RELATION
+				sweets_stringM {
+					localField = categories
+					relationTableSortingField = sorting
+					multiValue = 1
+					additionalWhereClause = parent=3
+				}
+				taste_stringM = SOLR_RELATION
+				taste_stringM {
+					localField = categories
+					relationTableSortingField = sorting
+					multiValue = 1
+					additionalWhereClause = parent=7
+				}
+			}
+		}
+	}
+	search.faceting.facets {
+		sweet {
+			label = Sweets
+			field = sweets_stringM
+			operator = AND
+		}
+		taste {
+			label = Taste
+			field = taste_stringM
+			operator = OR
+		}
+	}
+}
