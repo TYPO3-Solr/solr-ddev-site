@@ -53,3 +53,23 @@ solr_host_read: solr-site
 solr_port_read: 8983
 solr_path_read: /solr/
 solr_use_write_connection: false
+# Configuration for the route enhancer
+routeEnhancers:
+  Products:
+    type: CombinedFacetEnhancer
+    limitToPages:
+      - 7
+    extensionKey: tx_solr
+    solr:
+      replaceCharacters:
+        ' ': '_'
+      query:
+        mask: true
+        concat: true
+        map:
+          taste: taste
+    routePath: '/{sweet}'
+    _arguments:
+      sweet: filter-sweet
+    requirements:
+      sweet: '.*'
