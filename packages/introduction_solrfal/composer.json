@@ -1,0 +1,17 @@
+{
+    "name": "apache-solr-for-typo3/introduction-solrfal",
+    "type": "typo3-cms-extension",
+    "description": "Solr development site : EXT:Solrfal for Introduction",
+    "homepage": "http://www.dkd.de/",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["TYPO3 CMS"],
+    "version": "1.0.0",
+    "require": {
+        "apache-solr-for-typo3/solrfal": "@dev"
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "introduction_solrfal"
+        }
+    }
+}

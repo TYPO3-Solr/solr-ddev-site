@@ -1,12 +1,17 @@
 {
-    "name": "dkd/news-introduction",
+    "name": "apache-solr-for-typo3/introduction-news",
     "type": "typo3-cms-extension",
-    "description": "Solr development site : News Introduction",
+    "description": "Solr development site : News for Introduction",
     "homepage": "http://www.dkd.de/",
     "license": ["GPL-2.0-or-later"],
     "keywords": ["TYPO3 CMS"],
     "version": "1.0.0",
     "require": {
         "georgringer/news": "^8.4"
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "introduction_news"
+        }
     }
 }

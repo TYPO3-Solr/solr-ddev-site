@@ -7,11 +7,16 @@
     "keywords": ["TYPO3 CMS"],
     "version": "1.0.0",
     "require": {
-        "typo3/cms-core": "^10.4.9",
-        "typo3/cms-impexp": "^10.4.9",
-        "typo3/cms-rte-ckeditor": "^10.4.9",
-        "typo3/cms-form": "^10.4.9",
-        "typo3/cms-felogin": "^10.4.9",
+        "typo3/cms-core": "*",
+        "typo3/cms-impexp": "*",
+        "typo3/cms-rte-ckeditor": "*",
+        "typo3/cms-form": "*",
+        "typo3/cms-felogin": "*",
         "bk2k/bootstrap-package": "^11.0.2"
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "apache_solr_for_typo3_sitepackage"
+        }
     }
 }

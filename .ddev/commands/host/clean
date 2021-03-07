@@ -1,11 +1,12 @@
 #!/bin/bash
 
-## Description: cleanup all the things
+## Description: Cleanup all the things to be able to start clean and default state
 
 ddev delete --omit-snapshot --yes
 
+echo "Removing transient files in project."
 # Remove following file to be able to import the not covered by impexp data as SQL again.
-rm -fr packages/*/Initialisation/not_covered_by_impexp.isImported
+rm -fv packages/*/Initialisation/not_covered_by_impexp.isImported
 
 rm -fR var/
 rm -fR vendor/
@@ -15,11 +16,12 @@ rm -fR public/typo3temp
 rm -fR public/typo3conf/ext
 rm -fR public/typo3conf/l10n
 
-rm -fR public/typo3conf/LocalConfiguration.php
-rm -fR public/typo3conf/PackageStates.php
-rm -fR public/index.php
+rm -fv public/typo3conf/LocalConfiguration.php
+rm -fv public/typo3conf/PackageStates.php
+rm -fv public/index.php
 
 rm -fR .ddev/solr/site
 rm -fR .ddev/solr/tests
 
-
+echo "Restoring composers original state."
+git checkout composer.json composer.lock
