@@ -8,7 +8,7 @@ if [[ -z "$EXT_SOLR_PLUGIN_NAME" ]]; then
   EXT_SOLR_PLUGIN_NAME="solr"
 fi
 
-if [ ! -d "packages/ext-""$EXT_SOLR_PLUGIN_NAME" ];then
+if [ ! -d "packages/ext-$EXT_SOLR_PLUGIN_NAME" ];then
   git clone git@github.com:TYPO3-Solr/ext-"$EXT_SOLR_PLUGIN_NAME".git packages/ext-"$EXT_SOLR_PLUGIN_NAME" \
   || git clone https://github.com/TYPO3-Solr/ext-"$EXT_SOLR_PLUGIN_NAME".git packages/ext-"$EXT_SOLR_PLUGIN_NAME"
 else
@@ -38,5 +38,10 @@ fi
 if ! cd "$previous_pwd"; then >&2 echo "Something went wrong by switching to working directory \"$previous_pwd\"" exit 1; fi
 
 if ! [[ "$EXT_SOLR_PLUGIN_NAME" == "solr" ]]; then
-  ddev composer req "apache-solr-for-typo3/$EXT_SOLR_PLUGIN_NAME":"@dev"
+  # Try to enable the EXT:Solr plugin introduction package integration extension, to fully setup the plugin.
+  if [[ -d "packages/introduction_$EXT_SOLR_PLUGIN_NAME" ]]; then
+    ddev enable $EXT_SOLR_PLUGIN_NAME
+  else
+    ddev composer req "apache-solr-for-typo3/$EXT_SOLR_PLUGIN_NAME":"@dev"
+  fi
 fi

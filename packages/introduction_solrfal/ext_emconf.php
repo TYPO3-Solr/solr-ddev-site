@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Extension Manager/Repository config file for ext "news_introduction".
+ * Extension Manager/Repository config file for ext "introduction_solrfal".
  */
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'Apache Solr for TYPO3 Sitepackage : News Introduction',
-    'description' => 'Solr development site : News Introduction',
+    'title' => 'Apache Solr for TYPO3 Sitepackage : EXT:Solrfal for Introduction',
+    'description' => 'Solr development site : EXT:Solrfal Introduction',
     'category' => 'distribution',
     'constraints' => [
         'depends' => [
-            'typo3' => '10.4.99',
-            'news' => '8.4.0-8.4.99'
+            'typo3' => '10.4.0-10.4.99',
+            'solrfal' => '*'
         ],
         'conflicts' => [
         ],

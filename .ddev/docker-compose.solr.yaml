@@ -57,11 +57,11 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: $PWD/.ddev/solr/site
+      device: $DDEV_APPROOT/.ddev/solr/site
       o: bind
   solr-tests:
     driver: local
     driver_opts:
       type: none
-      device: $PWD/.ddev/solr/tests
+      device: $DDEV_APPROOT/.ddev/solr/tests
       o: bind

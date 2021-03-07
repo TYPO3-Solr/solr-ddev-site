@@ -1,0 +1,10 @@
+######################
+#### DEPENDENCIES ####
+######################
+@import 'EXT:solrfal/Configuration/TypoScript/Basic/setup.typoscript'
+
+##############
+#### MODS ####
+##############
+
+plugin.tx_solr.index.enableFileIndexing.storageContext = 1

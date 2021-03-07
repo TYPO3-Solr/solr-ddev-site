@@ -1,4 +1,0 @@
-#!/bin/bash
-
-composer req dkd/news-introduction:@dev
-./packages/news_introduction/Initialisation/not_covered_by_impexp.sh
