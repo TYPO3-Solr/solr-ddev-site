@@ -51,5 +51,5 @@ solr_enabled_read: true
 solr_scheme_read: http
 solr_host_read: solr-site
 solr_port_read: 8983
-solr_path_read: /solr/
+solr_path_read: /
 solr_use_write_connection: false
