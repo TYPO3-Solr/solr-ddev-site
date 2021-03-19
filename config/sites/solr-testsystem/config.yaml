@@ -56,7 +56,7 @@ solr_use_write_connection: false
 # Configuration for the route enhancer
 routeEnhancers:
   Products:
-    type: CombinedFacetEnhancer
+    type: SolrFacetMaskAndCombineEnhancer
     limitToPages:
       - 7
     extensionKey: tx_solr
