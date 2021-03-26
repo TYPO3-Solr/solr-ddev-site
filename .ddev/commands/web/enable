@@ -32,7 +32,14 @@ elif [[ "$EXT_NAME" != "news" ]]; then
   exit 1;
 fi
 
-composer req "apache-solr-for-typo3/introduction-$EXT_NAME:@dev" "$LOCAL_EXT_SOLR_PLUGIN"
+# shellcheck disable=SC2086
+if ! composer req "apache-solr-for-typo3/introduction-$EXT_NAME:@dev" $LOCAL_EXT_SOLR_PLUGIN ; then
+  EXECUTED_COMMAND="composer req \"apache-solr-for-typo3/introduction-$EXT_NAME:@dev\" $LOCAL_EXT_SOLR_PLUGIN"
+  echo "Something went wrong by following composer command:"
+  echo "    "$EXECUTED_COMMAND
+  echo "please check the output from above."
+  exit 1;
+fi
 
 IMPEXP_EXTENDED_SCRIPT="./packages/introduction_$EXT_NAME/Initialisation/not_covered_by_impexp.sh"
 if [[ -x "$IMPEXP_EXTENDED_SCRIPT" ]]; then
