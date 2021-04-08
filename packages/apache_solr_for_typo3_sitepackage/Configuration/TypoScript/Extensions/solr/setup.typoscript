@@ -17,14 +17,14 @@ plugin.tx_solr {
 					localField = categories
 					relationTableSortingField = sorting
 					multiValue = 1
-					additionalWhereClause = parent=3
+					additionalWhereClause = parent=10
 				}
 				taste_stringM = SOLR_RELATION
 				taste_stringM {
 					localField = categories
 					relationTableSortingField = sorting
 					multiValue = 1
-					additionalWhereClause = parent=7
+					additionalWhereClause = parent=6
 				}
 			}
 		}

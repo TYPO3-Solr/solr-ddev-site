@@ -58,11 +58,11 @@ routeEnhancers:
   Products:
     type: SolrFacetMaskAndCombineEnhancer
     limitToPages:
-      - 7
+      - 9
     extensionKey: tx_solr
     solr:
       replaceCharacters:
-        ' ': '_'
+        - ' ': '_'
       query:
         mask: true
         concat: true
