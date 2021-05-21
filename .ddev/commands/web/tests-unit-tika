@@ -5,4 +5,4 @@
 UNIT_BOOTSTRAP="vendor/nimut/testing-framework/res/Configuration/UnitTestsBootstrap.php"
 SOLR_UNIT_TESTS_PATH="public/typo3conf/ext/tika/Build/Test/UnitTests.xml"
 
-./vendor/bin/phpunit --colors -c $SOLR_UNIT_TESTS_PATH --bootstrap=$UNIT_BOOTSTRAP "$@"
+TESTING_SOLR_HOST=solr TESTING_SOLR_PORT=8983 TESTING_TIKA_SERVER_HOST=tika TESTING_TIKA_SERVER_JAR_PATH=/opt/tika ./vendor/bin/phpunit --colors -c $SOLR_UNIT_TESTS_PATH --bootstrap=$UNIT_BOOTSTRAP "$@"
