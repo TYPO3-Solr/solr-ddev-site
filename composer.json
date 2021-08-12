@@ -16,7 +16,6 @@
     "require": {
         "ext-json": "*",
         "ext-pdo": "*",
-        "helhum/typo3-console": "^6.3.0",
         "typo3/cms-composer-installers": "^3.0.1",
         "typo3/minimal": "^10.4",
         "typo3/cms-about": "^10.4.13",
@@ -42,9 +41,10 @@
         "typo3/cms-filemetadata": "^10.4.13",
         "typo3-console/composer-auto-commands": "^0.4.2",
         "typo3-console/composer-typo3-auto-install": "^0.4",
+        "helhum/typo3-console": "^6.6.0",
         "dkd/apache-solr-for-typo3-sitepackage": "@dev",
         "apache-solr-for-typo3/solr": "@dev",
-        "doctrine/dbal": "2.11.3"
+        "symfony/expression-language": "5.1.11"
     },
     "require-dev": {
         "phpunit/phpunit": "^7 | ^8 | ^9",
