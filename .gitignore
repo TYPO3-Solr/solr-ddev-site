@@ -18,3 +18,5 @@ nbproject
 !/public/typo3conf/AdditionalConfiguration.php
 .ddev/solr/site
 .ddev/solr/tests
+
+/releses/

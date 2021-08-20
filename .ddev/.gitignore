@@ -16,8 +16,8 @@
 /commands/.gitattributes
 /commands/db/mysql
 /commands/host/launch
-/commands/web/live
 /commands/web/xdebug
+/commands/web/live
 /config.*.y*ml
 /db_snapshots
 /import-db
