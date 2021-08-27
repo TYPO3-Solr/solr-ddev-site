@@ -2,6 +2,9 @@
 
 ## Description: run integration tests in web container
 
-UNIT_BOOTSTRAP="vendor/nimut/testing-framework/res/Configuration/FunctionalTestsBootstrap.php"
-SOLR_UNIT_TESTS_PATH="public/typo3conf/ext/solrfal/Build/Test/IntegrationTests.xml"
-./vendor/bin/phpunit --bootstrap=$UNIT_BOOTSTRAP --configuration=$SOLR_UNIT_TESTS_PATH --colors "$@"
+INTEGRATION_BOOTSTRAP="vendor/nimut/testing-framework/res/Configuration/FunctionalTestsBootstrap.php"
+INTEGRATION_CONFIGURATION="public/typo3conf/ext/solrfal/Build/Test/IntegrationTests.xml"
+./vendor/bin/phpunit \
+  --bootstrap=$INTEGRATION_BOOTSTRAP \
+  --configuration=$INTEGRATION_CONFIGURATION \
+  --colors "$@"

@@ -21,7 +21,7 @@ hooks:
   - exec: composer install --prefer-source -d /var/www/html
   # setup system cron and run TYPO3 Scheduler tasks via system cron.
   - exec: sudo service cron start && echo '* * * * * TYPO3_CONTEXT=Development /usr/bin/php /var/www/html/vendor/bin/typo3cms scheduler:run' | crontab -
-webimage_extra_packages: [cron, jq, openjdk-11-jre-headless, parallel]
+webimage_extra_packages: [cron, jq, yq, openjdk-11-jre-headless, parallel]
 use_dns_when_possible: true
 timezone: UTC
 
