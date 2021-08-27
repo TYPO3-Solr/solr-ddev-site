@@ -6,4 +6,40 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['exceptionalErrors'] = E_WARNING | E_RECOVERA
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['trustedHostsPattern']  = 'localhost|solr-ddev-site.ddev.site';
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['solr']['sites'][1]['domains'][]  = 'solr-ddev-site.ddev.site';
 
-$GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['tika'] = 'a:14:{s:9:"extractor";s:4:"solr";s:7:"logging";s:1:"0";s:18:"showTikaSolrModule";s:1:"0";s:16:"excludeMimeTypes";s:0:"";s:13:"fileSizeLimit";s:3:"500";s:8:"tikaPath";s:0:"";s:14:"tikaServerPath";s:0:"";s:16:"tikaServerScheme";s:4:"http";s:14:"tikaServerHost";s:9:"localhost";s:14:"tikaServerPort";s:4:"9998";s:10:"solrScheme";s:4:"http";s:8:"solrHost";s:4:"solr";s:8:"solrPort";s:4:"8983";s:8:"solrPath";s:14:"/solr/core_en/";}';
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
+/* Configure Tika within solr-ddev-site                                                                               */
+/*   Notes:                                                                                                           */
+/*     Only "Extractor" option is writable via BE->Setting->Extension Configuration->tika                             */
+if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['tika'])) {
+    \TYPO3\CMS\Core\Utility\ArrayUtility::mergeRecursiveWithOverrule(
+        $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['tika'],
+        [
+            // # General
+
+            // Enable Logging
+            'logging' => '0',
+            // Show Tika Backend Module ::: Enables a Tika module within the Solr backend module (experimental, only works with Tika server)
+            'showTikaSolrModule' => '0',
+            // List of mime types to be excluded in metadata extraction
+            'excludeMimeTypes' => '',
+            // File size limit when a file should be processed (configured in MB)
+            'fileSizeLimit' => 500,
+
+            // # Tika App
+            // Tika App configuration
+            'tikaPath' => '',
+
+            // # Tika Server // Uses ddev's configs from .ddev/docker-compose.tika.yaml
+            'tikaServerScheme' => 'http',
+            'tikaServerHost' => 'tika',
+            'tikaServerPort' => '9998',
+            'tikaServerPath' => '',         // Tika Server Jar Path ::: [Optional] The absolute path to your Apache Tika server jar file (tika-server-x.x.jar). When set you can use the backend module to start and stop the Tika server from the TYPO3 backend. Otherwise the host and port settings will be used.
+
+            // # Solr Server // Uses ddev's configs from  .ddev/docker-compose.solr.yaml
+            'solrScheme' => 'http',
+            'solrHost' => 'solr-site',
+            'solrPort' => '8983',
+            'solrPath' => '/solr/core_en/'
+        ]
+    );
+}
