@@ -26,7 +26,7 @@ then
   exit 1
 fi
 
-if [ "$(git branch --list "$current_ddev_site_branch")" ] ; then
+if [ "$(git branch --list --all "*$current_ddev_site_branch")" ] ; then
    echo "Checking out ext-$EXT_SOLR_PLUGIN_NAME \"$current_ddev_site_branch\" as on solr-ddev-site repository."
    echo "This makes it possible to provide the working TYPO3 instances with needed datasets(Pages, CEs, files, etc.)."
    git checkout "$current_ddev_site_branch"
