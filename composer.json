@@ -58,7 +58,7 @@
             "ApacheSolrForTypo3\\Solrdebugtools\\Tests\\": "public/typo3conf/ext/solrdebugtools/Tests/",
             "ApacheSolrForTypo3\\Solrfal\\Tests\\": "public/typo3conf/ext/solrfal/Tests/",
             "ApacheSolrForTypo3\\Solrfluidgrouping\\Tests\\": "public/typo3conf/ext/solrfluidgrouping/Tests/",
-            "ApacheSolrForTypo3\\Solrmlt\\": "public/typo3conf/ext/solrmlt/Tests/",
+            "ApacheSolrForTypo3\\Solrmlt\\Tests\\": "public/typo3conf/ext/solrmlt/Tests/",
             "ApacheSolrForTypo3\\Tika\\Tests\\": "public/typo3conf/ext/tika/Tests/"
         }
     },
