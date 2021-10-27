@@ -1,10 +1,10 @@
 {
     "name": "dkd/apache-solr-for-typo3-dev-distribution",
-    "description": "TYPO3 CMS Base Distribution",
+    "description": "TYPO3 CMS Base Distribution for EXT:solr* development and testing.",
     "license": "GPL-2.0-or-later",
     "config": {
         "platform": {
-            "php": "7.4"
+            "php": "7.4.18"
         }
     },
     "repositories": {
@@ -16,39 +16,36 @@
     "require": {
         "ext-json": "*",
         "ext-pdo": "*",
-        "typo3/cms-composer-installers": "^3.0.1",
-        "typo3/minimal": "^10.4",
-        "typo3/cms-about": "^10.4.13",
-        "typo3/cms-adminpanel": "^10.4.13",
-        "typo3/cms-belog": "^10.4.13",
-        "typo3/cms-beuser": "^10.4.13",
-        "typo3/cms-felogin": "^10.4.13",
-        "typo3/cms-fluid-styled-content": "^10.4.13",
-        "typo3/cms-form": "^10.4.13",
-        "typo3/cms-impexp": "^10.4.13",
-        "typo3/cms-info": "^10.4.13",
-        "typo3/cms-lowlevel": "^10.4.13",
-        "typo3/cms-redirects": "^10.4.13",
-        "typo3/cms-reports": "^10.4.13",
-        "typo3/cms-rte-ckeditor": "^10.4.13",
-        "typo3/cms-setup": "^10.4.13",
-        "typo3/cms-seo": "^10.4.13",
-        "typo3/cms-scheduler": "^10.4.13",
-        "typo3/cms-sys-note": "^10.4.13",
-        "typo3/cms-t3editor": "^10.4.13",
-        "typo3/cms-tstemplate": "^10.4.13",
-        "typo3/cms-viewpage": "^10.4.13",
-        "typo3/cms-filemetadata": "^10.4.13",
-        "typo3-console/composer-auto-commands": "^0.4.2",
-        "typo3-console/composer-typo3-auto-install": "^0.4",
-        "helhum/typo3-console": "^6.6.0",
-        "dkd/apache-solr-for-typo3-sitepackage": "@dev",
-        "apache-solr-for-typo3/solr": "@dev",
-        "symfony/expression-language": "5.1.11"
+        "typo3/minimal": "11.5",
+        "typo3/cms-about": "*",
+        "typo3/cms-adminpanel": "*",
+        "typo3/cms-belog": "*",
+        "typo3/cms-beuser": "*",
+        "typo3/cms-felogin": "*",
+        "typo3/cms-fluid-styled-content": "*",
+        "typo3/cms-form": "*",
+        "typo3/cms-impexp": "*",
+        "typo3/cms-info": "*",
+        "typo3/cms-lowlevel": "*",
+        "typo3/cms-redirects": "*",
+        "typo3/cms-reports": "*",
+        "typo3/cms-rte-ckeditor": "*",
+        "typo3/cms-setup": "*",
+        "typo3/cms-seo": "*",
+        "typo3/cms-scheduler": "*",
+        "typo3/cms-sys-note": "*",
+        "typo3/cms-t3editor": "*",
+        "typo3/cms-tstemplate": "*",
+        "typo3/cms-viewpage": "*",
+        "typo3/cms-filemetadata": "*",
+        "helhum/typo3-console": "7.0.3",
+        "typo3-console/composer-auto-commands": "0.5.2",
+        "dkd/apache-solr-for-typo3-sitepackage": "@dev"
     },
     "require-dev": {
         "phpunit/phpunit": "^7 | ^8 | ^9",
-        "nimut/testing-framework": "^5 | ^6"
+        "nimut/testing-framework": "^5 | ^6",
+        "rector/rector": "^0.11.60"
     },
     "autoload-dev": {
         "psr-4": {
@@ -64,8 +61,8 @@
     },
     "scripts": {
         "typo3-cms-scripts": [
-            "typo3cms install:generatepackagestates",
             "typo3cms install:fixfolderstructure",
+            "[ -f ./public/typo3conf/LocalConfiguration.php ] || typo3cms install:setup",
             "typo3cms cache:flush"
         ],
         "import-not-exportable-by-impexp-once": [
