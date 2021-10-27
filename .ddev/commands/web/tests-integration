@@ -2,21 +2,10 @@
 
 ## Description: run integration tests in web container (don't forget to run `ddev composer-update--lock` if ext-solr*'s composer.json changed)
 
-INTEGRATION_BOOTSTRAP="vendor/nimut/testing-framework/res/Configuration/FunctionalTestsBootstrap.php"
+INTEGRATION_BOOTSTRAP="public/typo3conf/ext/solr/Build/Test/IntegrationTestsBootstrap.php"
 
 INTEGRATION_CONFIGURATION="public/typo3conf/ext/solr/Build/Test/IntegrationTests.xml"
 ./vendor/bin/phpunit \
   --bootstrap=$INTEGRATION_BOOTSTRAP \
   --configuration=$INTEGRATION_CONFIGURATION \
   --colors "$@"
-
-
-echo "Frontend Integration Tests:"
-echo "-"
-INTEGRATION_CONFIGURATION="public/typo3conf/ext/solr/Build/Test/IntegrationFrontendTests.xml"
-./vendor/bin/phpunit \
-  --bootstrap=$INTEGRATION_BOOTSTRAP \
-  --configuration=$INTEGRATION_CONFIGURATION \
-  --colors "$@"
-
-# todo: rewrite and reuse the same cibuild.sh scripts from EXT:Solr*

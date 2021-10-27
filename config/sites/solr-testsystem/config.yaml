@@ -1,11 +1,9 @@
-rootPageId: 1
 base: 'https://solr-ddev-site.ddev.site/'
-baseVariants: {  }
 languages:
   -
     title: English
     enabled: true
-    languageId: '0'
+    languageId: 0
     base: /
     typo3Language: default
     locale: en_US.UTF-8
@@ -15,25 +13,26 @@ languages:
     direction: ''
     flag: us
     solr_core_read: core_en
+    websiteTitle: ''
   -
     title: German
     enabled: true
-    languageId: '2'
+    languageId: 2
     base: /de/
     typo3Language: de
     locale: de_DE.UTF-8
     iso-639-1: de
-    navigationTitle: ''
+    navigationTitle: Deutsch
     hreflang: de-DE
     direction: ltr
-    fallbackType: fallback
-    fallbacks: '0'
+    fallbackType: free
     flag: de
     solr_core_read: core_de
+    websiteTitle: ''
   -
     title: Dansk
     enabled: true
-    languageId: '1'
+    languageId: 1
     base: /da/
     typo3Language: da
     locale: da_DA.UTF-8
@@ -41,15 +40,16 @@ languages:
     navigationTitle: ''
     hreflang: da-DA
     direction: ltr
-    fallbackType: fallback
+    fallbackType: strict
     fallbacks: '0'
     flag: dk
+    websiteTitle: ''
     solr_core_read: core_da
-errorHandling: {  }
-routes: {  }
+rootPageId: 1
 solr_enabled_read: true
-solr_scheme_read: http
 solr_host_read: solr-site
-solr_port_read: 8983
 solr_path_read: /
+solr_port_read: '8983'
+solr_scheme_read: http
 solr_use_write_connection: false
+websiteTitle: ''

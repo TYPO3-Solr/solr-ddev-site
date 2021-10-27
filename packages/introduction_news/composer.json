@@ -7,7 +7,7 @@
     "keywords": ["TYPO3 CMS"],
     "version": "1.0.0",
     "require": {
-        "georgringer/news": "^8.4"
+        "georgringer/news": "^9.0"
     },
     "extra": {
         "typo3/cms": {

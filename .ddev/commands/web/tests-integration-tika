@@ -1,22 +1,21 @@
 #!/bin/bash
 
 ## Description: run integration tests in web container
-TIKA_VERSION=$(yq e '.env.TIKA_VERSION' packages/ext-tika/.github/workflows/ci.yml)
-TIKA_SERVER_SOURCE="https://archive.apache.org/dist/tika/"
-if [ ! -f "$TIKA_PATH/tika-app-$TIKA_VERSION.jar" ]; then
-  echo "The the Tika App jar binaries will be downloaded. They are required for integration tests of tika."
-	wget ${TIKA_SERVER_SOURCE}tika-app-$TIKA_VERSION.jar -O "$TIKA_PATH/tika-app-$TIKA_VERSION.jar"
-	if [ ! -f "$TIKA_PATH/tika-app-$TIKA_VERSION.jar" ]; then
-		echo "Could not download tika-app-$TIKA_VERSION.jar from ${TIKA_SERVER_SOURCE}tika-app-$TIKA_VERSION.jar URL"
-		exit 1
-	fi
-	echo "Download of tika-app-$TIKA_VERSION.jar successful. See \".ddev/tika-jars\", which is mounted in web containers \"/opt/tika\" path."
+
+TIKA_VERSION=$(composer --working-dir=packages/ext-tika tika:req:tika)
+if [[ ! -f "${TIKA_PATH}/tika-app-${TIKA_VERSION}.jar" ]]; then
+  echo "The Tika app jar binary will be downloaded in to the local path .ddev/tika-jars. It is required for integration tests of tika."
+  echo "Note the \"${TIKA_PATH}\" path is inside the web container, which is mounted to local \".ddev/tika-jars\" path."
+  if ! composer --working-dir=packages/ext-tika tika:download -- -D "${TIKA_PATH}" -C -a; then
+    echo "Something went wrong by downloading the Tika app. Please try again later or fix that issue."
+    exit 1
+  fi
 fi
 
 
-INTEGRATION_BOOTSTRAP="vendor/nimut/testing-framework/res/Configuration/FunctionalTestsBootstrap.php"
+INTEGRATION_BOOTSTRAP="public/typo3conf/ext/tika/Build/Test/IntegrationTestsBootstrap.php"
 INTEGRATION_CONFIGURATION="public/typo3conf/ext/tika/Build/Test/IntegrationTests.xml"
 ./vendor/bin/phpunit \
-  --bootstrap=$INTEGRATION_BOOTSTRAP \
-  --configuration $INTEGRATION_CONFIGURATION \
+  --bootstrap=${INTEGRATION_BOOTSTRAP} \
+  --configuration ${INTEGRATION_CONFIGURATION} \
   --colors "$@"

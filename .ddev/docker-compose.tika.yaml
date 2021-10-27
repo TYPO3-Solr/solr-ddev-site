@@ -2,7 +2,7 @@ version: '3.6'
 
 services:
   tika:
-    image: 'apache/tika:1.24.1-full'
+    image: 'apache/tika:1.27-full'
     ports:
     - 9998:9998
 

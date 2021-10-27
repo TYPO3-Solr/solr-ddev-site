@@ -1,0 +1,37 @@
+#!/bin/bash
+
+## Description: run rector for one of EXT:solr* extensions in ./packages/ path
+
+
+function checkExtensionParamIsSetAndPathExists() {
+  if [[ ! -d "packages/ext-${1}" ]]; then
+    >&2 echo -e "EXT:$(basename "${1}") does not exist. May be not cloned correctly."
+    >&2 echo -e " This extension must present in \"packages/ext-${1}\""
+    exit 26
+  fi
+}
+
+function processRector() {
+  ./vendor/bin/rector process \
+    --config=rector.php \
+    --autoload-file=vendor/autoload.php "packages/ext-${1}/${2}" "${@:3}"
+  exit $?
+}
+
+if [[ "$#" -eq 0 ]]; then
+  >&2 echo -e "The EXT:name in first argument is mandatory."
+  exit 27
+fi
+
+checkExtensionParamIsSetAndPathExists "$1"
+
+
+if [[ -d "packages/ext-${1}/${2}" ]]; then
+  processRector "${1}" "${2}" "${@:3}"
+else
+  processRector "${1}" "" "${@:2}"
+fi
+
+exit
+
+

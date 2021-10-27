@@ -1,8 +1,8 @@
 @import 'EXT:solr/Configuration/TypoScript/Solr/setup.typoscript'
 
 @import 'EXT:solr/Configuration/TypoScript/StyleSheets/setup.typoscript'
-@import 'EXT:solr/Configuration/TypoScript/Examples/EverythingOn/setup.typoscript'
+#@import 'EXT:solr/Configuration/TypoScript/Examples/EverythingOn/setup.typoscript'
 @import 'EXT:solr/Configuration/TypoScript/Examples/Suggest/setup.typoscript'
 
 
-plugin.tx_solr.logging.debugOutput = 0
+#plugin.tx_solr.logging.debugOutput = 0

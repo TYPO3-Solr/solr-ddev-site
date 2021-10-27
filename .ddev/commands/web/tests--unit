@@ -3,7 +3,7 @@
 ## Description: run unit tests in web container (don't forget to run `ddev composer-update--lock` if ext-solr*'s composer.json changed)
 
 UNIT_BOOTSTRAP="public/typo3conf/ext/solr/Build/Test/UnitTestsBootstrap.php"
-UNIT_CONFIGURATION="public/typo3conf/ext/tika/Build/Test/UnitTests.xml"
+UNIT_CONFIGURATION="public/typo3conf/ext/solr/Build/Test/UnitTests.xml"
 
 ./vendor/bin/phpunit \
   --bootstrap=$UNIT_BOOTSTRAP \
