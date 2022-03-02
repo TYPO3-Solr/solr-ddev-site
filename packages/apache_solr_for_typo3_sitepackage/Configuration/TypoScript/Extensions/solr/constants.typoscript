@@ -1,3 +1,4 @@
 @import 'EXT:solr/Configuration/TypoScript/Solr/constants.typoscript'
 
 plugin.tx_solr.enabled = 1
+plugin.tx_solr.search.faceting.limit = 5

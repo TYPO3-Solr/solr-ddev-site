@@ -43,7 +43,7 @@ page {
 
   preloader {
     backgroundColor = #03A9F4
-    logo.file = fileadmin/introduction/images/introduction-package-inverted.svg
+    logo.file = EXT:apache_solr_for_typo3_sitepackage/Resources/Public/Images/logo-inverted.svg
   }
 }
 

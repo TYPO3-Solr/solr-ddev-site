@@ -1,8 +1,38 @@
 @import 'EXT:solr/Configuration/TypoScript/Solr/setup.typoscript'
 
 @import 'EXT:solr/Configuration/TypoScript/StyleSheets/setup.typoscript'
-#@import 'EXT:solr/Configuration/TypoScript/Examples/EverythingOn/setup.typoscript'
 @import 'EXT:solr/Configuration/TypoScript/Examples/Suggest/setup.typoscript'
 
+# enable example features
+plugin.tx_solr {
+  search {
+    lastSearches = 1
+    spellchecking = 1
+    sorting = 1
+    frequentSearches = 1
 
-#plugin.tx_solr.logging.debugOutput = 0
+    results.resultsHighlighting = 1
+  }
+  statistics = 1
+
+}
+
+# enable example facets
+plugin.tx_solr.search.faceting = 1
+plugin.tx_solr.search.faceting.limit = 5
+@import 'EXT:solr/Configuration/TypoScript/Examples/Facets/OptionsFiltered/setup.typoscript'
+@import 'EXT:solr/Configuration/TypoScript/Examples/Facets/DateRange/setup.typoscript'
+@import 'EXT:solr/Configuration/TypoScript/Examples/Facets/NumericRange/setup.typoscript'
+@import 'EXT:solr/Configuration/TypoScript/Examples/Facets/OptionsSinglemode/setup.typoscript'
+@import 'EXT:solr/Configuration/TypoScript/Examples/Facets/OptionsToggle/setup.typoscript'
+@import 'EXT:solr/Configuration/TypoScript/Examples/Facets/Hierarchy/setup.typoscript'
+
+plugin.tx_solr.search.faceting.facets {
+  typeOptionsPrefixGrouped < .type
+  typeOptionsPrefixGrouped.partialName = OptionsPrefixGrouped
+
+  uid {
+    field = uid
+    label = Record Id
+  }
+}
