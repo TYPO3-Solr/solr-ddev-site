@@ -11,8 +11,8 @@
 ############
 page {
     logo {
-        file = EXT:apache_solr_for_typo3_sitepackage/Resources/Public/Images/logo.svg
-        fileInverted = EXT:apache_solr_for_typo3_sitepackage/Resources/Public/Images/logo-inverted.svg
+        file = fileadmin/introduction/images/introduction-package.svg
+        fileInverted = fileadmin/introduction/images/introduction-package-inverted.svg
         height = 52
         width = 192
         alt = Apache Solr for TYPO3 Sitepackage
@@ -26,7 +26,30 @@ page {
         partialRootPath = EXT:apache_solr_for_typo3_sitepackage/Resources/Private/Partials/Page/
         templateRootPath = EXT:apache_solr_for_typo3_sitepackage/Resources/Private/Templates/Page/
     }
+
+  theme {
+    navigation.type = top
+    meta.enable = 0
+
+    socialmedia.channels {
+      facebook.url = https://www.facebook.com/typo3/
+      twitter.url = https://twitter.com/typo3
+      github.url = https://github.com/TYPO3/TYPO3.CMS
+      youtube.url = https://www.youtube.com/user/typo3
+    }
+
+    cookieconsent.position = bottom-right
+  }
+
+  preloader {
+    backgroundColor = #03A9F4
+    logo.file = fileadmin/introduction/images/introduction-package-inverted.svg
+  }
 }
+
+[tree.level === 0]
+page.theme.navigation.style = default-transition
+[end]
 
 
 ##################
@@ -57,6 +80,10 @@ plugin.bootstrap_package_contentelements {
 ### BOOTSTRAP SCSS CONSTANTS ###
 ################################
 plugin.bootstrap_package.settings.scss {
-    primary = #eb3e4a
-    secondary = #013859
+  primary = #0288D1
+  secondary = #FFEB3B
+  breadcrumb-bg = #FFEB3B
+  cookieconsent-bg = #F2F2F2
+  footer-sections = (content:(background: #0288D1, color: #ffffff, link-color: #FFEB3B), meta:(background: #ffffff, color: $body-color, link-color: #0288D1))
 }
+
