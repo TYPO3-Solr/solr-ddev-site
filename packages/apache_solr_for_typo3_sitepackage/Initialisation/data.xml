@@ -21161,27 +21161,7 @@ Benni Mack</field>
 				<field index="root" type="integer">1</field>
 				<field index="clear" type="integer">3</field>
 				<field index="include_static_file">EXT:apache_solr_for_typo3_sitepackage/Configuration/TypoScript</field>
-				<field index="constants">[tree.level === 0]
-page.theme.navigation.style = default-transition
-[end]
-
-page.theme.navigation.type = top
-page.theme.meta.enable = 0
-page.logo.file = fileadmin/introduction/images/introduction-package.svg
-page.logo.fileInverted = fileadmin/introduction/images/introduction-package-inverted.svg
-plugin.bootstrap_package.settings.scss.primary = #0288D1
-plugin.bootstrap_package.settings.scss.secondary = #FFEB3B
-plugin.bootstrap_package.settings.scss.breadcrumb-bg = #FFEB3B
-plugin.bootstrap_package.settings.scss.cookieconsent-bg = #F2F2F2
-plugin.bootstrap_package.settings.scss.footer-sections = (content:(background: #0288D1, color: #ffffff, link-color: #FFEB3B), meta:(background: #ffffff, color: $body-color, link-color: #0288D1))
-page.theme.socialmedia.channels.facebook.url = https://www.facebook.com/typo3/
-page.theme.socialmedia.channels.twitter.url = https://twitter.com/typo3
-page.theme.socialmedia.channels.github.url = https://github.com/TYPO3/TYPO3.CMS
-page.theme.socialmedia.channels.youtube.url = https://www.youtube.com/user/typo3
-page.theme.cookieconsent.position = bottom-right
-page.preloader.backgroundColor = #03A9F4
-page.preloader.logo.file = fileadmin/introduction/images/introduction-package-inverted.svg
-</field>
+				<field index="constants"></field>
 				<field index="config"></field>
 				<field index="basedOn"></field>
 				<field index="includeStaticAfterBasedOn" type="integer">0</field>
