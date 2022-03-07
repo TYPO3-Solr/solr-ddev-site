@@ -4,7 +4,10 @@
 @import 'EXT:bootstrap_package/Configuration/TypoScript/setup.typoscript'
 @import 'EXT:bootstrap_package/Configuration/TypoScript/Bootstrap5/setup.typoscript'
 
+page {
+  includeCSS {
+    bootstrap-icons = EXT:apache_solr_for_typo3_sitepackage/node_modules/bootstrap-icons/font/bootstrap-icons.css
+  }
+}
+
 @import './Extensions/solr/setup.typoscript'
-
-
-

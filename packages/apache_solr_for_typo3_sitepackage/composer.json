@@ -17,5 +17,13 @@
         "typo3/cms": {
             "extension-key": "apache_solr_for_typo3_sitepackage"
         }
+    },
+    "scripts": {
+      "setup": [
+        "npm install"
+      ],
+      "post-install-cmd": [
+        "@setup"
+      ]
     }
 }

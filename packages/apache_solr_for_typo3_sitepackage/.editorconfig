@@ -20,6 +20,11 @@ indent_size = 4
 indent_style = space
 indent_size = 4
 
+# TypoScript
+[*.{typoscript,tsconfig}]
+indent_style = space
+indent_size = 2
+
 # TMPL-Files
 [*.tmpl]
 indent_style = space

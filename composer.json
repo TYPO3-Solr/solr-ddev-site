@@ -75,9 +75,13 @@
     "import-not-exportable-by-impexp-once": [
       "./packages/apache_solr_for_typo3_sitepackage/Initialisation/not_covered_by_impexp.sh"
     ],
+    "sitepackage-scripts": [
+      "composer run setup -d public/typo3conf/ext/apache_solr_for_typo3_sitepackage"
+    ],
     "post-autoload-dump": [
       "@typo3-cms-scripts",
-      "@import-not-exportable-by-impexp-once"
+      "@import-not-exportable-by-impexp-once",
+      "@sitepackage-scripts"
     ]
   },
   "config": {
