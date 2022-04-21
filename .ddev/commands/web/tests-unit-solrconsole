@@ -2,7 +2,7 @@
 
 ## Description: run unit tests in web container
 
-UNIT_BOOTSTRAP="vendor/nimut/testing-framework/res/Configuration/UnitTestsBootstrap.php"
+UNIT_BOOTSTRAP="public/typo3conf/ext/solr/Build/Test/UnitTestsBootstrap.php"
 UNIT_CONFIGURATION="public/typo3conf/ext/solrconsole/Build/Test/UnitTests.xml"
 
 ./vendor/bin/phpunit \
