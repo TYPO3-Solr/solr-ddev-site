@@ -11,7 +11,13 @@
     "repositories": {
         "0": {
             "type": "path",
-            "url": "packages/*"
+            "url": "packages/*",
+            "options": {
+                "reference": "none",
+                "versions": {
+                    "apache-solr-for-typo3/php-solr-explain": "2.0.0"
+                }
+            }
         }
     },
     "require": {
