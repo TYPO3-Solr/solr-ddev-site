@@ -1,0 +1,17 @@
+{
+    "name": "apache-solr-for-typo3/introduction-solrfluidgrouping",
+    "type": "typo3-cms-extension",
+    "description": "Solr development site : EXT:solrfluidgrouping for Introduction",
+    "homepage": "http://www.dkd.de/",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["TYPO3 CMS"],
+    "version": "11.5.0",
+    "require": {
+        "apache-solr-for-typo3/solrfluidgrouping": "@dev"
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "introduction_solrfluidgrouping"
+        }
+    }
+}

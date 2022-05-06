@@ -4,15 +4,14 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "faf057a072d4a1b2fa5fe1632b0fa31f",
+    "content-hash": "6d03979a8e9f1cf74e0b16c728e093b2",
     "packages": [
         {
             "name": "apache-solr-for-typo3/solr",
             "version": "dev-release-11.2.x",
             "dist": {
                 "type": "path",
-                "url": "packages/ext-solr",
-                "reference": "645f307383aa26e056131a6be63cc7be3a5624d2"
+                "url": "packages/ext-solr"
             },
             "require": {
                 "ext-json": "*",
@@ -211,8 +210,7 @@
             "version": "1.0.0",
             "dist": {
                 "type": "path",
-                "url": "packages/apache_solr_for_typo3_sitepackage",
-                "reference": "8df32d56bc52a30a4cb8ba70c19f671a1aca4ae1"
+                "url": "packages/apache_solr_for_typo3_sitepackage"
             },
             "require": {
                 "bk2k/bootstrap-package": "^11.0.3",
