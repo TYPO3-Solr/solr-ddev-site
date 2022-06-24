@@ -5,47 +5,40 @@
   "repositories": {
     "0": {
       "type": "path",
-      "url": "packages/*"
+      "url": "packages/*",
+      "options": {
+        "reference": "none",
+        "versions": {
+          "apache-solr-for-typo3/introduction-news":              "11.5",
+          "apache-solr-for-typo3/introduction-solrconsole":       "11.5",
+          "apache-solr-for-typo3/introduction-solrdebugtools":    "11.5",
+          "apache-solr-for-typo3/introduction-solrfal":           "11.5",
+          "apache-solr-for-typo3/introduction-solrfluidgrouping": "11.5",
+
+          "apache-solr-for-typo3/php-solr-explain":               "2.0.0",
+          "apache-solr-for-typo3/solr":                           "11.5",
+          "apache-solr-for-typo3/solrconsole":                    "11.0",
+          "apache-solr-for-typo3/solrdebugtools":                 "11.0",
+          "apache-solr-for-typo3/solrfal":                        "11.0",
+          "apache-solr-for-typo3/solrfluidgrouping":              "11.0",
+          "apache-solr-for-typo3/solrfheadless":                  "11.0",
+          "apache-solr-for-typo3/solrmlt":                        "11.0",
+          "apache-solr-for-typo3/tika":                           "11.0",
+
+          "dkd/apache-solr-for-typo3-sitepackage":                "11.5"
+        }
+      }
     }
   },
   "require": {
     "ext-dom": "*",
     "ext-json": "*",
     "ext-pdo": "*",
-    "typo3/cms-backend": "11.5.x-dev",
-    "typo3/cms-core": "11.5.x-dev",
-    "typo3/cms-extbase": "11.5.x-dev",
-    "typo3/cms-extensionmanager": "11.5.x-dev",
-    "typo3/cms-filelist": "11.5.x-dev",
-    "typo3/cms-fluid": "11.5.x-dev",
-    "typo3/cms-frontend": "11.5.x-dev",
-    "typo3/cms-install": "11.5.x-dev",
-    "typo3/cms-recordlist": "11.5.x-dev",
-    "typo3/cms-about": "11.5.x-dev",
-    "typo3/cms-adminpanel": "11.5.x-dev",
-    "typo3/cms-belog": "11.5.x-dev",
-    "typo3/cms-beuser": "11.5.x-dev",
-    "typo3/cms-felogin": "11.5.x-dev",
-    "typo3/cms-fluid-styled-content": "11.5.x-dev",
-    "typo3/cms-form": "11.5.x-dev",
-    "typo3/cms-impexp": "11.5.x-dev",
-    "typo3/cms-info": "11.5.x-dev",
-    "typo3/cms-lowlevel": "11.5.x-dev",
-    "typo3/cms-redirects": "11.5.x-dev",
-    "typo3/cms-reports": "11.5.x-dev",
-    "typo3/cms-rte-ckeditor": "11.5.x-dev",
-    "typo3/cms-setup": "11.5.x-dev",
-    "typo3/cms-seo": "11.5.x-dev",
-    "typo3/cms-scheduler": "11.5.x-dev",
-    "typo3/cms-sys-note": "11.5.x-dev",
-    "typo3/cms-t3editor": "11.5.x-dev",
-    "typo3/cms-tstemplate": "11.5.x-dev",
-    "typo3/cms-viewpage": "11.5.x-dev",
-    "typo3/cms-filemetadata": "11.5.x-dev",
-    "helhum/typo3-console": "~7.0.3",
+    "typo3/cms-core": "^11.5",
+    "helhum/typo3-console": "~7.1.2",
     "typo3-console/composer-auto-commands": "0.5.2",
-    "dkd/apache-solr-for-typo3-sitepackage": "@dev",
-    "apache-solr-for-typo3/solr": "@dev"
+    "dkd/apache-solr-for-typo3-sitepackage": "^11.5-dev",
+    "apache-solr-for-typo3/solr": "^11.5-dev"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.5",
@@ -57,14 +50,16 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "TYPO3\\CMS\\Core\\Tests\\": "public/typo3/sysext/core/Tests/",
-      "ApacheSolrForTypo3\\Solr\\Tests\\": "public/typo3conf/ext/solr/Tests/",
-      "ApacheSolrForTypo3\\Solrconsole\\Tests\\": "public/typo3conf/ext/solrconsole/Tests/",
-      "ApacheSolrForTypo3\\Solrdebugtools\\Tests\\": "public/typo3conf/ext/solrdebugtools/Tests/",
-      "ApacheSolrForTypo3\\Solrfal\\Tests\\": "public/typo3conf/ext/solrfal/Tests/",
-      "ApacheSolrForTypo3\\Solrfluidgrouping\\Tests\\": "public/typo3conf/ext/solrfluidgrouping/Tests/",
-      "ApacheSolrForTypo3\\Solrmlt\\Tests\\": "public/typo3conf/ext/solrmlt/Tests/",
-      "ApacheSolrForTypo3\\Tika\\Tests\\": "public/typo3conf/ext/tika/Tests/"
+      "TYPO3\\CMS\\Core\\Tests\\":                      "public/typo3/sysext/core/Tests/",
+      "ApacheSolrForTypo3\\SolrExplain\\Tests\\":       "packages/php-solr-explain/Tests/",
+      "ApacheSolrForTypo3\\Solr\\Tests\\":              "packages/ext-solr/Tests/",
+      "ApacheSolrForTypo3\\Solrconsole\\Tests\\":       "packages/ext-solrconsole/Tests/",
+      "ApacheSolrForTypo3\\Solrdebugtools\\Tests\\":    "packages/ext-solrdebugtools/Tests/",
+      "ApacheSolrForTypo3\\Solrfal\\Tests\\":           "packages/ext-solrfal/Tests/",
+      "ApacheSolrForTypo3\\Solrfluidgrouping\\Tests\\": "packages/ext-solrfluidgrouping/Tests/",
+      "ApacheSolrForTypo3\\Solrheadless\\Tests\\":      "packages/ext-solrheadless/Tests/",
+      "ApacheSolrForTypo3\\Solrmlt\\Tests\\":           "packages/ext-solrmlt/Tests/",
+      "ApacheSolrForTypo3\\Tika\\Tests\\":              "packages/ext-tika/Tests/"
     }
   },
   "scripts": {
@@ -85,7 +80,6 @@
       "@sitepackage-scripts"
     ]
   },
-  "minimum-stability": "dev",
   "config": {
     "allow-plugins": true
   }
