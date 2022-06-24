@@ -9,7 +9,7 @@ $EM_CONF[$_EXTKEY] = [
     'category' => 'distribution',
     'constraints' => [
         'depends' => [
-            'typo3' => '10.4.0-10.4.99',
+            'typo3' => '*',
             'tika' => '*'
         ],
         'conflicts' => [
