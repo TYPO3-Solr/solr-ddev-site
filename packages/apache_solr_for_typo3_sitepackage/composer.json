@@ -1,22 +1,57 @@
 {
-    "name": "dkd/apache-solr-for-typo3-sitepackage",
-    "type": "typo3-cms-extension",
-    "description": "Solr development site",
-    "homepage": "http://www.dkd.de/",
-    "license": ["GPL-2.0-or-later"],
-    "keywords": ["TYPO3 CMS"],
-    "version": "1.0.0",
-    "require": {
-        "typo3/cms-core": "*",
-        "typo3/cms-impexp": "*",
-        "typo3/cms-rte-ckeditor": "*",
-        "typo3/cms-form": "*",
-        "typo3/cms-felogin": "*",
-        "bk2k/bootstrap-package": "^11.0.3"
-    },
-    "extra": {
-        "typo3/cms": {
-            "extension-key": "apache_solr_for_typo3_sitepackage"
-        }
+  "name": "dkd/apache-solr-for-typo3-sitepackage",
+  "type": "typo3-cms-extension",
+  "description": "Solr development site",
+  "homepage": "http://www.dkd.de/",
+  "license": [
+    "GPL-2.0-or-later"
+  ],
+  "keywords": [
+    "TYPO3 CMS"
+  ],
+  "require": {
+    "bk2k/bootstrap-package": "^12.0.4",
+    "typo3/cms-about": "*",
+    "typo3/cms-adminpanel": "*",
+    "typo3/cms-backend": "*",
+    "typo3/cms-belog": "*",
+    "typo3/cms-beuser": "*",
+    "typo3/cms-extbase": "*",
+    "typo3/cms-extensionmanager": "*",
+    "typo3/cms-felogin": "*",
+    "typo3/cms-filelist": "*",
+    "typo3/cms-filemetadata": "*",
+    "typo3/cms-fluid-styled-content": "*",
+    "typo3/cms-fluid": "*",
+    "typo3/cms-form": "*",
+    "typo3/cms-frontend": "*",
+    "typo3/cms-impexp": "*",
+    "typo3/cms-info": "*",
+    "typo3/cms-install": "*",
+    "typo3/cms-lowlevel": "*",
+    "typo3/cms-recordlist": "*",
+    "typo3/cms-redirects": "*",
+    "typo3/cms-reports": "*",
+    "typo3/cms-rte-ckeditor": "*",
+    "typo3/cms-scheduler": "*",
+    "typo3/cms-seo": "*",
+    "typo3/cms-setup": "*",
+    "typo3/cms-sys-note": "*",
+    "typo3/cms-t3editor": "*",
+    "typo3/cms-tstemplate": "*",
+    "typo3/cms-viewpage": "*"
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "apache_solr_for_typo3_sitepackage"
     }
+  },
+  "scripts": {
+    "setup": [
+      "npm install"
+    ],
+    "post-install-cmd": [
+      "@setup"
+    ]
+  }
 }

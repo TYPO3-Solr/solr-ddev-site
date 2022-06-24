@@ -1,0 +1,17 @@
+{
+    "name": "apache-solr-for-typo3/introduction-solrdebugtools",
+    "type": "typo3-cms-extension",
+    "description": "Solr development site : EXT:solrdebugtools for Introduction",
+    "homepage": "http://www.dkd.de/",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["TYPO3 CMS"],
+    "require": {
+        "apache-solr-for-typo3/solrdebugtools": "@dev",
+        "apache-solr-for-typo3/php-solr-explain": "@dev"
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "introduction_solrdebugtools"
+        }
+    }
+}
