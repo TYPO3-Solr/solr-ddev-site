@@ -1,7 +1,7 @@
 name: solr-ddev-site
 type: typo3
 docroot: public
-php_version: "7.4"
+php_version: "7.2"
 webserver_type: nginx-fpm
 router_http_port: "80"
 router_https_port: "443"
@@ -18,6 +18,7 @@ hooks:
   - exec-host: '[ -d ./.ddev/tika-jars ] ||  mkdir -p .ddev/tika-jars'
   - exec-host: ./.ddev/commands/host/clone solr
   post-start:
+  - exec: composer self-update --1
   - exec: composer install --prefer-source -d /var/www/html
   # setup system cron and run TYPO3 Scheduler tasks via system cron.
   - exec: sudo service cron start && echo '* * * * * TYPO3_CONTEXT=Development /usr/bin/php /var/www/html/vendor/bin/typo3cms scheduler:run' | crontab -

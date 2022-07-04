@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ## Description: run integration tests in web container (don't forget to run `ddev composer-update--lock` if ext-solr*'s composer.json changed)
+## Usage: solr:tests:integration
 
 INTEGRATION_PHPUINT_BOOTSTRAP="vendor/nimut/testing-framework/res/Configuration/FunctionalTestsBootstrap.php"
 

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ## Description: Cleanup all the things to be able to start clean and default state
+## Usage: solr:clean:ddev-site
 
 ddev delete --omit-snapshot --yes
 

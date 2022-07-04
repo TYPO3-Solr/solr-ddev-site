@@ -4,7 +4,7 @@ Get going quickly with TYPO3 CMS and Apache Solr.
 
 ## Prerequisites
 
-* Install docker (Version should be higher then 17.05)
+* Install docker (Version should be higher than 17.05)
 * Install ddev (Version should be equal or higher then 1.5.1)
 
 ## Quickstart
@@ -34,10 +34,10 @@ Password: password
 
 ***Recreate***
 
-From time to time you might want to start again with a clean data base. To do that run:
+From time to time you might want to start again with a clean database state. To do that run:
 
 ```
-ddev clean
+ddev solr:clean:ddev-site
 ```
 
 This will remove all the things and bring the system tu the initial state.
@@ -47,10 +47,39 @@ This will remove all the things and bring the system tu the initial state.
 
 The tests can be executed within the ddev docker containers.
 
-### run unit tests    
-    ddev tests-unit
+### run unit tests
+    ddev solr:tests:unit
 
 ### run integration tests
-    ddev tests-integration
+    ddev solr:tests:integration
+
+## Enable EXT:solr features via EXT:solr* addons.
+
+Following EXT:solr* addons can be switched on in this environment by `ddev enable <addon-or-demo>` command:
+
+(EB = requires EB account and presence of addon in packages/ext-<addon-name> path.)
+(Nø = To be integrated in solr-ddev-site)
+
+* solrconsole (EB)
+* solrdebugtools (EB)
+* solrfal (EB)
+* solrfluidgrouping
+* solrfheadless (EB and Nø)
+* solrmlt (Nø)
+* tika
+* news (As demo of record indexing.)
+
+```
+ddev enable <addon-or-demo>
+ddev enable news
+ddev enable solrfluidgrouping
+ddev enable solrfal
+```
+
+
+
+### Examples for enable addons:
+
+
 
 [See more about running tests whithin ddev](.ddev/commands/web/README.md)
