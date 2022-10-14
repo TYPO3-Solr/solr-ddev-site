@@ -37,8 +37,8 @@
     "typo3/cms-core": "^11.5",
     "helhum/typo3-console": "~7.1.2",
     "typo3-console/composer-auto-commands": "0.5.2",
-    "dkd/apache-solr-for-typo3-sitepackage": "^11.5-dev",
-    "apache-solr-for-typo3/solr": "^11.5-dev"
+    "dkd/apache-solr-for-typo3-sitepackage": "11.5",
+    "apache-solr-for-typo3/solr": "11.5"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.5",

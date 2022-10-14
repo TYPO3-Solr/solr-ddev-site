@@ -4,6 +4,7 @@
 @import 'EXT:bootstrap_package/Configuration/TypoScript/constants.typoscript'
 @import 'EXT:bootstrap_package/Configuration/TypoScript/Bootstrap5/constants.typoscript'
 @import './Extensions/solr/constants.typoscript'
+@import './Extensions/Form/constants.typoscript'
 
 
 ############
@@ -11,8 +12,8 @@
 ############
 page {
     logo {
-        file = fileadmin/introduction/images/introduction-package.svg
-        fileInverted = fileadmin/introduction/images/introduction-package-inverted.svg
+        #file = fileadmin/introduction/images/introduction-package.svg
+        #fileInverted = fileadmin/introduction/images/introduction-package-inverted.svg
         height = 52
         width = 192
         alt = Apache Solr for TYPO3 Sitepackage
@@ -32,10 +33,10 @@ page {
     meta.enable = 0
 
     socialmedia.channels {
-      facebook.url = https://www.facebook.com/typo3/
-      twitter.url = https://twitter.com/typo3
-      github.url = https://github.com/TYPO3/TYPO3.CMS
-      youtube.url = https://www.youtube.com/user/typo3
+      facebook.url = https://www.facebook.com/www.dkd.de/
+      twitter.url = https://twitter.com/dkd_de
+      github.url = https://github.com/TYPO3-Solr/ext-solr
+      youtube.url = https://www.youtube.com/c/dkdde
     }
 
     cookieconsent.position = bottom-right

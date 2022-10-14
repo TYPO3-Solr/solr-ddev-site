@@ -1,0 +1,18 @@
+########################
+#### FORM FRAMEWORK ####
+########################
+
+module.tx_form {
+  settings {
+    yamlConfigurations {
+      110 = EXT:apache_solr_for_typo3_sitepackage/Configuration/Form/Setup.yaml
+    }
+  }
+}
+plugin.tx_form {
+  settings {
+    yamlConfigurations {
+      110 = EXT:apache_solr_for_typo3_sitepackage/Configuration/Form/Setup.yaml
+    }
+  }
+}
