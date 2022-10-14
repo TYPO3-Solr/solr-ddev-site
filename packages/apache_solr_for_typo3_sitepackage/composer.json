@@ -11,7 +11,7 @@
   ],
   "version": "dev-11.5.x",
   "require": {
-    "bk2k/bootstrap-package": "^12.0.4",
+    "bk2k/bootstrap-package": "~13.0.1",
     "typo3/cms-about": "*",
     "typo3/cms-adminpanel": "*",
     "typo3/cms-backend": "*",
