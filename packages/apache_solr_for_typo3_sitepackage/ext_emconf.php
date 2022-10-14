@@ -9,8 +9,8 @@ $EM_CONF[$_EXTKEY] = [
     'category' => 'distribution',
     'constraints' => [
         'depends' => [
-            'typo3' => '9.5.0-10.4.99',
-            'bootstrap_package' => '11.0.1-11.0.99'
+            'typo3' => '11.5.14-11.5.99',
+            'bootstrap_package' => '12.0.1-12.99.99'
         ],
         'conflicts' => [
         ],

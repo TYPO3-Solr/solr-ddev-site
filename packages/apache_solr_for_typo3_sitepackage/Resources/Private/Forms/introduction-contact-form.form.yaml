@@ -1,4 +1,3 @@
-
 renderingOptions:
   submitButtonLabel: Submit
 type: Form
@@ -8,7 +7,7 @@ prototypeName: standard
 finishers:
   -
     options:
-      pageUid: '105'
+      pageUid: ''
       additionalParameters: ''
     identifier: Redirect
 renderables:

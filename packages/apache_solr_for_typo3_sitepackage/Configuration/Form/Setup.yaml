@@ -1,0 +1,8 @@
+TYPO3:
+  CMS:
+    Form:
+      persistenceManager:
+        allowedFileMounts:
+          100: 1:/apache_solr_for_typo3_sitepackage/form/
+        allowedExtensionPaths:
+          119: EXT:apache_solr_for_typo3_sitepackage/Resources/Private/Forms/
