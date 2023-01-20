@@ -9,38 +9,43 @@
       "options": {
         "reference": "none",
         "versions": {
-          "apache-solr-for-typo3/introduction-news":              "11.5",
-          "apache-solr-for-typo3/introduction-solrconsole":       "11.5",
-          "apache-solr-for-typo3/introduction-solrdebugtools":    "11.5",
-          "apache-solr-for-typo3/introduction-solrfal":           "11.5",
-          "apache-solr-for-typo3/introduction-solrfluidgrouping": "11.5",
+          "apache-solr-for-typo3/introduction-news":              "12.0",
+          "apache-solr-for-typo3/introduction-solrconsole":       "12.0",
+          "apache-solr-for-typo3/introduction-solrdebugtools":    "12.0",
+          "apache-solr-for-typo3/introduction-solrfal":           "12.0",
+          "apache-solr-for-typo3/introduction-solrfluidgrouping": "12.0",
 
           "apache-solr-for-typo3/introduction-rector":            "11.5",
 
           "apache-solr-for-typo3/php-solr-explain":               "2.0.0",
-          "apache-solr-for-typo3/solr":                           "11.5",
-          "apache-solr-for-typo3/solrconsole":                    "11.0",
-          "apache-solr-for-typo3/solrdebugtools":                 "11.0",
-          "apache-solr-for-typo3/solrfal":                        "11.0",
-          "apache-solr-for-typo3/solrfluidgrouping":              "11.0",
-          "apache-solr-for-typo3/solrfheadless":                  "11.0",
-          "apache-solr-for-typo3/solrmlt":                        "11.0",
-          "apache-solr-for-typo3/tika":                           "11.0",
+          "apache-solr-for-typo3/solr":                           "12.0",
+          "apache-solr-for-typo3/solrconsole":                    "12.0",
+          "apache-solr-for-typo3/solrdebugtools":                 "12.0",
+          "apache-solr-for-typo3/solrfal":                        "12.0",
+          "apache-solr-for-typo3/solrfluidgrouping":              "12.0",
+          "apache-solr-for-typo3/solrfheadless":                  "12.0",
+          "apache-solr-for-typo3/solrmlt":                        "12.0",
+          "apache-solr-for-typo3/tika":                           "12.0",
 
-          "dkd/apache-solr-for-typo3-sitepackage":                "11.5"
+          "dkd/apache-solr-for-typo3-sitepackage":                "12.0"
         }
       }
     }
+  },
+  "config": {
+    "allow-plugins": true,
+    "platform": {
+      "php": "8.1.1"
+    },
+    "sort-packages": true
   },
   "require": {
     "ext-dom": "*",
     "ext-json": "*",
     "ext-pdo": "*",
-    "typo3/cms-core": "^11.5",
-    "helhum/typo3-console": "~7.1.2",
-    "typo3-console/composer-auto-commands": "0.5.2",
-    "dkd/apache-solr-for-typo3-sitepackage": "11.5",
-    "apache-solr-for-typo3/solr": "11.5"
+    "apache-solr-for-typo3/solr": "12.0",
+    "dkd/apache-solr-for-typo3-sitepackage": "12.0",
+    "typo3/cms-core": "^12"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.5",
@@ -51,7 +56,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "TYPO3\\CMS\\Core\\Tests\\":                      "public/typo3/sysext/core/Tests/",
+      "TYPO3\\CMS\\Core\\Tests\\":                      "vendor/typo3/cms-core/Tests",
       "ApacheSolrForTypo3\\SolrExplain\\Tests\\":       "packages/php-solr-explain/Tests/",
       "ApacheSolrForTypo3\\Solr\\Tests\\":              "packages/ext-solr/Tests/",
       "ApacheSolrForTypo3\\Solrconsole\\Tests\\":       "packages/ext-solrconsole/Tests/",
@@ -65,26 +70,23 @@
   },
   "scripts": {
     "typo3-cms-scripts": [
-      "typo3cms install:fixfolderstructure",
-      "[ -f ./public/typo3conf/LocalConfiguration.php ] || typo3cms install:setup",
-      "typo3cms cache:flush"
+      "[ -f ./config/system/settings.php ] || typo3 setup --no-interaction --driver=${TYPO3_INSTALL_DB_DRIVER} --username=${TYPO3_INSTALL_DB_USER} --password=${TYPO3_INSTALL_DB_PASSWORD} --host=${TYPO3_INSTALL_DB_HOST} --port=${TYPO3_INSTALL_DB_PORT} --dbname=${TYPO3_INSTALL_DB_DBNAME} --admin-username=${TYPO3_INSTALL_ADMIN_USER} --admin-email=\"info@typo3.org\" --admin-user-password=${TYPO3_INSTALL_ADMIN_PASSWORD} --project-name=\"EXT:solr dev environment\"",
+      "typo3 extension:setup",
+      "typo3 cache:flush"
     ],
     "import-not-exportable-by-impexp-once": [
-      "./packages/apache_solr_for_typo3_sitepackage/Initialisation/not_covered_by_impexp.sh"
+      "# ./packages/apache_solr_for_typo3_sitepackage/Initialisation/not_covered_by_impexp.sh"
     ],
     "sitepackage-scripts": [
-      "composer run setup -d public/typo3conf/ext/apache_solr_for_typo3_sitepackage"
+      "composer run setup -d ./packages/apache_solr_for_typo3_sitepackage"
     ],
     "post-autoload-dump": [
       "@typo3-cms-scripts",
       "@import-not-exportable-by-impexp-once",
       "@sitepackage-scripts"
+    ],
+    "tests:solr:unit": [
+      "phpunit --bootstrap=packages/ext-solr/Build/Test/UnitTestsBootstrap.php --configuration packages/ext-solr/Build/Test/UnitTests.xml --colors"
     ]
-  },
-  "config": {
-    "allow-plugins": {
-      "typo3/cms-composer-installers": true,
-      "typo3/class-alias-loader": true
-    }
   }
 }

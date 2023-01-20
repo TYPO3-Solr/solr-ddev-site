@@ -6,7 +6,7 @@
 
 page {
   includeCSS {
-    bootstrap-icons = EXT:apache_solr_for_typo3_sitepackage/node_modules/bootstrap-icons/font/bootstrap-icons.css
+    bootstrap-icons = EXT:apache_solr_for_typo3_sitepackage/Resources/Public/Fonts/bootstrap-icons.css
   }
 }
 
