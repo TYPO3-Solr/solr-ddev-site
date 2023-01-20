@@ -21,6 +21,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->import(Typo3SetList::TYPO3_95);
     $containerConfigurator->import(Typo3SetList::TYPO3_104);
     $containerConfigurator->import(Typo3SetList::TYPO3_11);
+    $containerConfigurator->import(Typo3SetList::TYPO3_12);
 
 
     $containerConfigurator->import(PHPUnitSetList::PHPUNIT_60);

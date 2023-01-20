@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "bootstrap-icons": "^1.8.1"
+  },
+  "scripts": {
+    "postinstall": "rm -Rf Resources/Public/Fonts/fonts Resources/Public/Fonts/bootstrap*; mv --force node_modules/bootstrap-icons/font/* Resources/Public/Fonts/. && rm -Rf node_modules"
   }
 }
