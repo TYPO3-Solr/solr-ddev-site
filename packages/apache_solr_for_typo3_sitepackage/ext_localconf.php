@@ -1,5 +1,10 @@
 <?php
-defined('TYPO3_MODE') || die();
+
+declare(strict_types=1);
+
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
+defined('TYPO3') || die();
 
 /***************
  * Add default RTE configuration
@@ -7,10 +12,10 @@ defined('TYPO3_MODE') || die();
 $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['apache_solr_for_typo3_sitepackage'] = 'EXT:apache_solr_for_typo3_sitepackage/Configuration/RTE/Default.yaml';
 
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants('
+ExtensionManagementUtility::addTypoScriptConstants('
   @import \'EXT:apache_solr_for_typo3_sitepackage/Configuration/TypoScript/constants.typoscript\'
 ');
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptSetup('
+ExtensionManagementUtility::addTypoScriptSetup('
   @import \'EXT:apache_solr_for_typo3_sitepackage/Configuration/TypoScript/setup.typoscript\'
 ');
