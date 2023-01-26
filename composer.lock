@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a36dc087d123a6dbb9fa8415e998d006",
+    "content-hash": "114041b89ae61dcac5c17631312ecc88",
     "packages": [
         {
             "name": "apache-solr-for-typo3/solr",
@@ -7879,6 +7879,68 @@
             "time": "2023-01-29T23:43:24+00:00"
         },
         {
+            "name": "helmich/typo3-typoscript-parser",
+            "version": "v2.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/martin-helmich/typo3-typoscript-parser.git",
+                "reference": "b61bc9d63d42901d08885c18f6c691aa0f0c800d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/martin-helmich/typo3-typoscript-parser/zipball/b61bc9d63d42901d08885c18f6c691aa0f0c800d",
+                "reference": "b61bc9d63d42901d08885c18f6c691aa0f0c800d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4",
+                "symfony/config": "~3.0|~4.0|~5.0|~6.0",
+                "symfony/dependency-injection": "~3.0|~4.0|~5.0|~6.0",
+                "symfony/yaml": "~3.0|~4.0|~5.0|~6.0"
+            },
+            "require-dev": {
+                "php-vfs/php-vfs": "^1.3",
+                "phpspec/prophecy-phpunit": "^2.0",
+                "phpunit/phpunit": "^9.5",
+                "symfony/phpunit-bridge": "~2.7|~3.0|~4.0|~5.0|~6.0",
+                "vimeo/psalm": "^4.20"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Helmich\\TypoScriptParser\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martin Helmich",
+                    "email": "m.helmich@mittwald.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "Parser for the TYPO3 configuration language TypoScript.",
+            "homepage": "https://github.com/martin-helmich",
+            "support": {
+                "issues": "https://github.com/martin-helmich/typo3-typoscript-parser/issues",
+                "source": "https://github.com/martin-helmich/typo3-typoscript-parser/tree/v2.4.1"
+            },
+            "funding": [
+                {
+                    "url": "https://donate.helmich.me",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/martin-helmich",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-02-13T16:23:17+00:00"
+        },
+        {
             "name": "myclabs/deep-copy",
             "version": "1.11.1",
             "source": {
@@ -7936,6 +7998,92 @@
                 }
             ],
             "time": "2023-03-08T13:26:56+00:00"
+        },
+        {
+            "name": "nette/utils",
+            "version": "v3.2.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/utils.git",
+                "reference": "c91bac3470c34b2ecd5400f6e6fdf0b64a836a5c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nette/utils/zipball/c91bac3470c34b2ecd5400f6e6fdf0b64a836a5c",
+                "reference": "c91bac3470c34b2ecd5400f6e6fdf0b64a836a5c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2 <8.3"
+            },
+            "conflict": {
+                "nette/di": "<3.0.6"
+            },
+            "require-dev": {
+                "jetbrains/phpstorm-attributes": "dev-master",
+                "nette/tester": "~2.0",
+                "phpstan/phpstan": "^1.0",
+                "tracy/tracy": "^2.3"
+            },
+            "suggest": {
+                "ext-gd": "to use Image",
+                "ext-iconv": "to use Strings::webalize(), toAscii(), chr() and reverse()",
+                "ext-intl": "to use Strings::webalize(), toAscii(), normalize() and compare()",
+                "ext-json": "to use Nette\\Utils\\Json",
+                "ext-mbstring": "to use Strings::lower() etc...",
+                "ext-tokenizer": "to use Nette\\Utils\\Reflection::getUseStatements()",
+                "ext-xml": "to use Strings::length() etc. when mbstring is not available"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0-only",
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
+                }
+            ],
+            "description": "🛠  Nette Utils: lightweight utilities for string & array manipulation, image handling, safe JSON encoding/decoding, validation, slug or strong password generating etc.",
+            "homepage": "https://nette.org",
+            "keywords": [
+                "array",
+                "core",
+                "datetime",
+                "images",
+                "json",
+                "nette",
+                "paginator",
+                "password",
+                "slugify",
+                "string",
+                "unicode",
+                "utf-8",
+                "utility",
+                "validation"
+            ],
+            "support": {
+                "issues": "https://github.com/nette/utils/issues",
+                "source": "https://github.com/nette/utils/tree/v3.2.9"
+            },
+            "time": "2023-01-18T03:26:20+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -8587,6 +8735,62 @@
                 }
             ],
             "time": "2023-03-09T06:34:10+00:00"
+        },
+        {
+            "name": "rector/rector",
+            "version": "0.15.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rectorphp/rector.git",
+                "reference": "1dcdf54ebf502d9f7cf9b5f89df613da1774d050"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/1dcdf54ebf502d9f7cf9b5f89df613da1774d050",
+                "reference": "1dcdf54ebf502d9f7cf9b5f89df613da1774d050",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2|^8.0",
+                "phpstan/phpstan": "^1.9.7"
+            },
+            "conflict": {
+                "rector/rector-doctrine": "*",
+                "rector/rector-downgrade-php": "*",
+                "rector/rector-php-parser": "*",
+                "rector/rector-phpunit": "*",
+                "rector/rector-symfony": "*"
+            },
+            "bin": [
+                "bin/rector"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "0.14-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Instant Upgrade and Automated Refactoring of any PHP code",
+            "support": {
+                "issues": "https://github.com/rectorphp/rector/issues",
+                "source": "https://github.com/rectorphp/rector/tree/0.15.4"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/tomasvotruba",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-01-10T11:09:49+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -9553,6 +9757,98 @@
             "time": "2020-09-28T06:39:44+00:00"
         },
         {
+            "name": "ssch/typo3-rector",
+            "version": "v1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sabbelasichon/typo3-rector.git",
+                "reference": "55ed434647a8ed837a95c988f5b92cc0362e1886"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/55ed434647a8ed837a95c988f5b92cc0362e1886",
+                "reference": "55ed434647a8ed837a95c988f5b92cc0362e1886",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-libxml": "*",
+                "ext-simplexml": "*",
+                "helmich/typo3-typoscript-parser": "^2.4.1",
+                "nette/utils": "^3.0",
+                "nikic/php-parser": "^4.14",
+                "php": "^7.4 || ^8.0",
+                "phpstan/phpstan": "^1.7.12",
+                "rector/rector": "0.15.4",
+                "symfony/console": "^4.0 || ^5.0 || ^6.0",
+                "symfony/polyfill-php80": "^1.26",
+                "symfony/polyfill-php81": "^1.26",
+                "symfony/string": "^5.0 || ^6.0",
+                "symplify/smart-file-system": "^9.3 || ^10.0 || ^11.0",
+                "webmozart/assert": "^1.0"
+            },
+            "require-dev": {
+                "php-parallel-lint/php-parallel-lint": "^1.3",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-phpunit": "^1.1",
+                "phpunit/phpunit": "^9.5",
+                "symfony/dependency-injection": "^5.0 || ^6.0",
+                "symfony/filesystem": "^5.0 || ^6.0",
+                "symfony/http-kernel": "^5.0 || ^6.0",
+                "symplify/easy-coding-standard": "^11.0"
+            },
+            "type": "rector-extension",
+            "extra": {
+                "enable-patching": true,
+                "rector": {
+                    "includes": [
+                        "config/config.php"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-main": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ssch\\TYPO3Rector\\": "src",
+                    "Ssch\\TYPO3Rector\\PHPStan\\": "utils/phpstan/src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Schreiber",
+                    "email": "breakpoint@schreibersebastian.de"
+                },
+                {
+                    "name": "Henrik Elsner"
+                }
+            ],
+            "description": "Instant fixes for your TYPO3 code by using Rector.",
+            "homepage": "https://packagist.org/packages/ssch/typo3-rector",
+            "support": {
+                "chat": "https://typo3.slack.com/archives/C019R5LAA6A",
+                "docs": "https://github.com/sabbelasichon/typo3-rector/tree/main/docs",
+                "issues": "https://github.com/sabbelasichon/typo3-rector/issues",
+                "source": "https://github.com/sabbelasichon/typo3-rector"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/schreiberten",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/sabbelasichon",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-01-10T20:37:43+00:00"
+        },
+        {
             "name": "symfony/polyfill-php80",
             "version": "v1.27.0",
             "source": {
@@ -9836,6 +10132,79 @@
                 }
             ],
             "time": "2023-02-14T08:44:56+00:00"
+        },
+        {
+            "name": "symplify/smart-file-system",
+            "version": "11.1.24",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symplify/smart-file-system.git",
+                "reference": "0f50b4fd024d096f36990bf15d4ca825398a42c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symplify/smart-file-system/zipball/0f50b4fd024d096f36990bf15d4ca825398a42c1",
+                "reference": "0f50b4fd024d096f36990bf15d4ca825398a42c1",
+                "shasum": ""
+            },
+            "require": {
+                "nette/utils": "^3.2",
+                "php": ">=8.1",
+                "symfony/filesystem": "^6.2",
+                "symfony/finder": "^6.2"
+            },
+            "conflict": {
+                "symplify/autowire-array-parameter": "<11.1.24",
+                "symplify/coding-standard": "<11.1.24",
+                "symplify/config-transformer": "<11.1.24",
+                "symplify/easy-ci": "<11.1.24",
+                "symplify/easy-coding-standard": "<11.1.24",
+                "symplify/easy-parallel": "<11.1.24",
+                "symplify/easy-testing": "<11.1.24",
+                "symplify/monorepo-builder": "<11.1.24",
+                "symplify/package-builder": "<11.1.24",
+                "symplify/php-config-printer": "<11.1.24",
+                "symplify/phpstan-extensions": "<11.1.24",
+                "symplify/phpstan-rules": "<11.1.24",
+                "symplify/rule-doc-generator": "<11.1.24",
+                "symplify/rule-doc-generator-contracts": "<11.1.24",
+                "symplify/symfony-static-dumper": "<11.1.24",
+                "symplify/symplify-kernel": "<11.1.24",
+                "symplify/vendor-patches": "<11.1.24"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5.26"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "11.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symplify\\SmartFileSystem\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Sanitized FileInfo with safe getRealPath() and other handy methods",
+            "support": {
+                "source": "https://github.com/symplify/smart-file-system/tree/11.1.24"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/rectorphp",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/tomasvotruba",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-12-23T15:02:16+00:00"
         },
         {
             "name": "theseer/tokenizer",
