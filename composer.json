@@ -48,11 +48,12 @@
     "typo3/cms-core": "^12"
   },
   "require-dev": {
-    "phpunit/phpunit": "^9.5",
+    "dg/bypass-finals": "^1.4",
     "phpspec/prophecy-phpunit": "*",
-    "typo3/testing-framework": "^6.12",
-    "typo3/coding-standards": ">=0.5.0",
-    "dg/bypass-finals": "^1.3"
+    "phpunit/phpunit": "^9.5",
+    "ssch/typo3-rector": "^1.1.2",
+    "typo3/coding-standards": "~0.7.1",
+    "typo3/testing-framework": "dev-main"
   },
   "autoload-dev": {
     "psr-4": {
