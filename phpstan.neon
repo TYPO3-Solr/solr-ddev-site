@@ -1,0 +1,22 @@
+parameters:
+  # 0: basic checks
+  # 1: possibly undefined variable, ...
+  # 2: unknown methods checked on all expressions
+  # 3: return types, types assigned to properties
+  # 4: basic dead code checking
+  # 5: checking types of arguments passed to methods and functions
+  # 6: check for missing typehints
+  # 7: report partially wrong union types
+  # 8: report calling methods and accessing properties on nullable types
+  level: 6
+
+  paths:
+    - packages/ext-solr/Classes
+    - packages/ext-solr/Tests
+    - packages/ext-solr/class.ext_update.php
+    - packages/ext-solr/ext_localconf.php
+    - packages/ext-solr/ext_tables.php
+
+  reportUnmatchedIgnoredErrors: false
+  ignoreErrors:
+    - '#parameter \$contentObjectConfiguration with no value type specified in iterable type array#'
