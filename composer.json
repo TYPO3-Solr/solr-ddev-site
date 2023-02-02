@@ -2,6 +2,7 @@
   "name": "dkd/apache-solr-for-typo3-dev-distribution",
   "description": "TYPO3 CMS Base Distribution for EXT:solr* development and testing.",
   "license": "GPL-2.0-or-later",
+  "type": "project",
   "repositories": {
     "0": {
       "type": "path",
@@ -84,7 +85,7 @@
     "ssch/typo3-phpstan-rules": "dev-main",
     "ssch/typo3-rector": "^1.1.2",
     "typo3/coding-standards": "~0.7.1",
-    "typo3/testing-framework": "dev-main"
+    "typo3/testing-framework": "dev-7-composerinstaller5-fix"
   },
   "autoload-dev": {
     "psr-4": {
@@ -119,6 +120,9 @@
     ],
     "tests:solr:unit": [
       "phpunit --bootstrap=packages/ext-solr/Build/Test/UnitTestsBootstrap.php --configuration packages/ext-solr/Build/Test/UnitTests.xml --colors"
+    ],
+    "tests:solr:integration": [
+      "phpunit --bootstrap=packages/ext-solr/Build/Test/IntegrationTestsBootstrap.php --configuration packages/ext-solr/Build/Test/IntegrationTests.xml --colors"
     ]
   }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c21e7b8c840d565f881e3c61b1976e1",
+    "content-hash": "d158246da039364a038ce2ebd68b0b94",
     "packages": [
         {
             "name": "apache-solr-for-typo3/solr",
@@ -105,7 +105,7 @@
                     "phpunit --colors --config=Build/Test/UnitTests.xml --bootstrap=Build/Test/UnitTestsBootstrap.php"
                 ],
                 "tests:integration": [
-                    "phpunit --colors --config=Build/Test/IntegrationTests.xml --bootstrap=.Build/Web/typo3conf/ext/solr/Build/Test/IntegrationTestsBootstrap.php"
+                    "phpunit --colors --config=Build/Test/IntegrationTests.xml --bootstrap=Build/Test/IntegrationTestsBootstrap.php"
                 ],
                 "t3:standards:fix": [
                     "php-cs-fixer fix"
@@ -8129,6 +8129,57 @@
             "time": "2022-02-13T16:23:17+00:00"
         },
         {
+            "name": "mikey179/vfsstream",
+            "version": "v1.6.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bovigo/vfsStream.git",
+                "reference": "17d16a85e6c26ce1f3e2fa9ceeacdc2855db1e9f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/17d16a85e6c26ce1f3e2fa9ceeacdc2855db1e9f",
+                "reference": "17d16a85e6c26ce1f3e2fa9ceeacdc2855db1e9f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.5|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.6.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "org\\bovigo\\vfs\\": "src/main/php"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Frank Kleine",
+                    "homepage": "http://frankkleine.de/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Virtual file system to mock the real file system in unit tests.",
+            "homepage": "http://vfs.bovigo.org/",
+            "support": {
+                "issues": "https://github.com/bovigo/vfsStream/issues",
+                "source": "https://github.com/bovigo/vfsStream/tree/master",
+                "wiki": "https://github.com/bovigo/vfsStream/wiki"
+            },
+            "time": "2022-02-23T02:02:42+00:00"
+        },
+        {
             "name": "myclabs/deep-copy",
             "version": "1.11.1",
             "source": {
@@ -10051,9 +10102,16 @@
         {
             "name": "ssch/typo3-phpstan-rules",
             "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sabbelasichon/typo3-phpstan-rules.git",
+                "reference": "6f7132c1144cdadc38df66c511f6928cfd730ac5"
+            },
             "dist": {
-                "type": "path",
-                "url": "packages/typo3-phpstan-rules"
+                "type": "zip",
+                "url": "https://api.github.com/repos/sabbelasichon/typo3-phpstan-rules/zipball/6f7132c1144cdadc38df66c511f6928cfd730ac5",
+                "reference": "6f7132c1144cdadc38df66c511f6928cfd730ac5",
+                "shasum": ""
             },
             "require": {
                 "php": "^8.0",
@@ -10072,6 +10130,7 @@
                 "symplify/phpstan-extensions": "^10.0",
                 "symplify/rule-doc-generator": "^10.0"
             },
+            "default-branch": true,
             "type": "phpstan-extension",
             "extra": {
                 "branch-alias": {
@@ -10089,38 +10148,7 @@
                     "Ssch\\Typo3PhpstanRules\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Ssch\\Typo3PhpstanRules\\Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "update-composer": [
-                    "@fix-rector",
-                    "@fix-style"
-                ],
-                "check-style": [
-                    "@php ecs check --ansi"
-                ],
-                "fix-style": [
-                    "@php ecs check --fix --ansi"
-                ],
-                "analyze": [
-                    "@php phpstan analyse --memory-limit=-1 --ansi"
-                ],
-                "test": [
-                    "@php phpunit"
-                ],
-                "rector": [
-                    "@php rector process --dry-run --ansi"
-                ],
-                "docs": [
-                    "@php rule-doc-generator generate src/Rules --output-file docs/typo3_rules.md"
-                ],
-                "fix-rector": [
-                    "@php rector process --ansi"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -10131,9 +10159,21 @@
                 }
             ],
             "description": "Set of PHPStan rules for TYPO3 projects",
-            "transport-options": {
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/sabbelasichon/typo3-phpstan-rules/issues",
+                "source": "https://github.com/sabbelasichon/typo3-phpstan-rules/tree/main"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/schreiberten",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/sabbelasichon",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-01-27T07:54:29+00:00"
         },
         {
             "name": "ssch/typo3-rector",
@@ -10781,41 +10821,43 @@
         },
         {
             "name": "typo3/testing-framework",
-            "version": "6.16.7",
+            "version": "dev-7-composerinstaller5-fix",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/testing-framework.git",
-                "reference": "c64e8f59b803b75fe1d62ae97f19e662aad5d268"
+                "reference": "5e3f64721887d6fc35dcfe1072078aa396e63e6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/testing-framework/zipball/c64e8f59b803b75fe1d62ae97f19e662aad5d268",
-                "reference": "c64e8f59b803b75fe1d62ae97f19e662aad5d268",
+                "url": "https://api.github.com/repos/TYPO3/testing-framework/zipball/5e3f64721887d6fc35dcfe1072078aa396e63e6f",
+                "reference": "5e3f64721887d6fc35dcfe1072078aa396e63e6f",
                 "shasum": ""
             },
             "require": {
                 "ext-pdo": "*",
                 "guzzlehttp/psr7": "^1.7 || ^2.0",
                 "mikey179/vfsstream": "~1.6.11",
-                "php": ">= 7.2",
-                "phpunit/phpunit": "^8.4 || ^9.0",
-                "psr/container": "^1.0",
-                "typo3/cms-backend": "10.*.*@dev || 11.*.*@dev",
-                "typo3/cms-core": "10.*.*@dev || 11.*.*@dev",
-                "typo3/cms-extbase": "10.*.*@dev || 11.*.*@dev",
-                "typo3/cms-fluid": "10.*.*@dev || 11.*.*@dev",
-                "typo3/cms-frontend": "10.*.*@dev || 11.*.*@dev",
-                "typo3/cms-install": "10.*.*@dev || 11.*.*@dev",
-                "typo3/cms-recordlist": "10.*.*@dev || 11.*.*@dev",
-                "typo3fluid/fluid": "^2.5"
+                "php": ">= 7.4",
+                "phpunit/phpunit": "^9.5.25",
+                "psr/container": "^1.1.0 || ^2.0.0",
+                "typo3/cms-backend": "11.*.*@dev || 12.*.*@dev",
+                "typo3/cms-core": "11.*.*@dev || 12.*.*@dev",
+                "typo3/cms-extbase": "11.*.*@dev || 12.*.*@dev",
+                "typo3/cms-fluid": "11.*.*@dev || 12.*.*@dev",
+                "typo3/cms-frontend": "11.*.*@dev || 12.*.*@dev",
+                "typo3/cms-install": "11.*.*@dev || 12.*.*@dev",
+                "typo3/cms-recordlist": "11.*.*@dev || 12.*.*@dev",
+                "typo3fluid/fluid": "^2.7.1"
+            },
+            "conflict": {
+                "doctrine/dbal": "2.13.0 || 2.13.1"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.4.0",
                 "phpstan/phpstan": "^1.8.0",
                 "phpstan/phpstan-phpunit": "^1.1.1",
-                "typo3/cms-workspaces": "10.*.*@dev || 11.*.*@dev"
+                "typo3/cms-workspaces": "11.*.*@dev"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -10850,9 +10892,9 @@
             "support": {
                 "general": "https://typo3.org/support/",
                 "issues": "https://github.com/TYPO3/testing-framework/issues",
-                "source": "https://github.com/TYPO3/testing-framework/tree/6.16.7"
+                "source": "https://github.com/TYPO3/testing-framework/tree/7-composerinstaller5-fix"
             },
-            "time": "2023-01-23T12:45:28+00:00"
+            "time": "2023-01-29T11:26:59+00:00"
         }
     ],
     "aliases": [
