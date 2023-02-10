@@ -30,7 +30,7 @@ http://solr-ddev-site.ddev.site/typo3/
 ```
 
 Username: admin
-Password: password
+Password: Password1!
 
 ***Recreate***
 
