@@ -35,13 +35,14 @@
                 "typo3-ter/solrfluid": "*"
             },
             "require-dev": {
+                "dg/bypass-finals": "^1.4",
                 "phpspec/prophecy-phpunit": "*",
                 "phpunit/phpunit": "^9.5",
                 "sclable/xml-lint": "*",
                 "scrutinizer/ocular": "*",
                 "typo3/cms-fluid-styled-content": "*",
                 "typo3/coding-standards": "~0.7.1",
-                "typo3/testing-framework": "dev-main"
+                "typo3/testing-framework": "dev-7-composerinstaller5-fix"
             },
             "type": "typo3-cms-extension",
             "extra": {
@@ -75,7 +76,7 @@
             "autoload-dev": {
                 "psr-4": {
                     "ApacheSolrForTypo3\\Solr\\Tests\\": "Tests/",
-                    "TYPO3\\CMS\\Core\\Tests\\": ".Build/Web/vendor/typo3/cms-core/Tests/"
+                    "TYPO3\\CMS\\Core\\Tests\\": ".Build/vendor/typo3/cms-core/Tests/"
                 }
             },
             "scripts": {
