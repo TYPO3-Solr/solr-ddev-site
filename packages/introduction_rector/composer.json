@@ -1,0 +1,11 @@
+{
+    "name": "apache-solr-for-typo3/introduction-rector",
+    "type": "library",
+    "description": "Solr development site : TYPO3 rector",
+    "homepage": "https://www.dkd.de/",
+    "license": ["GPL-2.0-or-later"],
+    "keywords": ["TYPO3 CMS", "REctor"],
+    "require": {
+      "rector/rector": "^0.11.60"
+    }
+}
