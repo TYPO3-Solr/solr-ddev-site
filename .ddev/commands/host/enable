@@ -48,12 +48,12 @@ IMPEXP_EXTENDED_SCRIPT="./packages/introduction_$EXT_NAME/Initialisation/not_cov
 if [[ -x "$IMPEXP_EXTENDED_SCRIPT" ]]; then
   echo ""
   echo "Running $IMPEXP_EXTENDED_SCRIPT, to import the things not covered by impexp extension."
-  "ddev exec ./packages/introduction_$EXT_NAME/Initialisation/not_covered_by_impexp.sh"
+  ddev exec -s "web" "./packages/introduction_$EXT_NAME/Initialisation/not_covered_by_impexp.sh"
 fi
 
 BELONGING_DOCKER_COMPOSE_SERVICE_FILE="./packages/introduction_$EXT_NAME/docker-compose.$EXT_NAME.yaml"
 if [[ -f "$BELONGING_DOCKER_COMPOSE_SERVICE_FILE" ]] && [[ ! -f ".ddev/docker-compose.$EXT_NAME.yaml" ]]; then
   ln -s ".$BELONGING_DOCKER_COMPOSE_SERVICE_FILE" ".ddev/docker-compose.$EXT_NAME.yaml"
-  echo -e "\n${RED}The EXT:$EXT_NAME requires additional Docker service. The ddev will be restarted to start the services for ETX:$EXT_NAME.${NC}\n"
+  echo -e "\n${RED}The EXT:$EXT_NAME requires additional Docker service. The ddev will be restarted to start the services for EXT:$EXT_NAME. ${NC} \n"
   ddev restart
 fi
