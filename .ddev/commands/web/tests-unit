@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ## Description: run unit tests for EXT:solr stack
-## Usage: tests:unit [EXT:name] [--] [phpunit-args]
-## Example: ddev tests:unit                           # will run unit tests for all enabled extensions\nddev tests:unit solr                      # will run unit tests for EXT:solr only\nddev tests:unit solr --filter=ItemTest    # will run unit tests for EXT:solr's Unit\IndexQueue\ItemTest
+## Usage: solr:tests:unit [EXT:name] [--] [phpunit-args]
+## Example: ddev solr:tests:unit                           # will run unit tests for all enabled extensions\nddev solr:tests:unit solr                      # will run unit tests for EXT:solr only\nddev solr:tests:unit solr --filter=ItemTest    # will run unit tests for EXT:solr's Unit\IndexQueue\ItemTest
 UNIT_BOOTSTRAP="public/typo3conf/ext/solr/Build/Test/UnitTestsBootstrap.php"
 
 function expandAllSolrExtensions() {
@@ -17,7 +17,7 @@ function checkExtensionIsInstalled() {
   if [[ ! -d "$1" ]]; then
     >&2 echo -e "EXT:$(basename "$1") is not enabled. Please enable it by:\n"
 
-    >&2 echo -e "ddev enable $(basename "$1")\n"
+    >&2 echo -e "ddev solr:enable $(basename "$1")\n"
     exit 24
   fi
 }
