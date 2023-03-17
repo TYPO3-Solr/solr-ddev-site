@@ -47,11 +47,21 @@ This will remove all the things and bring the system tu the initial state.
 
 The tests can be executed within the ddev docker containers.
 
-### run unit tests
+### run unit tests for all enabled EXT:solr* extensions and addons
     ddev solr:tests:unit
 
-### run integration tests
+### run integration tests for all enabled EXT:solr* extensions and addons
     ddev solr:tests:integration
+
+### run unit tests for particular EXT:solr* extension only
+    ddev solr:tests:unit <extension-name>
+
+### run integration tests for particular EXT:solr* extension only
+    ddev solr:tests:integration <extension-name>
+
+### Use PhpUnit params and flags within the tests
+
+    ddev solr:tests:integration <extension-name> <PhpUnit-params-and/or-flag_01> <PhpUnit-params-and/or-flag_etc>
 
 ## Enable EXT:solr features via EXT:solr* addons.
 
