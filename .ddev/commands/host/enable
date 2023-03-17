@@ -1,13 +1,16 @@
 #!/bin/bash
 
 ## Description: Enables the EXT:Solr* plugin (Note: EB EXT:Solr plugins must exist in packages/ext-<solr-plugin-name>)
-## Usage: enable <solr-plugin-name>
-## Example: ddev enable solrfal \nddev enable solrdebugtools \nddev enable solrfluidgrouping \nddev enable news
+## Usage: solr:enable <solr-plugin-name>
+## Example: ddev solr:enable solrfal \nddev solr:enable solrdebugtools \nddev solr:enable solrfluidgrouping \nddev solr:enable news
 
 
 
 EXT_NAME=$1
 LOCAL_EXT_SOLR_PLUGIN_PATH="packages/ext-$EXT_NAME"
+
+RED='\033[0;31m'
+NC='\033[0m'
 
 if [[ ! -d "packages/introduction_""$EXT_NAME" ]]; then
   echo "The integration for $EXT_NAME extension does not exists."
@@ -33,7 +36,7 @@ elif [[ "$EXT_NAME" != "news" ]]; then
 fi
 
 # shellcheck disable=SC2086
-if ! composer req "apache-solr-for-typo3/introduction-$EXT_NAME:@dev" $LOCAL_EXT_SOLR_PLUGIN ; then
+if ! ddev composer req "apache-solr-for-typo3/introduction-$EXT_NAME:@dev" $LOCAL_EXT_SOLR_PLUGIN ; then
   EXECUTED_COMMAND="composer req \"apache-solr-for-typo3/introduction-$EXT_NAME:@dev\" $LOCAL_EXT_SOLR_PLUGIN"
   echo "Something went wrong by following composer command:"
   echo "    "$EXECUTED_COMMAND
@@ -45,5 +48,12 @@ IMPEXP_EXTENDED_SCRIPT="./packages/introduction_$EXT_NAME/Initialisation/not_cov
 if [[ -x "$IMPEXP_EXTENDED_SCRIPT" ]]; then
   echo ""
   echo "Running $IMPEXP_EXTENDED_SCRIPT, to import the things not covered by impexp extension."
-  "./packages/introduction_$EXT_NAME/Initialisation/not_covered_by_impexp.sh"
+  "ddev exec ./packages/introduction_$EXT_NAME/Initialisation/not_covered_by_impexp.sh"
+fi
+
+BELONGING_DOCKER_COMPOSE_SERVICE_FILE="./packages/introduction_$EXT_NAME/docker-compose.$EXT_NAME.yaml"
+if [[ -f "$BELONGING_DOCKER_COMPOSE_SERVICE_FILE" ]] && [[ ! -f ".ddev/docker-compose.$EXT_NAME.yaml" ]]; then
+  ln -s ".$BELONGING_DOCKER_COMPOSE_SERVICE_FILE" ".ddev/docker-compose.$EXT_NAME.yaml"
+  echo -e "\n${RED}The EXT:$EXT_NAME requires additional Docker service. The ddev will be restarted to start the services for ETX:$EXT_NAME.${NC}\n"
+  ddev restart
 fi
