@@ -24,7 +24,7 @@ if [[ -d "$LOCAL_EXT_SOLR_PLUGIN_PATH"  ]]; then
   echo "Installing $LOCAL_EXT_SOLR_PLUGIN from $LOCAL_EXT_SOLR_PLUGIN_PATH local path,"
   echo "  since composer does not allow to require @dev local libraries recursively."
   echo "Please don't push the composer.json and composer.lock with activated EXT:Solr plugins in solr-ddev-site repository."
-elif [[ "$EXT_NAME" != "news" ]]; then
+elif [[ "$EXT_NAME" != "news" ]] && [[ "$EXT_NAME" != "rector" ]]; then
   echo "The $LOCAL_EXT_SOLR_PLUGIN_PATH does not exist."
   echo "Please checkout or place the $EXT_NAME in \"$LOCAL_EXT_SOLR_PLUGIN_PATH\" folder."
   echo

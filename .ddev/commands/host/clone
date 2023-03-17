@@ -40,7 +40,7 @@ if ! cd "$previous_pwd"; then >&2 echo "Something went wrong by switching to wor
 if ! [[ "$EXT_SOLR_PLUGIN_NAME" == "solr" ]]; then
   # Try to enable the EXT:Solr plugin introduction package integration extension, to fully setup the plugin.
   if [[ -d "packages/introduction_$EXT_SOLR_PLUGIN_NAME" ]]; then
-    ddev enable $EXT_SOLR_PLUGIN_NAME
+    ddev solr:enable $EXT_SOLR_PLUGIN_NAME
   else
     ddev composer req "apache-solr-for-typo3/$EXT_SOLR_PLUGIN_NAME":"@dev"
   fi
