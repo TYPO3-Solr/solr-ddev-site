@@ -48,14 +48,14 @@ This will remove all the things and bring the system tu the initial state.
 The tests can be executed within the ddev docker containers.
 
 ### run unit tests
-    ddev tests:unit
+    ddev solr:tests:unit
 
 ### run integration tests
-    ddev tests-integration
+    ddev solr:tests:integration
 
 ## Enable EXT:solr features via EXT:solr* addons.
 
-Following EXT:solr* addons can be switched on in this environment by `ddev enable <addon-or-demo>` command:
+Following EXT:solr* addons can be switched on in this environment by `ddev solr:enable <addon-or-demo>` command:
 
 (EB = requires EB account and presence of addon in pacages/ext-<addon-name> path.)
 (Nø = To be integrated in solr-ddev-site)
@@ -70,10 +70,10 @@ Following EXT:solr* addons can be switched on in this environment by `ddev enabl
 * news (As demo of record indexing.)
 
 ```
-ddev enable <addon-or-demo>
-ddev enable news
-ddev enable solrfluidgrouping
-ddev enable solrfal
+ddev solr:enable <addon-or-demo>
+ddev solr:enable news
+ddev solr:enable solrfluidgrouping
+ddev solr:enable solrfal
 ```
 
 
