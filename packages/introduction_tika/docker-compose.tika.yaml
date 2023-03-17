@@ -1,0 +1,20 @@
+version: '3'
+services:
+  tika:
+    build:
+      context:
+        ../packages/introduction_tika/
+      args:
+        TIKA_VERSION: '1.27'
+        UID_GID: ${DDEV_UID}:${DDEV_GID}
+    ports:
+    - 9998:9998
+
+  web:
+    volumes:
+    - ./tika-jars:/opt/tika
+    environment:
+      # EXT:tika
+      - TESTING_TIKA_SERVER_HOST=tika
+      - TIKA_PATH=/opt/tika
+      # TIKA_VERSION is fetched from packages/ext-tika/composer.json ->extra.TYPO3-Solr.Tika
