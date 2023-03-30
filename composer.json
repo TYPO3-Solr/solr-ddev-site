@@ -16,7 +16,7 @@
           "apache-solr-for-typo3/introduction-solrfal":           "12.0",
           "apache-solr-for-typo3/introduction-solrfluidgrouping": "12.0",
 
-          "apache-solr-for-typo3/introduction-rector":            "11.5",
+          "apache-solr-for-typo3/introduction-rector":            "12.0",
 
           "apache-solr-for-typo3/php-solr-explain":               "2.0.0",
           "apache-solr-for-typo3/solr":                           "12.0",
@@ -82,8 +82,6 @@
     "dg/bypass-finals": "^1.4",
     "phpspec/prophecy-phpunit": "*",
     "phpunit/phpunit": "^9.5",
-    "ssch/typo3-phpstan-rules": "dev-main",
-    "ssch/typo3-rector": "^1.1.2",
     "typo3/coding-standards": "~0.7.1",
     "typo3/testing-framework": "dev-7-composerinstaller5-fix"
   },
