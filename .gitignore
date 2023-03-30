@@ -23,3 +23,5 @@ nbproject
 /releses/
 
 .ddev/tika-jars/
+
+config/system/settings.php
