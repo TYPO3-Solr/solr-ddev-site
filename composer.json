@@ -44,6 +44,7 @@
     "ext-dom": "*",
     "ext-json": "*",
     "ext-pdo": "*",
+    "ext-simplexml": "*",
     "apache-solr-for-typo3/solr": "12.0",
     "dkd/apache-solr-for-typo3-sitepackage": "12.0",
     "typo3/cms-core": "dev-main as 12.5.0",
