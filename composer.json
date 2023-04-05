@@ -44,6 +44,7 @@
     "ext-dom": "*",
     "ext-json": "*",
     "ext-pdo": "*",
+    "ext-libxml": "*",
     "ext-simplexml": "*",
     "apache-solr-for-typo3/solr": "12.0",
     "dkd/apache-solr-for-typo3-sitepackage": "12.0",
@@ -121,6 +122,7 @@
       "phpunit --bootstrap=packages/ext-solr/Build/Test/UnitTestsBootstrap.php --configuration packages/ext-solr/Build/Test/UnitTests.xml --colors"
     ],
     "tests:solr:integration": [
+      "Composer\\Config::disableProcessTimeout",
       "phpunit --bootstrap=packages/ext-solr/Build/Test/IntegrationTestsBootstrap.php --configuration packages/ext-solr/Build/Test/IntegrationTests.xml --colors"
     ]
   }
