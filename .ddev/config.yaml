@@ -21,7 +21,7 @@ hooks:
   - exec-host: '[ -d ./.ddev/tika-jars ] ||  mkdir -p .ddev/tika-jars'
   - exec-host: ./.ddev/commands/host/clone solr
   post-start:
-  - exec: composer install --prefer-source -d /var/www/html
+  - exec: composer tests:setup
   # setup system cron and run TYPO3 Scheduler tasks with ENV variables provided by ddev.
   - exec:
       sudo service cron start && {
