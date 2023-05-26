@@ -1,15 +1,8 @@
 #!/bin/bash
 
 ## Description: run rector for one of EXT:solr* extensions in ./packages/ path
-## Usage: solr:rector:process
-## Example: ddev solr:rector:process
+## Usage: solr:rector:process [EXT:name] [--] [rector-args]
 
-function checkRectorIsEnabled() {
-  if [[ ! -x "./vendor/bin/rector" ]]; then
-    >&2 echo -e "Rector is not enabled. Please enable it by \`ddev solr:enable rector\`"
-    exit 1;
-  fi
-}
 
 function checkExtensionParamIsSetAndPathExists() {
   if [[ ! -d "packages/ext-${1}" ]]; then
@@ -25,8 +18,6 @@ function processRector() {
     --autoload-file=vendor/autoload.php "packages/ext-${1}/${2}" "${@:3}"
   exit $?
 }
-
-checkRectorIsEnabled
 
 if [[ "$#" -eq 0 ]]; then
   >&2 echo -e "The EXT:name in first argument is mandatory."
