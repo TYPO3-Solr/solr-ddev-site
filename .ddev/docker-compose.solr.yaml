@@ -37,13 +37,15 @@ services:
       - solr-site:$DDEV_HOSTNAME
 
 volumes:
-  solr-site: &solr-local-volume
+  solr-site:
     driver: local
     driver_opts:
       type: none
       device: $DDEV_APPROOT/.ddev/solr/site
       o: bind
   solr-tests:
-    <<: *solr-local-volume
+    driver: local
     driver_opts:
+      type: none
       device: $DDEV_APPROOT/.ddev/solr/tests
+      o: bind
