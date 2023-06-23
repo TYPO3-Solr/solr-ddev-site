@@ -25,7 +25,7 @@ function runIntegrationTests() {
   checkExtensionIsInstalled "$1"
   echo -e "${FIRST_LINE_PREFIX}Run Integration tests on EXT:$(basename "$1")\n\n"
   INTEGRATION_CONFIGURATION="$1/Build/Test/IntegrationTests.xml"
-  INTEGRATION_BOOTSTRAP="$1/Build/Test/IntegrationTestsBootstrap.php"
+  INTEGRATION_BOOTSTRAP="packages/ext-solr/Build/Test/IntegrationTestsBootstrap.php"
   ./vendor/bin/phpunit \
     --bootstrap="${INTEGRATION_BOOTSTRAP}" \
     --configuration "${INTEGRATION_CONFIGURATION}" \

@@ -25,7 +25,7 @@ function runUnitTests() {
   checkExtensionIsInstalled "$1"
   echo -e "${FIRST_LINE_PREFIX}Run Unit tests on EXT:$(basename "$1")\n\n"
   UNIT_CONFIGURATION="$1/Build/Test/UnitTests.xml"
-  UNIT_BOOTSTRAP="$1/Build/Test/UnitTestsBootstrap.php"
+  UNIT_BOOTSTRAP="packages/ext-solr/Build/Test/UnitTestsBootstrap.php"
   ./vendor/bin/phpunit \
     --bootstrap="${UNIT_BOOTSTRAP}" \
     --configuration "${UNIT_CONFIGURATION}" \

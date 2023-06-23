@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "af8f349065b64e990d174b5c628a03ba",
+    "content-hash": "3ca019f28a00c2cdc7c20fa5732b0347",
     "packages": [
         {
             "name": "apache-solr-for-typo3/solr",
@@ -22,7 +22,7 @@
                 "php": "^8.1",
                 "solarium/solarium": "6.2.7",
                 "typo3/cms-backend": "*",
-                "typo3/cms-core": "12.4.*@dev",
+                "typo3/cms-core": "^v12.4.2",
                 "typo3/cms-extbase": "*",
                 "typo3/cms-fluid": "*",
                 "typo3/cms-frontend": "*",
@@ -51,7 +51,6 @@
                 },
                 "typo3/cms": {
                     "extension-key": "solr",
-                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
                     "web-dir": ".Build/Web"
                 },
                 "TYPO3-Solr": {
@@ -105,8 +104,8 @@
                 "tests:setup": [
                     "@tests:env",
                     "@composer req --update-with-all-dependencies typo3/cms-core:${TYPO3_VERSION}",
-                    "rm -Rf .Build/vendor/typo3/cms-core",
-                    "@composer update --prefer-source typo3/cms-core",
+                    "@composer reinstall --prefer-source typo3/cms-core",
+                    "@composer dump-autoload",
                     "@tests:restore-git"
                 ],
                 "tests:unit": [
@@ -212,16 +211,16 @@
         },
         {
             "name": "bk2k/bootstrap-package",
-            "version": "13.0.2",
+            "version": "13.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/benjaminkott/bootstrap_package.git",
-                "reference": "113524787986891068895ac6c3c6792a0b515e0e"
+                "reference": "996daceed44df6f83bcfbced79f3182048170436"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/benjaminkott/bootstrap_package/zipball/113524787986891068895ac6c3c6792a0b515e0e",
-                "reference": "113524787986891068895ac6c3c6792a0b515e0e",
+                "url": "https://api.github.com/repos/benjaminkott/bootstrap_package/zipball/996daceed44df6f83bcfbced79f3182048170436",
+                "reference": "996daceed44df6f83bcfbced79f3182048170436",
                 "shasum": ""
             },
             "require": {
@@ -248,7 +247,7 @@
                 "b13/container": "^2.0",
                 "bk2k/demo-package": "@dev",
                 "bk2k/extension-helper": "^2.0",
-                "friendsofphp/php-cs-fixer": "^3.0.0",
+                "friendsofphp/php-cs-fixer": "^3.14",
                 "friendsoftypo3/phpstan-typo3": "^0.9",
                 "overtrue/phplint": "^3.2 || ^4.3 || ^5.3",
                 "phpstan/phpstan": "^1.7",
@@ -269,7 +268,7 @@
             "type": "typo3-cms-extension",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "13.0.x-dev"
+                    "dev-BP_13_0": "13.0.x-dev"
                 },
                 "typo3/cms": {
                     "extension-key": "bootstrap_package",
@@ -317,7 +316,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2023-04-25T17:33:53+00:00"
+            "time": "2023-06-22T08:23:01+00:00"
         },
         {
             "name": "christian-riesen/base32",
@@ -664,16 +663,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "3.6.3",
+            "version": "3.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "9a747d29e7e6b39509b8f1847e37a23a0163ea6a"
+                "reference": "19f0dec95edd6a3c3c5ff1d188ea94c6b7fc903f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/9a747d29e7e6b39509b8f1847e37a23a0163ea6a",
-                "reference": "9a747d29e7e6b39509b8f1847e37a23a0163ea6a",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/19f0dec95edd6a3c3c5ff1d188ea94c6b7fc903f",
+                "reference": "19f0dec95edd6a3c3c5ff1d188ea94c6b7fc903f",
                 "shasum": ""
             },
             "require": {
@@ -756,7 +755,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/3.6.3"
+                "source": "https://github.com/doctrine/dbal/tree/3.6.4"
             },
             "funding": [
                 {
@@ -772,7 +771,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-01T05:46:46+00:00"
+            "time": "2023-06-15T07:40:12+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -1173,16 +1172,16 @@
         },
         {
             "name": "firebase/php-jwt",
-            "version": "v6.7.0",
+            "version": "v6.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/firebase/php-jwt.git",
-                "reference": "71278f20b0a623389beefe87a641d03948a38870"
+                "reference": "48b0210c51718d682e53210c24d25c5a10a2299b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/71278f20b0a623389beefe87a641d03948a38870",
-                "reference": "71278f20b0a623389beefe87a641d03948a38870",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/48b0210c51718d682e53210c24d25c5a10a2299b",
+                "reference": "48b0210c51718d682e53210c24d25c5a10a2299b",
                 "shasum": ""
             },
             "require": {
@@ -1230,9 +1229,9 @@
             ],
             "support": {
                 "issues": "https://github.com/firebase/php-jwt/issues",
-                "source": "https://github.com/firebase/php-jwt/tree/v6.7.0"
+                "source": "https://github.com/firebase/php-jwt/tree/v6.8.0"
             },
-            "time": "2023-06-14T15:29:26+00:00"
+            "time": "2023-06-20T16:45:35+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -7582,16 +7581,16 @@
         },
         {
             "name": "typo3fluid/fluid",
-            "version": "2.9.1",
+            "version": "2.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/Fluid.git",
-                "reference": "a502df38b21016fcee5adb38f949d04fed1054e5"
+                "reference": "e308c61aecc2832c195c423fda812217e3c9d18f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/Fluid/zipball/a502df38b21016fcee5adb38f949d04fed1054e5",
-                "reference": "a502df38b21016fcee5adb38f949d04fed1054e5",
+                "url": "https://api.github.com/repos/TYPO3/Fluid/zipball/e308c61aecc2832c195c423fda812217e3c9d18f",
+                "reference": "e308c61aecc2832c195c423fda812217e3c9d18f",
                 "shasum": ""
             },
             "require": {
@@ -7628,7 +7627,7 @@
                 "issues": "https://github.com/TYPO3/Fluid/issues",
                 "source": "https://github.com/TYPO3/Fluid"
             },
-            "time": "2023-06-08T10:12:29+00:00"
+            "time": "2023-06-19T16:51:11+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -7963,16 +7962,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.17.0",
+            "version": "v3.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "3f0ed862f22386c55a767461ef5083bddceeed79"
+                "reference": "b123395c9fa3a70801f816f13606c0f3a7ada8df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/3f0ed862f22386c55a767461ef5083bddceeed79",
-                "reference": "3f0ed862f22386c55a767461ef5083bddceeed79",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/b123395c9fa3a70801f816f13606c0f3a7ada8df",
+                "reference": "b123395c9fa3a70801f816f13606c0f3a7ada8df",
                 "shasum": ""
             },
             "require": {
@@ -8047,7 +8046,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.17.0"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.18.0"
             },
             "funding": [
                 {
@@ -8055,7 +8054,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-05-22T19:59:32+00:00"
+            "time": "2023-06-18T22:25:45+00:00"
         },
         {
             "name": "helmich/typo3-typoscript-parser",
@@ -8497,16 +8496,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.19",
+            "version": "1.10.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "af5a296ff02610c1bfb4ddfac9fd4a08657b9046"
+                "reference": "b2a30186be2e4d97dce754ae4e65eb0ec2f04eb5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/af5a296ff02610c1bfb4ddfac9fd4a08657b9046",
-                "reference": "af5a296ff02610c1bfb4ddfac9fd4a08657b9046",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/b2a30186be2e4d97dce754ae4e65eb0ec2f04eb5",
+                "reference": "b2a30186be2e4d97dce754ae4e65eb0ec2f04eb5",
                 "shasum": ""
             },
             "require": {
@@ -8555,7 +8554,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-14T15:26:58+00:00"
+            "time": "2023-06-21T20:07:58+00:00"
         },
         {
             "name": "phpstan/phpstan-phpunit",
@@ -10057,16 +10056,16 @@
         },
         {
             "name": "ssch/typo3-rector",
-            "version": "v1.3.1",
+            "version": "v1.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabbelasichon/typo3-rector.git",
-                "reference": "e98c42d2c1220c07ac066f2ba801546489140b76"
+                "reference": "a310c601d13ead0932aab78941931f6cae4b8889"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/e98c42d2c1220c07ac066f2ba801546489140b76",
-                "reference": "e98c42d2c1220c07ac066f2ba801546489140b76",
+                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/a310c601d13ead0932aab78941931f6cae4b8889",
+                "reference": "a310c601d13ead0932aab78941931f6cae4b8889",
                 "shasum": ""
             },
             "require": {
@@ -10145,7 +10144,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-06-14T13:34:50+00:00"
+            "time": "2023-06-23T12:26:29+00:00"
         },
         {
             "name": "symfony/polyfill-php81",
@@ -10929,8 +10928,8 @@
     "platform": {
         "ext-dom": "*",
         "ext-json": "*",
-        "ext-pdo": "*",
         "ext-libxml": "*",
+        "ext-pdo": "*",
         "ext-simplexml": "*"
     },
     "platform-dev": [],

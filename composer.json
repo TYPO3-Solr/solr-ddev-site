@@ -39,12 +39,12 @@
   "require": {
     "ext-dom": "*",
     "ext-json": "*",
-    "ext-pdo": "*",
     "ext-libxml": "*",
+    "ext-pdo": "*",
     "ext-simplexml": "*",
-    "typo3/cms-core": "^v12.4.0",
+    "apache-solr-for-typo3/solr": "12.0",
     "dkd/apache-solr-for-typo3-sitepackage": "12.0",
-    "apache-solr-for-typo3/solr": "12.0"
+    "typo3/cms-core": "^v12.4.2"
   },
   "require-dev": {
     "dg/bypass-finals": "^1.4",
@@ -89,15 +89,22 @@
     ],
     "tests:setup": [
       "@composer install",
-      "rm -Rf vendor/typo3 vendor/typo3fluid",
-      "@composer update --prefer-source typo3/cms-core"
+      "@composer reinstall --prefer-source typo3/cms-core",
+      "@composer dump-autoload"
     ],
     "tests:solr:unit": [
-      "phpunit --bootstrap=packages/ext-solr/Build/Test/UnitTestsBootstrap.php --configuration packages/ext-solr/Build/Test/UnitTests.xml --colors"
+      "phpunit --configuration packages/ext-solr/Build/Test/UnitTests.xml --colors"
     ],
     "tests:solr:integration": [
       "Composer\\Config::disableProcessTimeout",
-      "phpunit --bootstrap=packages/ext-solr/Build/Test/IntegrationTestsBootstrap.php --configuration packages/ext-solr/Build/Test/IntegrationTests.xml --colors"
+      "phpunit --configuration packages/ext-solr/Build/Test/IntegrationTests.xml --bootstrap=packages/ext-solr/Build/Test/IntegrationTestsBootstrap.php --colors"
+    ],
+    "tests:solrfal:unit": [
+      "phpunit --configuration=packages/ext-solrfal/Build/Test/UnitTests.xml --bootstrap=packages/ext-solr/Build/Test/UnitTestsBootstrap.php --colors"
+    ],
+    "tests:solrfal:integration": [
+      "Composer\\Config::disableProcessTimeout",
+      "phpunit --configuration packages/ext-solrfal/Build/Test/IntegrationTests.xml --bootstrap=packages/ext-solr/Build/Test/IntegrationTestsBootstrap.php --colors"
     ]
   }
 }
