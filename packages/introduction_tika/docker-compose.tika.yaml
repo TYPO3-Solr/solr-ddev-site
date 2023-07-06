@@ -5,7 +5,7 @@ services:
       context:
         ../packages/introduction_tika/
       args:
-        TIKA_VERSION: '1.27'
+        TIKA_VERSION: '1.28'
         UID_GID: ${DDEV_UID}:${DDEV_GID}
     ports:
     - 9998:9998
