@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
+use Rector\Core\Configuration\Option;
 use Rector\Core\ValueObject\PhpVersion;
 use Rector\PHPUnit\Set\PHPUnitLevelSetList;
 use Rector\PHPUnit\Set\PHPUnitSetList;
@@ -13,7 +14,10 @@ use Ssch\TYPO3Rector\Rector\General\ExtEmConfRector;
 use Ssch\TYPO3Rector\Set\Typo3LevelSetList;
 
 return static function (RectorConfig $rectorConfig): void {
-    $parameters = $rectorConfig->parameters();
+
+    // If you want to override the number of spaces for your typoscript files you can define it here, the default value is 4
+    // $parameters = $rectorConfig->parameters();
+    // $parameters->set(Typo3Option::TYPOSCRIPT_INDENT_SIZE, 2);
 
     $rectorConfig->sets([
         Typo3LevelSetList::UP_TO_TYPO3_12,
@@ -21,19 +25,6 @@ return static function (RectorConfig $rectorConfig): void {
     ]);
 
     $rectorConfig->import(PHPUnitSetList::PHPUNIT_91);
-
-
-    // In order to have a better analysis from phpstan we teach it here some more things
-    $rectorConfig->phpstanConfig(Typo3Option::PHPSTAN_FOR_RECTOR_PATH);
-
-    // FQN classes are not imported by default. If you don't do it manually after every Rector run, enable it by:
-    $rectorConfig->importNames();
-
-    // Disable parallel otherwise non php file processing is not working i.e. typoscript
-    $rectorConfig->disableParallel();
-
-    // this will not import root namespace classes, like \DateTime or \Exception
-    $rectorConfig->importShortClasses(false);
 
     // Define your target version which you want to support
     $rectorConfig->phpVersion(PhpVersion::PHP_81);
@@ -91,12 +82,6 @@ return static function (RectorConfig $rectorConfig): void {
 
     // Optional non-php file functionalities:
     // @see https://github.com/sabbelasichon/typo3-rector/blob/main/docs/beyond_php_file_processors.md
-
-    // Adapt your composer.json dependencies to the latest available version for the defined SetList
-    // $rectorConfig->sets([
-    //    Typo3SetList::COMPOSER_PACKAGES_104_CORE,
-    //    Typo3SetList::COMPOSER_PACKAGES_104_EXTENSIONS,
-    // ]);
 
     // Rewrite your extbase persistence class mapping from typoscript into php according to official docs.
     // This processor will create a summarized file with all the typoscript rewrites combined into a single file.
