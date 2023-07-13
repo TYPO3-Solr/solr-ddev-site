@@ -99,12 +99,18 @@
       "Composer\\Config::disableProcessTimeout",
       "phpunit --configuration packages/ext-solr/Build/Test/IntegrationTests.xml --bootstrap=packages/ext-solr/Build/Test/IntegrationTestsBootstrap.php --colors"
     ],
+    "tests:solr:phpstan": [
+      "phpstan analyze -c packages/ext-solr/Build/Test/phpstan.neon -- packages/ext-solr/Classes packages/ext-solr/Tests"
+    ],
     "tests:solrfal:unit": [
       "phpunit --configuration=packages/ext-solrfal/Build/Test/UnitTests.xml --bootstrap=packages/ext-solr/Build/Test/UnitTestsBootstrap.php --colors"
     ],
     "tests:solrfal:integration": [
       "Composer\\Config::disableProcessTimeout",
       "phpunit --configuration packages/ext-solrfal/Build/Test/IntegrationTests.xml --bootstrap=packages/ext-solr/Build/Test/IntegrationTestsBootstrap.php --colors"
+    ],
+    "tests:solrfal:phpstan": [
+      "phpstan analyze -c packages/ext-solrfal/Build/Test/phpstan.neon -- packages/ext-solrfal/Classes packages/ext-solrfal/Tests"
     ]
   }
 }
