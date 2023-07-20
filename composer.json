@@ -87,6 +87,7 @@
       "@import-not-exportable-by-impexp-once",
       "@sitepackage-scripts"
     ],
+    "t3:standards:fix": "php-cs-fixer fix",
     "tests:setup": [
       "@composer install",
       "@composer reinstall --prefer-source typo3/cms-core",
@@ -111,6 +112,16 @@
     ],
     "tests:solrfal:phpstan": [
       "phpstan analyze -c packages/ext-solrfal/Build/Test/phpstan.neon -- packages/ext-solrfal/Classes packages/ext-solrfal/Tests"
+    ],
+    "tests:tika:unit": [
+      "phpunit --configuration packages/ext-tika/Build/Test/UnitTests.xml --colors"
+    ],
+    "tests:tika:integration": [
+      "Composer\\Config::disableProcessTimeout",
+      "phpunit --configuration packages/ext-tika/Build/Test/IntegrationTests.xml --bootstrap=packages/ext-solr/Build/Test/IntegrationTestsBootstrap.php --colors"
+    ],
+    "tests:tika:phpstan": [
+      "phpstan analyze -c packages/ext-tika/Build/Test/phpstan.neon -- packages/ext-tika/Classes packages/ext-tika/Tests"
     ]
   }
 }
