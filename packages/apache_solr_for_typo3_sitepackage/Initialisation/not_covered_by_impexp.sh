@@ -7,7 +7,7 @@ if [[ -f "$directoryOfCurrentScript/not_covered_by_impexp.isImported" ]]; then
   exit 0;
 fi
 
-< "$sqlFilePath" typo3cms 'database:import' && touch "$directoryOfCurrentScript"/"not_covered_by_impexp.isImported" && exit 0
+< "$sqlFilePath" typo3 'database:import' && touch "$directoryOfCurrentScript"/"not_covered_by_impexp.isImported" && exit 0
 
 exit 1;
 

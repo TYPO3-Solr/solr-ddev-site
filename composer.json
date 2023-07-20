@@ -44,6 +44,7 @@
     "ext-simplexml": "*",
     "apache-solr-for-typo3/solr": "12.0",
     "dkd/apache-solr-for-typo3-sitepackage": "12.0",
+    "helhum/typo3-console": "*",
     "typo3/cms-core": "^v12.4.2"
   },
   "require-dev": {
@@ -75,15 +76,15 @@
       "typo3 extension:setup",
       "typo3 cache:flush"
     ],
-    "import-not-exportable-by-impexp-once": [
-      "# ./packages/apache_solr_for_typo3_sitepackage/Initialisation/not_covered_by_impexp.sh"
+    "t3:import-not-exportable-by-impexp-once": [
+      "./packages/apache_solr_for_typo3_sitepackage/Initialisation/not_covered_by_impexp.sh"
     ],
     "sitepackage-scripts": [
       "composer run setup -d ./packages/apache_solr_for_typo3_sitepackage"
     ],
     "post-autoload-dump": [
       "@typo3-cms-scripts",
-      "@import-not-exportable-by-impexp-once",
+      "@t3:import-not-exportable-by-impexp-once",
       "@sitepackage-scripts"
     ],
     "t3:standards:fix": "php-cs-fixer fix",
