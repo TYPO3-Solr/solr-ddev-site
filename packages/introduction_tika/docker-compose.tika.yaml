@@ -7,8 +7,6 @@ services:
       args:
         TIKA_VERSION: '1.28'
         UID_GID: ${DDEV_UID}:${DDEV_GID}
-    ports:
-    - 9998:9998
 
   web:
     volumes:
