@@ -11,6 +11,7 @@
 /.homeadditions
 /.importdb*
 /.sshimageBuild
+/.venv
 /.webimageBuild
 /.webimageExtra
 /apache/apache-site.conf
@@ -19,7 +20,7 @@
 /commands/host/launch
 /commands/web/xdebug
 /commands/web/live
-/config.*.y*ml
+/config.local.y*ml
 /db_snapshots
 /import-db
 /import.yaml
@@ -29,6 +30,7 @@
 /postgres/postgresql.conf
 /providers/platform.yaml
 /sequelpro.spf
+/settings/settings.ddev.py
 /traefik/config/solr-ddev-site.yaml
 /traefik/certs/solr-ddev-site.crt
 /traefik/certs/solr-ddev-site.key
