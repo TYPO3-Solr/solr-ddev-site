@@ -2,6 +2,7 @@ version: '3'
 
 services:
   solr-site: &typo3-solr-service
+    container_name: ddev-${DDEV_SITENAME}-solr-site
     build:
       context:
         ../packages/ext-solr/
@@ -23,6 +24,7 @@ services:
 
   solr-tests:
     <<: *typo3-solr-service
+    container_name: ddev-${DDEV_SITENAME}-solr-tests
     ports:
       - 8985
     volumes:
