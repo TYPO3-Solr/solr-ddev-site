@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a36dc087d123a6dbb9fa8415e998d006",
+    "content-hash": "588724790b35cefdfd85f073248dfaed",
     "packages": [
         {
             "name": "apache-solr-for-typo3/solr",
@@ -10305,7 +10305,14 @@
             "time": "2023-08-02T16:11:00+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "apache-solr-for-typo3/solr",
+            "version": "11.5.0.0",
+            "alias": "11.5.99",
+            "alias_normalized": "11.5.99.0"
+        }
+    ],
     "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
@@ -10316,5 +10323,8 @@
         "ext-pdo": "*"
     },
     "platform-dev": [],
+    "platform-overrides": {
+        "php": "8.1"
+    },
     "plugin-api-version": "2.6.0"
 }
