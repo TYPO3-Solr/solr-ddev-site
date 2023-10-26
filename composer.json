@@ -74,7 +74,7 @@
   },
   "scripts": {
     "typo3-cms-scripts": [
-      "[ -f ./config/system/settings.php ] || typo3 setup --no-interaction --driver=${TYPO3_INSTALL_DB_DRIVER} --username=${TYPO3_INSTALL_DB_USER} --password=${TYPO3_INSTALL_DB_PASSWORD} --host=${TYPO3_INSTALL_DB_HOST} --port=${TYPO3_INSTALL_DB_PORT} --dbname=${TYPO3_INSTALL_DB_DBNAME} --admin-username=${TYPO3_INSTALL_ADMIN_USER} --admin-email=\"info@typo3.org\" --admin-user-password=${TYPO3_INSTALL_ADMIN_PASSWORD} --project-name=\"EXT:solr dev environment\"",
+      "[ -f ./config/system/settings.php ] || typo3 setup --no-interaction --driver=${TYPO3_INSTALL_DB_DRIVER} --username=${TYPO3_INSTALL_DB_USER} --password=${TYPO3_INSTALL_DB_PASSWORD} --host=${TYPO3_INSTALL_DB_HOST} --port=${TYPO3_INSTALL_DB_PORT} --dbname=${TYPO3_INSTALL_DB_DBNAME} --admin-username=${TYPO3_INSTALL_ADMIN_USER} --admin-email=\"info@typo3.org\" --admin-user-password=${TYPO3_INSTALL_ADMIN_PASSWORD} --project-name=\"EXT:solr dev environment\" --server-type=\"other\"",
       "typo3 extension:setup",
       "typo3 cache:flush"
     ],
