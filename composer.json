@@ -34,7 +34,11 @@
     "platform": {
       "php": "8.1"
     },
-    "sort-packages": true
+    "sort-packages": true,
+    "preferred-install": {
+      "typo3/cms-core": "source",
+      "*": "dist"
+    }
   },
   "require": {
     "ext-dom": "*",
@@ -91,9 +95,7 @@
     ],
     "t3:standards:fix": "php-cs-fixer fix",
     "tests:setup": [
-      "@composer install",
-      "@composer reinstall --prefer-source typo3/cms-core",
-      "@composer dump-autoload"
+      "@composer install"
     ],
     "tests:solr:unit": [
       "phpunit --configuration packages/ext-solr/Build/Test/UnitTests.xml --colors"
