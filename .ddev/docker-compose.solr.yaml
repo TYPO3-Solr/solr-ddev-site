@@ -21,6 +21,7 @@ services:
     environment:
       - VIRTUAL_HOST=$DDEV_HOSTNAME
       - HTTP_EXPOSE=8983
+      - HTTPS_EXPOSE=8983
 
   solr-tests:
     <<: *typo3-solr-service
