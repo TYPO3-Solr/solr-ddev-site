@@ -1,7 +1,7 @@
 ######################
 #### DEPENDENCIES ####
 ######################
-@import 'EXT:news/Configuration/TypoScript/constants.txt'
+@import 'EXT:news/Configuration/TypoScript/constants.typoscript'
 
 ##############
 #### MODS ####

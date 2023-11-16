@@ -6,7 +6,7 @@
     "license": ["GPL-2.0-or-later"],
     "keywords": ["TYPO3 CMS"],
     "require": {
-        "georgringer/news": "^9.0"
+        "georgringer/news": "^11.2"
     },
     "extra": {
         "typo3/cms": {

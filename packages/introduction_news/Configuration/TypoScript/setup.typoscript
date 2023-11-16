@@ -1,9 +1,9 @@
 ######################
 #### DEPENDENCIES ####
 ######################
-@import 'EXT:news/Configuration/TypoScript/setup.txt'
-@import 'EXT:solr/Configuration/TypoScript/Examples/IndexQueueNews/setup.txt'
-@import 'EXT:solr/Configuration/TypoScript/Examples/IndexQueueNewsContentElements/setup.txt'
+@import 'EXT:news/Configuration/TypoScript/setup.typoscript'
+@import 'EXT:solr/Configuration/TypoScript/Examples/IndexQueueNews/setup.typoscript'
+@import 'EXT:solr/Configuration/TypoScript/Examples/IndexQueueNewsContentElements/setup.typoscript'
 
 ##############
 #### MODS ####
