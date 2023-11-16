@@ -28,7 +28,7 @@
 /mutagen/.start-synced
 /nginx_full/nginx-site.conf
 /postgres/postgresql.conf
-/providers/platform.yaml
+/providers/*
 /sequelpro.spf
 /settings/settings.ddev.py
 /traefik/config/solr-ddev-site.yaml

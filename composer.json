@@ -67,6 +67,7 @@
       "ApacheSolrForTypo3\\Solrconsole\\Tests\\":       "packages/ext-solrconsole/Tests/",
       "ApacheSolrForTypo3\\Solrdebugtools\\Tests\\":    "packages/ext-solrdebugtools/Tests/",
       "ApacheSolrForTypo3\\SolrExplain\\Tests\\":       "packages/php-solr-explain/Tests/",
+      "ApacheSolrForTypo3\\FakeExtension\\":            "packages/ext-solr/Tests/Integration/Fixtures/Extensions/fake_extension/Classes/",
       "ApacheSolrForTypo3\\SolrFakeExtension2\\":       "packages/ext-solr/Tests/Integration/Fixtures/Extensions/fake_extension2/Classes/",
       "ApacheSolrForTypo3\\SolrFakeExtension3\\":       "packages/ext-solr/Tests/Integration/Fixtures/Extensions/fake_extension3/Classes/",
       "ApacheSolrForTypo3\\Solrfal\\Tests\\":           "packages/ext-solrfal/Tests/",
