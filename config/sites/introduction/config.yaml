@@ -10,9 +10,9 @@ languages:
     typo3Language: default
     locale: en_US.UTF-8
     iso-639-1: en
-    navigationTitle: ''
+    navigationTitle: English
     hreflang: en-US
-    direction: ''
+    direction: ltr
     flag: us
     solr_core_read: core_en
   -
@@ -23,7 +23,7 @@ languages:
     typo3Language: de
     locale: de_DE.UTF-8
     iso-639-1: de
-    navigationTitle: ''
+    navigationTitle: Deutsch
     hreflang: de-DE
     direction: ltr
     fallbackType: fallback
@@ -36,10 +36,10 @@ languages:
     languageId: '1'
     base: /da/
     typo3Language: da
-    locale: da_DA.UTF-8
+    locale: da_DK.UTF-8
     iso-639-1: da
-    navigationTitle: ''
-    hreflang: da-DA
+    navigationTitle: Dansk
+    hreflang: da-DK
     direction: ltr
     fallbackType: fallback
     fallbacks: '0'

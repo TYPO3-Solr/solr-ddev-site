@@ -1,0 +1,59 @@
+#!/bin/bash
+
+## Description: Enables the EXT:Solr* plugin (Note: EB EXT:Solr plugins must exist in packages/ext-<solr-plugin-name>)
+## Usage: solr:enable <solr-plugin-name>
+## Example: ddev solr:enable solrfal \nddev solr:enable solrdebugtools \nddev solr:enable solrfluidgrouping \nddev solr:enable news
+
+
+
+EXT_NAME=$1
+LOCAL_EXT_SOLR_PLUGIN_PATH="packages/ext-$EXT_NAME"
+
+RED='\033[0;31m'
+NC='\033[0m'
+
+if [[ ! -d "packages/introduction_""$EXT_NAME" ]]; then
+  echo "The integration for $EXT_NAME extension does not exists."
+  echo "Please provide a pull request for this extension by adding a extension like https://github.com/TYPO3-Solr/solr-ddev-site/tree/c313aaecd8b63fe3b3a0956d052a444de18517be/packages/introduction_news"
+  exit 1;
+fi
+
+if [[ -d "$LOCAL_EXT_SOLR_PLUGIN_PATH"  ]]; then
+  LOCAL_EXT_SOLR_PLUGIN="apache-solr-for-typo3/$EXT_NAME:@dev"
+  echo ""
+  echo "Installing $LOCAL_EXT_SOLR_PLUGIN from $LOCAL_EXT_SOLR_PLUGIN_PATH local path,"
+  echo "  since composer does not allow to require @dev local libraries recursively."
+  echo "Please don't push the composer.json and composer.lock with activated EXT:Solr plugins in solr-ddev-site repository."
+elif [[ "$EXT_NAME" != "news" ]]; then
+  echo "The $LOCAL_EXT_SOLR_PLUGIN_PATH does not exist."
+  echo "Please checkout or place the $EXT_NAME in \"$LOCAL_EXT_SOLR_PLUGIN_PATH\" folder."
+  echo
+  echo "Or if you have access to the https://github.com/TYPO3-Solr/ext-$EXT_NAME,"
+  echo "then use "
+  echo "ddev clone $EXT_NAME"
+  echo "instead."
+  exit 1;
+fi
+
+# shellcheck disable=SC2086
+if ! ddev composer req "apache-solr-for-typo3/introduction-$EXT_NAME:@dev" $LOCAL_EXT_SOLR_PLUGIN ; then
+  EXECUTED_COMMAND="composer req \"apache-solr-for-typo3/introduction-$EXT_NAME:@dev\" $LOCAL_EXT_SOLR_PLUGIN"
+  echo "Something went wrong by following composer command:"
+  echo "    "$EXECUTED_COMMAND
+  echo "please check the output from above."
+  exit 1;
+fi
+
+IMPEXP_EXTENDED_SCRIPT="./packages/introduction_$EXT_NAME/Initialisation/not_covered_by_impexp.sh"
+if [[ -x "$IMPEXP_EXTENDED_SCRIPT" ]]; then
+  echo ""
+  echo "Running $IMPEXP_EXTENDED_SCRIPT, to import the things not covered by impexp extension."
+  ddev exec -s "web" "./packages/introduction_$EXT_NAME/Initialisation/not_covered_by_impexp.sh"
+fi
+
+BELONGING_DOCKER_COMPOSE_SERVICE_FILE="./packages/introduction_$EXT_NAME/docker-compose.$EXT_NAME.yaml"
+if [[ -f "$BELONGING_DOCKER_COMPOSE_SERVICE_FILE" ]] && [[ ! -f ".ddev/docker-compose.$EXT_NAME.yaml" ]]; then
+  ln -s ".$BELONGING_DOCKER_COMPOSE_SERVICE_FILE" ".ddev/docker-compose.$EXT_NAME.yaml"
+  echo -e "\n${RED}The EXT:$EXT_NAME requires additional Docker service. The ddev will be restarted to start the services for EXT:$EXT_NAME. ${NC} \n"
+  ddev restart
+fi

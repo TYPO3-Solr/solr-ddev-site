@@ -1,0 +1,7 @@
+#!/bin/bash
+
+## Description: Tail the main solr log
+## Usage: solr:tail:tests
+## Example: ddev solr:tail:tests
+
+tail -f .ddev/solr/tests/logs/solr.log
