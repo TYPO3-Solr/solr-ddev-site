@@ -1,6 +1,7 @@
 .DS_Store
 .idea
 nbproject
+/.ddev/.gitignore
 /var
 /vendor
 /packages/*
@@ -10,6 +11,7 @@ nbproject
 !/packages/introduction_*
 !/packages/introduction_*/*
 /packages/*/Initialisation/not_covered_by_impexp.isImported
+/packages/apache_solr_for_typo3_sitepackage/Resources/Public/Fonts/*
 
 /public/*
 !/public/typo3conf
