@@ -27,4 +27,5 @@ rm -fR .ddev/solr/tests
 rm -fR .ddev/docker-compose.tika.yaml
 
 echo "Restoring composers original state."
-git checkout composer.json composer.lock
+rm -fv composer.lock
+git checkout composer.json

@@ -22,6 +22,7 @@ services:
       - VIRTUAL_HOST=$DDEV_HOSTNAME
       - HTTP_EXPOSE=8983
       - HTTPS_EXPOSE=8983
+      - TYPO3_SOLR_ENABLED_CORES=english danish german
 
   solr-tests:
     <<: *typo3-solr-service

@@ -16,7 +16,7 @@
                     "apache-solr-for-typo3/introduction-solrfal":           "11.2",
 
                     "apache-solr-for-typo3/php-solr-explain":               "2.0.0",
-                    "apache-solr-for-typo3/solr":                           "11.2",
+                    "apache-solr-for-typo3/elts-solr":                      "11.2",
                     "apache-solr-for-typo3/solrconsole":                    "10.0",
                     "apache-solr-for-typo3/solrdebugtools":                 "10.0",
                     "apache-solr-for-typo3/solrfal":                        "10.0",
@@ -45,7 +45,7 @@
         "ext-libxml": "*",
         "ext-pdo": "*",
         "ext-simplexml": "*",
-        "apache-solr-for-typo3/solr": "11.2",
+        "apache-solr-for-typo3/elts-solr": "11.2",
         "dkd/apache-solr-for-typo3-sitepackage": "11.2",
         "helhum/typo3-console": "^6.6.0",
         "typo3/cms-core": "^v10.4.21",
