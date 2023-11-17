@@ -1,22 +1,34 @@
 {
-    "name": "dkd/apache-solr-for-typo3-sitepackage",
-    "type": "typo3-cms-extension",
-    "description": "Solr development site",
-    "homepage": "http://www.dkd.de/",
-    "license": ["GPL-2.0-or-later"],
-    "keywords": ["TYPO3 CMS"],
-    "version": "1.0.0",
-    "require": {
-        "typo3/cms-core": "*",
-        "typo3/cms-impexp": "*",
-        "typo3/cms-rte-ckeditor": "*",
-        "typo3/cms-form": "*",
-        "typo3/cms-felogin": "*",
-        "bk2k/bootstrap-package": "^11.0.3"
-    },
-    "extra": {
-        "typo3/cms": {
-            "extension-key": "apache_solr_for_typo3_sitepackage"
-        }
+  "name": "dkd/apache-solr-for-typo3-sitepackage",
+  "type": "typo3-cms-extension",
+  "description": "Solr development site",
+  "homepage": "http://www.dkd.de/",
+  "license": [
+    "GPL-2.0-or-later"
+  ],
+  "keywords": [
+    "TYPO3 CMS"
+  ],
+  "version": "1.0.0",
+  "require": {
+    "typo3/cms-core": "*",
+    "typo3/cms-impexp": "*",
+    "typo3/cms-rte-ckeditor": "*",
+    "typo3/cms-form": "*",
+    "typo3/cms-felogin": "*",
+    "bk2k/bootstrap-package": "^11.0.3"
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "apache_solr_for_typo3_sitepackage"
     }
+  },
+  "scripts": {
+    "setup": [
+      "npm install"
+    ],
+    "post-install-cmd": [
+      "@setup"
+    ]
+  }
 }
