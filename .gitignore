@@ -17,6 +17,7 @@ nbproject
 /public/typo3conf/LocalConfiguration.php
 !/public/typo3conf/AdditionalConfiguration.php
 .ddev/docker-compose.tika.yaml
+.ddev/nutch
 .ddev/solr/site
 .ddev/solr/tests
 
