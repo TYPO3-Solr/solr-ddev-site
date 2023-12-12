@@ -1,0 +1,105 @@
+#!/bin/bash
+
+## Description: Add some external website contents to Apache Solr index
+## Usage: solr:examples:nutch
+
+TYPO3_NUTCH_VERSION=2.3.0
+TYPO3_NUTCH_DISTRIBUTION_PATH="${DDEV_COMPOSER_ROOT}/.ddev/nutch"
+NUTCH_CRAWL_BINARY="${TYPO3_NUTCH_DISTRIBUTION_PATH}/bin/crawl"
+# shellcheck disable=SC2016
+EXT_SOLR_API_KEY=$(php -r '$settings = require getenv("DDEV_COMPOSER_ROOT") . "/config/system/settings.php"; echo sha1($settings["SYS"]["encryptionKey"] . "tx_solr_api") . PHP_EOL;')
+DEFAULT_CRAWL_DOMAIN=shop.dkd.de
+
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+export PATH=$JAVA_HOME/bin:$PATH
+
+function patchNutchSiteXml() {
+ cat > "/tmp/nutch-site.xml.patch" <<EOF
+--- .ddev/nutch/conf/nutch-site.xml	2023-12-12 14:55:35.896901545 +0000
++++ .ddev/nutch/conf/nutch-site.xml	2023-12-12 14:30:59.441760381 +0000
+@@ -46,7 +46,7 @@
+
+   <property>
+     <name>typo3.baseUrl</name>
+-    <value>http://www.example.com</value>
++    <value>https://solr-ddev-site.ddev.site/</value>
+     <description>
+       URL to the website with the TYPO3 installation
+     </description>
+@@ -54,7 +54,7 @@
+
+   <property>
+     <name>typo3.api.key</name>
+-    <value></value>
++    <value>${EXT_SOLR_API_KEY}</value>
+     <description>
+       Api Key for the SiteHash Api.
+       Can be found in your TYPO3 installation backend in the Search Module at the bottom.
+EOF
+  patch "${TYPO3_NUTCH_DISTRIBUTION_PATH}/conf/nutch-site.xml" < "/tmp/nutch-site.xml.patch"
+}
+
+function patchIndexWritersXml() {
+  cat > "/tmp/index-writers.xml.patch" <<EOF
+--- .ddev/nutch/conf/index-writers.xml	2023-03-29 14:07:19.000000000 +0000
++++ .ddev/nutch/conf/index-writers.xml	2023-12-12 15:24:11.283275305 +0000
+@@ -22,7 +22,7 @@
+   <writer id="indexer_solr_1" class="org.apache.nutch.indexwriter.solr.SolrIndexWriter">
+     <parameters>
+       <param name="type" value="http"/>
+-      <param name="url" value="http://localhost:8983/solr/nutch"/>
++      <param name="url" value="http://solr-site:8983/solr/core_en"/>
+       <param name="collection" value=""/>
+       <param name="weight.field" value=""/>
+       <param name="commitSize" value="1000"/>
+EOF
+  patch "${TYPO3_NUTCH_DISTRIBUTION_PATH}/conf/index-writers.xml" < "/tmp/index-writers.xml.patch"
+}
+
+function patchUrlsSeedTxt() {
+  echo "https://${DEFAULT_CRAWL_DOMAIN}/" > "${TYPO3_NUTCH_DISTRIBUTION_PATH}/urls/seed.txt"
+}
+
+function applyPatches() {
+  if [[ -f "${TYPO3_NUTCH_DISTRIBUTION_PATH}/.solr-ddev-site.patched" ]]; then
+    return 0
+  fi
+  patchNutchSiteXml
+  patchIndexWritersXml
+  touch "${TYPO3_NUTCH_DISTRIBUTION_PATH}/.solr-ddev-site.patched"
+}
+
+if [[ ! -d "${TYPO3_NUTCH_DISTRIBUTION_PATH}/bin" ]]; then
+  echo "Apache Nutch binaries will be downloaded"
+  mkdir -p "${TYPO3_NUTCH_DISTRIBUTION_PATH}"
+  wget https://github.com/TYPO3-Solr/nutch-typo3-cms/releases/download/${TYPO3_NUTCH_VERSION}/apache-nutch-for-typo3-${TYPO3_NUTCH_VERSION}.tar.gz -O - | tar -xz -C "${TYPO3_NUTCH_DISTRIBUTION_PATH}"
+  applyPatches
+fi
+
+if [[ $1 == "--website" ]]; then
+  echo "Please use --website=https://example.com"
+  exit 1
+fi
+
+cd "${TYPO3_NUTCH_DISTRIBUTION_PATH}/logs" || exit 7
+
+if [[ $1 == *--website=* ]]; then
+  # shellcheck disable=SC2206
+  INPUT_PARAMETER=(${1//=/ })
+  WEBSITE_URL=${INPUT_PARAMETER[1]}
+  WEBSITE_DOMAIN_NAME=$(awk -F/ '{print $3}' <<<"$WEBSITE_URL")
+  NUTCH_SEED_FILE="${TYPO3_NUTCH_DISTRIBUTION_PATH}/urls/seed_${WEBSITE_DOMAIN_NAME}.txt"
+  echo "${WEBSITE_URL}" > "${NUTCH_SEED_FILE}"
+
+  $NUTCH_CRAWL_BINARY -i -s "${NUTCH_SEED_FILE}" "${WEBSITE_DOMAIN_NAME}" 1
+  exit 0
+fi
+
+if [ $# -eq 0 ]; then
+  patchUrlsSeedTxt
+  echo "Use default config to crawl the sites from ${TYPO3_NUTCH_DISTRIBUTION_PATH}/urls/seed.txt :"
+  NUTCH_SEED_FILE="${TYPO3_NUTCH_DISTRIBUTION_PATH}/urls/seed.txt"
+  cat "${NUTCH_SEED_FILE}"
+  $NUTCH_CRAWL_BINARY -i -s "${NUTCH_SEED_FILE}" "${DEFAULT_CRAWL_DOMAIN}" 1
+  exit 0
+fi
