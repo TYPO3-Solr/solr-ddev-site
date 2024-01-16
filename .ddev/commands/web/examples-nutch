@@ -11,9 +11,9 @@ EXT_SOLR_API_KEY=$(php -r '$settings = require getenv("DDEV_COMPOSER_ROOT") . "/
 DEFAULT_CRAWL_DOMAIN=shop.dkd.de
 
 if [ "${GOARCH}" = "arm64" ]; then
-    JAVA_HOME="/usr/lib/jvm/java-11-openjdk-arm64"
+    export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-arm64"
 else
-    JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+    export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
 fi
 export PATH=$JAVA_HOME/bin:$PATH
 
