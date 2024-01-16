@@ -10,7 +10,11 @@ NUTCH_CRAWL_BINARY="${TYPO3_NUTCH_DISTRIBUTION_PATH}/bin/crawl"
 EXT_SOLR_API_KEY=$(php -r '$settings = require getenv("DDEV_COMPOSER_ROOT") . "/config/system/settings.php"; echo sha1($settings["SYS"]["encryptionKey"] . "tx_solr_api") . PHP_EOL;')
 DEFAULT_CRAWL_DOMAIN=shop.dkd.de
 
-export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+if [ "${GOARCH}" = "arm64" ]; then
+    JAVA_HOME="/usr/lib/jvm/java-11-openjdk-arm64"
+else
+    JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+fi
 export PATH=$JAVA_HOME/bin:$PATH
 
 function patchNutchSiteXml() {
