@@ -81,6 +81,10 @@ if [[ $1 == "--website" ]]; then
   exit 1
 fi
 
+if [[ ! -d "${TYPO3_NUTCH_DISTRIBUTION_PATH}/logs" ]]; then
+  mkdir "${TYPO3_NUTCH_DISTRIBUTION_PATH}/logs"
+fi
+
 cd "${TYPO3_NUTCH_DISTRIBUTION_PATH}/logs" || exit 7
 
 if [[ $1 == *--website=* ]]; then
