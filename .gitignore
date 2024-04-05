@@ -25,4 +25,7 @@ nbproject
 
 .ddev/tika-jars/
 
+# Don't manage DDEVs .gitignore manually
+.ddev/.gitignore
+
 config/system/settings.php
