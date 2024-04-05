@@ -55,10 +55,10 @@
     "dg/bypass-finals": "^1.4",
     "phpstan/phpstan": "^1.10",
     "phpstan/phpstan-phpunit": "^1.3",
-    "phpunit/phpunit": "^9.5",
+    "phpunit/phpunit": "^10.1",
     "ssch/typo3-rector": "^1.1.2",
     "typo3/coding-standards": "~0.7.1",
-    "typo3/testing-framework": "^7.0"
+    "typo3/testing-framework": "^8.0"
   },
   "autoload-dev": {
     "psr-4": {
@@ -103,7 +103,7 @@
     ],
     "tests:solr:integration": [
       "Composer\\Config::disableProcessTimeout",
-      "phpunit --configuration packages/ext-solr/Build/Test/IntegrationTests.xml --bootstrap=packages/ext-solr/Build/Test/IntegrationTestsBootstrap.php --colors"
+      "phpunit --configuration packages/ext-solr/Build/Test/IntegrationTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/FunctionalTestsBootstrap.php --colors"
     ],
     "tests:solr:phpstan": [
       "phpstan analyze -c packages/ext-solr/Build/Test/phpstan.neon -- packages/ext-solr/Classes packages/ext-solr/Tests"
