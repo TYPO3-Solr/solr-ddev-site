@@ -10,21 +10,21 @@
       "options": {
         "reference": "none",
         "versions": {
-          "apache-solr-for-typo3/introduction-news":              "12.0",
-          "apache-solr-for-typo3/introduction-solrconsole":       "12.0",
-          "apache-solr-for-typo3/introduction-solrdebugtools":    "12.0",
-          "apache-solr-for-typo3/introduction-solrfal":           "12.0",
+          "apache-solr-for-typo3/introduction-news":              "13.0",
+          "apache-solr-for-typo3/introduction-solrconsole":       "13.0",
+          "apache-solr-for-typo3/introduction-solrdebugtools":    "13.0",
+          "apache-solr-for-typo3/introduction-solrfal":           "13.0",
 
           "apache-solr-for-typo3/php-solr-explain":               "2.0.0",
-          "apache-solr-for-typo3/solr":                           "12.0",
-          "apache-solr-for-typo3/solrconsole":                    "12.0",
-          "apache-solr-for-typo3/solrdebugtools":                 "12.0",
-          "apache-solr-for-typo3/solrfal":                        "12.0",
-          "apache-solr-for-typo3/solrfheadless":                  "12.0",
-          "apache-solr-for-typo3/solrmlt":                        "12.0",
-          "apache-solr-for-typo3/tika":                           "12.0",
+          "apache-solr-for-typo3/solr":                           "13.0",
+          "apache-solr-for-typo3/solrconsole":                    "13.0",
+          "apache-solr-for-typo3/solrdebugtools":                 "13.0",
+          "apache-solr-for-typo3/solrfal":                        "13.0",
+          "apache-solr-for-typo3/solrfheadless":                  "13.0",
+          "apache-solr-for-typo3/solrmlt":                        "13.0",
+          "apache-solr-for-typo3/tika":                           "13.0",
 
-          "dkd/apache-solr-for-typo3-sitepackage":                "12.0"
+          "dkd/apache-solr-for-typo3-sitepackage":                "13.0"
         }
       }
     }
@@ -32,7 +32,7 @@
   "config": {
     "allow-plugins": true,
     "platform": {
-      "php": "8.1"
+      "php": "8.2"
     },
     "sort-packages": true,
     "preferred-install": {
@@ -46,18 +46,47 @@
     "ext-libxml": "*",
     "ext-pdo": "*",
     "ext-simplexml": "*",
-    "apache-solr-for-typo3/solr": "12.0",
-    "dkd/apache-solr-for-typo3-sitepackage": "12.0",
-    "helhum/typo3-console": "*",
-    "typo3/cms-core": "^v12.4.2"
+    "apache-solr-for-typo3/solr": "13.0",
+    "bk2k/bootstrap-package": "15.0.x-dev",
+    "dkd/apache-solr-for-typo3-sitepackage": "13.0",
+    "typo3/cms-core": "dev-main",
+
+    "typo3/cms-about": "dev-main",
+    "typo3/cms-adminpanel": "dev-main",
+    "typo3/cms-backend": "dev-main",
+    "typo3/cms-belog": "dev-main",
+    "typo3/cms-beuser": "dev-main",
+    "typo3/cms-extbase": "dev-main",
+    "typo3/cms-extensionmanager": "dev-main",
+    "typo3/cms-felogin": "dev-main",
+    "typo3/cms-filelist": "dev-main",
+    "typo3/cms-filemetadata": "dev-main",
+    "typo3/cms-fluid": "dev-main",
+    "typo3/cms-fluid-styled-content": "dev-main",
+    "typo3/cms-form": "dev-main",
+    "typo3/cms-frontend": "dev-main",
+    "typo3/cms-impexp": "dev-main",
+    "typo3/cms-info": "dev-main",
+    "typo3/cms-install": "dev-main",
+    "typo3/cms-lowlevel": "dev-main",
+    "typo3/cms-recordlist": "dev-main",
+    "typo3/cms-redirects": "dev-main",
+    "typo3/cms-reports": "dev-main",
+    "typo3/cms-rte-ckeditor": "dev-main",
+    "typo3/cms-scheduler": "dev-main",
+    "typo3/cms-seo": "dev-main",
+    "typo3/cms-setup": "dev-main",
+    "typo3/cms-sys-note": "dev-main",
+    "typo3/cms-t3editor": "dev-main",
+    "typo3/cms-tstemplate": "dev-main",
+    "typo3/cms-viewpage": "dev-main"
   },
   "require-dev": {
     "dg/bypass-finals": "^1.6",
     "phpstan/phpstan": "^1.10",
     "phpstan/phpstan-phpunit": "^1.3",
     "phpunit/phpunit": "^10.1",
-    "ssch/typo3-rector": "^2.5.0",
-    "typo3/coding-standards": "~0.7.1",
+    "typo3/coding-standards": "dev-main#27798dd4b8a15d2178260dbd6aad83fb0d6a017e",
     "typo3/testing-framework": "^8.0"
   },
   "autoload-dev": {
