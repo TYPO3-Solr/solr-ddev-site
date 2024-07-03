@@ -4,7 +4,7 @@
   "license": "GPL-2.0-or-later",
   "type": "project",
   "repositories": {
-    "0": {
+    "local-project": {
       "type": "path",
       "url": "packages/*",
       "options": {
@@ -27,6 +27,10 @@
           "dkd/apache-solr-for-typo3-sitepackage":                "13.0"
         }
       }
+    },
+    "Benni-Mack-TYPO3-Console": {
+      "type": "vcs",
+      "url": "https://github.com/bmack/TYPO3-Console.git"
     }
   },
   "config": {
@@ -49,13 +53,13 @@
     "apache-solr-for-typo3/solr": "13.0",
     "bk2k/bootstrap-package": "15.0.x-dev",
     "dkd/apache-solr-for-typo3-sitepackage": "13.0",
-    "typo3/cms-core": "dev-main",
-
+    "helhum/typo3-console": "dev-issue/1169",
     "typo3/cms-about": "dev-main",
     "typo3/cms-adminpanel": "dev-main",
     "typo3/cms-backend": "dev-main",
     "typo3/cms-belog": "dev-main",
     "typo3/cms-beuser": "dev-main",
+    "typo3/cms-core": "dev-main",
     "typo3/cms-extbase": "dev-main",
     "typo3/cms-extensionmanager": "dev-main",
     "typo3/cms-felogin": "dev-main",
