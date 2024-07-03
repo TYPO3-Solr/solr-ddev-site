@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   solr-site: &typo3-solr-service
     container_name: ddev-${DDEV_SITENAME}-solr-site
