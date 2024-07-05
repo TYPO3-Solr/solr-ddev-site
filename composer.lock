@@ -5992,12 +5992,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/backend.git",
-                "reference": "977e1daf276fb28fc741d80976d6c99944ff0978"
+                "reference": "5a9dd8a0da167f015bdcf97751462381a27d897c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/backend/zipball/977e1daf276fb28fc741d80976d6c99944ff0978",
-                "reference": "977e1daf276fb28fc741d80976d6c99944ff0978",
+                "url": "https://api.github.com/repos/TYPO3-CMS/backend/zipball/5a9dd8a0da167f015bdcf97751462381a27d897c",
+                "reference": "5a9dd8a0da167f015bdcf97751462381a27d897c",
                 "shasum": ""
             },
             "require": {
@@ -6066,7 +6066,7 @@
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
-            "time": "2024-07-02T09:08:02+00:00"
+            "time": "2024-07-04T22:18:07+00:00"
         },
         {
             "name": "typo3/cms-belog",
@@ -6297,12 +6297,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/core.git",
-                "reference": "1f33d86bffb2de4fcb6bcc8268f0274ea9d0f101"
+                "reference": "3c7eb849fca0033d85c8cb83581e3ae06d17a98f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/core/zipball/1f33d86bffb2de4fcb6bcc8268f0274ea9d0f101",
-                "reference": "1f33d86bffb2de4fcb6bcc8268f0274ea9d0f101",
+                "url": "https://api.github.com/repos/TYPO3-CMS/core/zipball/3c7eb849fca0033d85c8cb83581e3ae06d17a98f",
+                "reference": "3c7eb849fca0033d85c8cb83581e3ae06d17a98f",
                 "shasum": ""
             },
             "require": {
@@ -6431,7 +6431,7 @@
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
-            "time": "2024-07-02T18:59:37+00:00"
+            "time": "2024-07-04T19:54:20+00:00"
         },
         {
             "name": "typo3/cms-extbase",
@@ -7128,12 +7128,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/install.git",
-                "reference": "208aba606e7cb8e0fa53b33b2909ed7d09483357"
+                "reference": "0056332b93990670498218d6b42c222569e4d1db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/install/zipball/208aba606e7cb8e0fa53b33b2909ed7d09483357",
-                "reference": "208aba606e7cb8e0fa53b33b2909ed7d09483357",
+                "url": "https://api.github.com/repos/TYPO3-CMS/install/zipball/0056332b93990670498218d6b42c222569e4d1db",
+                "reference": "0056332b93990670498218d6b42c222569e4d1db",
                 "shasum": ""
             },
             "require": {
@@ -7189,7 +7189,7 @@
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
-            "time": "2024-07-02T18:06:05+00:00"
+            "time": "2024-07-04T11:40:54+00:00"
         },
         {
             "name": "typo3/cms-lowlevel",
@@ -7387,12 +7387,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/rte_ckeditor.git",
-                "reference": "1458f0a3f32d72e92f022e01f1384df26e896fa7"
+                "reference": "c810e993b35b12432b3a4182a2192a698a6a25d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/rte_ckeditor/zipball/1458f0a3f32d72e92f022e01f1384df26e896fa7",
-                "reference": "1458f0a3f32d72e92f022e01f1384df26e896fa7",
+                "url": "https://api.github.com/repos/TYPO3-CMS/rte_ckeditor/zipball/c810e993b35b12432b3a4182a2192a698a6a25d7",
+                "reference": "c810e993b35b12432b3a4182a2192a698a6a25d7",
                 "shasum": ""
             },
             "require": {
@@ -7441,7 +7441,7 @@
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
-            "time": "2024-07-02T07:35:32+00:00"
+            "time": "2024-07-04T19:52:54+00:00"
         },
         {
             "name": "typo3/cms-scheduler",
