@@ -19,4 +19,4 @@ overrideSolrUnixUidAndGidAndSetPermissions ()
 
 overrideSolrUnixUidAndGidAndSetPermissions
 
-su solr --preserve-environment -c 'docker-entrypoint.sh '"$@"
+runuser solr -c 'docker-entrypoint.sh '"$@"

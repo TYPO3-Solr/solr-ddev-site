@@ -1,7 +1,6 @@
-version: '3'
-
 services:
-  solr-site:
+  solr-site: &typo3-solr-service
+    container_name: ddev-${DDEV_SITENAME}-solr-site
     build:
       context:
         ../packages/ext-solr/
@@ -23,30 +22,23 @@ services:
       - SOLR_OVERRIDE_GID=$DDEV_GID
       - VIRTUAL_HOST=$DDEV_HOSTNAME
       - HTTP_EXPOSE=8983
+      - HTTPS_EXPOSE=8983
 
   solr-tests:
-    build:
-      context:
-        ../packages/ext-solr/
-      dockerfile: Docker/SolrServer/Dockerfile
-    user: root
-    entrypoint: docker-overrides-entrypoint.sh
-    command: solr-foreground
-    restart: "no"
-#    expose:
-#      - "8985"
+    <<: *typo3-solr-service
+    container_name: ddev-${DDEV_SITENAME}-solr-tests
     ports:
-      - 8985:8985
+      - 8985
     volumes:
       - solr-tests:/var/solr
       - ./solr/docker-overrides-entrypoint.sh:/opt/docker-solr/scripts/docker-overrides-entrypoint.sh
-    labels:
-      com.ddev.site-name: ${DDEV_SITENAME}
-      com.ddev.approot: $DDEV_APPROOT
     environment:
       - SOLR_OVERRIDE_UID=$DDEV_UID
       - SOLR_OVERRIDE_GID=$DDEV_GID
       - SOLR_PORT=8985
+      - VIRTUAL_HOST=$DDEV_HOSTNAME
+      - HTTP_EXPOSE=8985
+      - HTTPS_EXPOSE=8985
   web:
     links:
       - solr-tests:$DDEV_HOSTNAME
