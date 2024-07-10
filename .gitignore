@@ -23,3 +23,6 @@ nbproject
 /releses/
 
 .ddev/tika-jars/
+
+# Don't manage DDEVs .gitignore manually
+.ddev/.gitignore
