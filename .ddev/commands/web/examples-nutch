@@ -26,7 +26,7 @@ function patchNutchSiteXml() {
    <property>
      <name>typo3.baseUrl</name>
 -    <value>http://www.example.com</value>
-+    <value>https://solr-ddev-site.ddev.site/</value>
++    <value>https://${DDEV_HOSTNAME}/</value>
      <description>
        URL to the website with the TYPO3 installation
      </description>
