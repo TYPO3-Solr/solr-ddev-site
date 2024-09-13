@@ -583,7 +583,7 @@
 				<field index="related_from" type="integer">0</field>
 				<field index="related_files" type="NULL"></field>
 				<field index="fal_related_files" type="integer">0</field>
-				<field index="related_links" type="NULL"></field>
+				<field index="related_links" type="integer">0</field>
 				<field index="type">0</field>
 				<field index="keywords"></field>
 				<field index="description"></field>
