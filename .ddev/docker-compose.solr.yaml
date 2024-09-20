@@ -9,8 +9,6 @@ services:
         SOLR_UNIX_UID: ${DDEV_UID}
         SOLR_UNIX_GID: ${DDEV_GID}
     restart: "no"
-    ports:
-      - 8983
     volumes:
       - solr-site:/var/solr
     labels:
@@ -24,8 +22,6 @@ services:
   solr-tests:
     <<: *typo3-solr-service
     container_name: ddev-${DDEV_SITENAME}-solr-tests
-    ports:
-      - 8985
     volumes:
       - solr-tests:/var/solr
     environment:
