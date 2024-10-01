@@ -95,19 +95,20 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "TYPO3\\CMS\\Core\\Tests\\":                      "vendor/typo3/cms-core/Tests",
-      "ApacheSolrForTypo3\\Solr\\Tests\\":              "packages/ext-solr/Tests/",
-      "ApacheSolrForTypo3\\Solrconsole\\Tests\\":       "packages/ext-solrconsole/Tests/",
-      "ApacheSolrForTypo3\\Solrdebugtools\\Tests\\":    "packages/ext-solrdebugtools/Tests/",
-      "ApacheSolrForTypo3\\SolrExplain\\Tests\\":       "packages/php-solr-explain/Tests/",
-      "ApacheSolrForTypo3\\FakeExtension\\":            "packages/ext-solr/Tests/Integration/Fixtures/Extensions/fake_extension/Classes/",
-      "ApacheSolrForTypo3\\SolrFakeExtension2\\":       "packages/ext-solr/Tests/Integration/Fixtures/Extensions/fake_extension2/Classes/",
-      "ApacheSolrForTypo3\\SolrFakeExtension3\\":       "packages/ext-solr/Tests/Integration/Fixtures/Extensions/fake_extension3/Classes/",
-      "ApacheSolrForTypo3\\Solrfal\\Tests\\":           "packages/ext-solrfal/Tests/",
-      "ApacheSolrForTypo3\\Solrfluidgrouping\\Tests\\": "packages/ext-solrfluidgrouping/Tests/",
-      "ApacheSolrForTypo3\\Solrheadless\\Tests\\":      "packages/ext-solrheadless/Tests/",
-      "ApacheSolrForTypo3\\Solrmlt\\Tests\\":           "packages/ext-solrmlt/Tests/",
-      "ApacheSolrForTypo3\\Tika\\Tests\\":              "packages/ext-tika/Tests/"
+      "TYPO3\\CMS\\Core\\Tests\\":                                      "vendor/typo3/cms-core/Tests",
+      "ApacheSolrForTypo3\\Solr\\Tests\\":                              "packages/ext-solr/Tests/",
+      "ApacheSolrForTypo3\\Solrconsole\\Tests\\":                       "packages/ext-solrconsole/Tests/",
+      "ApacheSolrForTypo3\\Solrdebugtools\\Tests\\":                    "packages/ext-solrdebugtools/Tests/",
+      "ApacheSolrForTypo3\\SolrExplain\\Tests\\":                       "packages/php-solr-explain/Tests/",
+      "ApacheSolrForTypo3\\FakeExtension\\":                            "packages/ext-solr/Tests/Integration/Fixtures/Extensions/fake_extension/Classes/",
+      "ApacheSolrForTypo3\\SolrFakeExtension2\\":                       "packages/ext-solr/Tests/Integration/Fixtures/Extensions/fake_extension2/Classes/",
+      "ApacheSolrForTypo3\\SolrFakeExtension3\\":                       "packages/ext-solr/Tests/Integration/Fixtures/Extensions/fake_extension3/Classes/",
+      "ApacheSolrForTypo3\\Solrfal\\Tests\\":                           "packages/ext-solrfal/Tests/",
+      "ApacheSolrForTypo3\\SolrfalFakeExtensionPageContextDetection\\": "packages/ext-solrfal/Tests/Integration/Fixtures/Extensions/fake_extension_pagecontextdetection/Classes/",
+      "ApacheSolrForTypo3\\Solrfluidgrouping\\Tests\\":                 "packages/ext-solrfluidgrouping/Tests/",
+      "ApacheSolrForTypo3\\Solrheadless\\Tests\\":                      "packages/ext-solrheadless/Tests/",
+      "ApacheSolrForTypo3\\Solrmlt\\Tests\\":                           "packages/ext-solrmlt/Tests/",
+      "ApacheSolrForTypo3\\Tika\\Tests\\":                              "packages/ext-tika/Tests/"
     }
   },
   "scripts-descriptions": {
