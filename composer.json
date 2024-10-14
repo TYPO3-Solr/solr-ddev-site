@@ -9,16 +9,17 @@
       "options": {
         "reference": "none",
         "versions": {
-          "apache-solr-for-typo3/introduction-news":              "11.5",
-          "apache-solr-for-typo3/introduction-solrconsole":       "11.5",
-          "apache-solr-for-typo3/introduction-solrdebugtools":    "11.5",
-          "apache-solr-for-typo3/introduction-solrfal":           "11.5",
-          "apache-solr-for-typo3/introduction-solrfluidgrouping": "11.5",
+          "apache-solr-for-typo3/introduction-news":              "11.6",
+          "apache-solr-for-typo3/introduction-solrconsole":       "11.6",
+          "apache-solr-for-typo3/introduction-solrdebugtools":    "11.6",
+          "apache-solr-for-typo3/introduction-solrfal":           "11.0",
+          "apache-solr-for-typo3/introduction-solrfluidgrouping": "11.0",
+          "apache-solr-for-typo3/introduction-tika":              "11.0",
 
-          "apache-solr-for-typo3/introduction-rector":            "11.5",
+          "apache-solr-for-typo3/introduction-rector":            "11.6",
 
           "apache-solr-for-typo3/php-solr-explain":               "2.0.0",
-          "apache-solr-for-typo3/solr":                           "11.5",
+          "apache-solr-for-typo3/solr":                           "11.6",
           "apache-solr-for-typo3/solrconsole":                    "11.0",
           "apache-solr-for-typo3/solrdebugtools":                 "11.0",
           "apache-solr-for-typo3/solrfal":                        "11.0",
@@ -27,9 +28,17 @@
           "apache-solr-for-typo3/solrmlt":                        "11.0",
           "apache-solr-for-typo3/tika":                           "11.0",
 
-          "dkd/apache-solr-for-typo3-sitepackage":                "11.5"
+          "dkd/apache-solr-for-typo3-sitepackage":                "11.6"
         }
       }
+    }
+  },
+  "config": {
+    "allow-plugins": true,
+    "sort-packages": true,
+    "preferred-install": {
+      "typo3/cms-core": "source",
+      "*": "dist"
     }
   },
   "require": {
@@ -39,14 +48,16 @@
     "typo3/cms-core": "^11.5",
     "helhum/typo3-console": "~7.1.2",
     "typo3-console/composer-auto-commands": "0.5.2",
-    "dkd/apache-solr-for-typo3-sitepackage": "11.5",
-    "apache-solr-for-typo3/solr": "11.5"
+    "dkd/apache-solr-for-typo3-sitepackage": "11.6",
+    "apache-solr-for-typo3/solr": "11.6"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.5",
     "phpspec/prophecy-phpunit": "*",
+    "phpstan/phpstan": "^1.10",
+    "phpstan/phpstan-phpunit": "^1.3",
     "typo3/testing-framework": "^6.12",
-    "typo3/coding-standards": ">=0.5.0",
+    "typo3/coding-standards": "~0.6.1",
     "dg/bypass-finals": "^1.3"
   },
   "autoload-dev": {
@@ -63,13 +74,34 @@
       "ApacheSolrForTypo3\\Tika\\Tests\\":              "packages/ext-tika/Tests/"
     }
   },
+  "scripts-descriptions": {
+    "tests:cleanup-artefacts": "Removes all artefacts caused by tests:* commands inside packages.",
+    "tests:env":  "Checks the requierements in environment for tests. (Internal check for tests:setup)",
+    "tests:setup": "Installs composer dependencies, requiered for tests.",
+
+    "tests:solr:integration": "Runs integration tests on EXT:solr",
+    "tests:solr:rector": "Fixes/refactors the code from EXT:solr with rector",
+    "tests:solr:rector-check": "Checks if something can be refatored with rector on EXT:solr",
+    "tests:solr:unit": "Runs unit tests on EXT:solr",
+    "tests:solr:phpstan": "Runs PHPStan analys on EXT:solr",
+
+    "tests:solrfal:integration": "Runs integration tests on EXT:solrfal",
+    "tests:solrfal:rector": "Fixes/refactors the code from EXT:solrfal with rector",
+    "tests:solrfal:rector-check": "Checks if something can be refatored with rector on EXT:solrfal",
+    "tests:solrfal:unit": "Runs unit tests on EXT:solrfal",
+
+    "tests:tika:integration": "Runs integration tests on EXT:tika",
+    "tests:tika:rector": "Fixes/refactors the code from EXT:tika with rector",
+    "tests:tika:rector-check": "Checks if something can be refatored with rector on EXT:tika",
+    "tests:tika:unit": "Runs unit tests on EXT:tika"
+  },
   "scripts": {
     "typo3-cms-scripts": [
       "typo3cms install:fixfolderstructure",
       "[ -f ./public/typo3conf/LocalConfiguration.php ] || typo3cms install:setup",
       "typo3cms cache:flush"
     ],
-    "import-not-exportable-by-impexp-once": [
+    "t3:import-not-exportable-by-impexp-once": [
       "./packages/apache_solr_for_typo3_sitepackage/Initialisation/not_covered_by_impexp.sh"
     ],
     "sitepackage-scripts": [
@@ -77,14 +109,65 @@
     ],
     "post-autoload-dump": [
       "@typo3-cms-scripts",
-      "@import-not-exportable-by-impexp-once",
+      "@t3:import-not-exportable-by-impexp-once",
       "@sitepackage-scripts"
+    ],
+    "t3:standards:fix": "php-cs-fixer fix",
+    "tests:env": [
+      "if [ -z ${TYPO3_VERSION+x} ]; then >&2 echo \"Can not proceed, because env var TYPO3_VERSION is not set\"; exit 1; else echo \"Setup test environment for TYPO3 ${TYPO3_VERSION}\"; fi",
+      "if [ -z ${TIKA_PATH+x} ]; then echo \"Can not proceed, because env var TIKA_PATH is not set\"; exit 1; fi",
+      "if echo $TYPO3_VERSION | grep -q \"dev\"; then $COMPOSER_BINARY config minimum-stability dev; fi"
+    ],
+    "tests:cleanup-artefacts": [
+      "/bin/bash -c 'rm -Rf packages/*/{.Build,.*.cache,*.cache,composer.lock,var}'"
+    ],
+    "tests:setup": [
+      "@composer install"
+    ],
+
+    "tests:solr:unit": [
+      "phpunit --configuration packages/ext-solr/Build/Test/UnitTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php --colors"
+    ],
+    "tests:solr:integration": [
+      "Composer\\Config::disableProcessTimeout",
+      "phpunit --configuration packages/ext-solr/Build/Test/IntegrationTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/FunctionalTestsBootstrap.php --colors"
+    ],
+    "tests:solr:rector": [
+      "rector process --config=rector.php --autoload-file=vendor/autoload.php --clear-cache packages/ext-solr"
+    ],
+    "tests:solr:rector-check": [
+      "rector process --config=rector.php --autoload-file=vendor/autoload.php --clear-cache --dry-run packages/ext-solr"
+    ],
+    "tests:solr:phpstan": [
+      "phpstan analyze -c packages/ext-solr/Build/Test/phpstan.neon -- packages/ext-solr/Classes packages/ext-solr/Tests"
+    ],
+
+    "tests:solrfal:unit": [
+      "phpunit --configuration=packages/ext-solrfal/Build/Test/UnitTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php --colors"
+    ],
+    "tests:solrfal:integration": [
+      "Composer\\Config::disableProcessTimeout",
+      "phpunit --configuration packages/ext-solrfal/Build/Test/IntegrationTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/FunctionalTestsBootstrap.php --colors"
+    ],
+    "tests:solrfal:rector": [
+      "rector process --config=rector.php --autoload-file=vendor/autoload.php --clear-cache packages/ext-solrfal"
+    ],
+    "tests:solrfal:rector-check": [
+      "rector process --config=rector.php --autoload-file=vendor/autoload.php --clear-cache --dry-run packages/ext-solrfal"
+    ],
+
+    "tests:tika:unit": [
+      "phpunit --configuration packages/ext-tika/Build/Test/UnitTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php --colors"
+    ],
+    "tests:tika:integration": [
+      "Composer\\Config::disableProcessTimeout",
+      "phpunit --configuration packages/ext-tika/Build/Test/IntegrationTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/FunctionalTestsBootstrap.php --colors"
+    ],
+    "tests:tika:rector": [
+      "rector process --config=rector.php --autoload-file=vendor/autoload.php --clear-cache packages/ext-tika"
+    ],
+    "tests:tika:rector-check": [
+      "rector process --config=rector.php --autoload-file=vendor/autoload.php --clear-cache --dry-run packages/ext-tika"
     ]
-  },
-  "config": {
-    "allow-plugins": {
-      "typo3/cms-composer-installers": true,
-      "typo3/class-alias-loader": true
-    }
   }
 }
