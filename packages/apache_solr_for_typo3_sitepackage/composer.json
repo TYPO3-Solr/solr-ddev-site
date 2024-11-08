@@ -9,9 +9,7 @@
   "keywords": [
     "TYPO3 CMS"
   ],
-  "version": "12.0",
   "require": {
-    "bk2k/bootstrap-package": "15.0.x-dev",
     "typo3/cms-about": "*",
     "typo3/cms-adminpanel": "*",
     "typo3/cms-backend": "*",

@@ -1,0 +1,5 @@
+[client]
+socket                         = /var/tmp/run/mysql.sock
+
+[mysqld]
+socket                         = /var/tmp/run/mysql.sock
