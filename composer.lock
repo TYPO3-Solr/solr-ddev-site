@@ -9048,16 +9048,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.12.11",
+            "version": "1.12.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "0d1fc20a962a91be578bcfe7cf939e6e1a2ff733"
+                "reference": "b5ae1b88f471d3fd4ba1aa0046234b5ca3776dd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/0d1fc20a962a91be578bcfe7cf939e6e1a2ff733",
-                "reference": "0d1fc20a962a91be578bcfe7cf939e6e1a2ff733",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/b5ae1b88f471d3fd4ba1aa0046234b5ca3776dd0",
+                "reference": "b5ae1b88f471d3fd4ba1aa0046234b5ca3776dd0",
                 "shasum": ""
             },
             "require": {
@@ -9102,7 +9102,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-17T14:08:01+00:00"
+            "time": "2024-11-28T22:13:23+00:00"
         },
         {
             "name": "phpstan/phpstan-phpunit",
@@ -11552,16 +11552,16 @@
         },
         {
             "name": "typo3/testing-framework",
-            "version": "8.2.3",
+            "version": "8.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/testing-framework.git",
-                "reference": "480edc81d4b823c4f93a0b2dfc73457ae393f8ec"
+                "reference": "c627c85f18ab00f328dc7858a723df300897e13f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/testing-framework/zipball/480edc81d4b823c4f93a0b2dfc73457ae393f8ec",
-                "reference": "480edc81d4b823c4f93a0b2dfc73457ae393f8ec",
+                "url": "https://api.github.com/repos/TYPO3/testing-framework/zipball/c627c85f18ab00f328dc7858a723df300897e13f",
+                "reference": "c627c85f18ab00f328dc7858a723df300897e13f",
                 "shasum": ""
             },
             "require": {
@@ -11580,9 +11580,9 @@
                 "sbuerk/typo3-cmscomposerinstallers-testingframework-bridge": "*"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.37.1",
-                "phpstan/phpstan": "^1.9.2",
-                "phpstan/phpstan-phpunit": "^1.1.1",
+                "friendsofphp/php-cs-fixer": "^3.65.0",
+                "phpstan/phpstan": "^2.0.2",
+                "phpstan/phpstan-phpunit": "^2.0.1",
                 "typo3/cms-workspaces": "12.*.*@dev || 13.*.*@dev"
             },
             "type": "library",
@@ -11619,9 +11619,9 @@
             "support": {
                 "general": "https://typo3.org/support/",
                 "issues": "https://github.com/TYPO3/testing-framework/issues",
-                "source": "https://github.com/TYPO3/testing-framework/tree/8.2.3"
+                "source": "https://github.com/TYPO3/testing-framework/tree/8.2.4"
             },
-            "time": "2024-10-10T14:25:19+00:00"
+            "time": "2024-11-29T09:46:05+00:00"
         }
     ],
     "aliases": [],
