@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ## Description: Clones the plugin of TYPO3 Solr into packages/ folder and tries to activate it.
+## Usage: solr:clone <solr-plugin-name>
 
 EXT_SOLR_PLUGIN_NAME=$1
 
