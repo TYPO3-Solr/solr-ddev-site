@@ -46,7 +46,7 @@
     "ext-libxml": "*",
     "ext-pdo": "*",
     "ext-simplexml": "*",
-    "apache-solr-for-typo3/solr": "12.0",
+    "apache-solr-for-typo3/solr": "12.0 as 12.0.99",
     "dkd/apache-solr-for-typo3-sitepackage": "12.0",
     "helhum/typo3-console": "*",
     "typo3/cms-core": "^v12.4.2"

@@ -30,7 +30,7 @@ elif [[ "$EXT_NAME" != "news" ]]; then
   echo
   echo "Or if you have access to the https://github.com/TYPO3-Solr/ext-$EXT_NAME,"
   echo "then use "
-  echo "ddev clone $EXT_NAME"
+  echo "ddev solr:clone $EXT_NAME"
   echo "instead."
   exit 1;
 fi
