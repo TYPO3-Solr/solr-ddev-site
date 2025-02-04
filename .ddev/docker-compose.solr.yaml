@@ -1,5 +1,3 @@
-version: '3'
-
 services:
   solr-site: &typo3-solr-service
     container_name: ddev-${DDEV_SITENAME}-solr-site
@@ -11,8 +9,6 @@ services:
         SOLR_UNIX_UID: ${DDEV_UID}
         SOLR_UNIX_GID: ${DDEV_GID}
     restart: "no"
-    ports:
-      - 8983
     volumes:
       - solr-site:/var/solr
     labels:
@@ -27,14 +23,15 @@ services:
   solr-tests:
     <<: *typo3-solr-service
     container_name: ddev-${DDEV_SITENAME}-solr-tests
-    ports:
-      - 8985
     volumes:
       - solr-tests:/var/solr
     environment:
       - VIRTUAL_HOST=$DDEV_HOSTNAME
       - SOLR_PORT=8985
       - HTTP_EXPOSE=8985
+      - HTTPS_EXPOSE=8985
+      - TYPO3_SOLR_ENABLED_CORES=english danish german
+
   web:
     links:
       - solr-tests:$DDEV_HOSTNAME

@@ -45,6 +45,6 @@ if ! [[ "$EXT_SOLR_PLUGIN_NAME" == "solr" ]]; then
   if [[ -d "packages/introduction_$EXT_SOLR_PLUGIN_NAME" ]]; then
     ddev solr:enable $EXT_SOLR_PLUGIN_NAME
   else
-    ddev composer req "apache-solr-for-typo3/$EXT_SOLR_PLUGIN_NAME":"@dev"
+    ddev composer req "apache-solr-for-typo3/$EXT_SOLR_PLUGIN_NAME:@dev"
   fi
 fi
