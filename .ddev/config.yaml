@@ -1,4 +1,4 @@
-name: solr-ddev-site
+name: solr-11.2
 type: typo3
 docroot: public
 php_version: "7.4"
@@ -29,7 +29,7 @@ hooks:
         echo '* * * * * TYPO3_CONTEXT=Development /usr/bin/php /var/www/html/vendor/bin/typo3 scheduler:run';
       } | crontab -
 
-webimage_extra_packages: [cron, jq, openjdk-11-jre-headless, parallel]
+webimage_extra_packages: [cron, jq, openjdk-17-jre-headless, parallel]
 use_dns_when_possible: true
 timezone: UTC
 composer_version: "2"
