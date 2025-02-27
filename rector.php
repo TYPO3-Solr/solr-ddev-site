@@ -20,7 +20,7 @@ use Ssch\TYPO3Rector\Set\Typo3SetList;
 shell_exec('/bin/bash -c \'rm -Rf packages/*/{.Build,.*.cache,*.cache,composer.lock,var}\'');
 
 return RectorConfig::configure()
-    ->withPhpVersion(PhpVersion::PHP_81)
+    ->withPhpVersion(PhpVersion::PHP_82)
     ->withSets([
         Typo3SetList::CODE_QUALITY,
         Typo3SetList::GENERAL,
