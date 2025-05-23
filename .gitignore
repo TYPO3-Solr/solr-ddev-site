@@ -4,7 +4,6 @@
 .ddev/tika-jars/
 .DS_Store
 .idea
-composer.lock
 nbproject
 packages/*
 packages/*/Initialisation/not_covered_by_impexp.isImported
