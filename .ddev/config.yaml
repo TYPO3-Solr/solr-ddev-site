@@ -28,6 +28,9 @@ hooks:
         env --unset=_ --unset=TERM --unset=LS_COLORS | grep -v -e '=$' ;
         echo '* * * * * TYPO3_CONTEXT=Development /usr/bin/php /var/www/html/vendor/bin/typo3 scheduler:run';
       } | crontab -
+  # temporary delete all sys_template records to avoid manual steps after that commit.
+  - exec:
+      echo 'DELETE FROM sys_template WHERE 1=1;' | typo3 database:import
 
 webimage_extra_packages: [cron, jq, openjdk-17-jre-headless, parallel]
 use_dns_when_possible: true

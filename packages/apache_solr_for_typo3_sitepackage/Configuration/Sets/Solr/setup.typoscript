@@ -10,8 +10,9 @@ page {
   }
 }
 
-@import './Extensions/solr/setup.typoscript'
-@import './Extensions/Form/setup.typoscript'
+@import './TypoScript/IntroductionData/setup.typoscript'
+@import './TypoScript/Solr/setup.typoscript'
+@import './TypoScript/Form/setup.typoscript'
 
 # Bugfix bootstrap_package "address" tag
 # See: https://github.com/benjaminkott/bootstrap_package/commit/926733682291e5c0147cf263d530424ea7a47a9f#commitcomment-97499240

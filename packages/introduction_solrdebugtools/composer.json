@@ -7,8 +7,8 @@
   "keywords": ["TYPO3 CMS"],
   "require": {
     "dkd/apache-solr-for-typo3-sitepackage": "*",
-    "apache-solr-for-typo3/solrdebugtools": "@dev",
-    "apache-solr-for-typo3/php-solr-explain": "@dev"
+    "apache-solr-for-typo3/solrdebugtools": "*",
+    "apache-solr-for-typo3/php-solr-explain": "*"
   },
   "extra": {
     "typo3/cms": {
