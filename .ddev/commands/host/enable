@@ -19,10 +19,10 @@ if [[ ! -d "packages/introduction_""$EXT_NAME" ]]; then
 fi
 
 if [[ -d "$LOCAL_EXT_SOLR_PLUGIN_PATH"  ]]; then
-  LOCAL_EXT_SOLR_PLUGIN="apache-solr-for-typo3/$EXT_NAME:@dev"
+  LOCAL_EXT_SOLR_PLUGIN="apache-solr-for-typo3/$EXT_NAME"
   echo ""
   echo "Installing $LOCAL_EXT_SOLR_PLUGIN from $LOCAL_EXT_SOLR_PLUGIN_PATH local path,"
-  echo "  since composer does not allow to require @dev local libraries recursively."
+  echo "  since composer does not allow to require * local libraries recursively."
   echo "Please don't push the composer.json and composer.lock with activated EXT:Solr plugins in solr-ddev-site repository."
 elif [[ "$EXT_NAME" != "news" ]]; then
   echo "The $LOCAL_EXT_SOLR_PLUGIN_PATH does not exist."
@@ -36,8 +36,8 @@ elif [[ "$EXT_NAME" != "news" ]]; then
 fi
 
 # shellcheck disable=SC2086
-if ! ddev composer req "apache-solr-for-typo3/introduction-$EXT_NAME:@dev" $LOCAL_EXT_SOLR_PLUGIN ; then
-  EXECUTED_COMMAND="composer req \"apache-solr-for-typo3/introduction-$EXT_NAME:@dev\" $LOCAL_EXT_SOLR_PLUGIN"
+if ! ddev composer req "apache-solr-for-typo3/introduction-$EXT_NAME" $LOCAL_EXT_SOLR_PLUGIN ; then
+  EXECUTED_COMMAND="composer req \"apache-solr-for-typo3/introduction-$EXT_NAME\" $LOCAL_EXT_SOLR_PLUGIN"
   echo "Something went wrong by following composer command:"
   echo "    "$EXECUTED_COMMAND
   echo "please check the output from above."

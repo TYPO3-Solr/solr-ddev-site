@@ -6,7 +6,7 @@
     "license": ["GPL-2.0-or-later"],
     "keywords": ["TYPO3 CMS"],
     "require": {
-        "apache-solr-for-typo3/tika": "@dev"
+        "apache-solr-for-typo3/tika": "*"
     },
     "extra": {
         "typo3/cms": {

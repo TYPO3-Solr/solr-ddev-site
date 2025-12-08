@@ -1,0 +1,98 @@
+[tree.level === 2 && traverse(page, "slug") matches "#^/pages/#"]
+  # DEMO CSS
+  page.cssInline {
+    100 = TEXT
+    100.value (
+    .example-grid { border: 1px solid rgba(117, 167, 90, 0.5); background-color: rgba(117, 167, 90, 0.25); padding: 2em; }
+    )
+  }
+
+  # Override Content Selection
+  lib.dynamicContent >
+  lib.dynamicContent = COA
+  lib.dynamicContent {
+    5 = LOAD_REGISTER
+    5 {
+      colPos.cObject = TEXT
+      colPos.cObject {
+        field = colPos
+        ifEmpty.cObject = TEXT
+        ifEmpty.cObject {
+          value.current = 1
+          ifEmpty = 0
+        }
+      }
+    }
+    10 = CASE
+    10 {
+      key.data = register:colPos
+      0 = TEXT
+      0.value = Main
+      1 = TEXT
+      1.value = Left
+      2 = TEXT
+      2.value = Right
+      3 = TEXT
+      3.value = Border
+      4 = TEXT
+      4.value = Main 2
+      8 = TEXT
+      8.value = Content Before
+      9 = TEXT
+      9.value = Content After
+      10 = TEXT
+      10.value = Footer 1
+      11 = TEXT
+      11.value = Footer 2
+      12 = TEXT
+      12.value = Footer 3
+      20 = TEXT
+      20.value = Middle 1
+      21 = TEXT
+      21.value = Middle 2
+      22 = TEXT
+      22.value = Middle 3
+      30 = TEXT
+      30.value = Special 1
+      31 = TEXT
+      31.value = Special 2
+      32 = TEXT
+      32.value = Special 3
+      33 = TEXT
+      33.value = Special 4
+      34 = TEXT
+      34.value = Special 5
+      35 = TEXT
+      35.value = Special 6
+      36 = TEXT
+      36.value = Special 7
+      37 = TEXT
+      37.value = Special 8
+      38 = TEXT
+      38.value = Special 9
+      39 = TEXT
+      39.value = Special 10
+      wrap = <div>|</div>
+    }
+    11 = TEXT
+    11 {
+      value = colPos = {register:colPos}
+      value.insertData = 1
+      wrap = <div>|</div>
+    }
+    90 = RESTORE_REGISTER
+    wrap (
+        <div class="frame frame-default frame-type-html frame-layout-0 frame-background-none frame-no-backgroundimage frame-space-before-none frame-space-after-none">
+            <div class="frame-inner">
+                <div class="example-grid">|</div>
+            </div>
+        </div>
+    )
+  }
+  lib.dynamicContentSlide =< lib.dynamicContent
+  lib.dynamicContentSlide {
+    20 = TEXT
+    20.value = If no content element is found in this column, the rootLine will be traversed back until some content is found.
+    20.wrap = <div>|</div>
+  }
+[global]

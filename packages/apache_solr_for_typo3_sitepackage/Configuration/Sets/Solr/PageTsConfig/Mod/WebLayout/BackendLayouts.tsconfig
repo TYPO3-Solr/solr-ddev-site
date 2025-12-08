@@ -1,0 +1,4 @@
+#
+# BACKENDLAYOUTS
+#
+@import 'EXT:apache_solr_for_typo3_sitepackage/Configuration/TsConfig/Page/Mod/WebLayout/BackendLayouts/*.tsconfig'
