@@ -6,8 +6,8 @@
     "license": ["GPL-2.0-or-later"],
     "keywords": ["TYPO3 CMS"],
     "require": {
-        "apache-solr-for-typo3/solrdebugtools": "@dev",
-        "apache-solr-for-typo3/php-solr-explain": "@dev"
+        "apache-solr-for-typo3/solrdebugtools": "*",
+        "apache-solr-for-typo3/php-solr-explain": "*"
     },
     "extra": {
         "typo3/cms": {

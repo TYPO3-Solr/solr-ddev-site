@@ -30,9 +30,9 @@ services:
       - HTTP_EXPOSE=8985
       - HTTPS_EXPOSE=8985
   web:
-    links:
-      - solr-tests:$DDEV_HOSTNAME
-      - solr-site:$DDEV_HOSTNAME
+    depends_on:
+      - solr-site
+      - solr-tests
 
 volumes:
   solr-site:

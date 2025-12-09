@@ -1,4 +1,4 @@
-name: solr-12.0
+name: solr-12.1
 type: typo3
 docroot: public
 php_version: "8.1"
