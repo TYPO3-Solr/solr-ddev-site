@@ -1,4 +1,4 @@
-name: solr-ddev-site
+name: solr-13.1
 type: typo3
 docroot: public
 php_version: "8.2"
