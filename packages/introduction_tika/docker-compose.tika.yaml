@@ -4,7 +4,7 @@ services:
       context:
         ../packages/introduction_tika/
       args:
-        TIKA_VERSION: '1.28'
+        TIKA_VERSION: '3.2.3'
         UID_GID: ${DDEV_UID}:${DDEV_GID}
 
   web:
