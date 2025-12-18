@@ -41,13 +41,14 @@ if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['tika'])) {
             'tikaServerScheme' => 'http',
             'tikaServerHost' => 'tika',
             'tikaServerPort' => '9998',
-            'tikaServerPath' => '/opt/tika/tika-server-' . $requiredTikaVersion . '.jar',         // Tika Server Jar Path ::: [Optional] The absolute path to your Apache Tika server jar file (tika-server-x.x.jar). When set you can use the backend module to start and stop the Tika server from the TYPO3 backend. Otherwise the host and port settings will be used.
+            'tikaServerPath' => '/opt/tika/tika-server-standard-' . $requiredTikaVersion . '.jar',
 
             // # Solr Server // Uses ddev's configs from  .ddev/docker-compose.solr.yaml
             'solrScheme' => 'http',
             'solrHost' => 'solr-site',
             'solrPort' => '8983',
-            'solrPath' => '/solr/core_en/'
+            'solrPath' => '/',
+            'solrCore' => 'core_en',
         ]
     );
 }
