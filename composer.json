@@ -101,6 +101,10 @@
     "tests:solrfal:rector-check": "Checks if something can be refatored with rector on EXT:solrfal",
     "tests:solrfal:unit": "Runs unit tests on EXT:solrfal",
 
+    "tests:solrconsole:integration": "Runs integration tests on EXT:solrconsole",
+    "tests:solrconsole:phpstan": "Runs PHPStan analys on EXT:solrconsole",
+    "tests:solrconsole:unit": "Runs unit tests on EXT:solrconsole",
+
     "tests:tika:integration": "Runs integration tests on EXT:tika",
     "tests:tika:phpstan": "Runs PHPStan analys on EXT:tika",
     "tests:tika:rector": "Fixes/refactors the code from EXT:tika with rector",
@@ -179,6 +183,17 @@
     ],
     "tests:solrfal:rector-check": [
       "rector process --config=rector.php --autoload-file=vendor/autoload.php --clear-cache --dry-run packages/ext-solrfal"
+    ],
+
+    "tests:solrconsole:unit": [
+      "phpunit --configuration=packages/ext-solrconsole/Build/Test/UnitTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php --colors"
+    ],
+    "tests:solrconsole:integration": [
+      "Composer\\Config::disableProcessTimeout",
+      "phpunit --configuration packages/ext-solrconsole/Build/Test/IntegrationTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/FunctionalTestsBootstrap.php --colors"
+    ],
+    "tests:solrconsole:phpstan": [
+      "phpstan analyze -c packages/ext-solrconsole/Build/Test/phpstan.neon -- packages/ext-solrconsole/Classes packages/ext-solrconsole/Tests"
     ],
 
     "tests:tika:unit": [
