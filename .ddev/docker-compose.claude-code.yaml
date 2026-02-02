@@ -1,0 +1,6 @@
+services:
+  web:
+    volumes:
+      - ./claude-code/.local/bin:${HOME}/.local/bin/
+      - ./claude-code/.local/share/claude/:${HOME}/.local/share/claude/
+      - ./claude-code/.local/state/claude/:${HOME}/.local/state/claude/

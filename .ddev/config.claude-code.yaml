@@ -1,0 +1,29 @@
+webimage_extra_packages:
+  - 'curl'
+  - 'ca-certificates'
+  - 'less'
+  - 'git'
+  - 'procps'
+  - 'sudo'
+  - 'fzf'
+  - 'zsh'
+  - 'man-db'
+  - 'unzip'
+  - 'gnupg2'
+  - 'gh'
+  - 'iptables'
+  - 'ipset'
+  - 'iproute2'
+  - 'dnsutils'
+  - 'aggregate'
+  - 'jq'
+  - 'nano'
+  - 'vim'
+web_environment:
+  - 'CLAUDE_CONFIG_DIR=/var/www/html/.ddev/claude-code/config'
+hooks:
+  pre-start:
+  - exec-host: '[ -d ./.ddev/claude-code ] || ( mkdir -p .ddev/claude-code/{config,.local/{bin,share/claude,state/claude}} ; echo ''{}'' > .ddev/claude-code/.claude.json )'
+  post-start:
+  - exec: 'if ! command -v claude >/dev/null 2>&1; then echo "claude-code is not installed, installing now!"; curl -fsSL https://claude.ai/install.sh | bash -s stable; fi;'
+  - exec: 'if [ -z ${ANTHROPIC_AUTH_TOKEN+x} ]; then >&2 echo -e "\e[1;31mThe ENV ANTHROPIC_AUTH_TOKEN is not provided, the Claude-Code may not work.\nPlease add it to .ddev/config.claude-code.local.yaml as follows \nweb_environment:\n  - ''ANTHROPIC_AUTH_TOKEN=<your-token>''\n\n DO NOT COMMIT this FILE ever!!!\e[0m\n\nAlternatively provide it in other secure way."; fi'
