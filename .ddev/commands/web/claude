@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -e
+
+## Description: Starts the claude code session.
+## Usage: claude
+## Example: "ddev claude"
+
+claude $@

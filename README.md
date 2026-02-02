@@ -86,3 +86,49 @@ ddev solr:enable solrfal
 
 
 [See more about running tests whithin ddev](.ddev/commands/web/README.md)
+
+
+
+# Claude-Code sand-boxed on ddev project
+
+## Requirements:
+
+1. Claude-Code subscription
+2. Credentials via ENV in `.ddev/config.claude-code.local.yaml`
+   ```yaml
+   web_environment:
+     - 'ANTHROPIC_AUTH_TOKEN=<your-token>'
+     ## Optional:
+     # - 'ANTHROPIC_BASE_URL=https://<your_proxy>'
+   ```
+
+## How it works:
+
+### Installation of binaries:
+
+See: `.ddev/config.claude-code.yaml`
+
+`webimage_extra_packages:` block inside of `.ddev/config.claude-code.yaml` provides all dependencies required by Claude-Code for DDEV.
+DDEV installs them all on start up of web container.
+
+### Paths & co.:
+
+DDEV mounts local project paths required and used by claude-code binaries via `.ddev/docker-compose.claude-code.yaml`.
+
+* `.ddev/claude-code/.local/*` holds the Claude-Code binaries
+   This prevents the downloading of ~213MB binaries on each start of DDEV project.
+   Note: The binary upgrade must be done manually. See: https://code.claude.com/docs/en/setup#update-claude-code
+* `.ddev/claude-code/config/*` holds all your settings.
+   Don't push to GIT anything from this folder, except your team really wants the parts of that path in your project.
+* `.ddev/homeadditions/.bashrc.d/path.sh` adds Claude-Code binary to `$PATH` variable
+   So you can run `claude` inside of web container e.g. after `ddev ssh`...
+
+### GIT
+
+As mentioned above, **Do not push anything related to Claude-Code, except your team requeres/benefits from that parts.**
+
+### Usage:
+
+`ddev claude` will start the session.
+
+TBD...

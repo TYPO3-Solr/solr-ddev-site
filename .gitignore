@@ -22,6 +22,8 @@ nbproject
 .ddev/solr/site
 .ddev/solr/tests
 
+.ddev/claude-code/
+
 /releses/
 
 .ddev/tika-jars/
