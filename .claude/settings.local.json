@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(composer tests:solr:phpstan:*)",
+      "Bash(phpstan analyze:*)",
+      "Bash(composer tests:solr:unit:*)",
+      "Bash(git -C /var/www/html/packages/ext-solr log --oneline -3)",
+      "Bash(git -C /var/www/html/packages/ext-solr log --oneline -1)",
+      "Bash(composer tests:solr:integration:*)",
+      "Bash(composer t3:standards:fix:*)"
+    ]
+  }
+}
