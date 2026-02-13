@@ -47,7 +47,6 @@
     "ext-libxml": "*",
     "ext-pdo": "*",
     "ext-simplexml": "*",
-    "apache-solr-for-typo3/introduction-news": "^14.0",
     "apache-solr-for-typo3/solr": "^14.0",
     "bk2k/bootstrap-package": "^16.0.0",
     "dkd/apache-solr-for-typo3-sitepackage": "^14.0",
@@ -111,6 +110,7 @@
   },
   "scripts-descriptions": {
     "tests:cleanup-artefacts": "Removes all artefacts caused by tests:* commands inside packages.",
+    "tests:cleanup-databases": "Drops all stale per-test MySQL databases (db_tests_ft*) left over from previous integration test runs.",
     "tests:env":  "Checks the requierements in environment for tests. (Internal check for tests:setup)",
     "tests:setup": "Installs composer dependencies, requiered for tests.",
     "tests:setup:global-require": "Installs global composer dependencies. Those are moved to global, to avoid collisions and downgrades on libs.",
@@ -167,6 +167,9 @@
     "tests:cleanup-artefacts": [
       "/bin/bash -c 'rm -Rf packages/*/{.Build,.*.cache,*.cache,composer.lock,var}'"
     ],
+    "tests:cleanup-databases": [
+      "/bin/bash -c 'mysql -u\"$typo3DatabaseUsername\" -p\"$typo3DatabasePassword\" -h\"$typo3DatabaseHost\" -e \"SELECT schema_name FROM information_schema.schemata WHERE schema_name LIKE \\\"${typo3DatabaseName}_ft%\\\"\" -sN 2>/dev/null | while read db; do mysql -u\"$typo3DatabaseUsername\" -p\"$typo3DatabasePassword\" -h\"$typo3DatabaseHost\" -e \"DROP DATABASE \\`$db\\`\" 2>/dev/null; done; echo \"Cleaned up stale test databases.\"'"
+    ],
     "tests:setup": [
       "@composer install"
     ],
@@ -176,6 +179,7 @@
     ],
     "tests:solr:integration": [
       "Composer\\Config::disableProcessTimeout",
+      "@tests:cleanup-databases",
       "phpunit --configuration packages/ext-solr/Build/Test/IntegrationTests.xml --colors"
     ],
     "tests:solr:phpstan": [
@@ -203,6 +207,7 @@
     ],
     "tests:solrfal:integration": [
       "Composer\\Config::disableProcessTimeout",
+      "@tests:cleanup-databases",
       "phpunit --configuration packages/ext-solrfal/Build/Test/IntegrationTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/FunctionalTestsBootstrap.php --colors"
     ],
     "tests:solrfal:phpstan": [
@@ -220,6 +225,7 @@
     ],
     "tests:solrconsole:integration": [
       "Composer\\Config::disableProcessTimeout",
+      "@tests:cleanup-databases",
       "phpunit --configuration packages/ext-solrconsole/Build/Test/IntegrationTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/FunctionalTestsBootstrap.php --colors"
     ],
     "tests:solrconsole:phpstan": [
@@ -231,6 +237,7 @@
     ],
     "tests:tika:integration": [
       "Composer\\Config::disableProcessTimeout",
+      "@tests:cleanup-databases",
       "phpunit --configuration packages/ext-tika/Build/Test/IntegrationTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/FunctionalTestsBootstrap.php --colors"
     ],
     "tests:tika:phpstan": [
