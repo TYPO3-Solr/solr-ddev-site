@@ -1,0 +1,21 @@
+services:
+#  web:
+#    tmpfs:
+#      # Trying SQLite ?
+#      - /var/www/html/public/typo3temp/var/tests/functional-sqlite-dbs/:size=512M,mode=1777,exec,dev
+  db-tests:
+    image: mysql:8.0
+    tmpfs:
+      # MySQL test data in RAMFS (4GB for integration test databases)
+      - /var/lib/mysql:size=4G,mode=1777
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+# @todo: Try to setup RAMFS for apache Solr tests container volume and compare the performance.
