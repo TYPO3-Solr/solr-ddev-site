@@ -15,6 +15,7 @@ services:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
     environment:
+      - TYPO3_SOLR_ENABLED_CORES=english german danish
       - VIRTUAL_HOST=$DDEV_HOSTNAME
       - HTTP_EXPOSE=8983
       - HTTPS_EXPOSE=8983
@@ -29,6 +30,9 @@ services:
       - VIRTUAL_HOST=$DDEV_HOSTNAME
       - HTTP_EXPOSE=8985
       - HTTPS_EXPOSE=8985
+      - TYPO3_SOLR_ENABLED_CORES=english german danish
+      - PARATEST=on
+      #- PARATEST_NUM_WORKERS=
   web:
     depends_on:
       - solr-tests

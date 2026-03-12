@@ -37,7 +37,7 @@
     },
     "sort-packages": true,
     "preferred-install": {
-      "typo3/cms-*": "source",
+      "typo3/cms-core": "source",
       "*": "dist"
     }
   },
@@ -83,6 +83,8 @@
     "typo3/cms-viewpage": "dev-main as 14.1.0"
   },
   "require-dev": {
+    "brianium/paratest": "^7.8",
+    "cweagans/composer-patches": "2.0.0",
     "dg/bypass-finals": "^1.9",
     "phpstan/phpstan": "^1.10",
     "phpstan/phpstan-phpunit": "^1.3",
@@ -175,12 +177,12 @@
     ],
 
     "tests:solr:unit": [
-      "phpunit --configuration packages/ext-solr/Build/Test/UnitTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php --colors"
+      "phpunit --configuration packages/ext-solr/Build/Test/UnitTests.xml --colors"
     ],
     "tests:solr:integration": [
       "Composer\\Config::disableProcessTimeout",
       "@tests:cleanup-databases",
-      "phpunit --configuration packages/ext-solr/Build/Test/IntegrationTests.xml --colors"
+      "paratest --configuration packages/ext-solr/Build/Test/IntegrationTests.xml --colors"
     ],
     "tests:solr:phpstan": [
       "phpstan analyze -c packages/ext-solr/Build/Test/phpstan.neon -- packages/ext-solr/Classes packages/ext-solr/Tests"
@@ -249,5 +251,12 @@
     "tests:tika:rector-check": [
       "rector process --config=rector.php --autoload-file=vendor/autoload.php --clear-cache --dry-run packages/ext-tika"
     ]
+  },
+  "extra": {
+    "patches": {
+      "typo3/testing-framework": {
+        "Enable late static binding for getInstanceIdentifier/getInstancePath": "packages/ext-solr/Build/Patches/typo3/testing-framework/0001-enable-late-static-binding-in-functional-testcase.patch"
+      }
+    }
   }
 }

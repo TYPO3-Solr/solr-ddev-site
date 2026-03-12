@@ -1,0 +1,17 @@
+{
+    "_hash": "09473fafac8cab617af3c84926bb5d08b55e16c7268387c1d184469050e60336",
+    "patches": {
+        "typo3/testing-framework": [
+            {
+                "package": "typo3/testing-framework",
+                "description": "Enable late static binding for getInstanceIdentifier/getInstancePath",
+                "url": "packages/ext-solr/Build/Patches/typo3/testing-framework/0001-enable-late-static-binding-in-functional-testcase.patch",
+                "sha256": "103833f85575d6ae17fb475ace1b2296719ac959a41ced8ad01679ba57104bab",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ]
+    }
+}
