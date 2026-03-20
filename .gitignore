@@ -36,3 +36,6 @@ config/system/settings.php
 tools/*
 
 TYPO3-13.4_and_EXT_solr_13.1_State
+
+# temporary until TYPO3 reaches LTS release, to prevent from wrong state and "issues":
+/composer.lock

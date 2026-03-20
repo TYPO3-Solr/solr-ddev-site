@@ -16,6 +16,8 @@ mutagen_enabled: false
 hooks:
   # create folders for solr and tika data, for using them as volumes for docker containers
   pre-start:
+  # temporary remove composer.lock until TYPO3 reaches LTS release, to prevent from wrong state and "issues":
+  - exec-host: 'rm composer.lock'
   - exec-host: '[ -d ./.ddev/solr/site ] ||  mkdir -p .ddev/solr/site'
   - exec-host: '[ -d ./.ddev/solr/tests ] ||  mkdir -p .ddev/solr/tests'
   - exec-host: '[ -d ./.ddev/tika-jars ] ||  mkdir -p .ddev/tika-jars'
