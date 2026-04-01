@@ -26,7 +26,7 @@ services:
     volumes:
       - solr-tests:/var/solr
     environment:
-      - SOLR_PORT=8985
+      - SOLR_PORT_LISTEN=8985
       - VIRTUAL_HOST=$DDEV_HOSTNAME
       - HTTP_EXPOSE=8985
       - HTTPS_EXPOSE=8985
