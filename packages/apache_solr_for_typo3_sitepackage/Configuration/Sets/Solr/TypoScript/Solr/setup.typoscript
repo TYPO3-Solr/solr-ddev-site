@@ -12,9 +12,13 @@ plugin.tx_solr {
     frequentSearches = 1
 
     results.resultsHighlighting = 1
+
+    # Enable vector search
+    query.type = 1
+    vectorSearch.minimumSimilarity = 0.75
+    vectorSearch.topK = 1000
   }
   statistics = 1
-
 }
 
 # enable example facets
