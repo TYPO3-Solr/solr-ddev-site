@@ -1,4 +1,7 @@
 {
+  "env": {
+    "ANTHROPIC_CUSTOM_HEADERS": "x-litellm-tags: project:solr4typo3, task:ext_solr_typo3_14"
+  },
   "permissions": {
     "allow": [
       "Bash(find:*)",
