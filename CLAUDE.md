@@ -114,6 +114,7 @@ When working on `packages/ext-*` code, always look up how to use the TYPO3 Core 
 - **TYPO3 Coding Standards v0.8.0** - PSR-2 based
 - **Rector for TYPO3 14** - Automated code modernization
 - **PHP 8.2** - Use strict types and modern features
+- **Doc comments:** Never add `@param` or `@return` doc comments when parameter/return types are self-explanatory from the signature. Only add doc comments when additional context is needed (e.g., explaining what values are expected, side effects, or non-obvious behavior).
 
 ## Commit Quality Requirements
 

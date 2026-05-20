@@ -6,4 +6,4 @@ set -e
 ## Usage: claude
 ## Example: "ddev claude"
 
-claude $@
+claude "$@"
