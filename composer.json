@@ -80,6 +80,7 @@
   },
   "scripts-descriptions": {
     "tests:cleanup-artefacts": "Removes all artefacts caused by tests:* commands inside packages.",
+    "tests:cleanup-databases": "Drops all stale per-test MySQL databases (db_tests_ft*) left over from previous integration test runs.",
     "tests:env":  "Checks the requierements in environment for tests. (Internal check for tests:setup)",
     "tests:setup": "Installs composer dependencies, requiered for tests.",
     "tests:setup:global-require": "Installs global composer dependencies. Those are moved to global, to avoid collisions and downgrades on libs.",
@@ -99,6 +100,10 @@
     "tests:solrfal:rector": "Fixes/refactors the code from EXT:solrfal with rector",
     "tests:solrfal:rector-check": "Checks if something can be refatored with rector on EXT:solrfal",
     "tests:solrfal:unit": "Runs unit tests on EXT:solrfal",
+
+    "tests:solrconsole:integration": "Runs integration tests on EXT:solrconsole",
+    "tests:solrconsole:phpstan": "Runs PHPStan analys on EXT:solrconsole",
+    "tests:solrconsole:unit": "Runs unit tests on EXT:solrconsole",
 
     "tests:tika:integration": "Runs integration tests on EXT:tika",
     "tests:tika:phpstan": "Runs PHPStan analys on EXT:tika",
@@ -132,6 +137,9 @@
     "tests:cleanup-artefacts": [
       "/bin/bash -c 'rm -Rf packages/*/{.Build,.*.cache,*.cache,composer.lock,var}'"
     ],
+    "tests:cleanup-databases": [
+      "/bin/bash -c 'mysql -u\"$typo3DatabaseUsername\" -p\"$typo3DatabasePassword\" -h\"$typo3DatabaseHost\" -e \"SELECT schema_name FROM information_schema.schemata WHERE schema_name LIKE \\\"${typo3DatabaseName}_ft%\\\"\" -sN 2>/dev/null | while read db; do mysql -u\"$typo3DatabaseUsername\" -p\"$typo3DatabasePassword\" -h\"$typo3DatabaseHost\" -e \"DROP DATABASE \\`$db\\`\" 2>/dev/null; done; echo \"Cleaned up stale test databases.\"'"
+    ],
     "tests:setup": [
       "@composer install"
     ],
@@ -141,6 +149,7 @@
     ],
     "tests:solr:integration": [
       "Composer\\Config::disableProcessTimeout",
+      "@tests:cleanup-databases",
       "phpunit --configuration packages/ext-solr/Build/Test/IntegrationTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/FunctionalTestsBootstrap.php --colors"
     ],
     "tests:solr:phpstan": [
@@ -168,6 +177,7 @@
     ],
     "tests:solrfal:integration": [
       "Composer\\Config::disableProcessTimeout",
+      "@tests:cleanup-databases",
       "phpunit --configuration packages/ext-solrfal/Build/Test/IntegrationTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/FunctionalTestsBootstrap.php --colors"
     ],
     "tests:solrfal:phpstan": [
@@ -180,11 +190,24 @@
       "rector process --config=rector.php --autoload-file=vendor/autoload.php --clear-cache --dry-run packages/ext-solrfal"
     ],
 
+    "tests:solrconsole:unit": [
+      "phpunit --configuration=packages/ext-solrconsole/Build/Test/UnitTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php --colors"
+    ],
+    "tests:solrconsole:integration": [
+      "Composer\\Config::disableProcessTimeout",
+      "@tests:cleanup-databases",
+      "phpunit --configuration packages/ext-solrconsole/Build/Test/IntegrationTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/FunctionalTestsBootstrap.php --colors"
+    ],
+    "tests:solrconsole:phpstan": [
+      "phpstan analyze -c packages/ext-solrconsole/Build/Test/phpstan.neon -- packages/ext-solrconsole/Classes packages/ext-solrconsole/Tests"
+    ],
+
     "tests:tika:unit": [
       "phpunit --configuration packages/ext-tika/Build/Test/UnitTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php --colors"
     ],
     "tests:tika:integration": [
       "Composer\\Config::disableProcessTimeout",
+      "@tests:cleanup-databases",
       "phpunit --configuration packages/ext-tika/Build/Test/IntegrationTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/FunctionalTestsBootstrap.php --colors"
     ],
     "tests:tika:phpstan": [
