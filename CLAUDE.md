@@ -60,9 +60,10 @@ ddev solr:enable <addon>        # Enable: tika, news, solrconsole, solrfal, solr
 
 ## Architecture
 
-### Reference Snapshot: TYPO3-13.4_and_EXT_solr_13.1_State
+### Tip: Reference Snapshot: TYPO3-13.4_and_EXT_solr_13.1_State
 
-The folder `TYPO3-13.4_and_EXT_solr_13.1_State/` contains a **working snapshot** of TYPO3 13.4 with EXT:solr 13.1. Use this as a reference when making TYPO3 14 compatibility changes to:
+The folder `TYPO3-13.4_and_EXT_solr_13.1_State/` should contain a **working snapshot** of TYPO3 13.4 with EXT:solr 13.1.
+Use this as a reference when making TYPO3 14 compatibility changes to:
 - Compare how code worked before the upgrade
 - Look up working TCA configurations, test fixtures, etc.
 - Understand the previous behavior when fixing deprecations
@@ -71,7 +72,8 @@ The folder `TYPO3-13.4_and_EXT_solr_13.1_State/` contains a **working snapshot**
 
 **Setup (if folder is empty):**
 1. Clone the branch: `git clone -b release-13.1.x git@github.com:TYPO3-Solr/solr-ddev-site.git TYPO3-13.4_and_EXT_solr_13.1_State`
-2. Ask the developer to run `ddev start` on host in this directory (cannot be done from inside DDEV container)
+2. Change `name: solr-13.1` to `name: solr-13.1-ref` inside of `TYPO3-13.4_and_EXT_solr_13.1_State/.ddev/config.yaml`
+3. Ask the developer to run `ddev start` on host in this directory (cannot be done from inside DDEV container)
 
 ### Multi-Repository Structure
 The `packages/ext-*` folders are **separate git repositories** cloned into this development environment - not a monorepo. Each extension has its own repository at https://github.com/TYPO3-Solr/.

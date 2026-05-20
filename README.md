@@ -1,134 +1,145 @@
-# DDEV Apache Solr for TYPO3 System
+# DDEV Development Environment for Apache Solr for TYPO3
 
-Get going quickly with TYPO3 CMS and Apache Solr.
+DDEV-based development setup for contributing to **EXT:solr** and related Apache Solr extensions for TYPO3 CMS.
 
 ## Prerequisites
 
-* Install docker (Version should be higher than 17.05)
-* Install ddev (Version should be equal or higher then 1.5.1)
+- Recent [Git](https://git-scm.com/downloads)
+- Recent [Docker](https://docs.ddev.com/en/stable/users/install/docker-installation/)
+- Recent [DDEV](https://docs.ddev.com/en/stable/users/install/ddev-installation/)
+- An IDE with PHP and/or TYPO3 support — e.g. [PhpStorm](https://www.jetbrains.com/phpstorm/), [VS Code](https://code.visualstudio.com/) with the PHP extension, or similar
 
-## Quickstart
+> Estimated setup time if prerequisites are missing: **~30 min**.
 
-***Startup***
+## Quick Start
 
-The ddev environment can be created very easily:
-
-```
+```bash
 ddev start
 ```
 
-After the startup you can access the TYPO3 site with the following url:
+> Estimated first-time startup: **~5 min** (image build + composer install).
 
-```
-http://solr-ddev-site.ddev.site/
-```
+Once started, run `ddev describe` to see the project URLs:
 
-The TYPO3 backend can be accessed with:
+- **TYPO3 Frontend**: the listed `https://<project-name>.ddev.site` URL
+- **TYPO3 Backend**: `https://<project-name>.ddev.site/typo3/`
 
-```
-http://solr-ddev-site.ddev.site/typo3/
-```
+> The DDEV project name differs per branch (e.g. `solr-ddev-site` on `main`, `solr-13.1` on `release-13.1.x`). `ddev describe` is the source of truth for the actual URLs.
 
-Username: admin
-Password: Password1!
+Backend credentials: `admin` / `Password1!`
 
-***Recreate***
+To reset to a clean database state:
 
-From time to time you might want to start again with a clean database state. To do that run:
-
-```
+```bash
 ddev solr:clean:ddev-site
 ```
 
-This will remove all the things and bring the system tu the initial state.
+## Running Tests
 
+All test suites used by EXT:solr* GitHub Actions can be run locally inside the DDEV web container via `ddev composer tests:solr:<type>`.
 
-## Running tests:
+> **Note:** If using `ddev ssh`, make sure you are in `/var/www/html` before running `composer tests:*` commands.
 
-The tests can be executed within the ddev docker containers.
+```bash
+# Coding standards
+ddev composer t3:standards:fix -- packages/ext-solr
 
-### run unit tests for particular EXT:solr* extension
-    ddev composer tests:<extension-name>:unit
+# Static analysis
+ddev composer tests:solr:phpstan
 
-### run integration tests for particular EXT:solr* extension
-    ddev composer tests:<extension-name>:integration
+# Unit tests
+ddev composer tests:solr:unit
 
-### Use PhpUnit params and flags within the tests
+# Integration tests
+ddev composer tests:solr:integration
 
-    ddev composer tests:<extension-name>:integration -- <--PhpUnit-params-and/or-flag_01> <--PhpUnit-params-and/or-flag_etc>
-
-## Enable EXT:solr features via EXT:solr* addons.
-
-Following EXT:solr* addons can be switched on in this environment by `ddev solr:enable <addon-or-demo>` command:
-
-(EB = requires EB account and presence of addon in pacages/ext-<addon-name> path.)
-(Nø = To be integrated in solr-ddev-site)
-
-* solrconsole (EB)
-* solrdebugtools (EB)
-* solrfal (EB)
-* solrfheadless (EB and Nø)
-* solrmlt (Nø)
-* tika
-* news (As demo of record indexing.)
-
-```
-ddev solr:enable <addon-or-demo>
-ddev solr:enable news
-ddev solr:enable solrfluidgrouping
-ddev solr:enable solrfal
+# Pass PHPUnit arguments with --
+ddev composer tests:solr:integration -- --filter=IndexerTest
 ```
 
+<details>
+<summary>Tests for other EXT:solr* extensions (tika, solrfal, solrconsole)</summary>
+
+```bash
+# Coding standards for EXT:solr add-on
+ddev composer t3:standards:fix -- packages/ext-<add-on>
+
+# EXT:tika
+ddev composer tests:tika:phpstan
+ddev composer tests:tika:unit
+ddev composer tests:tika:integration
+
+# EXT:solrfal
+ddev composer tests:solrfal:phpstan
+ddev composer tests:solrfal:unit
+ddev composer tests:solrfal:integration
+
+# EXT:solrconsole
+ddev composer tests:solrconsole:phpstan
+ddev composer tests:solrconsole:unit
+ddev composer tests:solrconsole:integration
+```
+
+</details>
+
+See [DDEV Commands Reference](.ddev/commands/web/README.md) for additional `ddev solr:tests:*` shorthand commands.
+
+## Contributing to EXT:solr
+
+`ddev start` automatically clones the `packages/ext-solr` (and related) repositories. However, as a contributor you are responsible for:
+
+- **Forking** `https://github.com/TYPO3-Solr/ext-solr` on GitHub
+- **Adding your fork as remote** inside `packages/ext-solr/`:
+  ```bash
+  cd packages/ext-solr && git remote add origin git@github.com:<your-username>/ext-solr.git
+  cd ../../
+  ```
+  `ddev clone` already sets `https://github.com/TYPO3-Solr/ext-solr` as `upstream` automatically.
+- **Switching to the correct branch** before starting work
+- **Pushing your changes** to your fork (`origin`) and opening a pull request against `upstream`
+
+Each `packages/ext-*` directory is an independent Git repository — commits, remotes, and branches are managed separately from this `solr-ddev-site` repo.
+
+> **Please note:** EXT:solr* git repositories use a linear history, so please do not use `git merge` commands but always `git rebase` to integrate upstream changes into your branch.
+
+### Backports & parallel release branches
+
+Always start your work on the `main` branch — maintainers will backport merged PRs to active release branches by default.
+
+If a maintainer asks you to do the backport yourself, check out `solr-ddev-site` on the matching release branch (e.g. `release-13.1.x`) into a **separate directory** as an **independent DDEV project**. Each release branch already ships with its own unique `name:` in `.ddev/config.yaml` (e.g. `solr-13.1`), so the projects run side-by-side without conflict. Example layout used by maintainers:
+
+```
+~/PhpstormProjects/solr-ddev-site.main    # name: solr-ddev-site  (from main branch)
+~/PhpstormProjects/solr-ddev-site.13.1    # name: solr-13.1       (from release-13.1.x branch)
+~/PhpstormProjects/solr-ddev-site.12.1    # name: solr-12.1       (from release-12.1.x branch)
+```
+
+This allows testing ported features across multiple EXT:solr major releases simultaneously.
+
+### Keep solr-ddev-site up to date
+
+This environment evolves alongside EXT:solr. Pull upstream changes regularly to get the latest DDEV configuration, test helpers, and dependency updates:
+
+```bash
+git pull --rebase upstream main
+cd packages/ext-solr && git pull --rebase upstream main
+cd ../../
+ddev start
+```
+
+## Getting Help
+
+- **TYPO3 Slack** [`#ext-solr`](https://typo3.slack.com/) — community channel for EXT:solr questions and discussions.
+  Get an invite via the [TYPO3 Slack sign-up](https://my.typo3.org/about-mytypo3org/slack/)
+- **GitHub Issues** — [bug reports & feature requests for this DDEV environment](https://github.com/TYPO3-Solr/solr-ddev-site/issues)
+  EXT:solr issues belong in [the respective extension repo](https://github.com/TYPO3-Solr/)
+
+## Further Documentation
 
 
-### Examples for enable addons:
-
-
-
-[See more about running tests whithin ddev](.ddev/commands/web/README.md)
-
-
-
-# Claude-Code sand-boxed on ddev project
-
-## Requirements:
-
-1. Claude-Code subscription
-2. Credentials via ENV in `.ddev/config.claude-code.local.yaml`
-   ```yaml
-   web_environment:
-     - 'ANTHROPIC_AUTH_TOKEN=<your-token>'
-     ## Optional:
-     # - 'ANTHROPIC_BASE_URL=https://<your_proxy>'
-   ```
-
-## How it works:
-
-### Installation of binaries:
-
-See: `.ddev/config.claude-code.yaml`
-
-`webimage_extra_packages:` block inside of `.ddev/config.claude-code.yaml` provides all dependencies required by Claude-Code for DDEV.
-DDEV installs them all on start up of web container.
-
-### Paths & co.:
-
-DDEV mounts local project paths required and used by claude-code binaries via `.ddev/docker-compose.claude-code.yaml`.
-
-* `.ddev/claude-code/.local/*` holds the Claude-Code binaries
-   This prevents the downloading of ~213MB binaries on each start of DDEV project.
-   Note: The binary upgrade must be done manually. See: https://code.claude.com/docs/en/setup#update-claude-code
-* `.ddev/claude-code/config/*` holds all your settings.
-   Don't push to GIT anything from this folder, except your team really wants the parts of that path in your project.
-* `.ddev/homeadditions/.bashrc.d/path.sh` adds Claude-Code binary to `$PATH` variable
-   So you can run `claude` inside of web container e.g. after `ddev ssh`...
-
-### GIT
-
-As mentioned above, **Do not push anything related to Claude-Code, except your team requeres/benefits from that parts.**
-
-### Usage:
-
-`ddev claude` will start the session.
-
-TBD...
+- [Project Structure & Docker Services](Documentation/ProjectStructure.md) — folder layout and container overview
+- [EXT:solr Backend Modules](Documentation/BackendModules.md) — overview of the modules EXT:solr adds to the TYPO3 backend
+- [Addons & Demo Features](Documentation/Addons.md) — enable optional EXT:solr extensions
+- [Workshops — Participant Guide](Documentation/Workshops.md) — preparation guide for EXT:solr training & workshop attendees
+- [Claude Code Integration](Documentation/Claude-Code.md) — AI-assisted development setup
+- [DDEV Commands Reference](.ddev/commands/web/README.md) — all available `ddev solr:*` commands
