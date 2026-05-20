@@ -25,6 +25,7 @@ nbproject
 /releses/
 
 .ddev/tika-jars/
+.ddev/claude-code/
 
 # Don't manage DDEVs .gitignore manually
 .ddev/.gitignore
