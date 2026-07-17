@@ -32,9 +32,6 @@
   },
   "config": {
     "allow-plugins": true,
-    "platform": {
-      "php": "8.2"
-    },
     "sort-packages": true,
     "preferred-install": {
       "typo3/cms-core": "source",
@@ -56,22 +53,22 @@
   "require-dev": {
     "brianium/paratest": "^7.8.5",
     "dg/bypass-finals": "^1.9",
-    "phpstan/phpstan": "^1.10",
-    "phpstan/phpstan-phpunit": "^1.3",
+    "phpstan/phpstan": "^2.1.34",
+    "phpstan/phpstan-phpunit": "^2.0.18",
     "phpunit/phpunit": "^11.5.55",
     "typo3/coding-standards": "v0.8.0",
     "typo3/testing-framework": "^9.5.0"
   },
   "autoload-dev": {
     "psr-4": {
-      "TYPO3\\CMS\\Core\\Tests\\":                                      "vendor/typo3/cms-core/Tests",
+      "TYPO3\\CMS\\Core\\Tests\\":                                      "vendor/typo3/cms-core/Tests/",
       "ApacheSolrForTypo3\\Solr\\Tests\\":                              "packages/ext-solr/Tests/",
-      "ApacheSolrForTypo3\\Solrconsole\\Tests\\":                       "packages/ext-solrconsole/Tests/",
-      "ApacheSolrForTypo3\\Solrdebugtools\\Tests\\":                    "packages/ext-solrdebugtools/Tests/",
-      "ApacheSolrForTypo3\\SolrExplain\\Tests\\":                       "packages/php-solr-explain/Tests/",
       "ApacheSolrForTypo3\\FakeExtension\\":                            "packages/ext-solr/Tests/Integration/Fixtures/Extensions/fake_extension/Classes/",
       "ApacheSolrForTypo3\\SolrFakeExtension2\\":                       "packages/ext-solr/Tests/Integration/Fixtures/Extensions/fake_extension2/Classes/",
       "ApacheSolrForTypo3\\SolrFakeExtension3\\":                       "packages/ext-solr/Tests/Integration/Fixtures/Extensions/fake_extension3/Classes/",
+      "ApacheSolrForTypo3\\Solrconsole\\Tests\\":                       "packages/ext-solrconsole/Tests/",
+      "ApacheSolrForTypo3\\Solrdebugtools\\Tests\\":                    "packages/ext-solrdebugtools/Tests/",
+      "ApacheSolrForTypo3\\SolrExplain\\Tests\\":                       "packages/php-solr-explain/Tests/",
       "ApacheSolrForTypo3\\Solrfal\\Tests\\":                           "packages/ext-solrfal/Tests/",
       "ApacheSolrForTypo3\\SolrfalFakeExtensionPageContextDetection\\": "packages/ext-solrfal/Tests/Integration/Fixtures/Extensions/fake_extension_pagecontextdetection/Classes/",
       "ApacheSolrForTypo3\\Solrfluidgrouping\\Tests\\":                 "packages/ext-solrfluidgrouping/Tests/",
@@ -85,7 +82,6 @@
     "tests:cleanup-databases": "Drops all stale per-test MySQL databases (db_tests_ft*) left over from previous integration test runs.",
     "tests:env":  "Checks the requierements in environment for tests. (Internal check for tests:setup)",
     "tests:setup": "Installs composer dependencies, requiered for tests.",
-    "tests:setup:global-require": "Installs global composer dependencies. Those are moved to global, to avoid collisions and downgrades on libs.",
 
     "tests:solr:integration": "Runs integration tests on EXT:solr",
     "tests:solr:phpstan": "Runs PHPStan analys on EXT:solr",
