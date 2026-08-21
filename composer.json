@@ -176,7 +176,7 @@
     "tests:solrfal:integration": [
       "Composer\\Config::disableProcessTimeout",
       "@tests:cleanup-databases",
-      "phpunit --configuration packages/ext-solrfal/Build/Test/IntegrationTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/FunctionalTestsBootstrap.php --colors"
+      "paratest --configuration packages/ext-solrfal/Build/Test/IntegrationTests.xml --colors"
     ],
     "tests:solrfal:phpstan": [
       "phpstan analyze -c packages/ext-solrfal/Build/Test/phpstan.neon -- packages/ext-solrfal/Classes packages/ext-solrfal/Tests"
