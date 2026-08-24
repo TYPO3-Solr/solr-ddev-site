@@ -29,7 +29,7 @@ hooks:
 webimage_extra_packages:
   - cron
   - jq
-  - openjdk-17-jre-headless
+  - openjdk-21-jre-headless
   - parallel
 use_dns_when_possible: true
 timezone: UTC

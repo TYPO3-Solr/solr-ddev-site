@@ -1,0 +1,168 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## MOST IMPORTANT RULE: Never lose a test case
+
+A test case may only disappear when the production code it asserts is **removed**. When production
+code is **moved** — refactored, renamed, split, relocated into another class — the test moves with
+it and keeps asserting the same behaviour against the new API.
+
+* **Integration tests must never be deleted.** They assert functionality, and functionality
+  survives a refactoring. Point them at the new entry point instead.
+* **Unit tests** assert concrete lines. They may go only together with the lines they cover. If
+  those lines moved, the unit test moves too — rewritten against whatever now owns them.
+* "Superseded by another test" is not a reason to drop a case. Move it, then let the redundancy be
+  a separate, explicit decision.
+
+## Project Overview
+
+DDEV-based development environment for **Apache Solr for TYPO3** - an enterprise search integration extension. This is a monorepo containing the main EXT:solr extension and related add-ons (tika, solrconsole, solrfal, solrdebugtools, etc.).
+
+**Tech Stack:** PHP 7.4+, TYPO3 11.5, Apache Solr, MySQL 8.0, DDEV
+
+**Important:** No backwards compatibility with older TYPO3 versions is required. Code only needs to work with TYPO3 11.5.
+
+## Essential Commands
+
+### Running Tests (inside DDEV container)
+```bash
+# Unit tests
+ddev composer tests:solr:unit
+ddev composer tests:tika:unit
+ddev composer tests:solrfal:unit
+ddev composer tests:solrconsole:unit
+
+# Integration tests
+ddev composer tests:solr:integration
+ddev composer tests:tika:integration
+ddev composer tests:solrfal:integration
+ddev composer tests:solrconsole:integration
+
+# With PHPUnit arguments (extension name required as first param)
+ddev composer tests:solr:integration -- --filter=IndexerTest
+```
+
+### Alternative DDEV commands
+```bash
+ddev solr:tests:unit [extension] [--filter=TestName]
+ddev solr:tests:integration [extension] [--filter=TestName]
+```
+
+### Code Quality
+```bash
+# Static analysis (PHPStan level 6)
+ddev composer tests:solr:phpstan
+ddev composer tests:tika:phpstan
+ddev composer tests:solrfal:phpstan
+
+# Code refactoring with Rector
+ddev composer tests:solr:rector-check    # Dry run
+ddev composer tests:solr:rector          # Apply changes
+
+# Code style fix (TYPO3 Coding Standards)
+ddev composer t3:standards:fix
+```
+
+### Environment Management
+```bash
+ddev start                      # Start environment
+ddev solr:clean:ddev-site       # Reset to initial state
+ddev solr:enable <addon>        # Enable: tika, news, solrconsole, solrfal, solrdebugtools
+```
+
+## Architecture
+
+**Hint:** All `composer tests:solr:*` commands are available inside this folder, so you can run tests there to verify the previous working state.
+
+### Multi-Repository Structure
+The `packages/ext-*` folders are **separate git repositories** cloned into this development environment - not a monorepo. Each extension has its own repository at https://github.com/TYPO3-Solr/.
+
+**Important:** All cloned repositories must be on matching branches (e.g., all on `main` or all on `release-11.6.x`).
+
+- `packages/ext-solr/` - Main Apache Solr extension (namespace: `ApacheSolrForTypo3\Solr`)
+- `packages/ext-tika/` - Apache Tika text extraction (`ApacheSolrForTypo3\Tika`)
+- `packages/ext-solrfal/` - FAL integration (`ApacheSolrForTypo3\Solrfal`)
+- `packages/ext-solrconsole/` - Query console tool (`ApacheSolrForTypo3\Solrconsole`)
+- `packages/ext-solrdebugtools/` - Debugging utilities
+
+Root `composer.json` references these via path repositories with version overrides for local development.
+
+### TYPO3 Extension Structure (each package)
+```
+Classes/           # PSR-4 namespaced PHP code
+Tests/Unit/        # PHPUnit unit tests
+Tests/Integration/ # PHPUnit integration tests (uses TYPO3 Testing Framework)
+Configuration/     # TypoScript, TCA, site sets
+Resources/         # Templates, icons, language files
+Documentation/     # ReST documentation
+Build/Test/        # Test configs (UnitTests.xml, IntegrationTests.xml, phpstan.neon)
+```
+
+## Code Standards
+
+- **PHPStan Level 1** - Strict type checking enforced
+- **TYPO3 Coding Standards ~0.6.1** - PSR-2 based
+- **PHP 7.4 - 8.3** - Use strict types and modern features
+- **Doc comments:** Never add `@param` or `@return` doc comments when parameter/return types are self-explanatory from the signature. Only add doc comments when additional context is needed (e.g., explaining what values are expected, side effects, or non-obvious behavior).
+- **Comments:** Short but informative. If the code says it already, write no comment. When a comment is needed, explain *why*, not *what*, and keep it to one or two lines. Never restate the class or method name (`Class ItemRepository`).
+
+## Commit Quality Requirements
+
+**MANDATORY: Every change-set MUST pass ALL checks before committing.**
+
+### 1. PHPStan (MUST succeed)
+```bash
+composer tests:solr:phpstan
+```
+
+### 2. Unit Tests (MUST succeed)
+```bash
+composer tests:solr:unit
+```
+- **Coverage rule:** Each line in newly added methods within `Classes/` must be covered by unit tests
+- **Exception:** If too much mocking is required, provide integration tests instead
+
+### 3. Coding Standards (MUST be followed)
+```bash
+# Check CS (dry-run)
+composer t3:standards:fix -- packages/ext-solr --diff --verbose --dry-run --show-progress=none
+
+# Fix CS issues
+composer t3:standards:fix -- packages/ext-solr --show-progress=none
+```
+
+### 4. Integration Tests (MUST succeed for affected areas)
+```bash
+# Run tests for associated/affected classes
+composer tests:solr:integration -- --filter=<AssociatedClassName>
+```
+
+### Verification Workflow
+Before any commit, run in this order:
+1. `composer tests:solr:phpstan`
+2. `composer tests:solr:unit`
+3. `composer t3:standards:fix -- packages/ext-solr --show-progress=none`
+4. `composer tests:solr:integration -- --filter=<AffectedClass>`
+
+## Git Conventions
+
+**Important:** Never ask to push commits - the developer will always push manually.
+
+Commit message prefixes:
+- `[BUGFIX]` - Bug fixes
+- `[TASK]` - General tasks/improvements
+- `[FEATURE]` - New features
+- `[DOCS]` - Documentation changes
+
+Commit messages are short but informative: a subject line, and a body only when the *why*
+is not obvious from the diff. Do not narrate the diff or pad with context the reader has.
+
+Branch strategy:
+- `main` - Latest development
+- `release-X.X.x` - Release maintenance branches
+
+## URLs (after `ddev start`)
+
+- Frontend: https://solr-ddev-site.ddev.site/
+- Backend: https://solr-ddev-site.ddev.site/typo3/ (admin / Password1!)

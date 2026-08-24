@@ -1,0 +1,40 @@
+webimage_extra_packages:
+  - 'curl'
+  - 'ca-certificates'
+  - 'less'
+  - 'git'
+  - 'procps'
+  - 'sudo'
+  - 'fzf'
+  - 'zsh'
+  - 'man-db'
+  - 'unzip'
+  - 'gnupg2'
+  - 'gh'
+  - 'iptables'
+  - 'ipset'
+  - 'iproute2'
+  - 'dnsutils'
+  - 'aggregate'
+  - 'jq'
+  - 'nano'
+  - 'vim'
+
+hooks:
+  pre-start:
+    # Ensure persistent storage layout on the host (inside the bind-mounted project directory).
+    - exec-host: 'mkdir -p .ddev/claude-code/.claude .ddev/claude-code/.local/bin .ddev/claude-code/.local/share/claude .ddev/claude-code/.local/state/claude && { [ -f .ddev/claude-code/.claude.json ] || echo "{}" > .ddev/claude-code/.claude.json; }'
+  post-start:
+    # Replace container-local Claude paths with symlinks into the bind-mounted /var/www/html.
+    # Single-file bind mounts are unreliable; symlinks work because /var/www/html is already mounted.
+    - exec: 'rm -rf ~/.claude.json && ln -s /var/www/html/.ddev/claude-code/.claude.json ~/.claude.json'
+    - exec: 'rm -rf ~/.claude && ln -s /var/www/html/.ddev/claude-code/.claude ~/.claude'
+    - exec: 'mkdir -p ~/.local && rm -rf ~/.local/bin && ln -s /var/www/html/.ddev/claude-code/.local/bin ~/.local/bin'
+    - exec: 'mkdir -p ~/.local/share && rm -rf ~/.local/share/claude && ln -s /var/www/html/.ddev/claude-code/.local/share/claude ~/.local/share/claude'
+    - exec: 'mkdir -p ~/.local/state && rm -rf ~/.local/state/claude && ln -s /var/www/html/.ddev/claude-code/.local/state/claude ~/.local/state/claude'
+    # Install Claude Code into the symlinked ~/.local paths (persistent across rebuilds).
+    - exec: 'if ! command -v claude >/dev/null 2>&1; then echo "claude-code is not installed, installing now!"; curl -fsSL https://claude.ai/install.sh | bash -s stable; fi'
+    # rtk (Rust Token Killer, rtk-ai/rtk) — the `rtk gain` probe also rejects the unrelated "Rust Type Kit" binary.
+    - exec: 'if ! command -v rtk >/dev/null 2>&1 || ! rtk gain >/dev/null 2>&1; then echo "rtk (Token Killer) is not installed or wrong variant, installing now!"; curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh; fi'
+    # Warn if ANTHROPIC_AUTH_TOKEN is not set.
+    - exec: 'if [ -z ${ANTHROPIC_AUTH_TOKEN+x} ]; then >&2 echo -e "\e[1;31mThe ENV ANTHROPIC_AUTH_TOKEN is not provided, the Claude-Code may not work.\nPlease add it to ~/.ddev/global_config.yaml or <project>/.ddev/config.claude-code.local.yaml as follows \nweb_environment:\n  - ''ANTHROPIC_AUTH_TOKEN=<your-token>''\n\n DO NOT COMMIT this FILE ever!!!\e[0m\n\nAlternatively provide it in other secure way."; fi'
