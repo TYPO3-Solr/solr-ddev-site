@@ -2,6 +2,19 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## MOST IMPORTANT RULE: Never lose a test case
+
+A test case may only disappear when the production code it asserts is **removed**. When production
+code is **moved** — refactored, renamed, split, relocated into another class — the test moves with
+it and keeps asserting the same behaviour against the new API.
+
+* **Integration tests must never be deleted.** They assert functionality, and functionality
+  survives a refactoring. Point them at the new entry point instead.
+* **Unit tests** assert concrete lines. They may go only together with the lines they cover. If
+  those lines moved, the unit test moves too — rewritten against whatever now owns them.
+* "Superseded by another test" is not a reason to drop a case. Move it, then let the redundancy be
+  a separate, explicit decision.
+
 ## Project Overview
 
 DDEV-based development environment for **Apache Solr for TYPO3** - an enterprise search integration extension. This is a monorepo containing the main EXT:solr extension and related add-ons (tika, solrconsole, solrfal, solrdebugtools, etc.).
@@ -117,6 +130,7 @@ When working on `packages/ext-*` code, always look up how to use the TYPO3 Core 
 - **Rector for TYPO3 14** - Automated code modernization
 - **PHP 8.2** - Use strict types and modern features
 - **Doc comments:** Never add `@param` or `@return` doc comments when parameter/return types are self-explanatory from the signature. Only add doc comments when additional context is needed (e.g., explaining what values are expected, side effects, or non-obvious behavior).
+- **Comments:** Short but informative. If the code says it already, write no comment. When a comment is needed, explain *why*, not *what*, and keep it to one or two lines. Never restate the class or method name (`Class ItemRepository`).
 
 ## Commit Quality Requirements
 
@@ -166,11 +180,14 @@ Commit message prefixes:
 - `[FEATURE]` - New features
 - `[DOCS]` - Documentation changes
 
+Commit messages are short but informative: a subject line, and a body only when the *why*
+is not obvious from the diff. Do not narrate the diff or pad with context the reader has.
+
 Branch strategy:
 - `main` - Latest development
 - `release-X.X.x` - Release maintenance branches
 
 ## URLs (after `ddev start`)
 
-- Frontend: http://solr-ddev-site.ddev.site/
-- Backend: http://solr-ddev-site.ddev.site/typo3/ (admin / Password1!)
+- Frontend: https://solr-ddev-site.ddev.site/
+- Backend: https://solr-ddev-site.ddev.site/typo3/ (admin / Password1!)
