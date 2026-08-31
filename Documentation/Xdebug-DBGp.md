@@ -353,6 +353,75 @@ Things that cost time if you do not know them:
 - `list_sessions` can report `starting` while the session is already paused at a
   breakpoint. Trust the breakpoint's `hitCount` instead.
 
+## Recipes: tracing a call chain
+
+The debugger earns its cost when the question is *why did this code decide that*. For *is this
+code reachable at all*, reach for coverage instead — see the last recipe.
+
+| question                                  | reach for                                 |
+|-------------------------------------------|-------------------------------------------|
+| who calls this method?                    | `set_call_breakpoint` + `get_stack_trace` |
+| which of these run, in what order?        | `add_logpoint` (records and continues)    |
+| where is this rejected?                   | `set_exception_breakpoint`                |
+| what is this value, really?               | `evaluate` (`get_variable` truncates)     |
+| is this line ever executed in production? | coverage, not the debugger                |
+
+### Indexing runs in one process, so one session sees all of it
+
+Production indexing does not issue an HTTP request to the frontend. `IndexingService`
+calls `TYPO3\CMS\Frontend\Http\Application::handle()` in the *same* PHP process, with the
+`IndexingInstructions` carried as a request attribute. So a single CLI session steps from the
+scheduler task through the frontend middleware stack into rendering and back out — no cookie
+to forward, no second session, no request to correlate:
+
+```bash
+.ddev/xdebug/dbgp-proxy on
+.ddev/xdebug/xdebug-run -k claude vendor/bin/typo3 scheduler:run --task=2 --force
+```
+
+`--task=2` is the `IndexQueueWorkerTask` for root page 1 in this dev instance; confirm with
+`mysql -e 'SELECT uid, tasktype FROM tx_scheduler_task'` rather than assuming the numbering.
+`--force` runs it regardless of its schedule.
+
+### A call breakpoint beats stepping
+
+Stepping to discover a chain costs one round trip per frame, and `step_into` will happily
+disappear into the DI container. A call breakpoint on the method you care about halts on
+*every* route that reaches it, and one `get_stack_trace` answers the question outright. Add
+`add_step_filter` for `vendor/typo3/`, `vendor/symfony/` and `vendor/solarium/` before doing
+any actual stepping.
+
+### Logpoints do not block
+
+A halted session blocks its PHP process, and in this container that process may be an FPM
+worker — the frontend and backend then hang for anyone else using the project, which is
+reported later as a phantom bug. When the goal is a chain rather than a state inspection,
+`add_logpoint` + `get_logpoint_history` produces the whole ordering in one unblocked run.
+
+### Export before detaching
+
+`export_session` (or `capture_snapshot`) writes the stack and variables to a file, so
+whatever is being documented afterwards reads the file instead of needing a second run.
+Re-running is not free here: an indexing run mutates queue state and commits to Solr, so the
+second run is not the same run.
+
+### Coverage answers reachability, the debugger answers why
+
+Using breakpoints to enumerate what is dead is the expensive mistake — it samples one path
+per run and can only ever prove the positive. `xdebug.mode=coverage` over a full production
+run yields the complete set of executed lines in one pass; the same over a test suite yields
+the other set. The difference between them is the interesting list, and neither number
+requires a debugger session. `.ddev/php/30-xdebug_code_coverage.ini` already configures this
+for PHPUnit:
+
+```bash
+vendor/bin/phpunit -c packages/ext-solr/Build/Test/IntegrationTests.xml \
+  --coverage-text --filter PageIndexerTest
+```
+
+Note that `coverage` and `debug` are different `xdebug.mode` values. Enabling both in one run
+makes it slow enough to matter and buys nothing — the modes answer different questions.
+
 ## If the proxy is down
 
 Xdebug dials the proxy, so with the proxy stopped nothing debugs. Claude Code has a
@@ -371,26 +440,26 @@ and without a proxy the cookie cannot change the target.
 
 ## Files
 
-| Path                                    | Role                                                                                                                                                         |
-|-----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `.ddev/xdebug/xdebug_dbgp_proxy.ini`    | the opt-in switch: trigger-only, target = in-container proxy, default idekey. Installed to `/etc/php/*/mods-available/`, toggled with `phpenmod`/`phpdismod` |
-| `.ddev/php/30-xdebug_code_coverage.ini` | `xdebug.mode` — always loaded, so keep `coverage` for PHPUnit                                                                                                |
-| `.ddev/commands/web/dbgp-proxy`         | `ddev dbgp-proxy` wrapper                                                                                                                                    |
-| `.ddev/commands/web/xdebug-run`         | `ddev xdebug-run` wrapper                                                                                                                                    |
-| `.ddev/docker-compose.dbgp.yaml`        | publishes `127.0.0.1:<port>` and **defines the port** for this release branch                                                                                |
-| `.ddev/xdebug/dbgp-proxy`               | routing toggle + proxy lifecycle (`on`/`off`/`status`/`install`/`start`/`stop`/`daemon`/`register-mcp`)                                                      |
-| `.ddev/xdebug/xdebug-run`               | arm Xdebug, run one command with an idekey, disarm                                                                                                           |
-| `.mcp.json`                             | *declares* the `xdebug-mcp` server (listener + registration as idekey `claude`); not enabled until a developer opts in                                        |
+| Path                                     | Role                                                                                                                                                         |
+|------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `.ddev/xdebug/xdebug_dbgp_proxy.ini`     | the opt-in switch: trigger-only, target = in-container proxy, default idekey. Installed to `/etc/php/*/mods-available/`, toggled with `phpenmod`/`phpdismod` |
+| `.ddev/php/30-xdebug_code_coverage.ini`  | `xdebug.mode` — always loaded, so keep `coverage` for PHPUnit                                                                                                |
+| `.ddev/commands/web/dbgp-proxy`          | `ddev dbgp-proxy` wrapper                                                                                                                                    |
+| `.ddev/commands/web/xdebug-run`          | `ddev xdebug-run` wrapper                                                                                                                                    |
+| `.ddev/docker-compose.dbgp.yaml`         | publishes `127.0.0.1:<port>` and **defines the port** for this release branch                                                                                |
+| `.ddev/xdebug/dbgp-proxy`                | routing toggle + proxy lifecycle (`on`/`off`/`status`/`install`/`start`/`stop`/`daemon`/`register-mcp`)                                                      |
+| `.ddev/xdebug/xdebug-run`                | arm Xdebug, run one command with an idekey, disarm                                                                                                           |
+| `.mcp.json`                              | *declares* the `xdebug-mcp` server (listener + registration as idekey `claude`); not enabled until a developer opts in                                       |
 | `.ddev/web-build/Dockerfile.xdebug-dbgp` | bakes `xdebug-mcp` (pinned) and `dbgpProxy` into the web image                                                                                               |
 
 The browser session switch lives in the sitepackage, because it has to be delivered by TYPO3:
 
-| Path                                                                                | Role                                                            |
-|-------------------------------------------------------------------------------------|-----------------------------------------------------------------|
-| `Resources/Public/JavaScript/XdebugSessionSwitch.js`                                 | the widget; one file serves both frontend and backend           |
-| `Configuration/Sets/Solr/setup.typoscript`                                            | frontend delivery via `page.includeJSFooter`                     |
-| `Classes/Backend/AddXdebugSessionSwitch.php`                                          | backend delivery: listener on `BeforeBackendPageRenderEvent`     |
-| `Configuration/JavaScriptModules.php`                                                 | importmap prefix so the backend can resolve the module           |
+| Path                                                 | Role                                                         |
+|------------------------------------------------------|--------------------------------------------------------------|
+| `Resources/Public/JavaScript/XdebugSessionSwitch.js` | the widget; one file serves both frontend and backend        |
+| `Configuration/Sets/Solr/setup.typoscript`           | frontend delivery via `page.includeJSFooter`                 |
+| `Classes/Backend/AddXdebugSessionSwitch.php`         | backend delivery: listener on `BeforeBackendPageRenderEvent` |
+| `Configuration/JavaScriptModules.php`                | importmap prefix so the backend can resolve the module       |
 
 Paths are relative to `packages/apache_solr_for_typo3_sitepackage/`. The file has no imports
 or exports, which makes it simultaneously a valid classic script and a valid ES module — the
@@ -406,11 +475,11 @@ tail -f /tmp/dbgp-proxy.log                        # registrations and forwards
 
 The proxy log separates the three ways this fails, which look identical in the editor:
 
-| log line | cause |
-|---|---|
-| *no `Start new server connection` at all* | nothing triggered the session: no cookie, or Xdebug not loaded. Check `dbgp-proxy status` and the pill |
+| log line                                        | cause                                                                                                  |
+|-------------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| *no `Start new server connection` at all*       | nothing triggered the session: no cookie, or Xdebug not loaded. Check `dbgp-proxy status` and the pill |
 | `Could not find IDE connection for IDE Key '…'` | that client is not registered. PHPStorm: **Register IDE**. Claude Code: `ddev dbgp-proxy register-mcp` |
-| `IDE connected` → `Init forwarded, start pipe` | delivered; if it still does not halt, the path mapping is missing |
+| `IDE connected` → `Init forwarded, start pipe`  | delivered; if it still does not halt, the path mapping is missing                                      |
 
 Read that first row as a distinct diagnosis, not as absence of evidence. Registrations
 (`proxyinit`) appear in the log whether or not any request follows, so a log holding a fresh

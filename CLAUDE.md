@@ -174,6 +174,14 @@ Rules that are not discoverable from the code:
 * **An empty proxy log is a diagnosis, not a dead end.** No `Start new server connection`
   means nothing triggered; `Could not find IDE connection` means the client never registered;
   `Init forwarded, start pipe` without a halt means a missing path mapping.
+* **Indexing runs in one process.** `IndexingService` calls `FrontendApplication::handle()`
+  in-process, so one CLI session traces the whole chain from the scheduler task through the
+  frontend middleware stack: `xdebug-run -k claude vendor/bin/typo3 scheduler:run --task=2
+  --force`. No cookie, no second session.
+* **Coverage answers reachability, the debugger answers why.** Never step through code to
+  find out whether it is dead — that samples one path per run. Use `xdebug.mode=coverage`
+  over a production run and over the suite, and compare. Recipes for both, including call
+  breakpoints, logpoints and step filters, are in `Documentation/Xdebug-DBGp.md`.
 
 ## Commit Quality Requirements
 
