@@ -84,6 +84,8 @@
     "tests:setup": "Installs composer dependencies, requiered for tests.",
 
     "tests:solr:integration": "Runs integration tests on EXT:solr",
+    "tests:solr:known-tests": "Checks that no test case was lost in EXT:solr",
+    "tests:solr:known-tests:update": "Re-records the known test cases of EXT:solr, after a justified removal",
     "tests:solr:phpstan": "Runs PHPStan analys on EXT:solr",
     "tests:solr:rector": "Fixes/refactors the code from EXT:solr with rector",
     "tests:solr:rector-check": "Checks if something can be refatored with rector on EXT:solr",
@@ -94,16 +96,22 @@
     "tests:solrdebugtools:rector-check": "Checks if something can be refatored with rector on EXT:solrdebugtools",
 
     "tests:solrfal:integration": "Runs integration tests on EXT:solrfal",
+    "tests:solrfal:known-tests": "Checks that no test case was lost in EXT:solrfal",
+    "tests:solrfal:known-tests:update": "Re-records the known test cases of EXT:solrfal, after a justified removal",
     "tests:solrfal:phpstan": "Runs PHPStan analys on EXT:solrfal",
     "tests:solrfal:rector": "Fixes/refactors the code from EXT:solrfal with rector",
     "tests:solrfal:rector-check": "Checks if something can be refatored with rector on EXT:solrfal",
     "tests:solrfal:unit": "Runs unit tests on EXT:solrfal",
 
     "tests:solrconsole:integration": "Runs integration tests on EXT:solrconsole",
+    "tests:solrconsole:known-tests": "Checks that no test case was lost in EXT:solrconsole",
+    "tests:solrconsole:known-tests:update": "Re-records the known test cases of EXT:solrconsole, after a justified removal",
     "tests:solrconsole:phpstan": "Runs PHPStan analys on EXT:solrconsole",
     "tests:solrconsole:unit": "Runs unit tests on EXT:solrconsole",
 
     "tests:tika:integration": "Runs integration tests on EXT:tika",
+    "tests:tika:known-tests": "Checks that no test case was lost in EXT:tika",
+    "tests:tika:known-tests:update": "Re-records the known test cases of EXT:tika, after a justified removal",
     "tests:tika:phpstan": "Runs PHPStan analys on EXT:tika",
     "tests:tika:rector": "Fixes/refactors the code from EXT:tika with rector",
     "tests:tika:rector-check": "Checks if something can be refatored with rector on EXT:tika",
@@ -153,6 +161,14 @@
     "tests:solr:phpstan": [
       "phpstan analyze -c packages/ext-solr/Build/Test/phpstan.neon -- packages/ext-solr/Classes packages/ext-solr/Tests"
     ],
+    "tests:solr:known-tests": [
+      "Composer\\Config::disableProcessTimeout",
+      "@php packages/ext-solr/Build/Test/known-tests.php --target=packages/ext-solr"
+    ],
+    "tests:solr:known-tests:update": [
+      "Composer\\Config::disableProcessTimeout",
+      "@php packages/ext-solr/Build/Test/known-tests.php --target=packages/ext-solr --update"
+    ],
     "tests:solr:rector": [
       "rector process --config=rector.php --autoload-file=vendor/autoload.php --clear-cache packages/ext-solr"
     ],
@@ -181,6 +197,14 @@
     "tests:solrfal:phpstan": [
       "phpstan analyze -c packages/ext-solrfal/Build/Test/phpstan.neon -- packages/ext-solrfal/Classes packages/ext-solrfal/Tests"
     ],
+    "tests:solrfal:known-tests": [
+      "Composer\\Config::disableProcessTimeout",
+      "@php packages/ext-solr/Build/Test/known-tests.php --target=packages/ext-solrfal --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php"
+    ],
+    "tests:solrfal:known-tests:update": [
+      "Composer\\Config::disableProcessTimeout",
+      "@php packages/ext-solr/Build/Test/known-tests.php --target=packages/ext-solrfal --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php --update"
+    ],
     "tests:solrfal:rector": [
       "rector process --config=rector.php --autoload-file=vendor/autoload.php --clear-cache packages/ext-solrfal"
     ],
@@ -199,6 +223,14 @@
     "tests:solrconsole:phpstan": [
       "phpstan analyze -c packages/ext-solrconsole/Build/Test/phpstan.neon -- packages/ext-solrconsole/Classes packages/ext-solrconsole/Tests"
     ],
+    "tests:solrconsole:known-tests": [
+      "Composer\\Config::disableProcessTimeout",
+      "@php packages/ext-solr/Build/Test/known-tests.php --target=packages/ext-solrconsole --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php"
+    ],
+    "tests:solrconsole:known-tests:update": [
+      "Composer\\Config::disableProcessTimeout",
+      "@php packages/ext-solr/Build/Test/known-tests.php --target=packages/ext-solrconsole --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php --update"
+    ],
 
     "tests:tika:unit": [
       "phpunit --configuration packages/ext-tika/Build/Test/UnitTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php --colors"
@@ -210,6 +242,14 @@
     ],
     "tests:tika:phpstan": [
       "COMPOSER_VENDOR_DIR=$($COMPOSER_BINARY config vendor-dir) phpstan analyze -c packages/ext-tika/Build/Test/phpstan.neon -- packages/ext-tika/Classes packages/ext-tika/Tests"
+    ],
+    "tests:tika:known-tests": [
+      "Composer\\Config::disableProcessTimeout",
+      "@php packages/ext-solr/Build/Test/known-tests.php --target=packages/ext-tika --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php"
+    ],
+    "tests:tika:known-tests:update": [
+      "Composer\\Config::disableProcessTimeout",
+      "@php packages/ext-solr/Build/Test/known-tests.php --target=packages/ext-tika --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php --update"
     ],
     "tests:tika:rector": [
       "rector process --config=rector.php --autoload-file=vendor/autoload.php --clear-cache packages/ext-tika"
