@@ -1,0 +1,28 @@
+# Publishes the DBGp proxy's IDE-registration port, so PHPStorm's Host stays a stable
+# `127.0.0.1` instead of a container bridge IP that changes on every recreation.
+#
+# THIS FILE IS THE SINGLE SOURCE OF TRUTH FOR THE PORT — `.ddev/xdebug/dbgp-proxy` reads it
+# from here, so changing it in one place is enough.
+#
+# The port encodes the release line, so several solr-ddev-site instances can run at once
+# without colliding: 9 + <major> + <minor>, matching `extra.branch-alias` in
+# packages/ext-solr/composer.json.
+#
+#   main            14.0  ->  9140   (this file)
+#   release-13.1.x  13.1  ->  9131
+#   release-12.1.x  12.1  ->  9121
+#
+# Chosen below both ephemeral ranges (Linux 32768-60999, macOS 49152-65535), so the OS will
+# never claim them for an outgoing connection. Note 9121 is also the community default for
+# Prometheus redis_exporter — only relevant if you run one locally.
+#
+# Container port and host port are deliberately identical, so DBGP_PROXY_PORT is the same
+# value whether xdebug-mcp runs inside the container (Linux) or on the host (macOS).
+#
+# Bound to loopback: whoever reaches this port gets full debug control of the container.
+# Traefik/HTTP_EXPOSE is not an alternative — DBGp is raw TCP with no Host header and no TLS
+# SNI, so the router has nothing to match on.
+services:
+  web:
+    ports:
+      - "127.0.0.1:9140:9140"

@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+#
+# Run a command with Xdebug routed to one of the DBGp clients registered with the proxy.
+#
+# Xdebug is armed only for the duration of the run and switched back off afterwards,
+# because the project default is "Xdebug disabled" — an always-loaded Xdebug slows every
+# unrelated PHP process down. See Documentation/Xdebug-DBGp.md.
+
+set -euo pipefail
+
+IDEKEY="${XDEBUG_IDEKEY:-PHPSTORM}"
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -k|--idekey) IDEKEY="${2:?missing idekey}"; shift 2 ;;
+        -h|--help)   echo "usage: ${0##*/} [-k <idekey>] <command> [args...]"; exit 0 ;;
+        --)          shift; break ;;
+        *)           break ;;
+    esac
+done
+
+if [ $# -eq 0 ]; then
+    echo "usage: ${0##*/} [-k <idekey>] <command> [args...]" >&2
+    exit 64
+fi
+
+# Without the routing module Xdebug dials the IDE directly, so the proxy never sees the
+# session and the idekey decides nothing. Warn rather than fail — the stock DDEV path is a
+# legitimate way to use this script.
+if ! ls /etc/php/*/cli/conf.d/*xdebug_dbgp_proxy.ini >/dev/null 2>&1; then
+    echo "warning: DBGp routing is off, so idekey '$IDEKEY' has no effect." >&2
+    echo "         Sessions go straight to host.docker.internal:9003. Run 'ddev dbgp-proxy on' to route by idekey." >&2
+fi
+
+was_enabled=0
+if php -m 2>/dev/null | grep -qix xdebug; then
+    was_enabled=1
+else
+    /usr/local/bin/enable_xdebug >/dev/null
+fi
+
+# Only undo what this script did, so a session the developer armed by hand survives.
+restore() {
+    local status=$?
+    if [ "$was_enabled" -eq 0 ]; then
+        /usr/local/bin/disable_xdebug >/dev/null || true
+    fi
+    return $status
+}
+trap restore EXIT
+
+XDEBUG_SESSION="$IDEKEY" "$@"

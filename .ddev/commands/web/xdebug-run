@@ -1,0 +1,7 @@
+#!/bin/bash
+
+## Description: Run a command with Xdebug routed to PHPStorm (default) or Claude Code
+## Usage: xdebug-run [-k <idekey>] <command> [args...]
+## Example: "ddev xdebug-run vendor/bin/typo3 scheduler:run" or "ddev xdebug-run -k claude vendor/bin/typo3 solr:index"
+
+exec /var/www/html/.ddev/xdebug/xdebug-run "$@"

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+## Description: Toggle the Xdebug DBGp fan-out that lets PHPStorm and Claude Code debug in parallel
+## Usage: dbgp-proxy <on|off|status|install|start|stop>
+## Example: "ddev dbgp-proxy on" to enable, "ddev dbgp-proxy off" for stock DDEV behaviour, "ddev dbgp-proxy status"
+
+exec /var/www/html/.ddev/xdebug/dbgp-proxy "$@"

@@ -8,6 +8,17 @@ page {
   includeCSS {
     bootstrap-icons = EXT:apache_solr_for_typo3_sitepackage/Resources/Public/Fonts/bootstrap-icons.css
   }
+
+  # Picks the Xdebug session destination for the next request; see Documentation/Xdebug-DBGp.md.
+  # Kept out of concatenation and minification so it stays greppable in page source, and it
+  # renders itself only on local development hosts.
+  includeJSFooter {
+    xdebugSessionSwitch = EXT:apache_solr_for_typo3_sitepackage/Resources/Public/JavaScript/XdebugSessionSwitch.js
+    xdebugSessionSwitch {
+      excludeFromConcatenation = 1
+      disableCompression = 1
+    }
+  }
 }
 
 @import './TypoScript/IntroductionData/setup.typoscript'

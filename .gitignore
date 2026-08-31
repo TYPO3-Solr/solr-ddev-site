@@ -28,6 +28,12 @@ nbproject
 
 .ddev/tika-jars/
 
+.ddev/xdebug.log
+
+# Per-developer Claude Code settings (permissions, enabled MCP servers) — never commit.
+# .ddev/config.*.local.y*ml is already covered by DDEV's own .ddev/.gitignore.
+.claude/*.local.json
+
 # Don't manage DDEVs .gitignore manually
 .ddev/.gitignore
 
@@ -36,3 +42,5 @@ config/system/settings.php
 tools/*
 
 TYPO3-13.4_and_EXT_solr_13.1_State
+
+graphify-out/

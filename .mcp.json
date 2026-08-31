@@ -1,0 +1,16 @@
+{
+	"mcpServers": {
+		"xdebug": {
+			"command": "xdebug-mcp",
+			"env": {
+				"XDEBUG_HOST": "127.0.0.1",
+				"XDEBUG_PORT": "9004",
+				"DBGP_PROXY_HOST": "127.0.0.1",
+				"DBGP_PROXY_PORT": "9140",
+				"DBGP_IDEKEY": "claude",
+				"DBGP_PROXY_ALLOW_FALLBACK": "true",
+				"LOG_LEVEL": "info"
+			}
+		}
+	}
+}

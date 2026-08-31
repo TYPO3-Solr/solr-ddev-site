@@ -84,6 +84,43 @@ ddev composer tests:solrconsole:integration
 
 See [DDEV Commands Reference](.ddev/commands/web/README.md) for additional `ddev solr:tests:*` shorthand commands.
 
+## Debugging with Xdebug
+
+By default, Xdebug behaves exactly as DDEV ships it — `ddev xdebug on` connects straight to
+your IDE and nothing below applies.
+
+Opting in with `ddev dbgp-proxy on` lets PHPStorm and Claude Code debug side by side: a
+DBGp proxy inside the web container routes each session by *idekey*. It loads Xdebug for
+you; `ddev dbgp-proxy off` unloads it again and reverts to stock. `ddev xdebug on|off` keeps
+its normal DDEV meaning for when you need Xdebug without the routing, such as coverage runs.
+
+**PHPStorm → Settings → PHP → Debug → DBGp Proxy**
+
+| IDE key    | Host        | Port             |
+|------------|-------------|------------------|
+| `PHPSTORM` | `127.0.0.1` | `9140` on `main` |
+
+Leave *Debug port* at `9003`, then use **Tools → DBGp Proxy → Register IDE**.
+`ddev dbgp-proxy status` prints these values.
+
+The port encodes the release line — `9` + major + minor, matching `extra.branch-alias` in
+`packages/ext-solr/composer.json`: `main` → `9140`, `release-13.1.x` → `9131`,
+`release-12.1.x` → `9121`. So several instances can run side by side, each on `127.0.0.1`.
+
+```bash
+ddev dbgp-proxy on                                    # enable; prints the Host for PHPStorm
+ddev xdebug-run vendor/bin/typo3 scheduler:run        # debug in PHPStorm
+ddev xdebug-run -k claude vendor/bin/typo3 solr:index # debug in Claude Code
+ddev dbgp-proxy off                                   # back to stock DDEV
+```
+
+For requests from a browser, a pill in the middle of the frontend and backend top bar shows
+where the next one will halt and switches it with one click — `xdebug → PHPSTORM` or
+`xdebug → claude`. No browser extension needed, in any browser.
+
+See [Xdebug & DBGp](Documentation/Xdebug-DBGp.md) for the full setup, the cookies behind that
+pill, path mappings, fallbacks and troubleshooting.
+
 ## Contributing to EXT:solr
 
 `ddev start` automatically clones the `packages/ext-solr` (and related) repositories. However, as a contributor you are responsible for:
@@ -130,7 +167,7 @@ ddev start
 ## Getting Help
 
 - **TYPO3 Slack** [`#ext-solr`](https://typo3.slack.com/) — community channel for EXT:solr questions and discussions.
-  Get an invite via the [TYPO3 Slack sign-up](https://my.typo3.org/about-mytypo3org/slack/)
+  Get an invitation via the [TYPO3 Slack sign-up](https://my.typo3.org/about-mytypo3org/slack/)
 - **GitHub Issues** — [bug reports & feature requests for this DDEV environment](https://github.com/TYPO3-Solr/solr-ddev-site/issues)
   EXT:solr issues belong in [the respective extension repo](https://github.com/TYPO3-Solr/)
 
@@ -142,4 +179,5 @@ ddev start
 - [Addons & Demo Features](Documentation/Addons.md) — enable optional EXT:solr extensions
 - [Workshops — Participant Guide](Documentation/Workshops.md) — preparation guide for EXT:solr training & workshop attendees
 - [Claude Code Integration](Documentation/Claude-Code.md) — AI-assisted development setup
+- [Xdebug & DBGp](Documentation/Xdebug-DBGp.md) — opt-in step debugging for PHPStorm and Claude Code in parallel
 - [DDEV Commands Reference](.ddev/commands/web/README.md) — all available `ddev solr:*` commands

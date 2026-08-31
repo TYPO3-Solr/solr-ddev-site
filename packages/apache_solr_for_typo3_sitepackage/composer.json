@@ -45,6 +45,11 @@
       "extension-key": "apache_solr_for_typo3_sitepackage"
     }
   },
+  "autoload": {
+    "psr-4": {
+      "Dkd\\ApacheSolrForTypo3Sitepackage\\": "Classes/"
+    }
+  },
   "scripts": {
     "setup": [
       "npm install"

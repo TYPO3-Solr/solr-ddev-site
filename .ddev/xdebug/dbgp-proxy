@@ -1,0 +1,305 @@
+#!/usr/bin/env bash
+#
+# Xdebug DBGp fan-out for solr-ddev-site — opt-in, so plain DDEV behaviour is the default.
+#
+#   ddev dbgp-proxy on      load Xdebug, enable routing, start the proxy
+#   ddev dbgp-proxy off     unload Xdebug, disable routing, stop the proxy
+#   ddev dbgp-proxy status  what is running, plus the values to paste into PHPStorm
+#
+# "on" loads Xdebug *and* enables the routing overrides from xdebug_dbgp_proxy.ini; "off"
+# reverts both, leaving the project default of no Xdebug at all. `ddev xdebug on|off` keeps
+# its stock DDEV meaning and is still what you want for e.g. coverage runs, where the
+# routing is irrelevant. See Documentation/Xdebug-DBGp.md.
+#
+# No sudo anywhere: DDEV makes /etc/php/*/{conf.d,mods-available} world-writable and runs
+# php-fpm as the container user, so phpenmod and the FPM reload work unprivileged. That also
+# avoids depending on sudo being present in webimage_extra_packages.
+
+set -euo pipefail
+
+SELF_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# dbgpProxy and xdebug-mcp both come from the image
+# (.ddev/web-build/Dockerfile.xdebug-dbgp), so nothing is downloaded at runtime and
+# `on` works offline.
+BIN="$(command -v dbgpProxy 2>/dev/null || true)"
+
+MODULE="xdebug_dbgp_proxy"
+MODULE_SRC="$SELF_DIR/$MODULE.ini"
+
+# The IDE-registration port lives in .ddev/docker-compose.dbgp.yaml so that the published
+# host port and the port the proxy listens on can never drift apart. It encodes the release
+# line (9 + major + minor, e.g. main 14.0 -> 9140), which is what lets several
+# solr-ddev-site instances run side by side.
+COMPOSE_DBGP="$(cd "$SELF_DIR/.." && pwd)/docker-compose.dbgp.yaml"
+published_port() {
+    local port
+    port="$(sed -n 's/^[[:space:]]*-[[:space:]]*"127\.0\.0\.1:\([0-9]\{4,5\}\):[0-9]\{4,5\}".*/\1/p' \
+            "$COMPOSE_DBGP" 2>/dev/null | head -1)"
+    # 9001 is dbgpProxy's own default, used when the port is not published at all.
+    echo "${port:-9001}"
+}
+
+# IDE side must accept registrations from outside the container (PHPStorm on the host, and
+# on macOS the host-side xdebug-mcp), so it cannot bind to loopback.
+IDE_LISTEN="${DBGP_IDE_LISTEN:-0.0.0.0:$(published_port)}"
+ENGINE_LISTEN="${DBGP_ENGINE_LISTEN:-127.0.0.1:9003}"
+
+LOGFILE="${DBGP_LOGFILE:-/tmp/dbgp-proxy.log}"
+
+# -f lets a client re-register an idekey it already holds, so a PHPStorm reconnect or an
+# xdebug-mcp restart does not need the proxy restarted.
+PROXY_ARGS=(-f -i "$IDE_LISTEN" -s "$ENGINE_LISTEN")
+
+die() { echo "$*" >&2; exit 1; }
+
+# Tracked by process name, not a pidfile: under web_extra_daemons supervisord owns the
+# process and no pidfile of ours exists.
+running_pids() { pgrep -x dbgpProxy 2>/dev/null || true; }
+
+routing_enabled() {
+    ls /etc/php/*/cli/conf.d/*"$MODULE".ini >/dev/null 2>&1
+}
+
+xdebug_loaded() { php -m 2>/dev/null | grep -qix xdebug; }
+
+# xdebug-mcp is baked into the image by .ddev/web-build/Dockerfile.xdebug-dbgp. Reporting the
+# installed version next to the pinned one makes a bump verifiable: after editing the
+# Dockerfile you should see them match again only once the image is actually rebuilt.
+MCP_PIN_SRC="$(cd "$SELF_DIR/.." && pwd)/web-build/Dockerfile.xdebug-dbgp"
+
+mcp_version_installed() {
+    local bin pkg
+    bin="$(command -v xdebug-mcp 2>/dev/null)" || { echo "not installed"; return; }
+    pkg="$(dirname "$(readlink -f "$bin")")/../package.json"
+    [ -f "$pkg" ] || { echo "unknown"; return; }
+    sed -n 's/.*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' "$pkg" | head -1
+}
+
+mcp_version_pinned() {
+    sed -n 's/^ARG XDEBUG_MCP_VERSION=\(.*\)$/\1/p' "$MCP_PIN_SRC" 2>/dev/null | head -1
+}
+
+# ── registering the MCP server with the proxy ────────────────────────────────────────────────
+#
+# xdebug-mcp registers itself only when it starts, so whenever the proxy is (re)started later
+# its registration is gone and sessions for that idekey are answered with "Could not find IDE
+# connection" — with nothing in the editor to explain it. Doing the registration here removes
+# that ordering dependency: `on` leaves both clients reachable regardless of start order.
+#
+# The values come from .mcp.json rather than being repeated, so the listener the MCP opens and
+# the address the proxy forwards to cannot drift apart.
+MCP_CONFIG="$(cd "$SELF_DIR/../.." && pwd)/.mcp.json"
+
+# XDEBUG_MODE=off, because this helper runs while Xdebug is already armed: called from
+# xdebug-run, which exports XDEBUG_SESSION, it would otherwise open a DBGp session of its own
+# and stall the setup it is part of.
+mcp_env() {
+    [ -f "$MCP_CONFIG" ] || return 0
+    XDEBUG_MODE=off php -r '
+        $config = json_decode(file_get_contents($argv[1]), true);
+        echo $config["mcpServers"]["xdebug"]["env"][$argv[2]] ?? "";
+    ' "$MCP_CONFIG" "$1" 2>/dev/null
+}
+
+mcp_listening() { ss -ltn "sport = :$1" 2>/dev/null | grep -q LISTEN; }
+
+register_mcp() {
+    local port key reply
+    port="$(mcp_env XDEBUG_PORT)"
+    key="$(mcp_env DBGP_IDEKEY)"
+    if [ -z "$port" ] || [ -z "$key" ]; then
+        return 0
+    fi
+    # Only when the MCP is actually listening. Registering an address nothing answers on is
+    # worse than not registering: the proxy accepts the session and forwards it into a black
+    # hole, so PHP blocks instead of continuing.
+    if ! mcp_listening "$port"; then
+        echo "mcp:     not listening on 127.0.0.1:$port — not registered."
+        echo "         Enable the server in Claude Code, then re-run '${0##*/} on'."
+        return 0
+    fi
+    # /dev/tcp rather than nc: it is a bash builtin, so this cannot depend on which netcat
+    # flavour the image happens to carry. The proxy closes the connection after replying,
+    # which is what lets cat return.
+    # The redirection has to be scoped to a group: `exec 3<>… 2>/dev/null` with no command
+    # applies *both* redirections to the shell itself, which would silence every later error
+    # message. Inside `{ }` the fd survives, the stderr redirect does not.
+    reply=""
+    if ! { exec 3<>"/dev/tcp/127.0.0.1/${IDE_LISTEN##*:}"; } 2>/dev/null; then
+        echo "mcp:     could not reach the proxy on ${IDE_LISTEN##*:} — '$key' not registered" >&2
+        return 0
+    fi
+    printf 'proxyinit -p %s -k %s -m 1\0' "$port" "$key" >&3
+    # DBGp frames are NUL-delimited and command substitution warns about null bytes, so drop
+    # them here rather than letting a harmless warning surface on every `on`.
+    reply="$(timeout 3 cat <&3 2>/dev/null | tr -d '\0' || true)"
+    exec 3<&- 3>&-
+    case "$reply" in
+        *'success="1"'*) echo "✅ MCP registered with the proxy as idekey '$key' → 127.0.0.1:$port" ;;
+        *)               echo "⚠️  MCP registration as '$key' was refused: ${reply:-no reply}" >&2 ;;
+    esac
+}
+
+# DDEV's own scripts; both reload PHP-FPM themselves.
+enable_xdebug()  { /usr/local/bin/enable_xdebug >/dev/null; }
+disable_xdebug() { /usr/local/bin/disable_xdebug >/dev/null; }
+
+require_binary() {
+    [ -n "$BIN" ] && [ -x "$BIN" ] \
+        || die "❌ dbgpProxy is not in this image — run 'ddev utility rebuild -s web'"
+}
+
+dbgpproxy_version() {
+    [ -n "$BIN" ] || { echo "missing"; return; }
+    # -v prints e.g. "Xdebug DBGp proxy (0.6.2)"
+    "$BIN" -v 2>&1 | sed -n 's/.*(\([0-9][^)]*\)).*/\1/p' | head -1
+}
+
+# /etc/php lives in the container image, so the module has to be re-installed after a
+# rebuild. Cheap and idempotent, so `on` always does it.
+install_module() {
+    [ -f "$MODULE_SRC" ] || die "❌ missing $MODULE_SRC"
+    local dir
+    for dir in /etc/php/*/mods-available; do
+        [ -d "$dir" ] || continue
+        # rm first: an earlier install may have left a root-owned file, which a plain cp
+        # cannot overwrite even though DDEV makes the directory itself world-writable.
+        rm -f "$dir/$MODULE.ini"
+        cp "$MODULE_SRC" "$dir/$MODULE.ini"
+        chmod 644 "$dir/$MODULE.ini"
+    done
+}
+
+print_phpstorm_settings() {
+    echo
+    echo "PHPStorm > Settings > PHP > Debug > DBGp Proxy:"
+    if [ -f "$COMPOSE_DBGP" ]; then
+        echo "  IDE key = PHPSTORM   Host = 127.0.0.1   Port = ${IDE_LISTEN##*:}"
+    else
+        # Without the published port the proxy is only reachable on the container's bridge
+        # address, which changes whenever the container is recreated.
+        local ip
+        for ip in $(hostname -i); do
+            echo "  IDE key = PHPSTORM   Host = $ip   Port = ${IDE_LISTEN##*:}"
+        done
+        echo "  (port not published — this Host changes on container recreation)"
+    fi
+    echo "  Debug port stays 9003, then: Tools > DBGp Proxy > Register IDE"
+}
+
+start_proxy() {
+    local pids
+    pids="$(running_pids)"
+    if [ -n "$pids" ]; then
+        echo "DBGp proxy already running (pid $(echo "$pids" | tr '\n' ' '))"
+        return 0
+    fi
+    require_binary
+    nohup "$BIN" "${PROXY_ARGS[@]}" >>"$LOGFILE" 2>&1 &
+    sleep 1
+    pids="$(running_pids)"
+    if [ -z "$pids" ]; then
+        echo "❌ DBGp proxy failed to start:" >&2
+        tail -5 "$LOGFILE" >&2 || true
+        exit 1
+    fi
+    echo "✅ DBGp proxy running (pid $pids): IDE $IDE_LISTEN, engine $ENGINE_LISTEN"
+}
+
+stop_proxy() {
+    local pids
+    pids="$(running_pids)"
+    if [ -z "$pids" ]; then
+        echo "DBGp proxy not running"
+        return 0
+    fi
+    # dbgpProxy does not always act on SIGTERM, so verify and escalate rather than
+    # reporting a success that leaves the ports bound.
+    kill $pids 2>/dev/null || true
+    for _ in 1 2 3 4 5; do
+        sleep 1
+        [ -z "$(running_pids)" ] && break
+    done
+    if [ -n "$(running_pids)" ]; then
+        kill -9 $(running_pids) 2>/dev/null || true
+        sleep 1
+    fi
+    [ -z "$(running_pids)" ] || die "❌ DBGp proxy still running (pid $(running_pids | tr '\n' ' '))"
+    echo "DBGp proxy stopped (was pid $(echo "$pids" | tr '\n' ' '))"
+}
+
+case "${1:-status}" in
+    on)
+        require_binary
+        install_module
+        phpenmod "$MODULE"
+        # Arming Xdebug is part of "on": asking for the fan-out means asking to debug, and
+        # the routing overrides are inert while the extension is not loaded.
+        enable_xdebug
+        routing_enabled || die "❌ phpenmod did not enable $MODULE"
+        xdebug_loaded   || die "❌ Xdebug did not load — check 'php -m' and /etc/php/*/mods-available/xdebug.ini"
+        echo "✅ Xdebug loaded, DBGp routing enabled (dials the in-container proxy, trigger-only)"
+        start_proxy
+        register_mcp
+        print_phpstorm_settings
+        ;;
+    off)
+        phpdismod "$MODULE" 2>/dev/null || true
+        disable_xdebug
+        if routing_enabled; then die "❌ $MODULE is still enabled"; fi
+        if xdebug_loaded;   then die "❌ Xdebug is still loaded"; fi
+        echo "✅ Xdebug unloaded, DBGp routing disabled — back to the project default"
+        stop_proxy
+        ;;
+    install)
+        install_module
+        echo "✅ module installed to /etc/php/*/mods-available/$MODULE.ini (not enabled)"
+        ;;
+    daemon)
+        # Foreground form for web_extra_daemons / supervisord.
+        require_binary
+        exec "$BIN" "${PROXY_ARGS[@]}"
+        ;;
+    start) start_proxy ;;
+    stop)  stop_proxy ;;
+    # For the reverse order: the proxy was already up when the MCP server started.
+    register-mcp) register_mcp ;;
+    status)
+        pids="$(running_pids)"
+        if [ -n "$pids" ]; then
+            echo "proxy:   running (pid $(echo "$pids" | tr '\n' ' ')): IDE $IDE_LISTEN, engine $ENGINE_LISTEN"
+        else
+            echo "proxy:   not running"
+        fi
+        if routing_enabled; then
+            echo "routing: ENABLED  — Xdebug dials the proxy, trigger-only"
+        else
+            echo "routing: disabled — stock DDEV behaviour (host.docker.internal:9003)"
+        fi
+        if php -m 2>/dev/null | grep -qix xdebug; then
+            echo "xdebug:  loaded"
+        else
+            echo "xdebug:  not loaded (ddev xdebug on)"
+        fi
+        if [ -n "$BIN" ] && [ -x "$BIN" ]; then
+            echo "binary:  $BIN (dbgpProxy $(dbgpproxy_version))"
+        else
+            echo "binary:  MISSING — run 'ddev utility rebuild -s web'"
+        fi
+        mcp_have="$(mcp_version_installed)"
+        mcp_want="$(mcp_version_pinned)"
+        if [ -n "$mcp_want" ] && [ "$mcp_have" != "$mcp_want" ]; then
+            echo "mcp:     $mcp_have (pinned $mcp_want) — run 'ddev utility rebuild -s web'"
+        else
+            echo "mcp:     xdebug-mcp $mcp_have"
+        fi
+        # Must be an `if`, not `routing_enabled && …`: with routing off the `&&` list would
+        # make `status` exit non-zero (ls returns 2 on a non-matching glob), so merely
+        # reporting "disabled" would look like a command failure to any caller.
+        if routing_enabled; then print_phpstorm_settings; fi
+        ;;
+    *)
+        die "usage: ${0##*/} <on|off|status|install|start|stop|daemon|register-mcp>"
+        ;;
+esac

@@ -132,6 +132,49 @@ When working on `packages/ext-*` code, always look up how to use the TYPO3 Core 
 - **Doc comments:** Never add `@param` or `@return` doc comments when parameter/return types are self-explanatory from the signature. Only add doc comments when additional context is needed (e.g., explaining what values are expected, side effects, or non-obvious behavior).
 - **Comments:** Short but informative. If the code says it already, write no comment. When a comment is needed, explain *why*, not *what*, and keep it to one or two lines. Never restate the class or method name (`Class ItemRepository`).
 
+## Debugging with Xdebug
+
+Opt-in and off by default: `ddev dbgp-proxy on` loads Xdebug, enables DBGp routing and starts
+the proxy; `off` reverts all three. Full setup in `Documentation/Xdebug-DBGp.md`.
+
+Where Claude Code itself runs decides how to invoke this. Inside the web container `ddev` is
+not on `PATH`; on a sandboxed host (macOS/Windows today, possibly Linux later) it is, and
+`ddev` execs into the container. Detect with `command -v ddev` or `$IS_DDEV_PROJECT`.
+
+```bash
+ddev dbgp-proxy on                                        # from a host / sandbox
+/var/www/html/.ddev/xdebug/dbgp-proxy on                  # from inside the web container
+ddev xdebug-run -k claude vendor/bin/typo3 scheduler:run
+/var/www/html/.ddev/xdebug/xdebug-run -k claude vendor/bin/typo3 scheduler:run
+```
+
+Running on a sandboxed host also puts the MCP server outside the container, which needs the
+host-side `.mcp.json` variant — see the doc.
+
+Rules that are not discoverable from the code:
+
+* **Debug tests with plain `phpunit`, never `composer tests:solr:*`.** Composer's
+  XdebugHandler restarts PHP *without* Xdebug, and the trigger additionally fires on
+  `composer`, `paratest` and `phpunit-wrapper` — each opens a DBGp session that blocks
+  waiting for commands, so the suite never reaches the test. Use
+  `vendor/bin/phpunit -c packages/ext-solr/Build/Test/IntegrationTests.xml --filter <Test>`.
+* **Always `detach` when finished.** After the last breakpoint the session sits at
+  `stopping` and the PHP process stays blocked — a web request hangs until then.
+* **Remove pending breakpoints.** They live in the MCP server, outlive the session and
+  re-arm on the next connection. This is how a "phantom" hang gets reported days later.
+* **Leave Xdebug off** (`dbgp-proxy off`) so the project default is restored.
+* `get_variable` truncates strings (`"pages"` → `"pa"`); use `evaluate` for real values.
+* `list_sessions` can report `starting` while already paused — trust the breakpoint's
+  `hitCount`.
+* **Web requests route by cookie, and the two destinations use different ones:**
+  `XDEBUG_SESSION=claude` for the MCP, `XDEBUG_TRIGGER=PHPSTORM` for the IDE. A pill in the
+  frontend and backend top bar switches them, so ask the developer to select `claude` there
+  rather than to install a browser extension. `xdebug.idekey` is *not* a fallback: under
+  `start_with_request = trigger` a request with neither cookie starts no session at all.
+* **An empty proxy log is a diagnosis, not a dead end.** No `Start new server connection`
+  means nothing triggered; `Could not find IDE connection` means the client never registered;
+  `Init forwarded, start pipe` without a halt means a missing path mapping.
+
 ## Commit Quality Requirements
 
 **MANDATORY: Every change-set MUST pass ALL checks before committing.**

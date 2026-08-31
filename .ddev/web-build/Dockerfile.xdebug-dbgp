@@ -1,0 +1,42 @@
+# Third-party tooling for the Xdebug DBGp fan-out (see Documentation/Xdebug-DBGp.md):
+#
+#   * xdebug-mcp — the MCP server Claude Code talks to, so `.mcp.json`'s
+#     `"command": "xdebug-mcp"` resolves
+#   * dbgpProxy  — Xdebug's own DBGp proxy, which routes each session to the client that
+#     registered the matching idekey
+#
+# Baked into the image rather than fetched at runtime: neither npm's global prefix nor
+# /usr/local/bin is on a volume, so a rebuild would wipe them, and downloading on demand
+# makes `ddev dbgp-proxy on` depend on the network and on xdebug.org being up.
+
+# ── UPDATING xdebug-mcp ──────────────────────────────────────────────────────────────
+#   1. bump XDEBUG_MCP_VERSION below
+#   2. ddev utility rebuild -s web
+#   3. ddev dbgp-proxy status     # confirms the version actually in the image
+# ─────────────────────────────────────────────────────────────────────────────────────
+#
+# Pinned on purpose. xdebug-mcp receives full debug control of this container, and the
+# setup depends on 1.3.x specifics: the DBGP_PROXY_* registration variables, and the
+# hard rejection of XDEBUG_SOCKET_PATH together with proxy mode. A silent minor bump
+# could change either without warning.
+ARG XDEBUG_MCP_VERSION=1.3.0
+RUN npm install -g "xdebug-mcp@${XDEBUG_MCP_VERSION}"
+
+# dbgpProxy cannot be pinned — xdebug.org publishes only an unversioned binary
+# (dbgpProxy-0.6.2 is a 404) and the project has no releases API. So the version is
+# whatever was current when this image was built: fixed for the image's lifetime and
+# identical for everyone on the same build, which is more than the previous
+# download-once-per-developer approach gave. `ddev dbgp-proxy status` reports it, so an
+# upstream change is at least visible rather than silent.
+#
+# `dbgpProxy -v` at the end doubles as a smoke test: a truncated or HTML error response
+# fails the build here instead of at first use.
+RUN set -eux; \
+    case "$(uname -m)" in \
+        x86_64)        url=https://xdebug.org/files/binaries/dbgpProxy ;; \
+        aarch64|arm64) url=https://xdebug.org/files/binaries/dbgpProxy-arm64 ;; \
+        *) echo "unsupported architecture: $(uname -m)" >&2; exit 1 ;; \
+    esac; \
+    curl -fsSL -o /usr/local/bin/dbgpProxy "$url"; \
+    chmod 0755 /usr/local/bin/dbgpProxy; \
+    dbgpProxy -v
