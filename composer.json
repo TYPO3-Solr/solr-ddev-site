@@ -144,7 +144,7 @@
       "/bin/bash -c 'rm -Rf packages/*/{.Build,.*.cache,*.cache,composer.lock,var}'"
     ],
     "tests:cleanup-databases": [
-      "/bin/bash -c 'mysql -u\"$typo3DatabaseUsername\" -p\"$typo3DatabasePassword\" -h\"$typo3DatabaseHost\" -e \"SELECT schema_name FROM information_schema.schemata WHERE schema_name LIKE \\\"${typo3DatabaseName}_ft%\\\"\" -sN 2>/dev/null | while read db; do mysql -u\"$typo3DatabaseUsername\" -p\"$typo3DatabasePassword\" -h\"$typo3DatabaseHost\" -e \"DROP DATABASE \\`$db\\`\" 2>/dev/null; done; echo \"Cleaned up stale test databases.\"'"
+      "/bin/bash -c 'set -e -o pipefail; export MYSQL_PWD=\"$typo3DatabasePassword\"; mysql --no-defaults -u\"$typo3DatabaseUsername\" -h\"$typo3DatabaseHost\" -e \"SELECT schema_name FROM information_schema.schemata WHERE schema_name LIKE \\\"${typo3DatabaseName}_ft%\\\"\" -sN | while read db; do mysql --no-defaults -u\"$typo3DatabaseUsername\" -h\"$typo3DatabaseHost\" -e \"DROP DATABASE \\`$db\\`\"; done; echo \"Cleaned up stale test databases.\"'"
     ],
     "tests:setup": [
       "@composer install"
