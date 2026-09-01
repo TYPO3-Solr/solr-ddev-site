@@ -131,6 +131,19 @@ When working on `packages/ext-*` code, always look up how to use the TYPO3 Core 
 - **PHP 8.2** - Use strict types and modern features
 - **Doc comments:** Never add `@param` or `@return` doc comments when parameter/return types are self-explanatory from the signature. Only add doc comments when additional context is needed (e.g., explaining what values are expected, side effects, or non-obvious behavior).
 - **Comments:** Short but informative. If the code says it already, write no comment. When a comment is needed, explain *why*, not *what*, and keep it to one or two lines. Never restate the class or method name (`Class ItemRepository`).
+- **Code identifiers in prose are always marked up.** Methods with their parentheses
+  (`executePageIndexer()`), classes (`IndexingService`), fields, columns, settings, file paths,
+  TypoScript and query fragments (`field:*`). Never leave them as bare words. How to mark them
+  up depends on the format:
+  - **Markdown and plain text** — commit messages, pull request descriptions, `.md` files,
+    answers in chat: single backticks. This is existing house style; the last hundred commits on
+    `main` carry over 250 backticked identifiers.
+  - **ReST is stricter and wants a role, not plain literals.** Use `:php:` for PHP identifiers,
+    classes, methods and namespaces, `:file:` for paths, `:bash:` for shell, `:code:` for
+    anything else, and `:ref:` / `:doc:` for cross-references. Reach for ``double backticks``
+    only where no role fits. `Documentation/Releases/solr-release-14-0.rst` is the reference —
+    e.g. ``:php:`getTaskParameters()` ``. Note that file is not fully consistent: it also has
+    class names in plain ``literals``, which are the older form, not the target.
 
 ## Debugging with Xdebug
 
