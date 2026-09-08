@@ -1,0 +1,6 @@
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install \
+    -y -o Dpkg::Options::="--force-confnew" --no-install-recommends --no-install-suggests \
+    php${DDEV_PHP_VERSION}-inotify
+
+COPY --chown=${uid}:${gid} --from=ghcr.io/typo3-documentation/render-guides:latest /opt/guides /opt/guides
