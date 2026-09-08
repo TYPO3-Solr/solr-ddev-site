@@ -1,0 +1,3 @@
+
+
+COPY --chown=${uid}:${gid} --from=ghcr.io/typo3-documentation/render-guides:latest /opt/guides /opt/guides
