@@ -18,9 +18,22 @@ nbproject
 /public/typo3conf/LocalConfiguration.php
 !/public/typo3conf/AdditionalConfiguration.php
 .ddev/docker-compose.tika.yaml
+.ddev/nginx_full/ter-*.conf
 .ddev/nutch
 .ddev/solr/site
 .ddev/solr/tests
+
+/public.TER/typo3_src-*
+/public.TER/typo3conf/ext/*
+!/public.TER/typo3conf/ext/apache_solr_for_typo3_sitepackage
+!/public.TER/typo3conf/ext/solr
+/public.TER/typo3temp/
+/public.TER/typo3conf/autoload
+/public.TER/typo3conf/PackageStates.php
+/public.TER/typo3conf.Backup/
+# Carries the install tool password, the database credentials and the
+# encryption key, like config/system/settings.php further down.
+/public.TER/typo3conf/system/settings.php
 
 .ddev/claude-code/
 
