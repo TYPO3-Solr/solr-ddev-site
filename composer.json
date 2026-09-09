@@ -10,22 +10,22 @@
       "options": {
         "reference": "none",
         "versions": {
-          "apache-solr-for-typo3/introduction-news":              "14.0",
-          "apache-solr-for-typo3/introduction-solrconsole":       "14.0",
-          "apache-solr-for-typo3/introduction-solrdebugtools":    "14.0",
-          "apache-solr-for-typo3/introduction-solrfal":           "14.0",
-          "apache-solr-for-typo3/introduction-tika":              "14.0",
+          "apache-solr-for-typo3/introduction-news":              "14.0.x-dev",
+          "apache-solr-for-typo3/introduction-solrconsole":       "14.0.x-dev",
+          "apache-solr-for-typo3/introduction-solrdebugtools":    "14.0.x-dev",
+          "apache-solr-for-typo3/introduction-solrfal":           "14.0.x-dev",
+          "apache-solr-for-typo3/introduction-tika":              "14.0.x-dev",
 
           "apache-solr-for-typo3/php-solr-explain":               "4.0.99",
-          "apache-solr-for-typo3/solr":                           "14.0.99",
-          "apache-solr-for-typo3/solrconsole":                    "14.0.99",
-          "apache-solr-for-typo3/solrdebugtools":                 "14.0.99",
-          "apache-solr-for-typo3/solrfal":                        "14.0.99",
-          "apache-solr-for-typo3/solrfheadless":                  "14.0.99",
-          "apache-solr-for-typo3/solrmlt":                        "14.0.99",
-          "apache-solr-for-typo3/tika":                           "14.0.99",
+          "apache-solr-for-typo3/solr":                           "14.0.x-dev",
+          "apache-solr-for-typo3/solrconsole":                    "14.0.x-dev",
+          "apache-solr-for-typo3/solrdebugtools":                 "14.0.x-dev",
+          "apache-solr-for-typo3/solrfal":                        "14.0.x-dev",
+          "apache-solr-for-typo3/solrfheadless":                  "14.0.x-dev",
+          "apache-solr-for-typo3/solrmlt":                        "14.0.x-dev",
+          "apache-solr-for-typo3/tika":                           "14.0.x-dev",
 
-          "dkd/apache-solr-for-typo3-sitepackage":                "14.0"
+          "dkd/apache-solr-for-typo3-sitepackage":                "14.0.x-dev"
         }
       }
     }
@@ -44,10 +44,8 @@
     "ext-libxml": "*",
     "ext-pdo": "*",
     "ext-simplexml": "*",
-    "apache-solr-for-typo3/solr": "^14.0",
-    "bk2k/bootstrap-package": "^16.0.0",
-    "dkd/apache-solr-for-typo3-sitepackage": "^14.0",
-    "helhum/typo3-console": "~8.3.1",
+    "apache-solr-for-typo3/solr": "14.0.x-dev",
+    "dkd/apache-solr-for-typo3-sitepackage": "14.0.x-dev",
     "typo3/cms-core": "^14.3"
   },
   "require-dev": {
