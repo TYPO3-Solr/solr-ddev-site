@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d3078a083f6393fa4045e266afe276c3",
+    "content-hash": "12f7404804be3adbeddfa9a2aa8d7182",
     "packages": [
         {
             "name": "apache-solr-for-typo3/solr",
-            "version": "14.0.99",
+            "version": "14.0.x-dev",
             "dist": {
                 "type": "path",
                 "url": "packages/ext-solr"
@@ -58,6 +58,13 @@
                 },
                 "typo3/cms": {
                     "extension-key": "solr",
+                    "version": "14.0.x-dev",
+                    "Package": {
+                        "providesPackages": {
+                            "solarium/solarium": "Resources/Private/Php/ComposerLibraries/vendor",
+                            "halaxa/json-machine": "Resources/Private/Php/ComposerLibraries/vendor"
+                        }
+                    },
                     "web-dir": ".Build/Web"
                 },
                 "TYPO3-Solr": {
@@ -112,11 +119,30 @@
                 "t3:docs:clean": [
                     "rm -Rf Documentation-GENERATED-temp/ $(readlink -f Documentation.HTML) Documentation.HTML"
                 ],
-                "extension-create-libs": [
+                "extension-build": [
+                    "@extension-build:clean",
                     "@composer req -d Resources/Private/Php/ComposerLibraries solarium/solarium:$(Build/Helpers/GET_LOCAL_PACKAGE_VERSION_CONSTRAINT.sh solarium/solarium)"
                 ],
-                "extension-build": [
-                    "@extension-create-libs"
+                "extension-build:clean": [
+                    "rm -Rf Resources/Private/Php/ComposerLibraries/vendor Resources/Private/Php/ComposerLibraries/composer.lock",
+                    "git checkout -- Resources/Private/Php/ComposerLibraries/composer.json"
+                ],
+                "ext:env": [
+                    "@putenv EXT_ARCHIVE_DIR=.Build/archive"
+                ],
+                "ext:version": [
+                    "echo ${EXT_VERSION:-$(git show HEAD:composer.json | Build/Helpers/GET_TER_BUILD_INPUTS.sh | sed -n 's/^version=//p')}"
+                ],
+                "ext:archive:path": [
+                    "@ext:env",
+                    "echo ${EXT_ARCHIVE_DIR}/$(git show HEAD:composer.json | Build/Helpers/GET_TER_BUILD_INPUTS.sh | sed -n 's/^key=//p')_${EXT_VERSION:-$(git show HEAD:composer.json | Build/Helpers/GET_TER_BUILD_INPUTS.sh | sed -n 's/^version=//p')}.zip"
+                ],
+                "ext:build:for-ter": [
+                    "@ext:env",
+                    "Build/Helpers/BUILD_TER_ZIP.sh"
+                ],
+                "ext:release:prepare": [
+                    "Build/Helpers/PREPARE_RELEASE.sh"
                 ],
                 "tests:restore-git": [
                     "echo \"Retore composer.json to initial state:\" && git checkout composer.json"
@@ -129,6 +155,10 @@
                     "@tests:env",
                     "@composer req --update-with-all-dependencies typo3/cms-core:${TYPO3_VERSION}",
                     "@tests:restore-git"
+                ],
+                "tests:setup:for-ddev-ter": [
+                    "@extension-build",
+                    "git checkout -- Resources/Private/Php/ComposerLibraries/composer.json"
                 ],
                 "tests:unit": [
                     "phpunit --config=Build/Test/UnitTests.xml"
@@ -682,12 +712,15 @@
         },
         {
             "name": "dkd/apache-solr-for-typo3-sitepackage",
-            "version": "14.0",
+            "version": "14.0.x-dev",
             "dist": {
                 "type": "path",
                 "url": "packages/apache_solr_for_typo3_sitepackage"
             },
             "require": {
+                "apache-solr-for-typo3/solr": "14.0.x-dev",
+                "bk2k/bootstrap-package": "^16.0.0",
+                "helhum/typo3-console": "~9.0.0",
                 "typo3/cms-about": "*",
                 "typo3/cms-adminpanel": "*",
                 "typo3/cms-backend": "*",
@@ -721,7 +754,11 @@
             "type": "typo3-cms-extension",
             "extra": {
                 "typo3/cms": {
-                    "extension-key": "apache_solr_for_typo3_sitepackage"
+                    "extension-key": "apache_solr_for_typo3_sitepackage",
+                    "version": "14.0.x-dev",
+                    "Package": {
+                        "providesPackages": []
+                    }
                 }
             },
             "autoload": {
@@ -741,7 +778,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Solr development site",
-            "homepage": "http://www.dkd.de/",
+            "homepage": "https://www.dkd.de/",
             "keywords": [
                 "TYPO3 CMS"
             ],
@@ -1680,86 +1717,32 @@
             "time": "2024-12-16T10:48:26+00:00"
         },
         {
-            "name": "helhum/php-error-reporting",
-            "version": "v1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/helhum/php-error-reporting.git",
-                "reference": "c9f1a0b6fedf7e641bce23b65eeeea946a6f7eb9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/helhum/php-error-reporting/zipball/c9f1a0b6fedf7e641bce23b65eeeea946a6f7eb9",
-                "reference": "c9f1a0b6fedf7e641bce23b65eeeea946a6f7eb9",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.4.1"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.2",
-                "phpstan/phpstan": "^1.0",
-                "phpstan/phpstan-deprecation-rules": "^1.0",
-                "phpstan/phpstan-doctrine": "^1.0",
-                "phpstan/phpstan-phpunit": "^1.0",
-                "phpstan/phpstan-strict-rules": "^1.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ErrorReporting\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Helmut Hummel",
-                    "email": "typo3@helhum.io"
-                }
-            ],
-            "description": "Create ErrorException with clean trace from PHP error handler errors, inspired by Sentry PHP SDK",
-            "homepage": "https://helhum.io",
-            "keywords": [
-                "error reporting",
-                "sentry"
-            ],
-            "support": {
-                "issues": "https://github.com/helhum/php-error-reporting",
-                "source": "https://github.com/helhum/php-error-reporting/tree/v1.0.1"
-            },
-            "time": "2023-01-12T14:49:10+00:00"
-        },
-        {
             "name": "helhum/typo3-console",
-            "version": "v8.3.1",
+            "version": "v9.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-Console/TYPO3-Console.git",
-                "reference": "0a6f26d125b780a40c674820c42c78ce5607ff4c"
+                "reference": "faedb5d61d9e08a8816dcb95673baca9c294b984"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-Console/TYPO3-Console/zipball/0a6f26d125b780a40c674820c42c78ce5607ff4c",
-                "reference": "0a6f26d125b780a40c674820c42c78ce5607ff4c",
+                "url": "https://api.github.com/repos/TYPO3-Console/TYPO3-Console/zipball/faedb5d61d9e08a8816dcb95673baca9c294b984",
+                "reference": "faedb5d61d9e08a8816dcb95673baca9c294b984",
                 "shasum": ""
             },
             "require": {
                 "composer-runtime-api": "^2.1",
                 "helhum/config-loader": ">=0.9 <0.13",
-                "helhum/php-error-reporting": "^1.0",
-                "php": ">=8.1",
+                "php": ">=8.2",
                 "symfony/console": "^5.4 || ^6.4 || ^7.0",
                 "symfony/process": "^5.4 || ^6.4 || ^7.0",
-                "typo3/cms-backend": "^11.5.26 || ^12.4.18 || ^13.1 || ^14.0",
+                "typo3/cms-backend": "^12.4.18 || ^13.1 || ^14.3",
                 "typo3/cms-composer-installers": "^4.0@rc || >=5.0",
-                "typo3/cms-core": "^11.5.26 || ^12.4.18 || ^13.1 || ^14.0",
-                "typo3/cms-extbase": "^11.5.26 || ^12.4.18 || ^13.1 || ^14.0",
-                "typo3/cms-fluid": "^11.5.26 || ^12.4.18 || ^13.1 || ^14.0",
-                "typo3/cms-frontend": "^11.5.26 || ^12.4.18 || ^13.1 || ^14.0",
-                "typo3/cms-install": "^11.5.26 || ^12.4.18 || ^13.1 || ^14.0"
+                "typo3/cms-core": "^12.4.18 || ^13.1 || ^14.3",
+                "typo3/cms-extbase": "^12.4.18 || ^13.1 || ^14.3",
+                "typo3/cms-fluid": "^12.4.18 || ^13.1 || ^14.3",
+                "typo3/cms-frontend": "^12.4.18 || ^13.1 || ^14.3",
+                "typo3/cms-install": "^12.4.18 || ^13.1 || ^14.3"
             },
             "replace": {
                 "typo3-ter/typo3-console": "self.version"
@@ -1767,16 +1750,18 @@
             "require-dev": {
                 "dg/bypass-finals": "^1.4",
                 "friendsofphp/php-cs-fixer": "^3.57",
+                "paragonie/sodium_compat_ext_sodium": "^1.0",
                 "php-parallel-lint/php-parallel-lint": "^1.2",
                 "phpunit/phpunit": "^9.5.25",
                 "symfony/expression-language": "^5.4 || ^6.4 || ^7.0",
                 "symfony/filesystem": "^5.4 || ^6.4 || ^7.0",
                 "typo3-console/create-reference-command": "^1.0",
                 "typo3-console/sql-command": "^1.0",
-                "typo3/cms-extensionmanager": "^11.5.26 || ^12.4.18 || ^13.1 || ^14.0",
-                "typo3/cms-filemetadata": "^11.5.26 || ^12.4.18 || ^13.1 || ^14.0",
-                "typo3/cms-recordlist": "^11.5.26 || ^12.4.18 || ^13.1 || ^14.0",
-                "typo3/cms-reports": "^11.5.26 || ^12.4.18 || ^13.1 || ^14.0"
+                "typo3/cms-extensionmanager": "^12.4.18 || ^13.1 || ^14.3",
+                "typo3/cms-filemetadata": "^12.4.18 || ^13.1 || ^14.3",
+                "typo3/cms-fluid-styled-content": "^12.4.18 || ^13.1 || ^14.3",
+                "typo3/cms-recordlist": "^12.4.18 || ^13.1 || ^14.3",
+                "typo3/cms-reports": "^12.4.18 || ^13.1 || ^14.3"
             },
             "type": "typo3-cms-extension",
             "extra": {
@@ -1786,11 +1771,15 @@
                         "serviceProvider": "Helhum\\Typo3Console\\ServiceProvider",
                         "partOfMinimalUsableSystem": true
                     },
+                    "version": "9.0.0",
                     "extension-key": "typo3_console",
-                    "ignore-as-root": false
+                    "providesPackages": {
+                        "symfony/console": "Resources/Private/ExtensionArtifacts/Libraries/",
+                        "helhum/config-loader": ""
+                    }
                 },
                 "branch-alias": {
-                    "dev-main": "8.3.x-dev"
+                    "dev-main": "9.0.x-dev"
                 }
             },
             "autoload": {
@@ -1837,7 +1826,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-12-12T12:00:43+00:00"
+            "time": "2026-07-07T11:03:57+00:00"
         },
         {
             "name": "lolli42/finediff",
@@ -2206,16 +2195,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "2.3.4",
+            "version": "2.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "98dbc9412932af5825e6d5aa5d6bc4de7d82538a"
+                "reference": "148cefffaf0233e4c08cc13db8a195a56dd6dfe9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/98dbc9412932af5825e6d5aa5d6bc4de7d82538a",
-                "reference": "98dbc9412932af5825e6d5aa5d6bc4de7d82538a",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/148cefffaf0233e4c08cc13db8a195a56dd6dfe9",
+                "reference": "148cefffaf0233e4c08cc13db8a195a56dd6dfe9",
                 "shasum": ""
             },
             "require": {
@@ -2247,9 +2236,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/2.3.4"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/2.3.5"
             },
-            "time": "2026-08-30T16:25:38+00:00"
+            "time": "2026-08-31T16:05:28+00:00"
         },
         {
             "name": "psr/cache",
@@ -9189,16 +9178,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.95.23",
+            "version": "v3.95.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "b2932a5af3157a0c28324b1efe5e3b556dee09c4"
+                "reference": "9a4b8050f8768646bf3693ee7416978ceeca6206"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/b2932a5af3157a0c28324b1efe5e3b556dee09c4",
-                "reference": "b2932a5af3157a0c28324b1efe5e3b556dee09c4",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/9a4b8050f8768646bf3693ee7416978ceeca6206",
+                "reference": "9a4b8050f8768646bf3693ee7416978ceeca6206",
                 "shasum": ""
             },
             "require": {
@@ -9281,7 +9270,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.95.23"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.95.24"
             },
             "funding": [
                 {
@@ -9289,7 +9278,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-08-26T19:54:54+00:00"
+            "time": "2026-08-31T15:31:12+00:00"
         },
         {
             "name": "jean85/pretty-package-versions",
@@ -9531,11 +9520,11 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "2.2.11",
+            "version": "2.2.13",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/0eb899d48d9b784eee3f1b58a6c9dc79734cf811",
-                "reference": "0eb899d48d9b784eee3f1b58a6c9dc79734cf811",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/9ba9ac76ee9c5cf5b56d58eb5deec6315b7a0260",
+                "reference": "9ba9ac76ee9c5cf5b56d58eb5deec6315b7a0260",
                 "shasum": ""
             },
             "require": {
@@ -9591,7 +9580,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-08-31T10:33:10+00:00"
+            "time": "2026-09-03T20:38:19+00:00"
         },
         {
             "name": "phpstan/phpstan-phpunit",
@@ -12016,7 +12005,10 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "apache-solr-for-typo3/solr": 20,
+        "dkd/apache-solr-for-typo3-sitepackage": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
