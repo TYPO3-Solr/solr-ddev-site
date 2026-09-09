@@ -17,7 +17,7 @@ $GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport_sendmail_command'] = '/usr/local/
 /*   Notes:                                                                                                           */
 /*     Only "Extractor" option is writable via BE->Setting->Extension Configuration->tika                             */
 if (isset($GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['tika'])) {
-    $tikaComposerManifest = json_decode(file_get_contents(Environment::getProjectPath() . '/packages/ext-tika/composer.json'), true);
+    $tikaComposerManifest = json_decode(file_get_contents((getenv('EXT_TIKA_PATH') ?: '/var/www/html/packages/ext-tika') . '/composer.json'), true);
     $requiredTikaVersion = $tikaComposerManifest['extra']['TYPO3-Solr']['ext-tika']['require']['Tika'];
     ArrayUtility::mergeRecursiveWithOverrule(
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['tika'],

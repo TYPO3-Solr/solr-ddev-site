@@ -6,7 +6,9 @@ webserver_type: nginx-fpm
 router_http_port: "80"
 router_https_port: "443"
 xdebug_enabled: false
-additional_hostnames: []
+additional_hostnames:
+  - ter-solr-ddev-site
+  - ter.solr-ddev-site
 additional_fqdns: []
 database:
   type: mysql
@@ -30,7 +32,13 @@ hooks:
   - exec:
       echo 'DELETE FROM sys_template WHERE 1=1;' | typo3 database:import
 
-webimage_extra_packages: [cron, jq, openjdk-21-jre-headless, parallel]
+webimage_extra_packages:
+  - cron
+  - direnv
+  - jq
+  - libnginx-mod-http-perl
+  - openjdk-21-jre-headless
+  - parallel
 use_dns_when_possible: true
 timezone: UTC
 composer_version: "2"
