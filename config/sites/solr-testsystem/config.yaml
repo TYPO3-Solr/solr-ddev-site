@@ -1,4 +1,4 @@
-base: 'https://solr-ddev-site.ddev.site/'
+base: 'https://%env(DDEV_PROJECT)%.%env(DDEV_TLD)%/'
 languages:
   -
     title: English
