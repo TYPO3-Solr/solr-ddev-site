@@ -239,7 +239,7 @@
       "phpunit --configuration packages/ext-tika/Build/Test/IntegrationTests.xml --bootstrap=vendor/typo3/testing-framework/Resources/Core/Build/FunctionalTestsBootstrap.php --colors"
     ],
     "tests:tika:phpstan": [
-      "COMPOSER_VENDOR_DIR=$($COMPOSER_BINARY config vendor-dir) phpstan analyze -c packages/ext-tika/Build/Test/phpstan.neon -- packages/ext-tika/Classes packages/ext-tika/Tests"
+      "phpstan analyze -c packages/ext-tika/Build/Test/phpstan.neon -- packages/ext-tika/Classes packages/ext-tika/Tests"
     ],
     "tests:tika:known-tests": [
       "Composer\\Config::disableProcessTimeout",
