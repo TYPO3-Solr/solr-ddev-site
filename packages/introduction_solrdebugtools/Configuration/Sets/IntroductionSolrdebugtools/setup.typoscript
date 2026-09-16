@@ -1,7 +1,6 @@
 ######################
 #### DEPENDENCIES ####
 ######################
-@import 'EXT:solrdebugtools/Configuration/TypoScript/Explain/setup.typoscript'
 
 ##############
 #### MODS ####
