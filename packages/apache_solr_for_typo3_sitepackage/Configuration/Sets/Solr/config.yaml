@@ -2,6 +2,7 @@ name: dkd/apache-solr-for-typo3-sitepackage
 label: 'Solr development site: package'
 dependencies:
   - bootstrap-package/full
+  - apache-solr-for-typo3/solr
 optionalDependencies:
   - typo3/form
   - apache-solr-for-typo3/introduction-news
