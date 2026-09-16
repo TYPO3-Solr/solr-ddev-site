@@ -1,16 +1,22 @@
 {
-    "name": "apache-solr-for-typo3/introduction-tika",
-    "type": "typo3-cms-extension",
-    "description": "Solr development site : EXT:tika for Introduction",
-    "homepage": "http://www.dkd.de/",
-    "license": ["GPL-2.0-or-later"],
-    "keywords": ["TYPO3 CMS"],
-    "require": {
-        "apache-solr-for-typo3/tika": "*"
-    },
-    "extra": {
-        "typo3/cms": {
-            "extension-key": "introduction_tika"
-        }
+  "name": "apache-solr-for-typo3/introduction-tika",
+  "type": "typo3-cms-extension",
+  "description": "Solr development site : EXT:tika for Introduction",
+  "homepage": "http://www.dkd.de/",
+  "license": [
+    "GPL-2.0-or-later"
+  ],
+  "keywords": [
+    "TYPO3 CMS"
+  ],
+  "require": {
+    "apache-solr-for-typo3/tika": "*"
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "introduction_tika",
+      "version": "14.0.x-dev",
+      "Package": { "providesPackages": {} }
     }
+  }
 }

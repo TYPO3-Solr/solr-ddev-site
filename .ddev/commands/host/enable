@@ -8,6 +8,7 @@
 
 EXT_NAME=$1
 LOCAL_EXT_SOLR_PLUGIN_PATH="packages/ext-$EXT_NAME"
+LOCAL_EXTENSIONS_VERSION="14.0.x-dev"
 
 RED='\033[0;31m'
 NC='\033[0m'
@@ -36,7 +37,7 @@ elif [[ "$EXT_NAME" != "news" ]]; then
 fi
 
 # shellcheck disable=SC2086
-if ! ddev composer req "apache-solr-for-typo3/introduction-$EXT_NAME" $LOCAL_EXT_SOLR_PLUGIN ; then
+if ! ddev composer req "apache-solr-for-typo3/introduction-$EXT_NAME:$LOCAL_EXTENSIONS_VERSION" $LOCAL_EXT_SOLR_PLUGIN:$LOCAL_EXTENSIONS_VERSION ; then
   EXECUTED_COMMAND="composer req \"apache-solr-for-typo3/introduction-$EXT_NAME\" $LOCAL_EXT_SOLR_PLUGIN"
   echo "Something went wrong by following composer command:"
   echo "    "$EXECUTED_COMMAND

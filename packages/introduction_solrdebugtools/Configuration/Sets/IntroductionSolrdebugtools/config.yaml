@@ -1,2 +1,4 @@
 name: apache-solr-for-typo3/introduction-solrdebugtools
 label: 'Solr development site: EXT:solrdebugtools'
+dependencies:
+  - apache-solr-for-typo3/solrdebugtools

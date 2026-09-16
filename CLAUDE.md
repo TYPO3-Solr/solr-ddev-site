@@ -196,6 +196,58 @@ Rules that are not discoverable from the code:
   over a production run and over the suite, and compare. Recipes for both, including call
   breakpoints, logpoints and step filters, are in `Documentation/Xdebug-DBGp.md`.
 
+## Testing ELTS / old-PHP branches (e.g. release-11.2.x)
+
+The shared DDEV web container defaults to PHP 8.2 for `main` (TYPO3 14). Old ELTS branches like
+`packages/ext-solr`'s `release-11.2.x` need PHP 7.3/7.4 and a different `typo3/cms-core` line, in
+the *same* checked-out working directory — there's no separate container per branch. Each such
+branch carries its own `.envrc` (tracked, `direnv allow`-gated) that switches `php`/`composer` to
+the right version via wrapper scripts under `Build/Helpers/php-compat-bin`, and exports the test
+env vars that branch's suite needs; see the comments at the top of that file for the one-time host
+setup (installing the old PHP CLI package, fixing MySQL auth). It no-ops if the old PHP isn't
+installed, so switching back to `main` in the same directory is unaffected.
+
+Rules that are not discoverable from the code:
+
+* **The container already has Ondrej Sury's PHP apt repo configured**
+  (`/etc/apt/sources.list.d/php.sources`), so installing e.g. `php7.3-cli` needs no new apt source
+  — just `sudo apt-get install php7.3-cli php7.3-<extensions...>`. It installs alongside the
+  default PHP under a versioned binary (`/usr/bin/php7.3`), untouched by `update-alternatives`.
+* **The shared `db` DDEV service authenticates `root` with `caching_sha2_password`** (MySQL 8
+  default), which old TYPO3's bundled `doctrine/dbal` mysqli driver cannot speak at all — it fails
+  with "The server requested authentication method unknown to the client", not a credentials
+  error. Fix once per environment: `ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY
+  '<password>'; FLUSH PRIVILEGES;` (leave `root`@`localhost` alone; only the `%` grant handles TCP
+  connections from other containers).
+* **Composer refuses to resolve old `typo3/cms-core`/`nimut/testing-framework` constraints by
+  default**, treating packages with any known security advisory as blocked during dependency
+  resolution (not just audit-reported) — `Root composer.json requires typo3/cms-core ^10.4 ...
+  affected by security advisories`. Set `COMPOSER_NO_AUDIT=1` and `COMPOSER_NO_BLOCKING=1` before
+  `composer tests:setup`; there's no fix forthcoming for an EOL line.
+* **nimut/testing-framework reads different env vars than the ones `composer tests:setup` itself
+  uses**: lowercase `typo3DatabaseName`/`typo3DatabaseHost`/`typo3DatabaseUsername`/
+  `typo3DatabasePassword`, plus `TESTING_SOLR_HOST`/`TESTING_SOLR_PORT` — distinct from the
+  uppercase `TYPO3_DATABASE_*` vars. Both sets need exporting; see
+  [`TYPO3-Solr/solr-ddev-site`'s `release-11.2.x` `.ddev/docker-compose.env.yaml`](https://github.com/TYPO3-Solr/solr-ddev-site/blob/release-11.2.x/.ddev/docker-compose.env.yaml)
+  for the canonical values.
+* **A stale test-system marker silently skips database creation.** nimut caches a
+  `last_run.txt` under `.Build/Web/typo3temp/var/tests/functional-<hash>/` and reuses that test
+  database for 300 seconds without recreating it. If an earlier run failed before the database was
+  actually created (e.g. while still fixing DB auth), later runs fail with `Unknown database
+  'db_tests_<hash>'` instead of creating it fresh. Fix: `rm -rf .Build/Web/typo3temp/var/tests`.
+* **Integration test fixtures resolve relative to the *test class's own* directory**, not a shared
+  fixtures pool: `Tests/Integration/Foo/SomeTest.php` only finds
+  `Tests/Integration/Foo/Fixtures/*.xml`. Reusing a fixture from another test's directory means
+  copying the file, not just referencing it by name.
+* **ELTS work tends to accumulate extra remotes** — a contributor's own fork(s), possibly a
+  separate ELTS-only sibling repository alongside the regular `origin`/`upstream` pair — and the
+  same branch name can exist on several of them with *different* commits. Check which remote a
+  branch actually needs to come from before checking it out. This is exactly the scenario the
+  ext-solr `CLAUDE.md`'s "MOST IMPORTANT GIT RULE" guards against: `git checkout -b <local>
+  <remote>/<branch>` leaves `<local>` tracking that remote, so an unqualified `git push` later can
+  silently push to the wrong fork — repoint tracking to `origin` immediately after creating the
+  branch, per that rule.
+
 ## Commit Quality Requirements
 
 **MANDATORY: Every change-set MUST pass ALL checks before committing.**
@@ -250,6 +302,42 @@ is not obvious from the diff. Do not narrate the diff or pad with context the re
 Branch strategy:
 - `main` - Latest development
 - `release-X.X.x` - Release maintenance branches
+
+### MOST IMPORTANT GIT RULE: never leave a working branch tracking `upstream`
+
+`git checkout -b <local> upstream/<remote>` silently sets `branch.<local>.remote = upstream` and
+`branch.<local>.merge = refs/heads/<remote>`. A bare `git push` then writes to the **canonical
+TYPO3-Solr repository**, under the *remote* branch's name — so a `--force` on a local topic branch
+force-pushes a published release branch. This has already come within seconds of destroying
+`release-12.1.x`, and an earlier instance of it rewrote a released `14.0.0` tag and stranded
+Packagist on an unreachable commit.
+
+**Immediately after creating a branch from `upstream/*`, repoint it at `origin` under its own
+name:**
+
+```bash
+git checkout -b epic/my_work upstream/release-12.1.x
+git config branch.epic/my_work.remote origin
+git config branch.epic/my_work.merge refs/heads/epic/my_work
+```
+
+Use `git config` rather than `git branch --set-upstream-to=origin/<name>`, which fails while the
+branch does not exist on `origin` yet. Verify before any push:
+
+```bash
+git config --get branch.$(git symbolic-ref --short HEAD).remote   # must print: origin
+```
+
+Rules that follow from this:
+
+* **`upstream` is push-by-explicit-name only.** Never `git push` relying on tracking; write
+  `git push origin HEAD` or `git push upstream <src>:<dst>` so the destination is visible in the
+  command.
+* **Never force-push a `release-X.X.x` branch, `main`, or a tag on `upstream`** without the
+  developer confirming that exact command. Releases are immutable once published, and Packagist
+  will not re-point a moved tag.
+* `main` currently tracks `upstream` in every `packages/ext-*` repository. Treat any checkout of
+  `main` as read-only unless the developer says otherwise.
 
 ## URLs (after `ddev start`)
 

@@ -12,7 +12,9 @@
   },
   "extra": {
     "typo3/cms": {
-      "extension-key": "introduction_solrdebugtools"
+      "extension-key": "introduction_solrdebugtools",
+      "version": "14.0.x-dev",
+      "Package": { "providesPackages": {} }
     }
   }
 }
