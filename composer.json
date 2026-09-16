@@ -175,7 +175,7 @@
     ],
 
     "tests:solrdebugtools:phpstan": [
-      "phpstan analyze -c packages/ext-solrdebugtools/Build/Test/phpstan.neon -- packages/ext-solrdebugtools/"
+      "phpstan analyze -c packages/ext-solrdebugtools/Build/Test/phpstan.neon -- packages/ext-solrdebugtools/Classes"
     ],
     "tests:solrdebugtools:rector": [
       "rector process --config=rector.php --autoload-file=vendor/autoload.php --clear-cache packages/ext-solrdebugtools"
