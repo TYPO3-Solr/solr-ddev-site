@@ -31,7 +31,7 @@ DDEV has become the **de-facto standard** for local TYPO3 development environmen
 ## Accounts & access
 
 - **TYPO3 Slack** — we use a TYPO3 Slack channel during the workshop.
-  Get an invite via the [TYPO3 Slack sign-up](https://my.typo3.org/about-mytypo3org/slack/),
+  Get an invite via the [TYPO3 Slack sign-up](https://docs.typo3.org/m/typo3/guide-step-by-step/main/en-us/10GettingStarted/05MeetTheCommunity/SignUpForATypo3SlackAccount.html),
   then contact @dkd-kaehm or @dkd-friedrich join the private Workshop channel.
 - **GitHub** — recommended for exercises that involve cloning forks or filing issues.
 
